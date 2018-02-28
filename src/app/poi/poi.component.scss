@@ -1,0 +1,110 @@
+
+.jumbotron {
+    padding: 1rem 0 0 0;
+    .border-right{
+        border-right: 1px solid rgba(0,0,0,.1);
+    }
+}
+.list-group-item {
+    padding: 0.3rem 1.25rem;
+}
+h6 {
+    margin-top: 0.5rem;
+}
+%listdiv {
+    position: relative;
+    padding: 0 1rem 1.2rem 2.2rem;
+    h6{
+        display: inline-block;
+        margin: 0;
+        vertical-align: sub;
+        font-size: 0.8rem;
+        font-weight: 100;
+    }
+}
+.restaurant{
+    border-left: .3rem solid #f19b2c;
+    border-radius: .2rem;
+}
+.restaurant-list{
+    @extend %listdiv;
+    &:before{
+        content:url('../../assets/img/icons/svgtopng/restaurant.png'); 
+        position: absolute;
+        left:0;
+        top: 0.2rem;
+        width: 0.2rem;
+    }
+}
+.shop{
+    border-left: .3rem solid #f0c330;
+    border-radius: .2rem;
+}
+.shop-list{
+    @extend %listdiv;
+    &:before{
+        content:url('../../assets/img/icons/svgtopng/shops.png'); 
+        position: absolute;
+        left:0;
+        top: 0.2rem;
+        width: 0.2rem;
+      }
+}
+.learn{
+    border-left: .3rem solid #3a99d8;
+    border-radius: .2rem;
+}
+.learn-list{
+    @extend %listdiv;
+    &:before{
+        content:url('../../assets/img/icons/svgtopng/learn.png'); 
+        position: absolute;
+        left:0;
+        top: 0.2rem;
+        width: 0.2rem;
+      }
+}
+.leisure{
+    border-left: .3rem solid #239f85;
+    border-radius: .2rem;
+}
+.leisure-list{
+    @extend %listdiv;
+    &:before{
+        content:url('../../assets/img/icons/svgtopng/leisure.png'); 
+        position: absolute;
+        left:0;
+        top: 0.2rem;
+        width: 0.2rem;
+      }
+}
+
+.emergency{
+    border-left: .3rem solid #e54d42;
+    border-radius: .2rem;
+}
+.emergency-list{
+    @extend %listdiv;
+    &:before{
+        content:url('../../assets/img/icons/svgtopng/emergency.png'); 
+        position: absolute;
+        left:0;
+        top: 0.2rem;
+        width: 0.2rem;
+      }
+}
+.connectivity{
+    border-left: .3rem solid #095682;
+    border-radius: .2rem;
+}
+.connectivity-list{
+    @extend %listdiv;
+    &:before{
+        content:url('../../assets/img/icons/svgtopng/transfermarker.png'); 
+        position: absolute;
+        left:0;
+        top: 0.2rem;
+        width: 0.2rem;
+      }
+}
+

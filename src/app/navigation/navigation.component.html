@@ -1,0 +1,17 @@
+<nav class="d-flex flex-row justify-content-between">
+  <a 
+    routerLinkActive="active" 
+    routerLink="/furthercontent/municipality"
+    class="nav-link text-uppercase">
+    <span>Municipality</span>
+  </a>
+  <a 
+    routerLinkActive="active" 
+    routerLink="/furthercontent/address" 
+    class="nav-link text-uppercase">
+    <span>Address</span>
+  </a>
+  <select #langSelect (change)="translate.use(langSelect.value)">
+    <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+  </select>
+</nav>

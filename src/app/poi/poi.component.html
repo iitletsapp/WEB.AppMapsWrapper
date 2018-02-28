@@ -1,0 +1,136 @@
+<div class="jumbotron">
+    <div class="row">
+        <div class="col">
+            <ul class="list-group">
+                <li class="list-group-item border-0">
+                    <div class="row">
+                        <div class="col-4 restaurant">
+                            <h6>{{ 'POI.EAT' | translate }}</h6>
+                        </div>
+                        <div class="col-2 restaurant-fa">
+                            <img src="./assets/img/icons/eat_drink.svg" alt="eat and drink">
+                        </div>
+                        <div class="col-3">
+                            <div class="p-2">
+                                <input type="checkbox" name="checkbox1" id="restaurant" class="ios-toggle" (change)="getCategory($event)" data-visible="off"
+                                    toggled/>
+                                <label for="restaurant" class="checkbox-label" data-off="" data-on=""></label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <small>{{ 'POI.MINDISTANCE' | translate }}</small>
+                            <b class="d-block">{{distances.restaurant}}<small>m</small></b>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item border-0">
+                    <div class="row">
+                        <div class="col-4 shop">
+                            <h6>{{ 'POI.SHOPS' | translate }}</h6>
+                        </div>
+                        <div class="col-2 shop-fa">
+                            <img src="./assets/img/icons/shops.svg" alt="shops">
+                        </div>
+                        <div class="col-3">
+                            <div class="p-2">
+                                <input type="checkbox" name="checkbox1" id="shop" class="ios-toggle" (change)="getCategory($event)" data-visible="off" toggled/>
+                                <label for="shop" class="checkbox-label" data-off="" data-on=""></label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <small>{{ 'POI.MINDISTANCE' | translate }}</small>
+                            <b  class="d-block">{{distances.shop}}<small>m</small></b>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item border-0">
+                    <div class="row">
+                        <div class="col-4 learn">
+                            <h6>{{ 'POI.LEARN' | translate }}</h6>
+                        </div>
+                        <div class="col-2 learn-fa">
+                            <img src="./assets/img/icons/learn.svg" alt="learn">
+                        </div>
+                        <div class="col-3">
+                            <div class="p-2">
+                                <input type="checkbox" name="checkbox1" id="learn" class="ios-toggle" (change)="getCategory($event)" data-visible="off" toggled/>
+                                <label for="learn" class="checkbox-label" data-off="" data-on=""></label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <small>{{ 'POI.MINDISTANCE' | translate }}</small>
+                            <b class="d-block">{{distances.learn}}<small>m</small></b>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item border-0">
+                    <div class="row">
+                        <div class="col-4 leisure">
+                            <h6>{{ 'POI.LEISURE' | translate }}</h6>
+                        </div>
+                        <div class="col-2 leisure-fa">
+                            <img src="./assets/img/icons/leisure.svg" alt="leisure">
+                        </div>
+                        <div class="col-3">
+                            <div class="p-2">
+                                <input type="checkbox" name="checkbox1" id="leisure" class="ios-toggle" (change)="getCategory($event)" data-visible="off" toggled/>
+                                <label for="leisure" class="checkbox-label" data-off="" data-on=""></label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <small>{{ 'POI.MINDISTANCE' | translate }}</small>
+                            <b class="d-block">{{distances.leisure}}<small>m</small></b>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item border-0">
+                    <div class="row">
+                        <div class="col-4 emergency">
+                            <h6>{{ 'POI.EMERGENCY' | translate }}</h6>
+                        </div>
+                        <div class="col-2 emergency-fa">
+                            <img src="./assets/img/icons/emergency.svg" alt="emergency">
+                        </div>
+                        <div class="col-3">
+                            <div class="p-2">
+                                <input type="checkbox" name="checkbox1" id=emergency class="ios-toggle" (change)="getCategory($event)" data-visible="off" toggled/>
+                                <label for=emergency class="checkbox-label" data-off="" data-on=""></label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <small>{{ 'POI.MINDISTANCE' | translate }}</small>
+                            <b class="d-block">{{distances.emergency}}<small>m</small></b>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item border-0">
+                    <div class="row">
+                        <div class="col-4 connectivity">
+                            <h6>{{ 'POI.CONNECTIVITY' | translate }}</h6>
+                        </div>
+                        <div class="col-2 connectivity-fa">
+                            <img src="./assets/img/icons/connectivity-blue.svg" alt="connectivity">
+                        </div>
+                        <div class="col-3">
+                            <div class="p-2">
+                                <input type="checkbox" name="checkbox1" id=connectivity class="ios-toggle" (change)="getConnectivity($event)" data-visible="off" toggled/>
+                                <label for=connectivity class="checkbox-label" data-off="" data-on=""></label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <small>{{ 'POI.MINDISTANCE' | translate }}</small>
+                            <b class="d-block">{{distances.connectivity}}<small>m</small></b>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <p>List of places</p>
+            <hr>
+            <div *ngIf="listResult">
+                <ul class="list-unstyled">
+                <li *ngFor="let list of wholelist" class="clearfix" [ngClass]="[list.class]"><h6 class="text-muted">{{list.place}}</h6> <span class="pull-right text-muted"><i class="fa fa-location-arrow text-warning" title="distance"></i> {{list.distance}}<i>m</i></span> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

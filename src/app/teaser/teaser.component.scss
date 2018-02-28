@@ -1,0 +1,22 @@
+.jumbotron {
+    padding-top: 1rem;
+    .border-right{
+        border-right: 1px solid rgba(0,0,0,.1);
+    }
+    .fa-star {
+        color: #e2df84;
+    }
+    .small-poor {
+        color: #41e0f2; 
+    }
+    .small-exceptional {
+        color: #e0190b; 
+    }
+    a {
+        color: white;
+        text-decoration: none;
+        &:hover {
+            background: linear-gradient(to right, hsl(216, 73%, 38%), black)
+        }
+    }
+}

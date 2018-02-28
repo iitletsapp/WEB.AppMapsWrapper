@@ -1,0 +1,37 @@
+<app-navigation></app-navigation>
+<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-5">
+        <ngb-panel>
+        <ng-template ngbPanelTitle>
+                <span><i class="fa fa-caret-right"></i> <b> General information</b> <i class="fa fa-info fa-1x"></i></span>
+                </ng-template>
+          <ng-template ngbPanelContent>
+            <app-general></app-general>
+          </ng-template>
+        </ngb-panel>
+        <ngb-panel>
+          <ng-template ngbPanelTitle>
+            <span><i class="fa fa-caret-right"></i> <b> Population</b> <i class="fa fa-users fa-1x"></i></span>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <app-population></app-population>
+          </ng-template>
+        </ngb-panel>
+        <ngb-panel>
+          <ng-template ngbPanelTitle>
+            <span><i class="fa fa-caret-right"></i> <b> Tax</b> <i class="fa fa-inbox fa-1x"></i></span>
+        </ng-template>
+        <ng-template ngbPanelContent>
+            <app-taxes></app-taxes>
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel>
+        <ng-template ngbPanelTitle>
+            <span><i class="fa fa-caret-right"></i> <b> Housing market</b> <i class="fa fa-money fa-1x"></i></span>
+          </ng-template>
+          <ng-template ngbPanelContent>
+              <app-housingmarket></app-housingmarket>
+          </ng-template>
+        </ngb-panel>
+
+      </ngb-accordion>
+      

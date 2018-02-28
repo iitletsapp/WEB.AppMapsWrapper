@@ -1,0 +1,27 @@
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">
+        <span class="font-weight-bold">{{ 'GENERIC.MUNICIPALITY' | translate }}</span>
+        <span [hidden]="!generaldata[0].municipalityName" class="pull-right g-number">{{generaldata[0].municipalityName}}</span>
+        <img src="../../assets/img/kantons/basel.png" alt="basel">
+    </li>
+    <li class="list-group-item">
+        <span class="font-weight-bold">{{ 'GENERAL.DISTRICT' | translate }}</span>
+        <span [hidden]="!generaldata[0].districtName" class="pull-right g-number">{{generaldata[0].districtName}}</span>
+    </li>
+    <li class="list-group-item">
+        <span class="font-weight-bold">{{ 'GENERAL.AREA' | translate }}</span>
+        <span class="pull-right g-number">todo km
+            <sup>2</sup>
+        </span>
+    </li>
+    <li class="list-group-item">
+        <span class="font-weight-bold">{{ 'GENERAL.POPULATIONDENSITY' | translate }}</span>
+        <span class="pull-right g-number">todo pers./km
+            <sup>2</sup>
+        </span>
+    </li>
+    <li class="list-group-item">
+        <span class="font-weight-bold">{{ 'GENERAL.MUNICIPALITYTYPE' | translate }}</span>
+        <span [hidden]="!generaldata[0].municipalityTypeName" class="pull-right g-number">{{generaldata[0].municipalityTypeName}}</span>
+    </li>
+</ul>

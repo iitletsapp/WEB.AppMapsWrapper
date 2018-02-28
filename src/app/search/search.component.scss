@@ -1,0 +1,92 @@
+
+.search-wrapper {
+    position: absolute;
+    top: 0;
+    left: 22%;
+    background: white;
+    z-index: 999;
+    border-bottom-right-radius: .2rem;
+    border-bottom-left-radius: .2rem;
+    width: 65%;
+    box-shadow: 0px 1px 1px 0.2px #b9b9b9;
+    .addressinfo {
+        position: absolute;
+        left: 3.7rem;
+        font-size: 66%;
+        color: #7b7b7b;
+    }
+    img {
+        width: 20px;
+        margin-right: 0.5rem;
+    }
+    @media (max-width: 767px) {
+        left: 29%;
+        width: 60%;
+        max-height: 45px;
+        .search-input{
+            font-size: 1rem;
+            min-height: 0;
+        }
+        img {
+            width: 10px;
+            margin-right: 0;
+        }
+        .addressinfo{
+            display: none;
+        }
+    }
+}
+.search-input {
+    width: 79%;
+    background: white;
+    -webkit-appearance: none!important;
+    min-height: 3rem;
+    border: none;
+    color: black;
+    font-weight: 700;
+    font-size: 1.1rem;
+    vertical-align: middle;
+}
+
+.search-input:focus {
+    outline: none;
+}
+.btn {
+    cursor: pointer;
+}
+
+li {
+    cursor: pointer;
+    display: inline-block;
+}
+
+.suggest-container {
+    position: absolute;
+    top: 3rem;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+}
+.pulse {
+    box-shadow: 0 0 0 rgba(17, 16, 13, 0.4);
+    animation: pulse 2s infinite;
+}
+.unpulse {
+    animation: none;
+}
+
+.pulse:hover {
+    animation: none;
+}
+
+@keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(58, 58, 58, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 4px rgba(58, 58, 58, 0.4);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(58, 58, 58, 0.4);
+    }
+  }

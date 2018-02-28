@@ -1,0 +1,105 @@
+<div class="jumbotron">
+    <div class="row">
+        <div class="col col-lg-6">
+            <h1>{{ 'GENERIC.MUNICIPALITY' | translate }}</h1>
+        </div>
+        <div class="col col-lg-6">
+            <div [hidden]="!macrofactor">
+                <small>this municipality is:</small>
+                <b>{{macrofactortext}}</b>
+                <app-colorramp val="{{macrofactor}}" layer="rampmunicipalitycontainer"></app-colorramp>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-6">
+            <div class="card bg-dark text-white">
+                <a routerLink="/furthercontent/municipality">
+                    <div class="card-body text-center">
+                        <p class="card-title">{{ 'GENERIC.GENERAL' | translate }}</p>
+                        <h6 class="card-subtitle">
+                            <i class="fa fa-info fa-3x"></i>
+                        </h6>
+                        <p class="card-text"></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card bg-dark text-white">
+                <a routerLink="/furthercontent/municipality">
+                    <div class="card-body text-center">
+                        <p class="card-title">{{ 'GENERIC.POPULATION' | translate }}</p>
+                        <h6 class="card-subtitle">
+                            <i class="fa fa-users fa-3x"></i>
+                        </h6>
+                        <p class="card-text"></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-6">
+            <div class="card bg-dark text-white">
+                <a routerLink="/furthercontent/municipality">
+                    <div class="card-body text-center">
+                        <p class="card-title">{{ 'GENERIC.TAXES' | translate }}</p>
+                        <h6 class="card-subtitle">
+                            <i class="fa fa-inbox fa-3x"></i>
+                        </h6>
+                        <p class="card-text"></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card bg-dark text-white">
+                <a routerLink="/furthercontent/municipality">
+                    <div class="card-body text-center">
+                        <p class="card-title">{{ 'GENERIC.MARKET' | translate }}</p>
+                        <h6 class="card-subtitle">
+                            <i class="fa fa-money fa-3x"></i>
+                        </h6>
+                        <p class="card-text"></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="mb-4"></div>
+    <div class="row">
+        <div class="col col-lg-6">
+            <h1>{{ 'GENERIC.ADDRESS' | translate }}</h1>
+        </div>
+        <div class="col col-lg-6">
+            <!-- the color ramp comes in here -->
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-6">
+            <div class="card bg-dark text-white">
+                <a routerLink="/furthercontent/address">
+                    <div class="card-body text-center">
+                        <p class="card-title">{{ 'GENERIC.POI' | translate }}</p>
+                        <img src="./assets/img/icons/poi.svg" alt="poi">
+                        <p class="card-text"></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card bg-dark text-white">
+                <a routerLink="/furthercontent/address">
+                    <div class="card-body text-center">
+                        <p class="card-title">{{ 'GENERIC.NOISE' | translate }}</p>
+                        <img src="./assets/img/icons/noise.svg" alt="noise">
+                        <p class="card-text"></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
