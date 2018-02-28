@@ -1,6 +1,7 @@
-# MySassyApp
+# Webapp Maps with wrapper
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.4.
+This will serve as a template for future map projects
 
 ## Development server
 
