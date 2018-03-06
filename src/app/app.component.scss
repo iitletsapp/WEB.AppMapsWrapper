@@ -12,7 +12,7 @@
     z-index: 1;
     .scrollable-section {
         height: calc(100vh);
-        overflow-y: scroll;
+        overflow-y: auto;
         @media screen and (max-width: 768px) {
             height: 49vh;
         }
