@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, AfterContentInit } from '@angular/core';
 import * as d3 from 'd3';
 
 @Component({
@@ -7,13 +7,15 @@ import * as d3 from 'd3';
     styleUrls: ['./barchart.component.scss']
 })
 
-export class BarChartComponent implements OnInit, OnChanges {
+export class BarChartComponent implements OnInit, OnChanges, AfterContentInit {
     // data are all the values that are visible on the map view
-    // @Input() public data;
+     @Input() public data;
     // layer it the refers to the layerID that the histogram should read data from
     // @Input() public layer;
-    public data = [{ name: 'single 70k', value: 9934 }, { name: 'single 100k', value: 15045 }, { name: 'couple 150k', value: 21342 }, { name: 'family 70k', value: 840 }, { name: 'family 100k', value: 7340 }, { name: 'elderly 70k', value: 7345 }];
+    // public data = [{ name: 'single 70k', value: 9934 }, { name: 'single 100k', value: 15045 }, { name: 'couple 150k', value: 21342 }, { name: 'family 70k', value: 840 }, { name: 'family 100k', value: 7340 }, { name: 'elderly 70k', value: 7345 }];
     // @Input() public val;
+
+    public layer = 'barchart';
 
     constructor() {
     }
@@ -23,13 +25,17 @@ export class BarChartComponent implements OnInit, OnChanges {
     }
 
     public ngOnInit() {
+        
+    }
+
+     public ngAfterContentInit() {
         this.initChart();
     }
 
     public initChart() {
 
         // this is needed in case the this.val gets updated 
-        // d3.select(`.${this.layer}`).remove();
+         d3.select('.barchart').remove();
 
         let margin = { top: 30, right: 25, bottom: 20, left: 25 };
         let width = 460 - margin.left - margin.right;
