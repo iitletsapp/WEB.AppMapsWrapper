@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { GetMarkerService } from '../../services/getmarker.service';
 import { GetMunicipalityService } from '../../services/getmunicipality.service';
+import { Globals} from '../globals'
 
 @Component({
     selector: 'app-general',
@@ -13,7 +14,8 @@ export class GeneralComponent implements OnInit {
     public generaldata;
 
     constructor(
-        private municipality: GetMunicipalityService
+        private municipality: GetMunicipalityService,
+        private global:Globals
     ) {
         this.generaldata = this.municipality.requestData('general');
     }

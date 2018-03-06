@@ -1,6 +1,6 @@
 <div class="search-wrapper text-center" [ngClass]="!address ? 'pulse' : 'unpulse'">
       <small class="addressinfo">{{ 'GENERIC.ADDRESS' | translate }}</small>
-      <img src="../assets/img/house-small.png" alt="location">
+      <img src="{{global.lageCheckAssetPath}}/assets/img/house-small.png" alt="location">
       <input #focusable id="place-input" class="search-input text-truncate" type="text" placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
       [(ngModel)]="address" (keyup.enter)="goto()" [formControl]="searchControl">
       <button title="{{ 'SEARCH.TITLE' | translate }}" type="button" (click)="goto()" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>

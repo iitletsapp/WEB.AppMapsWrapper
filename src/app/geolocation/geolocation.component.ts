@@ -3,6 +3,7 @@ import { MapService } from '../../services/map.service';
 import { GeocodingService } from '../../services/geocoding.service';
 import { GetMarkerService } from '../../services/getmarker.service';
 import { GetAddressService } from '../../services/getaddress.service';
+import { Globals} from '../globals'
 
 declare const google: any;
 
@@ -20,7 +21,8 @@ export class GeoLocationComponent implements OnInit {
         private ngZone: NgZone,
         private getMarker: GetMarkerService,
         private geoCoding: GeocodingService,
-        private getAddress: GetAddressService
+        private getAddress: GetAddressService,
+        private global:Globals
     ) { }
 
     public ngOnInit() { /* */ }

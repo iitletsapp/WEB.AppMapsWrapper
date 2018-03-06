@@ -5,6 +5,8 @@ import { MapsAPILoader } from '@agm/core';
 import * as d3 from 'd3';
 import * as _ from 'lodash';
 import { ProgressBarService } from '../../services/progressbar.service';
+import { Globals } from '../globals';
+import { global } from '@angular/core/src/util';
 
 @Component({
   selector: 'app-poi',
@@ -47,17 +49,19 @@ export class PoiComponent implements OnInit, OnDestroy {
   };
   public wholelist = [];
   public transitLayer;
-
+  
   constructor(
     private progressbar: ProgressBarService,
     private mapService: MapService,
     private getMarker: GetMarkerService,
     private ngZone: NgZone,
-    private mapsAPILoader: MapsAPILoader) {
+    private mapsAPILoader: MapsAPILoader,
+    private global:Globals) {
     getMarker.changeEmitted$.subscribe(
       (data) => {
         this.markerLastLocation = data;
       });
+    
   }
 
   public ngOnInit() {
@@ -238,30 +242,30 @@ export class PoiComponent implements OnInit, OnDestroy {
       switch (poirequested) {
         case 'restaurant':
           alltypes = ['restaurant'];
-          geticonUrl = '../assets/img/icons/svgtopng/restaurant.png';
+          geticonUrl = this.global.lageCheckAssetPath + '/assets/img/icons/svgtopng/restaurant.png';
           break;
         case 'shop':
           alltypes = ['store'];
-          geticonUrl = '../assets/img/icons/svgtopng/shops.png';
+          geticonUrl = this.global.lageCheckAssetPath + '/assets/img/icons/svgtopng/shops.png';
           break;
         case 'learn':
           alltypes = ['school'];
-          geticonUrl = '../assets/img/icons/svgtopng/learn.png';
+          geticonUrl = this.global.lageCheckAssetPath + '/assets/img/icons/svgtopng/learn.png';
           break;
         case 'leisure':
           alltypes = ['park'];
-          geticonUrl = '../assets/img/icons/svgtopng/leisure.png';
+          geticonUrl = this.global.lageCheckAssetPath + '/assets/img/icons/svgtopng/leisure.png';
           break;
         case 'emergency':
           alltypes = ['hospital'];
-          geticonUrl = '../assets/img/icons/svgtopng/emergency.png';
+          geticonUrl = this.global.lageCheckAssetPath + '/assets/img/icons/svgtopng/emergency.png';
           break;
         case 'connectivity':
           alltypes = ['transit_station'];
-          geticonUrl = '../assets/img/icons/svgtopng/transfermarker.png';
+          geticonUrl = this.global.lageCheckAssetPath + '/assets/img/icons/svgtopng/transfermarker.png';
           break;
         default:
-          geticonUrl = '../assets/img/icons/svgtopng/markergeneral.png';
+          geticonUrl = this.global.lageCheckAssetPath + '/assets/img/icons/svgtopng/markergeneral.png';
       }
       let infowindow = new google.maps.InfoWindow();
       service = new google.maps.places.PlacesService(this.mapService.map);

@@ -6,6 +6,7 @@ import { MacroService } from '../../services/macro.service';
 import * as d3 from 'd3';
 import * as _ from 'lodash';
 import { ProgressBarService } from '../../services/progressbar.service';
+import { Globals } from '../globals';
 
 @Component({
     selector: 'app-teaser',
@@ -17,12 +18,14 @@ export class TeaserComponent implements OnInit {
     public markerLastLocation;
     public macrofactor;
     public macrofactortext;
-
+    
     constructor(
         public progressbar: ProgressBarService,
         private macro: MacroService,
         private getMarker: GetMarkerService,
-        private translate: TranslateService
+        private translate: TranslateService,
+        private global:Globals
+
     ) {
         let defaultLang = 'en';
         translate.addLangs(['en','de']);

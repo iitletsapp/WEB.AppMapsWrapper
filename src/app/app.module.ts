@@ -36,10 +36,12 @@ import { AddressComponent } from './address/address.component';
 import { FurtherContentComponent } from './furthercontent/furthercontent.component';
 import { TaxesComponent } from './taxes/taxes.component';
 import { HousingMarketComponent } from './housingmarket/housingmarket.component';
+import {HistogramChartComponent} from './charts/histogram-chart/histogram-chart.component'
 import { PoiComponent } from './poi/poi.component';
 import { SearchComponent } from './search/search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavigationComponent } from './navigation/navigation.component';
+import { Globals} from './globals';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ import { NavigationComponent } from './navigation/navigation.component';
     ColorRampChartComponent,
     HorizontalbarChartComponent,
     BarChartComponent,
+    HistogramChartComponent,
     //
     SearchComponent,
     TeaserComponent,
@@ -92,7 +95,8 @@ import { NavigationComponent } from './navigation/navigation.component';
     MacroService,
     MicroService,
     GetMunicipalityService,
-    GoogleMapsAPIWrapper
+    GoogleMapsAPIWrapper,
+    Globals
   ],
   bootstrap: [AppComponent]
 })
