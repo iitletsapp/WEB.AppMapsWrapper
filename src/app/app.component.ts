@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, OnChanges } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnChanges, NgZone } from '@angular/core';
 import { MapService } from '../services/map.service';
 import { GetMarkerService } from '../services/getmarker.service';
 import { ProgressBarService } from '../services/progressbar.service';
@@ -7,13 +7,15 @@ import { MicroService } from '../services/micro.service';
 import { } from '@types/googlemaps';
 import * as _ from 'lodash';
 import * as d3 from 'd3';
+import{ Globals} from '../app/globals';
+import { Config } from './appconfig/config';
 
 /**
  * App Component
  * Top Level Component
  */
 @Component({
-  selector: 'app-root',
+  selector: 'iazi-map-root',
   templateUrl: './app.component.html',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./app.component.scss'],
@@ -39,7 +41,9 @@ export class AppComponent implements OnInit {
     private getMarker: GetMarkerService,
     private progressbar: ProgressBarService,
     private micro: MicroService,
-    private nnservice: NNService) {
+    private nnservice: NNService,
+    private ngZone:NgZone,
+    private globals:Globals) {
     getMarker.changeEmitted$.subscribe(
       (data) => {
         this.markerLastLocation = data;
@@ -55,6 +59,12 @@ export class AppComponent implements OnInit {
   }
 
   public ngOnInit() {
+    window.my = window.my || {};
+    window.my.namespace = window.my.namespace || {};
+    window.my.namespace.publicFunc = this.publicFunc.bind(this);
+    window.my.namespace.microQuality = this.microQuality.bind(this);
+    window.my.namespace.setApiKey = this.setApiKey.bind(this);
+    window.my.namespace.quality = this.globals.microQuality;
 
     // we need a global map. This is why we need to return it to the mapservice and make it everywhere.
     this.mapService.startMapsAPI(() => {
@@ -118,7 +128,47 @@ export class AppComponent implements OnInit {
       this.infowindow = new google.maps.InfoWindow();
       return this.map;
     });
+
   }
+
+  ngOnDestroy() {
+    window.my.namespace.publicFunc = null;
+    window.my.namespace.microQuality = null;
+    window.my.namespace.setApiKey = null;
+    window.my.namespace.quality = null;
+  }
+
+  public publicFunc(language:string) {
+    this.ngZone.run(() => this.privateFunc(language));
+  }
+
+  private privateFunc(language:string) {
+    console.log('Called from JS Wrapper');
+    this.globals.language = language;
+    window.my.namespace.quality = this.globals.microQuality;
+    console.log(this.globals.language);  }
+
+  public microQuality(quality:any) {
+    this.ngZone.run(() => this.privatemicroQuality(quality));
+  }
+
+  private privatemicroQuality(quality:any){
+    console.log('Called from MicroQuality')
+    console.log('MicroQuality :' + this.globals.microQuality);
+    //return this.globals.microQuality;
+  }
+
+  public setApiKey(apiKey: string) 
+  { 
+    this.ngZone.run(() => this.privateSetApiKey(apiKey)); 
+  } 
+  
+  private privateSetApiKey(apiKey: string) 
+  { 
+    this.globals.apiKey = apiKey; 
+    console.log('API key: ' + this.globals.apiKey); 
+  }
+
 
 }
 

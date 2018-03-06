@@ -2,7 +2,7 @@
 <ngb-accordion #acc="ngbAccordion" activeIds="">
         <ngb-panel>
         <ng-template ngbPanelTitle>
-                <span><i class="fa fa-caret-right"></i> <b> POI</b> <img src="./assets/img/icons/poi.svg" alt="poi"></span>
+                <span><i class="fa fa-caret-right"></i> <b> POI</b> <img src="{{global.lageCheckAssetPath}}/assets/img/icons/poi.svg" alt="poi"></span>
                 </ng-template>
           <ng-template ngbPanelContent>
             <app-poi></app-poi>
@@ -10,7 +10,7 @@
         </ngb-panel>
         <ngb-panel>
           <ng-template ngbPanelTitle>
-            <span><i class="fa fa-caret-right"></i> <b> Noise</b> <img src="./assets/img/icons/noise.svg" alt="noise"></span>
+            <span><i class="fa fa-caret-right"></i> <b> Noise</b> <img src="{{global.lageCheckAssetPath}}/assets/img/icons/noise.svg" alt="noise"></span>
           </ng-template>
           <ng-template ngbPanelContent>
             <app-noise></app-noise>

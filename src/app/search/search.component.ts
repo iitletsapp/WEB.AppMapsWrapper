@@ -7,6 +7,7 @@ import { ProgressBarService } from '../../services/progressbar.service';
 import {  } from '@types/googlemaps';
 import { MacroService } from '../../services/macro.service';
 import { GetMunicipalityService } from '../../services/getmunicipality.service';
+import { Globals} from '../globals'
 
 @Component({
     selector: 'app-search',
@@ -32,8 +33,8 @@ export class SearchComponent implements OnInit {
         private mapsAPILoader: MapsAPILoader,
         private progressbar: ProgressBarService,
         private getAddress: GetAddressService,
-
-        private apiobj: GetMunicipalityService
+        private apiobj: GetMunicipalityService,
+        private global:Globals
     ) {
         this.getAddress.changeEmitted$.subscribe((newAddress) => {
             this.address = newAddress;

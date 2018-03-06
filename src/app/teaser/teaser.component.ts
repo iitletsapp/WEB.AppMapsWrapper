@@ -6,6 +6,7 @@ import { MacroService } from '../../services/macro.service';
 import * as d3 from 'd3';
 import * as _ from 'lodash';
 import { ProgressBarService } from '../../services/progressbar.service';
+import { Config } from '../appconfig/config';
 
 @Component({
     selector: 'app-teaser',
@@ -17,6 +18,7 @@ export class TeaserComponent implements OnInit {
     public markerLastLocation;
     public macrofactor;
     public macrofactortext;
+    public lagecheckpath:string;
 
     constructor(
         public progressbar: ProgressBarService,
@@ -29,6 +31,7 @@ export class TeaserComponent implements OnInit {
                 this.markerLastLocation = data;
                 this.getmacro();
             });
+        this.lagecheckpath = Config.LAGECHECK;
     }
 
     public ngOnInit() {
