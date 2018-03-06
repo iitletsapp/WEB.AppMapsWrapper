@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule, Http } from '@angular/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { AppComponent } from './app.component';
@@ -17,7 +18,7 @@ import {
   RouterModule,
   PreloadAllModules
 } from '@angular/router';
-import { TranslateModule } from 'ng2-translate';
+import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
 import { appRoutes } from './app.routes';
 import { TeaserComponent } from './teaser/teaser.component';
 import { GaugeChartComponent } from './charts/gauge-chart/gauge-chart.component';
@@ -69,7 +70,11 @@ import { NavigationComponent } from './navigation/navigation.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    TranslateModule.forRoot(),
+    TranslateModule.forRoot({
+      provide: TranslateLoader,
+      useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),
+      deps: [Http]
+    }),
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
     AgmCoreModule.forRoot({

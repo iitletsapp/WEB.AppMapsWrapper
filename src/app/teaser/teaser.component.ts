@@ -21,8 +21,16 @@ export class TeaserComponent implements OnInit {
     constructor(
         public progressbar: ProgressBarService,
         private macro: MacroService,
-        private getMarker: GetMarkerService
+        private getMarker: GetMarkerService,
+        private translate: TranslateService
     ) {
+        let defaultLang = 'en';
+        translate.addLangs(['en','de']);
+        translate.setDefaultLang(defaultLang);
+
+        translate.use(defaultLang );
+        console.log("language=",defaultLang);
+
         getMarker.changeEmitted$.subscribe(
             (data) => {
                 this.progressbar.startProgressBar();

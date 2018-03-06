@@ -1,0 +1,97 @@
+{
+  "TEASER": {
+    "MUNICIPALITY": "Municipality",
+    "GENERAL": "General",
+    "POPULATION": "Population",
+    "TAXES": "Taxes",
+    "MARKET": "Market",
+    "POI": "Poi",
+    "NOISE": "noise"
+  },
+  "SEARCH": {
+    "PLACEHOLDER": "type to search...",
+    "MARKERTITLE": "click to activate a marker",
+    "TITLE": "search for location"
+  },
+  "GENERAL": {
+    "DISTRICT": "District",
+    "AREA": "Area",
+    "POPULATIONDENSITY": "Population density",
+    "MUNICIPALITYTYPE": "Type of municipality"
+  },
+  "POPULATION": {
+    "POPULATION": "Population",
+    "AGECATEGORY": "Age category",
+    "FOREIGNERQUOTA": "foreigner quota",
+    "UNEMPLOYMENTRATE": "unemployment rate",
+    "INCOMETAX": "income tax per person",
+    "POPULATIONGROWTH": "population growth over 5 years"
+  },
+  "TAXES": {
+    "OVERVIEW": "Taxes overview",
+    "LEGEND1": "Single person, childless, gross income 70'000 CHF",
+    "LEGEND2": "Single person, childless, gross income 100'000 CHF",
+    "LEGEND3": "married couple, childless, gross income 150'000 CHF",
+    "LEGEND4": "married couple, 2 children, gross income 70'000 CHF",
+    "LEGEND5": "married couple, 2 children, gross income 100'000 CHF",
+    "LEGEND6": "Retired couple, gross rent income 70'000 CHF"
+
+  },
+  "HOUSINGMARKERT": {
+    "INDEX": "home index",
+    "VACANCY": "vacancy rate",
+    "HOUSINGSTOCK": "housing stock",
+    "NEWHOUSING": "new housing last 5 years"
+
+  },
+  "NAVIGATION": {
+    "MICRO": "address rating",
+    "POI": "POI",
+    "NOISE": "noise",
+    "VIEW": "view",
+    "SUNSHINE": "sunshine",
+    "TRANSPORT": "transport"
+  },
+  "POI": {
+    "MINDISTANCE": "min",
+    "TYPE": "type",
+    "EAT": "eat & drink",
+    "SHOPS": "shops",
+    "LEARN": "learn",
+    "LEISURE": "leisure",
+    "EMERGENCY": "emergency",
+    "DISTANCE": "distance",
+    "CONNECTIVITY": "connectivity"
+  },
+  "NOISE": {
+    "TITLE": "Noise",
+    "SUBTITLE": "Show noise by activating a noise type of your choice and clicking an address point on the map.",
+    "STREET": "Street noise",
+    "RAIL": "Rail noise",
+    "PLANE": "Plane noise",
+    "INDB": "noise in DB:"
+  },
+
+  "BACKTOMARKER": {
+    "TITLE": "Back to marker"
+  },
+
+  "GENERIC": {
+    "ADDRESS": "Address",
+    "RATING": "Rating",
+    "NAME": "Name",
+    "MUNICIPALITY": "Municipality",
+    "GENERAL": "General",
+    "POPULATION": "Population",
+    "TAXES": "Taxes",
+    "MARKET": "Market",
+    "POI": "Poiiii",
+    "NOISE": "Noise",
+    "NOTAVAILABLE": "not available",
+    "CLASSIFICATION1": "Exceptional",
+    "CLASSIFICATION2": "Very good",
+    "CLASSIFICATION3": "Good",
+    "CLASSIFICATION4": "Fair",
+    "CLASSIFICATION5": "Poor"
+  }
+}
