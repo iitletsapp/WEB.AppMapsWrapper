@@ -34,7 +34,7 @@ export class SearchComponent implements OnInit {
         private progressbar: ProgressBarService,
         private getAddress: GetAddressService,
         private apiobj: GetMunicipalityService,
-        private global:Globals
+        public global:Globals
     ) {
         this.getAddress.changeEmitted$.subscribe((newAddress) => {
             this.address = newAddress;

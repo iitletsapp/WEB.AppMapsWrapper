@@ -9,7 +9,7 @@ import { Globals } from '../globals';
 export class AddressComponent implements OnInit {
 
 
-  constructor(private global:Globals) { }
+  constructor(public global:Globals) { }
 
   public ngOnInit() {
 

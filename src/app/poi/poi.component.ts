@@ -56,7 +56,7 @@ export class PoiComponent implements OnInit, OnDestroy {
     private getMarker: GetMarkerService,
     private ngZone: NgZone,
     private mapsAPILoader: MapsAPILoader,
-    private global:Globals) {
+    public global:Globals) {
     getMarker.changeEmitted$.subscribe(
       (data) => {
         this.markerLastLocation = data;

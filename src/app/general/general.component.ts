@@ -15,7 +15,7 @@ export class GeneralComponent implements OnInit {
 
     constructor(
         private municipality: GetMunicipalityService,
-        private global:Globals
+        public global:Globals
     ) {
         this.generaldata = this.municipality.requestData('general');
     }

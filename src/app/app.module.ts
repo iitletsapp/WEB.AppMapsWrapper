@@ -42,6 +42,7 @@ import { SearchComponent } from './search/search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavigationComponent } from './navigation/navigation.component';
 import { Globals} from './globals';
+import {Config} from './appconfig/config';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,7 @@ import { Globals} from './globals';
     ReactiveFormsModule,
     TranslateModule.forRoot({
       provide: TranslateLoader,
-      useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),
+      useFactory: (http: Http) => new TranslateStaticLoader(http, Config.LAGECHECKASSETPATH +'/assets/i18n', '.json'),
       deps: [Http]
     }),
     RouterModule.forRoot(appRoutes),

@@ -24,7 +24,7 @@ export class TeaserComponent implements OnInit {
         private macro: MacroService,
         private getMarker: GetMarkerService,
         private translate: TranslateService,
-        private global:Globals
+        public global:Globals
 
     ) {
         let defaultLang = 'en';
