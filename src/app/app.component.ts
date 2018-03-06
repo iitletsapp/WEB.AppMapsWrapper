@@ -9,6 +9,7 @@ import * as _ from 'lodash';
 import * as d3 from 'd3';
 import{ Globals} from '../app/globals';
 import { Config } from './appconfig/config';
+import { global } from '@angular/core/src/util';
 
 /**
  * App Component
@@ -43,7 +44,7 @@ export class AppComponent implements OnInit {
     private micro: MicroService,
     private nnservice: NNService,
     private ngZone:NgZone,
-    private globals:Globals) {
+    public global:Globals) {
     getMarker.changeEmitted$.subscribe(
       (data) => {
         this.markerLastLocation = data;
@@ -64,7 +65,7 @@ export class AppComponent implements OnInit {
     window.my.namespace.publicFunc = this.publicFunc.bind(this);
     window.my.namespace.microQuality = this.microQuality.bind(this);
     window.my.namespace.setApiKey = this.setApiKey.bind(this);
-    window.my.namespace.quality = this.globals.microQuality;
+    window.my.namespace.quality = this.global.microQuality;
 
     // we need a global map. This is why we need to return it to the mapservice and make it everywhere.
     this.mapService.startMapsAPI(() => {
@@ -119,7 +120,7 @@ export class AppComponent implements OnInit {
         ],
       });
       const icon = {
-        url: './assets/img/house-small.png'
+        url: Config.LAGECHECKASSETPATH + '/assets/img/house-small.png'
       };
       this.marker = new google.maps.Marker(<any>{
         icon,
@@ -144,9 +145,9 @@ export class AppComponent implements OnInit {
 
   private privateFunc(language:string) {
     console.log('Called from JS Wrapper');
-    this.globals.language = language;
-    window.my.namespace.quality = this.globals.microQuality;
-    console.log(this.globals.language);  }
+    this.global.language = language;
+    window.my.namespace.quality = this.global.microQuality;
+    console.log(this.global.language);  }
 
   public microQuality(quality:any) {
     this.ngZone.run(() => this.privatemicroQuality(quality));
@@ -154,7 +155,7 @@ export class AppComponent implements OnInit {
 
   private privatemicroQuality(quality:any){
     console.log('Called from MicroQuality')
-    console.log('MicroQuality :' + this.globals.microQuality);
+    console.log('MicroQuality :' + this.global.microQuality);
     //return this.globals.microQuality;
   }
 
@@ -165,8 +166,8 @@ export class AppComponent implements OnInit {
   
   private privateSetApiKey(apiKey: string) 
   { 
-    this.globals.apiKey = apiKey; 
-    console.log('API key: ' + this.globals.apiKey); 
+    this.global.apiKey = apiKey; 
+    console.log('API key: ' + this.global.apiKey); 
   }
 
 

@@ -34,7 +34,7 @@ export class NoiseComponent implements OnInit {
     private mapService: MapService,
     private getmarker: GetMarkerService,
     private micro: MicroService,
-    private global:Globals) { }
+    public global:Globals) { }
 
   public ngOnInit() {
   }

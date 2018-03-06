@@ -22,7 +22,7 @@ export class GeoLocationComponent implements OnInit {
         private getMarker: GetMarkerService,
         private geoCoding: GeocodingService,
         private getAddress: GetAddressService,
-        private global:Globals
+        public global:Globals
     ) { }
 
     public ngOnInit() { /* */ }

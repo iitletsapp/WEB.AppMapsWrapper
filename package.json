@@ -4,11 +4,12 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run copy-config | ng serve",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "copy-config": "ncp src/app/appconfig/config.dev.ts src/app/appconfig/config.ts"
   },
   "private": true,
   "dependencies": {
@@ -31,6 +32,7 @@
     "d3": "^4.13.0",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.5",
+    "ncp": "^2.0.0",
     "ng2-translate": "^5.0.0",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
