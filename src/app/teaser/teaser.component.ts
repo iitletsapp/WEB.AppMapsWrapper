@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MapService } from '../../services/map.service';
 import { GetMarkerService } from '../../services/getmarker.service';
-import { TranslateService } from 'ng2-translate';
+// import { TranslateService } from 'ng2-translate';
 import { MacroService } from '../../services/macro.service';
 import * as d3 from 'd3';
 import * as _ from 'lodash';
@@ -23,16 +23,16 @@ export class TeaserComponent implements OnInit {
         public progressbar: ProgressBarService,
         private macro: MacroService,
         private getMarker: GetMarkerService,
-        private translate: TranslateService,
+        // private translate: TranslateService,
         public global:Globals
 
     ) {
-        let defaultLang = 'en';
-        translate.addLangs(['en','de']);
-        translate.setDefaultLang(defaultLang);
+        // let defaultLang = 'de';
+        // translate.addLangs(['en','de']);
+        // translate.setDefaultLang(defaultLang);
 
-        translate.use(defaultLang );
-        console.log("language=",defaultLang);
+        // translate.use(defaultLang );
+        // console.log("language=",defaultLang);
 
         getMarker.changeEmitted$.subscribe(
             (data) => {

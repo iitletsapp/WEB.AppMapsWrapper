@@ -10,6 +10,7 @@ import * as d3 from 'd3';
 import{ Globals} from '../app/globals';
 import { Config } from './appconfig/config';
 import { global } from '@angular/core/src/util';
+import { TranslateService } from 'ng2-translate';
 
 /**
  * App Component
@@ -36,7 +37,7 @@ export class AppComponent implements OnInit {
   public prices = [];
   public squaremeterprices = [];
   public living;
-
+  
   constructor(
     private mapService: MapService,
     private getMarker: GetMarkerService,
@@ -44,7 +45,9 @@ export class AppComponent implements OnInit {
     private micro: MicroService,
     private nnservice: NNService,
     private ngZone:NgZone,
-    public global:Globals) {
+    public global:Globals,
+    public translate: TranslateService
+    ) {
     getMarker.changeEmitted$.subscribe(
       (data) => {
         this.markerLastLocation = data;
@@ -57,6 +60,13 @@ export class AppComponent implements OnInit {
       (value) => {
         this.progressbarValue = this.progressbar.progressbarValue;
       });
+
+      let defaultLang = this.global.language;
+        translate.addLangs(['en','de']);
+        translate.setDefaultLang(this.global.language);
+
+        translate.use(this.global.language);
+        console.log("language=",defaultLang);
   }
 
   public ngOnInit() {
@@ -146,6 +156,7 @@ export class AppComponent implements OnInit {
   private privateFunc(language:string) {
     console.log('Called from JS Wrapper');
     this.global.language = language;
+    this.translate.use(this.global.language);
     window.my.namespace.quality = this.global.microQuality;
     console.log(this.global.language);  }
 

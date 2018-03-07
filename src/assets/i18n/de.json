@@ -1,97 +1,97 @@
 {
   "TEASER": {
-    "MUNICIPALITY": "Municipality",
-    "GENERAL": "General",
-    "POPULATION": "Population",
-    "TAXES": "Taxes",
-    "MARKET": "Market",
-    "POI": "Poi",
-    "NOISE": "noise"
+    "MUNICIPALITY": "Municipality-de",
+    "GENERAL": "General-de",
+    "POPULATION": "Population-de",
+    "TAXES": "Taxes-de",
+    "MARKET": "Market-de",
+    "POI": "Poi-de",
+    "NOISE": "noise-de"
   },
   "SEARCH": {
-    "PLACEHOLDER": "type to search...",
-    "MARKERTITLE": "click to activate a marker",
-    "TITLE": "search for location"
+    "PLACEHOLDER": "type to search...-de",
+    "MARKERTITLE": "click to activate a marker-de",
+    "TITLE": "search for location-de"
   },
   "GENERAL": {
-    "DISTRICT": "District",
-    "AREA": "Area",
-    "POPULATIONDENSITY": "Population density",
-    "MUNICIPALITYTYPE": "Type of municipality"
+    "DISTRICT": "District-de",
+    "AREA": "Area-de",
+    "POPULATIONDENSITY": "Population density-de",
+    "MUNICIPALITYTYPE": "Type of municipality-de"
   },
   "POPULATION": {
-    "POPULATION": "Population",
-    "AGECATEGORY": "Age category",
-    "FOREIGNERQUOTA": "foreigner quota",
-    "UNEMPLOYMENTRATE": "unemployment rate",
-    "INCOMETAX": "income tax per person",
-    "POPULATIONGROWTH": "population growth over 5 years"
+    "POPULATION": "Population-de",
+    "AGECATEGORY": "Age category-de",
+    "FOREIGNERQUOTA": "foreigner quota-de",
+    "UNEMPLOYMENTRATE": "unemployment rate-de",
+    "INCOMETAX": "income tax per person-de",
+    "POPULATIONGROWTH": "population growth over 5 years-de"
   },
   "TAXES": {
-    "OVERVIEW": "Taxes overview",
-    "LEGEND1": "Single person, childless, gross income 70'000 CHF",
-    "LEGEND2": "Single person, childless, gross income 100'000 CHF",
-    "LEGEND3": "married couple, childless, gross income 150'000 CHF",
-    "LEGEND4": "married couple, 2 children, gross income 70'000 CHF",
-    "LEGEND5": "married couple, 2 children, gross income 100'000 CHF",
-    "LEGEND6": "Retired couple, gross rent income 70'000 CHF"
+    "OVERVIEW": "Taxes overview-de",
+    "LEGEND1": "Single person, childless, gross income 70'000 CHF-de",
+    "LEGEND2": "Single person, childless, gross income 100'000 CHF-de",
+    "LEGEND3": "married couple, childless, gross income 150'000 CHF-de",
+    "LEGEND4": "married couple, 2 children, gross income 70'000 CHF-de",
+    "LEGEND5": "married couple, 2 children, gross income 100'000 CHF-de",
+    "LEGEND6": "Retired couple, gross rent income 70'000 CHF-de"
 
   },
   "HOUSINGMARKERT": {
-    "INDEX": "home index",
-    "VACANCY": "vacancy rate",
-    "HOUSINGSTOCK": "housing stock",
-    "NEWHOUSING": "new housing last 5 years"
+    "INDEX": "home index-de",
+    "VACANCY": "vacancy rate-de",
+    "HOUSINGSTOCK": "housing stock-de",
+    "NEWHOUSING": "new housing last 5 years-de"
 
   },
   "NAVIGATION": {
-    "MICRO": "address rating",
-    "POI": "POI",
-    "NOISE": "noise",
-    "VIEW": "view",
-    "SUNSHINE": "sunshine",
-    "TRANSPORT": "transport"
+    "MICRO": "address rating-de",
+    "POI": "POI-de",
+    "NOISE": "noise-de",
+    "VIEW": "view-de",
+    "SUNSHINE": "sunshine-de",
+    "TRANSPORT": "transport-de"
   },
   "POI": {
-    "MINDISTANCE": "min",
-    "TYPE": "type",
-    "EAT": "eat & drink",
-    "SHOPS": "shops",
-    "LEARN": "learn",
-    "LEISURE": "leisure",
-    "EMERGENCY": "emergency",
-    "DISTANCE": "distance",
-    "CONNECTIVITY": "connectivity"
+    "MINDISTANCE": "min-de",
+    "TYPE": "type-de",
+    "EAT": "eat & drink-de",
+    "SHOPS": "shops-de",
+    "LEARN": "learn-de",
+    "LEISURE": "leisure-de",
+    "EMERGENCY": "emergency-de",
+    "DISTANCE": "distance-de",
+    "CONNECTIVITY": "connectivity-de"
   },
   "NOISE": {
-    "TITLE": "Noise",
-    "SUBTITLE": "Show noise by activating a noise type of your choice and clicking an address point on the map.",
-    "STREET": "Street noise",
-    "RAIL": "Rail noise",
-    "PLANE": "Plane noise",
-    "INDB": "noise in DB:"
+    "TITLE": "Noise-de",
+    "SUBTITLE": "Show noise by activating a noise type of your choice and clicking an address point on the map.-de",
+    "STREET": "Street noise-de",
+    "RAIL": "Rail noise-de",
+    "PLANE": "Plane noise-de",
+    "INDB": "noise in DB:-de"
   },
 
   "BACKTOMARKER": {
-    "TITLE": "Back to marker"
+    "TITLE": "Back to marker-de"
   },
 
   "GENERIC": {
-    "ADDRESS": "Address",
-    "RATING": "Rating",
-    "NAME": "Name",
-    "MUNICIPALITY": "Municipality",
-    "GENERAL": "General",
-    "POPULATION": "Population",
-    "TAXES": "Taxes",
-    "MARKET": "Market",
-    "POI": "Poiiii",
-    "NOISE": "Noise",
-    "NOTAVAILABLE": "not available",
-    "CLASSIFICATION1": "Exceptional",
-    "CLASSIFICATION2": "Very good",
-    "CLASSIFICATION3": "Good",
-    "CLASSIFICATION4": "Fair",
-    "CLASSIFICATION5": "Poor"
+    "ADDRESS": "Address-de",
+    "RATING": "Rating-de",
+    "NAME": "Name-de",
+    "MUNICIPALITY": "Municipality-de",
+    "GENERAL": "General-de",
+    "POPULATION": "Population-de",
+    "TAXES": "Taxes-de",
+    "MARKET": "Market-de",
+    "POI": "Poiiii-de",
+    "NOISE": "Noise-de",
+    "NOTAVAILABLE": "not available-de",
+    "CLASSIFICATION1": "Exceptional-de",
+    "CLASSIFICATION2": "Very good-de",
+    "CLASSIFICATION3": "Good-de",
+    "CLASSIFICATION4": "Fair-de",
+    "CLASSIFICATION5": "Poor-de"
   }
 }
