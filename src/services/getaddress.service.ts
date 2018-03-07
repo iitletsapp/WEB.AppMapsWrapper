@@ -8,9 +8,17 @@ export class GetAddressService {
     public emitChangeSource = new Subject<any>();
     public changeEmitted$ = this.emitChangeSource.asObservable();
     // Observable string streams
+    public address;
 
     // Service message commands
     public emitChange(change: any) {
+        this.address = change;
         this.emitChangeSource.next(change);
+    }
+    public setFormatedAddress(formatedAddress) {
+        this.address = formatedAddress;
+    }
+    public requestAddress() {
+        return this.address;
     }
 }

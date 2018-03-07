@@ -7,6 +7,8 @@ import * as d3 from 'd3';
 import * as _ from 'lodash';
 import { ProgressBarService } from '../../services/progressbar.service';
 import { Globals } from '../globals';
+import { GetAddressService } from '../../services/getaddress.service';
+import { GetMunicipalityService } from '../../services/getmunicipality.service';
 
 @Component({
     selector: 'app-teaser',
@@ -14,17 +16,40 @@ import { Globals } from '../globals';
     styleUrls: ['./teaser.component.scss']
 })
 export class TeaserComponent implements OnInit {
-
-    public markerLastLocation;
+    //municipality rating
     public macrofactor;
     public macrofactortext;
-    
+    public municipalityname;
+    // address rating
+    public addressname;
+    public addressfactor;
+    public addressfactortext;
+
+    public markerLastLocation;
+    public loading = false;
+    // gauge municipality
+    public municipalitygaugedata = this.macrofactor;
+    public municipalitygaugeextent = [5, 1];
+    public municipalitygaugecontainerId = 'gaugecontainerone';
+    public municipalitygaugeclassification;
+    public municipalitygaugeminMax = ['', ''];
+    public municipalitygaugeminThreshold = .01;
+    // gauge address
+    public addressgaugedata = this.addressfactor;
+    public addressgaugeextent = [5, 1];
+    public addressgaugecontainerId = 'gaugecontainertwo';
+    public addressgaugeclassification;
+    public addressgaugeminMax = ['', ''];
+    public addressgaugeminThreshold = .01;
+
     constructor(
         public progressbar: ProgressBarService,
         private macro: MacroService,
+        private address: GetAddressService,
         private getMarker: GetMarkerService,
+        private municipality: GetMunicipalityService,
         // private translate: TranslateService,
-        public global:Globals
+        public global: Globals
 
     ) {
         // let defaultLang = 'de';
@@ -48,9 +73,26 @@ export class TeaserComponent implements OnInit {
 
     public getmacro() {
         this.macro.getMacroRatings(this.markerLastLocation[0], this.markerLastLocation[1]).subscribe((res) => {
+            this.loading = !this.loading;
             this.macrofactor = res.results.macroRatingClass1To5;
             this.macrofactortext = res.results.macroRatingClass1To5Text;
+            this.municipalitygaugeclassification = [this.macrofactor.toString()];
+            const generaldata = this.municipality.requestData('general');
+            this.municipalityname = generaldata[0].municipalityName;
             this.progressbar.endProgressBar();
+        }, (error) => {
+            console.log(error);
+        }, () => {
+            this.macro.getAddressRatings(this.markerLastLocation[0], this.markerLastLocation[1]).subscribe((res) => {
+                this.addressfactor = res.results.microRatingClass1To5;
+                this.addressfactortext = res.results.microRatingClass1To5Text;
+                this.addressname = this.address.requestAddress();
+                this.addressgaugeclassification = [this.addressfactor.toString()];
+            }, (error) => {
+                console.log(error);
+            }, () => {
+                this.loading = !this.loading;
+            });
         });
     }
 

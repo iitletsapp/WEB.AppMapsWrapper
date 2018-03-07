@@ -2,12 +2,25 @@
     <div class="row">
         <div class="col col-lg-6">
             <h1>{{ 'GENERIC.MUNICIPALITY' | translate }}</h1>
+            <img [hidden]="!loading" src="{{global.lageCheckAssetPath}}/assets/img/rolling.gif" alt="loading">
+            <div [hidden]="!macrofactor" class="mt-3">
+                <h1 class="font-weight-light d-inline">{{municipalityname}}</h1>
+                <hr>
+                <!-- make the comparation to average function -->
+                <p class="text-muted">{{municipalityname}} ranks high among all municipalities</p>
+            </div>
         </div>
-        <div class="col col-lg-6">
-            <div [hidden]="!macrofactor">
-                <small>this municipality is:</small>
-                <b>{{macrofactortext}}</b>
-                <app-colorramp val="{{macrofactor}}" layer="rampmunicipalitycontainer"></app-colorramp>
+        <div class="col col-lg-6 text-center">
+            <div [hidden]="!macrofactor" class="fancy-box">
+                    <app-gauge-chart 
+                    [data]="macrofactor"
+                    [extent]="municipalitygaugeextent"
+                    [containerId]="municipalitygaugecontainerId"
+                    [classification]="municipalitygaugeclassification"
+                    [minMax]="municipalitygaugeminMax"
+                    [minThreshold]="municipalitygaugeminThreshold"
+                    ></app-gauge-chart>
+                    <h4>{{macrofactortext}} <i class="fa fa-check-circle fa-1x text-success" aria-hidden="true"></i></h4>
             </div>
         </div>
     </div>
@@ -72,9 +85,24 @@
     <div class="row">
         <div class="col col-lg-6">
             <h1>{{ 'GENERIC.ADDRESS' | translate }}</h1>
+            <div [hidden]="!macrofactor" class="mt-3">
+                    <img src="{{global.lageCheckAssetPath}}/assets/img/house-small.png" alt="location"> <p class="font-weight-light d-inline">{{addressname}}</p>
+                    <hr>
+                    <p class="text-muted">this address ranks higher among the average.</p>
+                </div>
         </div>
-        <div class="col col-lg-6">
-            <!-- the color ramp comes in here -->
+        <div class="col col-lg-6 text-center">
+            <div [hidden]="!addressfactor" class="fancy-box">
+                    <app-gauge-chart 
+                    [data]="addressfactor"
+                    [extent]="addressgaugeextent"
+                    [containerId]="addressgaugecontainerId"
+                    [classification]="addressgaugeclassification"
+                    [minMax]="addressgaugeminMax"
+                    [minThreshold]="addressgaugeminThreshold"
+                    ></app-gauge-chart>
+                    <h4 class="d-inline">{{addressfactortext}} <i class="fa fa-check-circle fa-1x text-success" aria-hidden="true"></i></h4>
+            </div>
         </div>
     </div>
     <hr>

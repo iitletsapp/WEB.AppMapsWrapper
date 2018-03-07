@@ -13,7 +13,7 @@ export class GaugeChartComponent implements OnInit, OnChanges {
   @Input() public data;
   @Input() public extent;
   @Input() public containerId: string;
-  @Input() public classification: string[];
+  @Input() public classification: any[];
   @Input() public minMax: string[];
   @Input() public minThreshold: number;
 
@@ -35,7 +35,7 @@ export class GaugeChartComponent implements OnInit, OnChanges {
     // Set Up
     let pi = Math.PI;
     let margin = { top: 20, right: 10, bottom: 10, left: 10 };
-    let width = 600 - margin.left - margin.right;
+    let width = 1000 - margin.left - margin.right;
     let height = 400 - margin.top - margin.bottom;
     let fullwidth = width + margin.left + margin.right;
     let fullheight = height + margin.top + margin.bottom;
@@ -54,12 +54,13 @@ export class GaugeChartComponent implements OnInit, OnChanges {
 
     const sequentialScale = d3.scaleQuantize()
       .domain(<any> quantizeForArc.domain())
-      .range(<any> [
-        d3.rgb(d3.color('#41e0f2')),
-        d3.rgb(d3.color('#2ee819')),
-        d3.rgb(d3.color('#efec47')),
-        d3.rgb(d3.color('#ffbc66')),
-        d3.rgb(d3.color('#e0190b'))]);
+      .range(<any> ['#ffbc66']);
+      // .range(<any> [
+      //   d3.rgb(d3.color('#41e0f2')),
+      //   d3.rgb(d3.color('#2ee819')),
+      //   d3.rgb(d3.color('#efec47')),
+      //   d3.rgb(d3.color('#ffbc66')),
+      //   d3.rgb(d3.color('#e0190b'))]);
     // .interpolator(d3.interpolateCool);
 
     // ####################### for testing!
@@ -83,43 +84,48 @@ export class GaugeChartComponent implements OnInit, OnChanges {
       .attr('class', this.containerId)
       .call(responsivefy)
       .append('g')
-      .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
+        .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
 
 
     let background = svg.append('path')
       .datum({ endAngle: 120 * (pi / 180) })
       .style('fill', '#ddd')
+      .attr('stroke', 'grey')
       .attr('d', arc); // Append background arc to svg
 
     let foreground = svg.append('path')
       .datum({ endAngle: quantizeForArc(this.data) * (pi / 180) })
       .attr('d', arc)
+      .attr('stroke', '#2d2d2d')
       .transition()
-      .duration(1000)
-      .ease(d3.easeQuadInOut)
-      .style('opacity', 1)
-      .style('fill', (d) => sequentialScale(this.data));
+        .duration(1000)
+        .ease(d3.easeQuadInOut)
+        .style('opacity', 1)
+        .attr('stroke-width', .4)
+        .style('fill', (d) => sequentialScale(this.data));
 
     let maxtext = svg.append('text')
-      .attr('transform', 'translate(' + (iR + ((oR - iR) / 2)) + ',15)') // Display Max value
+      .attr('transform', 'translate(' + (iR + ((oR - iR) / 2)) + ',' + height / 2 + ')') // Display Max value
       .attr('text-anchor', 'middle')
-      .style('font-family', 'Helvetica')
+      .style('font-size', '30')
+      .style('font-family', 'Open Sans')
       .text(max); // Set between inner and outer Radius
 
     // Display Min value
     let minText = svg.append('text')
-      .attr('transform', 'translate(' + -(iR + ((oR - iR) / 2)) + ',15)') // Set between inner and outer Radius
+      .attr('transform', 'translate(' + -(iR + ((oR - iR) / 2)) + ',' + height / 2 + ')') // Set between inner and outer Radius
       .attr('text-anchor', 'middle')
-      .style('font-family', 'Helvetica')
+      .style('font-size', '30')
+      .style('font-family', 'Open Sans')
       .text(min);
 
     // Display Current value
     let currentText = svg.append('text')
       .attr('transform', 'translate(0,' + -(iR / 4) + ')') // Push up from center 1/4 of innerRadius
       .attr('text-anchor', 'middle')
-      .style('font-size', '32')
-      .style('font-weight', 'bold')
-      .style('font-family', 'Helvetica')
+      .style('font-size', '66')
+      .style('font-weight', '100')
+      .style('font-family', 'Helvetica', 'serif')
       .text(current)
       .transition()
       .duration(1000)

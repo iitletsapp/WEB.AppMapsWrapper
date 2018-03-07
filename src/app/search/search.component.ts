@@ -78,6 +78,7 @@ export class SearchComponent implements OnInit {
         this.progressbar.startProgressBar();
         setTimeout(() => {
             this.getMarker.emitChange([this.lat, this.lng]);
+            this.getAddress.setFormatedAddress(this.address);
             this.progressbar.endProgressBar();
         }, 200);
         this.macro.getLocationInfo(this.lat, this.lng).subscribe(() => {

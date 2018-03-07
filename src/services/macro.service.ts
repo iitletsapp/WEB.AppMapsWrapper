@@ -31,6 +31,18 @@ export class MacroService {
                 return macrocontainer;
             });
     }
+    public getAddressRatings(lat: number, lng: number) {
+        const header = new Headers();
+            header.append('Accept', 'application/json');
+            // tslint:disable-next-line:max-line-length
+            header.append('x', Config.MAPSAPIKEY);
+
+        return this.http
+            .get(Config.APPMAPSAPI + `v1/microratings?cat=1&countryCode=CH&ortId=${this.macroObj.ortID}&lat=${lat}&lon=${lng}`
+                , { headers: header })
+            .map((request) => request.json());
+    }
+
     public getMacroRatings(lat: number, lng: number) {
         let header = new Headers();
             header.append('Accept', 'application/json');
