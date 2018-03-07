@@ -245,7 +245,7 @@ export class PoiComponent implements OnInit, OnDestroy {
           geticonUrl = this.global.lageCheckAssetPath + '/assets/img/icons/svgtopng/restaurant.png';
           break;
         case 'shop':
-          alltypes = ['store'];
+          alltypes = ['supermarket'];
           geticonUrl = this.global.lageCheckAssetPath + '/assets/img/icons/svgtopng/shops.png';
           break;
         case 'learn':
