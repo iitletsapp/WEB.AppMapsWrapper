@@ -51,8 +51,9 @@ export class AppComponent implements OnInit {
     getMarker.changeEmitted$.subscribe(
       (data) => {
         this.markerLastLocation = data;
+        this.mapService.map.setMapTypeId('satellite');
         this.mapService.map.setCenter({ lat: this.markerLastLocation[0], lng: this.markerLastLocation[1] });
-        this.mapService.map.setZoom(15);
+        this.mapService.map.setZoom(19);
         this.marker.setPosition({ lat: this.markerLastLocation[0], lng: this.markerLastLocation[1] });
         this.marker.setAnimation(google.maps.Animation.DROP);
       });
