@@ -92,6 +92,11 @@ export class SearchComponent implements OnInit {
                 this.macro.getTax(this.lat, this.lng).subscribe((res) => {
                     this.apiobj.emitChange(res.municipalityTaxCharge, 'tax');
                 });
+                this.macro.getHousingMarket(this.lat, this.lng).subscribe((res) => {
+                    this.apiobj.emitChange(res.municipalityPrivateRealEstatePriceIndex, 'housingMarket');
+                    this.apiobj.emitChange(res.housingAreaMarketConstructionActivity, 'housingMarketConstructionActivity');
+                    this.apiobj.emitChange(res.housingAreaMarketVacancyRate[4].municipalityValue, 'housingMarketVacancy');
+                });
                 this.macro.getStreetNoise(this.lat, this.lng).subscribe((res) => {
                     this.apiobj.emitChange(res.results.data, 'streetnoise');
                 });

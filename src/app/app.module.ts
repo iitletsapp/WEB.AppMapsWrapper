@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule, Http } from '@angular/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
@@ -43,6 +43,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavigationComponent } from './navigation/navigation.component';
 import { Globals} from './globals';
 import {Config} from './appconfig/config';
+import { registerLocaleData } from '@angular/common';
+import localeDECH from '@angular/common/locales/de-CH';
+
+registerLocaleData(localeDECH);
 
 @NgModule({
   declarations: [
@@ -97,7 +101,8 @@ import {Config} from './appconfig/config';
     MicroService,
     GetMunicipalityService,
     GoogleMapsAPIWrapper,
-    Globals
+    Globals,
+    { provide: LOCALE_ID, useValue: 'de-CH' }
   ],
   bootstrap: [AppComponent]
 })

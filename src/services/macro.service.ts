@@ -78,6 +78,18 @@ export class MacroService {
             .map((request) => request.json());
     }
 
+     public getHousingMarket(lat: number, lng: number) {
+        let header = new Headers();
+            header.append('Accept', 'application/json');
+            // tslint:disable-next-line:max-line-length
+            header.append('x', Config.MAPSAPIKEY);
+
+        return this.http
+            .get(Config.APPMAPSAPI + `v1/housingmarket?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}`
+             , { headers: header })
+            .map((request) => request.json());
+    }
+
     public getStreetNoise(lat: number, lng: number) {
         let header = new Headers();
             header.append('Accept', 'application/json');

@@ -3,14 +3,14 @@
             <h6><u>{{ 'HOUSINGMARKERT.INDEX' | translate }}</u></h6>
         </li>
     </ul>
-    <app-linechart></app-linechart>
+    <app-linechart [data]="dataforlinearrayMarket"></app-linechart>
     <hr>
     <ul class="d-flex justify-content-between list-unstyled">
         <li>
             <h6>{{ 'HOUSINGMARKERT.VACANCY' | translate }}</h6>
         </li>
         <li>
-            <span class="p-number">0.5%</span>
+            <span class="p-number">{{housingMarketVacancy}}%</span>
         </li>
     </ul>
     <ul class="d-flex justify-content-between list-unstyled">
@@ -18,7 +18,7 @@
             <h6>{{ 'HOUSINGMARKERT.HOUSINGSTOCK' | translate }}</h6>
         </li>
         <li>
-            <span class="p-number">98'429</span>
+            <span class="p-number">{{housingStock | number }}</span>
         </li>
     </ul>
     <ul class="d-flex justify-content-between list-unstyled">
@@ -26,7 +26,7 @@
             <h6>{{ 'HOUSINGMARKERT.NEWHOUSING' | translate }}</h6>
         </li>
         <li>
-            <span class="p-number">1759</span>
+            <span class="p-number">{{newHousing | number}}</span>
         </li>
     </ul>
     <hr>
