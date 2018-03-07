@@ -17,7 +17,7 @@ export class MacroService {
         let header = new Headers();
             header.append('Accept', 'application/json');
             // tslint:disable-next-line:max-line-length
-            header.append('x', 'DC38C137908D86DED20414EF56137B67F832F07175AB3EEF1A5BF3C65DD293C0');
+            header.append('x', Config.MAPSAPIKEY);
 
         return this.http
             .get(Config.APPMAPSAPI + `v1/locationinfo?countryCode=CH&lat=${lat}&lon=${lng}`, { headers: header })
@@ -35,7 +35,7 @@ export class MacroService {
         let header = new Headers();
             header.append('Accept', 'application/json');
             // tslint:disable-next-line:max-line-length
-            header.append('x', 'DC38C137908D86DED20414EF56137B67F832F07175AB3EEF1A5BF3C65DD293C0');
+            header.append('x', Config.MAPSAPIKEY);
 
         return this.http
             .get(Config.APPMAPSAPI + `v1/macroratings?countryCode=CH&lat=${lat}&lon=${lng}` , { headers: header })
@@ -46,7 +46,7 @@ export class MacroService {
         let header = new Headers();
             header.append('Accept', 'application/json');
             // tslint:disable-next-line:max-line-length
-            header.append('x', 'DC38C137908D86DED20414EF56137B67F832F07175AB3EEF1A5BF3C65DD293C0');
+            header.append('x', Config.MAPSAPIKEY);
 
         return this.http
             .get(Config.APPMAPSAPI + `v1/gemeindeinfo?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}`
@@ -58,7 +58,7 @@ export class MacroService {
         let header = new Headers();
             header.append('Accept', 'application/json');
             // tslint:disable-next-line:max-line-length
-            header.append('x', 'DC38C137908D86DED20414EF56137B67F832F07175AB3EEF1A5BF3C65DD293C0');
+            header.append('x', Config.MAPSAPIKEY);
 
         return this.http
             .get(Config.APPMAPSAPI + `v1/population?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}`
@@ -70,7 +70,7 @@ export class MacroService {
          let header = new Headers();
             header.append('Accept', 'application/json');
             // tslint:disable-next-line:max-line-length
-            header.append('x', 'DC38C137908D86DED20414EF56137B67F832F07175AB3EEF1A5BF3C65DD293C0');
+            header.append('x', Config.MAPSAPIKEY);
 
         return this.http
             .get(Config.APPMAPSAPI + `v1/taxcharge?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}`
@@ -82,7 +82,7 @@ export class MacroService {
         let header = new Headers();
             header.append('Accept', 'application/json');
             // tslint:disable-next-line:max-line-length
-            header.append('x', 'DC38C137908D86DED20414EF56137B67F832F07175AB3EEF1A5BF3C65DD293C0');
+            header.append('x', Config.MAPSAPIKEY);
 
         return this.http
             .get(Config.APPMAPSAPI + `v1/microfactors?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}&factorId=20`
@@ -93,7 +93,7 @@ export class MacroService {
          let header = new Headers();
             header.append('Accept', 'application/json');
             // tslint:disable-next-line:max-line-length
-            header.append('x', 'DC38C137908D86DED20414EF56137B67F832F07175AB3EEF1A5BF3C65DD293C0');
+            header.append('x', Config.MAPSAPIKEY);
 
         return this.http
             .get(Config.APPMAPSAPI + `v1/microfactors?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}&factorId=19`
@@ -104,7 +104,7 @@ export class MacroService {
         let header = new Headers();
             header.append('Accept', 'application/json');
             // tslint:disable-next-line:max-line-length
-            header.append('x', 'DC38C137908D86DED20414EF56137B67F832F07175AB3EEF1A5BF3C65DD293C0');
+            header.append('x', Config.MAPSAPIKEY);
 
         return this.http
             .get(Config.APPMAPSAPI + `v1/microfactors?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}&factorId=16`
