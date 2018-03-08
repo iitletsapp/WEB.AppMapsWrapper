@@ -16,7 +16,7 @@ import { GetMunicipalityService } from '../../services/getmunicipality.service';
     styleUrls: ['./teaser.component.scss']
 })
 export class TeaserComponent implements OnInit {
-    //municipality rating
+    // municipality rating
     public macrofactor;
     public macrofactortext;
     public municipalityname;

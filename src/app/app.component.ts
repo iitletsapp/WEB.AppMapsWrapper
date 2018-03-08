@@ -131,7 +131,7 @@ export class AppComponent implements OnInit {
         ],
       });
       const icon = {
-        url: Config.LAGECHECKASSETPATH + '/assets/img/house-small.png'
+        url: Config.LAGECHECKASSETPATH + '/assets/img/map-marker.png'
       };
       this.marker = new google.maps.Marker(<any>{
         icon,

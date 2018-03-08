@@ -7,7 +7,7 @@
                 <h1 class="font-weight-light d-inline">{{municipalityname}}</h1>
                 <hr>
                 <!-- make the comparation to average function -->
-                <p class="text-muted">{{municipalityname}} ranks high among all municipalities</p>
+                <p class="text-muted">{{municipalityname}} ranks high among all municipalities.</p>
             </div>
         </div>
         <div class="col col-lg-6 text-center">
@@ -27,27 +27,25 @@
     <hr>
     <div class="row">
         <div class="col-6">
-            <div class="card bg-dark text-white">
+            <div class="card">
                 <a routerLink="/furthercontent/municipality" [class.disabled]="!global.addressSearch">
                     <div class="card-body text-center">
-                        <p class="card-title">{{ 'GENERIC.GENERAL' | translate }}</p>
                         <h6 class="card-subtitle">
-                            <i class="fa fa-info fa-3x"></i>
+                            <img src="{{global.lageCheckAssetPath}}/assets/img/icons/generalinfo.svg" alt="general info">
                         </h6>
-                        <p class="card-text"></p>
+                        <p class="card-text">{{ 'GENERIC.GENERAL' | translate }}</p>
                     </div>
                 </a>
             </div>
         </div>
         <div class="col-6">
-            <div class="card bg-dark text-white">
+            <div class="card">
                 <a routerLink="/furthercontent/municipality" [class.disabled]="!global.addressSearch">
                     <div class="card-body text-center">
-                        <p class="card-title">{{ 'GENERIC.POPULATION' | translate }}</p>
                         <h6 class="card-subtitle">
-                            <i class="fa fa-users fa-3x"></i>
+                            <img src="{{global.lageCheckAssetPath}}/assets/img/icons/population.svg" alt="population">
                         </h6>
-                        <p class="card-text"></p>
+                        <p class="card-text">{{ 'GENERIC.POPULATION' | translate }}</p>
                     </div>
                 </a>
             </div>
@@ -55,38 +53,38 @@
     </div>
     <div class="row mt-2">
         <div class="col-6">
-            <div class="card bg-dark text-white">
+            <div class="card">
                 <a routerLink="/furthercontent/municipality" [class.disabled]="!global.addressSearch">
                     <div class="card-body text-center">
-                        <p class="card-title">{{ 'GENERIC.TAXES' | translate }}</p>
+
                         <h6 class="card-subtitle">
-                            <i class="fa fa-inbox fa-3x"></i>
+                            <img src="{{global.lageCheckAssetPath}}/assets/img/icons/tax.svg" alt="tax">
                         </h6>
-                        <p class="card-text"></p>
+                        <p class="card-text">{{ 'GENERIC.TAXES' | translate }}</p>
                     </div>
                 </a>
             </div>
         </div>
         <div class="col-6">
-            <div class="card bg-dark text-white">
+            <div class="card">
                 <a routerLink="/furthercontent/municipality" [class.disabled]="!global.addressSearch">
                     <div class="card-body text-center">
-                        <p class="card-title">{{ 'GENERIC.MARKET' | translate }}</p>
                         <h6 class="card-subtitle">
-                            <i class="fa fa-money fa-3x"></i>
+                            <img src="{{global.lageCheckAssetPath}}/assets/img/icons/housing-market.svg" alt="housing market">
                         </h6>
-                        <p class="card-text"></p>
+                        <p class="card-text">{{ 'GENERIC.MARKET' | translate }}</p>
                     </div>
                 </a>
             </div>
         </div>
     </div>
+    <hr>
     <div class="mb-4"></div>
     <div class="row">
         <div class="col col-lg-6">
             <h1>{{ 'GENERIC.ADDRESS' | translate }}</h1>
             <div [hidden]="!macrofactor" class="mt-3">
-                    <img src="{{global.lageCheckAssetPath}}/assets/img/house-small.png" alt="location"> <p class="font-weight-light d-inline">{{addressname}}</p>
+                    <img class="nomaxheight" src="{{global.lageCheckAssetPath}}/assets/img/map-marker.png" alt="location"> <p class="font-weight-light d-inline">{{addressname}}</p>
                     <hr>
                     <p class="text-muted">this address ranks higher among the average.</p>
                 </div>
@@ -108,23 +106,21 @@
     <hr>
     <div class="row">
         <div class="col-6">
-            <div class="card bg-dark text-white">
+            <div class="card">
                 <a routerLink="/furthercontent/address" [class.disabled]="!global.addressSearch">
                     <div class="card-body text-center">
-                        <p class="card-title">{{ 'GENERIC.POI' | translate }}</p>
                         <img src="{{global.lageCheckAssetPath}}/assets/img/icons/poi.svg" alt="poi">
-                        <p class="card-text"></p>
+                        <p class="card-text">{{ 'GENERIC.POI' | translate }}</p>
                     </div>
                 </a>
             </div>
         </div>
         <div class="col-6">
-            <div class="card bg-dark text-white">
+            <div class="card">
                 <a routerLink="/furthercontent/address" [class.disabled]="!global.addressSearch">
                     <div class="card-body text-center">
-                        <p class="card-title">{{ 'GENERIC.NOISE' | translate }}</p>
                         <img src="{{global.lageCheckAssetPath}}/assets/img/icons/noise.svg" alt="noise">
-                        <p class="card-text"></p>
+                        <p class="card-text">{{ 'GENERIC.NOISE' | translate }}</p>
                     </div>
                 </a>
             </div>
