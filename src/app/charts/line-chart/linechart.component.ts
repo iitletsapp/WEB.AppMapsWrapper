@@ -49,7 +49,7 @@ export class LineChartComponent implements OnInit, OnChanges, AfterContentInit {
     public initChart() {
         d3.select(`.linebaby`).remove();
 
-        let margin = { top: 10, right: 40, bottom: 20, left: 40 };
+        let margin = { top: 10, right: 40, bottom: 28, left: 40 };
         let width = 460 - margin.left - margin.right;
         let height = 365 - margin.top - margin.bottom;
 
@@ -101,7 +101,7 @@ export class LineChartComponent implements OnInit, OnChanges, AfterContentInit {
         // add the Y gridlines leftaxis
         g.append('g')
             .attr('class', 'ygrid')
-            .style('fill', '#f2f2f2')
+            .style('fill', 'none')
             .style('opacity', 0.8)
             .style('stroke', 'lightgrey')
             .style('stroke-opacity', 0.3)
@@ -118,13 +118,13 @@ export class LineChartComponent implements OnInit, OnChanges, AfterContentInit {
             .attr('transform', 'translate(0,' + height + ')')
             .call(d3.axisBottom(x))
             .append('text')
-            .attr('class', 'axis-title')
-            .attr('x', 6)
-            .attr('dx', `${width}`)
-            .attr('transform', `translate(0, -10)`)
-            .style('text-anchor', 'end')
-            .attr('fill', '#5D6971')
-            .text('(year)');
+                .attr('class', 'axis-title')
+                .attr('dx', `${width}`)
+                .attr('dy', '35')
+                .attr('transform', `translate(0, -10)`)
+                .style('text-anchor', 'end')
+                .attr('fill', '#5D6971')
+                .text('year');
 
         // add a y axis and append a label to it
         g.append('g')
@@ -137,12 +137,10 @@ export class LineChartComponent implements OnInit, OnChanges, AfterContentInit {
                 }))
             .append('text')
             .attr('class', 'axis-title')
-            .attr('transform', 'rotate(-90)')
-            .attr('y', 6)
-            .attr('dy', '.71em')
-            .style('text-anchor', 'end')
+            .attr('dx', 10)
+            .attr('dy', '-0.29em')
             .attr('fill', '#5D6971')
-            .text('(Population)');
+            .text('Population');
 
         // append the lines based on the data provided
         g.append('path')
@@ -150,8 +148,8 @@ export class LineChartComponent implements OnInit, OnChanges, AfterContentInit {
             .attr('class', 'line')
             .attr('d', line)
             .style('fill', 'none')
-            .style('stroke-width', 4)
-            .style('stroke', '#2d2d2d');
+            .style('stroke-width', 1)
+            .style('stroke', '#F19233 ');
 
         g.append('g').selectAll('circle')
             .data(data)
@@ -161,8 +159,8 @@ export class LineChartComponent implements OnInit, OnChanges, AfterContentInit {
             .attr('cx', (dd) => { return x(dd.year); })
             .attr('cy', (dd) => { return y(dd.value); })
             .attr('fill', 'white')
-            .style('stroke-width', 2)
-            .style('stroke', '#2d2d2d');
+            .style('stroke-width', 1)
+            .style('stroke', '#F19233');
 
         // call a function while hovering over the chart
         focus(data);
@@ -184,30 +182,37 @@ export class LineChartComponent implements OnInit, OnChanges, AfterContentInit {
 
             focus.append('circle')
                 .attr('r', 4.5)
-                .style('fill', '#F1F3F3')
-                .style('stroke', 'rgb(37, 44, 127)')
+                .style('fill', 'none')
+                .style('stroke', '#F19233')
                 .style('stroke-width', 2);
 
+            // indicator content
             focus.append('rect')
                 .attr('x', -25)
-                .attr('y', -35)
-                .attr('rx', 2)
+                .attr('y', -30)
+                .attr('rx', 0.9)
                 .style('width', 50)
                 .style('height', 20)
-                .style('fill', 'white')
-                .style('stroke-width', 2)
-                .style('stroke', '#414141');
+                .style('fill', '#485465')
+                .style('opacity', 0.7);
+
+            focus.append('circle')
+                .attr('cx', '-0.8em')
+                .attr('cy', '-1.18em')
+                .attr('r', 2.5)
+                .style('fill', '#F19233');
 
             focus.append('text')
-                .attr('dx', '-1.81em')
-                .attr('dy', '-1.95em')
-                .style('font-size', '10')
-                .style('fill', '#2a2a2a');
+                .attr('dx', '-0.81em')
+                .attr('dy', '-1.45em')
+                .style('font-size', '11')
+                .style('fill', '#FFFFFF');
 
             focus.append('polygon')
                 .attr('class', 'arrow')
-                .attr('points', '-5,-15 5,-15 0,-10')
-                .style('fill', '#414141');
+                .attr('points', '-5,-10 5,-10 0,-5')
+                .style('fill', '#485465')
+                .style('opacity', 0.7);
 
             svg.append('rect')
                 .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
@@ -227,9 +232,10 @@ export class LineChartComponent implements OnInit, OnChanges, AfterContentInit {
                 let d1 = data[i];
                 let d = x0 - d0.year > d1.year - x0 ? d1 : d0;
                 focus.attr('transform', 'translate(' + x(d.year) + ',' + y(d.value) + ')');
-                focus.select('text').text(function () { return d.value; });
+                focus.select('text').text(() => `${d.value}k`);
                 focus.select('circle')
                     .style('fill', getcolor(d.value))
+                    .style('opacity', 0.8)
                     .transition()
                     .duration(300)
                     .style('transform', 'scale(1.5)')
@@ -250,7 +256,7 @@ export class LineChartComponent implements OnInit, OnChanges, AfterContentInit {
             function getcolor(val) {
                 let mean = d3.mean(data.map((el) => el.value));
                 if (val <= mean) {
-                    return 'rgb(65, 224, 242)';
+                    return 'rgb(255, 255, 255)';
                 } else {
                     return 'rgb(224, 25, 11)';
                 }
