@@ -11,6 +11,7 @@ import * as d3 from 'd3';
 export class LineChartComponent implements OnInit, OnChanges, AfterContentInit {
     // data are all the values that are visible on the map view
     @Input() public data;
+    @Input() public xText;
     // layer it the refers to the layerID that the histogram should read data from
     // @Input() public layer;
     public layer = 'linebaby';
@@ -140,7 +141,7 @@ export class LineChartComponent implements OnInit, OnChanges, AfterContentInit {
             .attr('dx', 10)
             .attr('dy', '-0.29em')
             .attr('fill', '#5D6971')
-            .text('Population');
+            .text(this.xText);
 
         // append the lines based on the data provided
         g.append('path')

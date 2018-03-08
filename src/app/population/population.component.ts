@@ -12,6 +12,7 @@ import { GetMunicipalityService } from '../../services/getmunicipality.service';
 export class PopulationComponent implements OnInit {
   public population;
   public dataforlinearray;
+  public xLabel = 'population';
 
   constructor(
     private municipality: GetMunicipalityService
