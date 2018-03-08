@@ -3,28 +3,32 @@ import { URLSearchParams, Jsonp, Http, Headers, RequestOptions } from '@angular/
 import { MacroInfo } from '../core/macro.class';
 import 'rxjs/add/operator/map';
 import { Config } from '../app/appconfig/config';
+import { Globals } from '../app/globals';
+import { global } from '@angular/core/src/util';
 
 @Injectable()
 export class MacroService {
     public macroObj;
     private http: Http;
+    public apiKey;
 
-    constructor(http: Http) {
+    // tslint:disable-next-line:no-shadowed-variable
+    constructor(http: Http, public global: Globals) {
         this.http = http;
     }
 
     public getLocationInfo(lat: number, lng: number) {
-        let header = new Headers();
-            header.append('Accept', 'application/json');
-            // tslint:disable-next-line:max-line-length
-            header.append('x', Config.MAPSAPIKEY);
+        const header = new Headers();
+        header.append('Accept', 'application/json');
+        // tslint:disable-next-line:max-line-length
+        header.append('x', Config.MAPSAPIKEY);
 
         return this.http
             .get(Config.APPMAPSAPI + `v1/locationinfo?countryCode=CH&lat=${lat}&lon=${lng}`, { headers: header })
             .map((request) =>
                 request.json())
             .map((result) => {
-                let macrocontainer = new MacroInfo();
+                const macrocontainer = new MacroInfo();
                 macrocontainer.ortID = result.results.ortId;
                 macrocontainer.municipalityID = result.results.municipalityId;
                 this.macroObj = macrocontainer;
@@ -32,108 +36,56 @@ export class MacroService {
             });
     }
     public getAddressRatings(lat: number, lng: number) {
-        const header = new Headers();
-            header.append('Accept', 'application/json');
-            // tslint:disable-next-line:max-line-length
-            header.append('x', Config.MAPSAPIKEY);
-
-        return this.http
-            .get(Config.APPMAPSAPI + `v1/microratings?cat=1&countryCode=CH&ortId=${this.macroObj.ortID}&lat=${lat}&lon=${lng}`
-                , { headers: header })
-            .map((request) => request.json());
+        return this.get(`v1/microratings?cat=1&countryCode=CH&ortId=${this.macroObj.ortID}&lat=${lat}&lon=${lng}`);
     }
 
     public getMacroRatings(lat: number, lng: number) {
-        let header = new Headers();
-            header.append('Accept', 'application/json');
-            // tslint:disable-next-line:max-line-length
-            header.append('x', Config.MAPSAPIKEY);
-
-        return this.http
-            .get(Config.APPMAPSAPI + `v1/macroratings?countryCode=CH&lat=${lat}&lon=${lng}` , { headers: header })
-            .map((request) => request.json());
+        return this.get(`v1/macroratings?countryCode=CH&lat=${lat}&lon=${lng}`);
     }
 
     public getMunicipalityInfo(lat: number, lng: number) {
-        let header = new Headers();
-            header.append('Accept', 'application/json');
-            // tslint:disable-next-line:max-line-length
-            header.append('x', Config.MAPSAPIKEY);
-
-        return this.http
-            .get(Config.APPMAPSAPI + `v1/gemeindeinfo?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}`
-                , { headers: header })
-            .map((request) => request.json());
+        // tslint:disable-next-line:max-line-length
+        return this.get(`v1/gemeindeinfo?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}`);
     }
 
     public getPopulation(lat: number, lng: number) {
-        let header = new Headers();
-            header.append('Accept', 'application/json');
-            // tslint:disable-next-line:max-line-length
-            header.append('x', Config.MAPSAPIKEY);
-
-        return this.http
-            .get(Config.APPMAPSAPI + `v1/population?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}`
-             , { headers: header })
-            .map((request) => request.json());
+        // tslint:disable-next-line:max-line-length
+        return this.get(`v1/population?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}`);
     }
 
-     public getTax(lat: number, lng: number) {
-         let header = new Headers();
-            header.append('Accept', 'application/json');
-            // tslint:disable-next-line:max-line-length
-            header.append('x', Config.MAPSAPIKEY);
-
-        return this.http
-            .get(Config.APPMAPSAPI + `v1/taxcharge?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}`
-             , { headers: header })
-            .map((request) => request.json());
+    public getTax(lat: number, lng: number) {
+        // tslint:disable-next-line:max-line-length
+        return this.get(`v1/taxcharge?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}`);
     }
 
-     public getHousingMarket(lat: number, lng: number) {
-        let header = new Headers();
-            header.append('Accept', 'application/json');
-            // tslint:disable-next-line:max-line-length
-            header.append('x', Config.MAPSAPIKEY);
-
-        return this.http
-            .get(Config.APPMAPSAPI + `v1/housingmarket?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}`
-             , { headers: header })
-            .map((request) => request.json());
+    public getHousingMarket(lat: number, lng: number) {
+        // tslint:disable-next-line:max-line-length
+        return this.get(`v1/housingmarket?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}`);
     }
 
     public getStreetNoise(lat: number, lng: number) {
-        let header = new Headers();
-            header.append('Accept', 'application/json');
-            // tslint:disable-next-line:max-line-length
-            header.append('x', Config.MAPSAPIKEY);
-
-        return this.http
-            .get(Config.APPMAPSAPI + `v1/microfactors?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}&factorId=20`
-             , { headers: header })
-            .map((request) => request.json());
+        // tslint:disable-next-line:max-line-length
+        return this.get(`v1/microfactors?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}&factorId=20`);
     }
     public getRailNoise(lat: number, lng: number) {
-         let header = new Headers();
-            header.append('Accept', 'application/json');
-            // tslint:disable-next-line:max-line-length
-            header.append('x', Config.MAPSAPIKEY);
-
-        return this.http
-            .get(Config.APPMAPSAPI + `v1/microfactors?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}&factorId=19`
-             , { headers: header })
-            .map((request) => request.json());
+        // tslint:disable-next-line:max-line-length
+        return this.get(`v1/microfactors?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}&factorId=19`);
     }
     public getPlaneNoise(lat: number, lng: number) {
-        let header = new Headers();
-            header.append('Accept', 'application/json');
-            // tslint:disable-next-line:max-line-length
-            header.append('x', Config.MAPSAPIKEY);
-
-        return this.http
-            .get(Config.APPMAPSAPI + `v1/microfactors?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}&factorId=16`
-             , { headers: header })
-            .map((request) => request.json());
+        // tslint:disable-next-line:max-line-length
+        return this.get(`v1/microfactors?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}&factorId=16`);
     }
 
+    private get(url) {
+        this.apiKey = this.global.apiKey;
+        if (this.apiKey === null || this.apiKey === '') {
+            this.apiKey = Config.MAPSAPIKEY;
+        }
+        const header = new Headers();
+        header.append('Accept', 'application/json');
+        header.append('x', this.apiKey);
+
+        return this.http.get(Config.APPMAPSAPI + url, { headers: header })
+            .map((request) => request.json());
+    }
 }
