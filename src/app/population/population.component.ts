@@ -11,6 +11,12 @@ import { GetMunicipalityService } from '../../services/getmunicipality.service';
 
 export class PopulationComponent implements OnInit {
   public population;
+  public populationratio;
+  public foreignerquota;
+  public unemploymentrate;
+  public incometaxperson;
+  public populationgrowth;
+  // linechart
   public dataforlinearray;
   public xLabel = 'population';
 
@@ -18,12 +24,17 @@ export class PopulationComponent implements OnInit {
     private municipality: GetMunicipalityService
   ) {
     this.population = this.municipality.requestData('population');
+    this.populationratio = this.municipality.requestData('populationratio');
   }
 
   public ngOnInit() {
     this.dataforlinearray = this.population.map((el) => {
       return { year: el.publishDate.toString().substring(0, 4), value: Math.floor(el.municipalityValue) };
     });
+    this.foreignerquota = this.populationratio[2].municipalityValue;
+    this.unemploymentrate = this.populationratio[5].municipalityValue;
+    this.incometaxperson = Math.floor(this.populationratio[4].municipalityValue);
+    this.populationgrowth = this.populationratio[1].municipalityValue;
   }
 
 }

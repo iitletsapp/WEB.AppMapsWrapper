@@ -7,42 +7,29 @@
     </li>
 </ul>
 <app-linechart [data]="dataforlinearray" [xText]="xLabel"></app-linechart>
+<!-- <h6>{{ 'POPULATION.AGECATEGORY' | translate }}</h6> -->
+<!-- <app-horizontalbarchart></app-horizontalbarchart> -->
+<!-- <hr> -->
+<h6>Key figures</h6>
+<hr class="hr-black">
+<div class="row">
+    <div class="col col-lg-6">
+        <p class="text-muted">{{ 'POPULATION.FOREIGNERQUOTA' | translate }}</p>
+        <span class="p-number">{{foreignerquota}} %</span>
+    </div>
+    <div class="col col-lg-6">
+        <p class="text-muted">{{ 'POPULATION.UNEMPLOYMENTRATE' | translate }}</p>
+        <span class="p-number">{{unemploymentrate}} %</span>
+    </div>
+</div>
 <hr>
-<h6>{{ 'POPULATION.AGECATEGORY' | translate }}</h6>
-<app-horizontalbarchart></app-horizontalbarchart>
-<hr>
-<ul class="d-flex justify-content-between list-unstyled">
-    <li>
-        <h6>{{ 'POPULATION.FOREIGNERQUOTA' | translate }}</h6>
-    </li>
-    <li>
-        <span class="p-number">37%</span>
-    </li>
-</ul>
-<ul class="d-flex justify-content-between list-unstyled">
-    <li>
-        <h6>{{ 'POPULATION.UNEMPLOYMENTRATE' | translate }}</h6>
-    </li>
-    <li>
-        <span class="p-number">3.2%</span>
-    </li>
-</ul>
-<ul class="d-flex justify-content-between list-unstyled">
-    <li>
-        <h6>{{ 'POPULATION.INCOMETAX' | translate }}</h6>
-    </li>
-    <li>
-        <span class="p-number"><small>CHF</small> 37000</span>
-    </li>
-
-</ul>
-<ul class="d-flex justify-content-between list-unstyled">
-    <li>
-        <h6>{{ 'POPULATION.POPULATIONGROWTH' | translate }}</h6>
-    </li>
-    <li>
-        <span class="p-number">0.8</span>
-    </li>
-
-</ul>
-<hr>
+<div class="row">
+    <div class="col col-lg-6">
+        <p class="text-muted">{{ 'POPULATION.INCOMETAX' | translate }}</p>
+        <span class="p-number"><small>CHF</small> {{incometaxperson}}</span>
+    </div>
+    <div class="col col-lg-6">
+        <p class="text-muted">{{ 'POPULATION.POPULATIONGROWTH' | translate }}</p>
+        <span class="p-number">{{populationgrowth}} %</span>
+    </div>
+</div>

@@ -91,6 +91,7 @@ export class SearchComponent implements OnInit {
             }, () => {
                 this.macro.getPopulation(this.lat, this.lng).subscribe((res) => {
                     this.apiobj.emitChange(res.municipalityPopulationEvolutionIndex, 'population');
+                    this.apiobj.emitChange(res.municipalityRatios, 'populationratio');
                 });
                 this.macro.getTax(this.lat, this.lng).subscribe((res) => {
                     this.apiobj.emitChange(res.municipalityTaxCharge, 'tax');

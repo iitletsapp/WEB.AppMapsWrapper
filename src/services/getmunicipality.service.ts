@@ -10,13 +10,14 @@ export class GetMunicipalityService {
     public apiObj = {
         general: null,
         population: null,
+        populationratio: null,
         taxes: null,
         market: null,
         poi: null,
         streetnoise: null,
         railnoise: null,
         planenoise: null
-    }
+    };
     // Observable string streams
 
     // Service message commands
