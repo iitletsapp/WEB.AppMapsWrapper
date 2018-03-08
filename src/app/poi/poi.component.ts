@@ -211,7 +211,7 @@ export class PoiComponent implements OnInit, OnDestroy {
       this.requestpoi(e.target.id, false);
       this.active[e.target.id] = !this.active[e.target.id];
       this.progressbar.endProgressBar();
-      this.mapService.map.setZoom(17);
+      this.mapService.map.setZoom(15);
     } else {
       this.wholelist = this.wholelist.filter((el) => el.type !== e.target.id);
       this.clearMarkers(e.target.id);
