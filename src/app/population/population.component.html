@@ -1,11 +1,13 @@
-<ul class="d-flex justify-content-between list-unstyled">
-    <li>
-        <h6>{{ 'POPULATION.POPULATION' | translate }}</h6>
-    </li>
-    <li>
-        <span class="p-number">170'184</span>
-    </li>
-</ul>
+
+<div class="row">
+    <div class="col">
+        <p class="text-muted">{{ 'POPULATION.POPULATION' | translate }}</p>
+        <span class="p-number">{{populationrate}}</span>
+    </div>
+</div>
+<hr class="hr-black">
+<h6 class="d-inline-block">Population growth</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
+<hr class="hr-black">
 <app-linechart [data]="dataforlinearray" [xText]="xLabel"></app-linechart>
 <!-- <h6>{{ 'POPULATION.AGECATEGORY' | translate }}</h6> -->
 <!-- <app-horizontalbarchart></app-horizontalbarchart> -->

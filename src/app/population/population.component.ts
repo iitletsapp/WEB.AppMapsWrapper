@@ -11,6 +11,7 @@ import { GetMunicipalityService } from '../../services/getmunicipality.service';
 
 export class PopulationComponent implements OnInit {
   public population;
+  public populationrate;
   public populationratio;
   public foreignerquota;
   public unemploymentrate;
@@ -31,10 +32,16 @@ export class PopulationComponent implements OnInit {
     this.dataforlinearray = this.population.map((el) => {
       return { year: el.publishDate.toString().substring(0, 4), value: Math.floor(el.municipalityValue) };
     });
+
+    this.populationrate = this.numberWithCommas(this.populationratio[0].municipalityValue);
     this.foreignerquota = this.populationratio[2].municipalityValue;
     this.unemploymentrate = this.populationratio[5].municipalityValue;
-    this.incometaxperson = Math.floor(this.populationratio[4].municipalityValue);
+    this.incometaxperson = this.numberWithCommas(Math.floor(this.populationratio[4].municipalityValue));
     this.populationgrowth = this.populationratio[1].municipalityValue;
+  }
+  public numberWithCommas = (x) => {
+    // tslint:disable-next-line:quotemark
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "'");
   }
 
 }
