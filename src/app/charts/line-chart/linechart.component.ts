@@ -50,7 +50,7 @@ export class LineChartComponent implements OnInit, OnChanges, AfterContentInit {
     public initChart() {
         d3.select(`.linebaby`).remove();
 
-        let margin = { top: 10, right: 40, bottom: 28, left: 40 };
+        let margin = { top: 20, right: 40, bottom: 28, left: 40 };
         let width = 460 - margin.left - margin.right;
         let height = 365 - margin.top - margin.bottom;
 

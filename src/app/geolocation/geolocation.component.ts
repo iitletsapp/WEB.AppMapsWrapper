@@ -43,6 +43,7 @@ export class GeoLocationComponent implements OnInit {
                     this.geoCoding.regeocode(this.getMarker.position[0], this.getMarker.position[1])
                         .subscribe((location) => {
                             this.getAddress.emitChange(location.address);
+                            this.getAddress.setFormatedAddress(location.address);
                         });
                 });
             });

@@ -20,10 +20,12 @@ export class TeaserComponent implements OnInit {
     public macrofactor;
     public macrofactortext;
     public municipalityname;
+    public municipalitytext;
     // address rating
     public addressname;
     public addressfactor;
     public addressfactortext;
+    public addresstext;
 
     public markerLastLocation;
     public loading = false;
@@ -79,6 +81,11 @@ export class TeaserComponent implements OnInit {
             this.municipalitygaugeclassification = [this.macrofactor.toString()];
             const generaldata = this.municipality.requestData('general');
             this.municipalityname = generaldata[0].municipalityName;
+            if (this.macrofactor <= 3) {
+                this.municipalitytext = 'ranks higher on average.';
+            } else {
+                this.municipalitytext = 'ranks lower on average.';
+            }
             this.progressbar.endProgressBar();
         }, (error) => {
             console.log(error);
@@ -88,6 +95,11 @@ export class TeaserComponent implements OnInit {
                 this.addressfactortext = res.results.microRatingClass1To5Text;
                 this.addressname = this.address.requestAddress();
                 this.addressgaugeclassification = [this.addressfactor.toString()];
+                if (this.addressfactor <= 3) {
+                    this.addresstext = 'this address ranks higher among the average.';
+                } else {
+                    this.addresstext = 'this address ranks lower among the average.';
+                }
             }, (error) => {
                 console.log(error);
             }, () => {
