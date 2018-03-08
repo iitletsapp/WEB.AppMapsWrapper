@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import * as d3 from 'd3';
 
 @Component({
@@ -7,42 +7,40 @@ import * as d3 from 'd3';
     styleUrls: ['./colorramp.component.scss']
 })
 
-export class ColorRampChartComponent implements OnInit, OnChanges {
+export class ColorRampChartComponent implements OnInit, AfterViewInit {
     // data are all the values that are visible on the map view
     // @Input() public data;
     // layer it the refers to the layerID that the histogram should read data from
-    @Input() public layer;
-    // public layer = 'ramp';
-    public data = [1, 5];
+    @Input() public containerId;
     @Input() public val;
+    public data = [1, 5];
+    private isready = false;
 
     constructor() {
     }
 
-    public ngOnChanges(): void {
-        if (this.val) {
+    public ngAfterViewInit() {
+        this.isready = true;
+        if (this.containerId) {
             this.initChart();
         }
     }
     public ngOnInit() {
-        // if (this.val) {
-        //     this.initChart();
-        // }
     }
 
     public initChart() {
         // this is needed in case the this.val gets updated
-        d3.select(`.${this.layer}`).remove();
+        d3.select(`.${this.containerId}`).remove();
 
-        let margin = { top: 30, right: 25, bottom: 20, left: 25 };
-        let width = 400 - margin.left - margin.right;
-        let height = 80 - margin.top - margin.bottom;
+        const margin = { top: 30, right: 25, bottom: 20, left: 25 };
+        const width = 400 - margin.left - margin.right;
+        const height = 80 - margin.top - margin.bottom;
 
-        let svg = d3.select(`#${this.layer}`)
+        const svg = d3.select(`#${this.containerId}`)
             .append('svg')
             .attr('width', width + margin.right + margin.left)
             .attr('height', height + margin.top + margin.bottom)
-            .attr('class', this.layer)
+            .attr('class', this.containerId)
             .call(responsivefy);
 
         svg.append('svg:image')

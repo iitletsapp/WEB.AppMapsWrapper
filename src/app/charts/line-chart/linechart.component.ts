@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, AfterContentInit } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import * as d3 from 'd3';
 // import data from '../../../assets/data/mockuplinechart.json';
 
@@ -8,13 +8,14 @@ import * as d3 from 'd3';
     styleUrls: ['./linechart.component.scss']
 })
 
-export class LineChartComponent implements OnInit, OnChanges, AfterContentInit {
+export class LineChartComponent implements OnInit, AfterViewInit {
     // data are all the values that are visible on the map view
     @Input() public data;
     @Input() public xText;
-    // layer it the refers to the layerID that the histogram should read data from
-    // @Input() public layer;
-    public layer = 'linebaby';
+    // containerId it the refers to the layerID that the histogram should read data from
+    @Input() public containerId;
+    private isready = false;
+
     // public data = [
     //     { 'year': "2005", "value": 171900 },
     //     { "year": "2006", 'value': 171500 },
@@ -32,33 +33,28 @@ export class LineChartComponent implements OnInit, OnChanges, AfterContentInit {
     constructor() {
     }
 
-    public ngOnChanges(): void {
-        // if (this.data) {
-        //     this.initChart();
-        // }
+    public ngAfterViewInit() {
+        this.isready = true;
+        if (this.containerId) {
+            this.initChart();
+        }
     }
     public ngOnInit() {
-        // if (this.data && this.type) {
-        //     this.initChart();
-        // }
-    }
-    public ngAfterContentInit() {
 
-        this.initChart();
     }
 
     public initChart() {
-        d3.select(`.linebaby`).remove();
+        d3.select(`.${this.containerId}`).remove();
 
-        let margin = { top: 20, right: 40, bottom: 28, left: 40 };
-        let width = 460 - margin.left - margin.right;
-        let height = 365 - margin.top - margin.bottom;
+        const margin = { top: 20, right: 40, bottom: 28, left: 40 };
+        const width = 460 - margin.left - margin.right;
+        const height = 365 - margin.top - margin.bottom;
 
-        let svg = d3.select(`#linebaby`)
+        const svg = d3.select(`#${this.containerId}`)
             .append('svg')
             .attr('width', width + margin.right + margin.left)
             .attr('height', height + margin.top + margin.bottom)
-            .attr('class', this.layer)
+            .attr('class', this.containerId)
             .call(responsivefy);
 
         let g = svg.append('g')
@@ -266,10 +262,10 @@ export class LineChartComponent implements OnInit, OnChanges, AfterContentInit {
 
         function responsivefy(svg) {
             // get container + svg aspect ratio
-            let container = d3.select(svg.node().parentNode);
-            let width = parseInt(svg.style('width'), 10);
-            let height = parseInt(svg.style('height'), 10);
-            let aspect = width / height;
+            const container = d3.select(svg.node().parentNode);
+            const width = parseInt(svg.style('width'), 10);
+            const height = parseInt(svg.style('height'), 10);
+            const aspect = width / height;
 
             // add viewBox and preserveAspectRatio properties,
             // and call resize so that svg resizes on inital page load
@@ -285,7 +281,7 @@ export class LineChartComponent implements OnInit, OnChanges, AfterContentInit {
 
             // get width of container and resize svg to fit it
             function resize() {
-                let targetWidth = parseInt(container.style('width'));
+                const targetWidth = parseInt(container.style('width'));
                 svg.attr('width', targetWidth);
                 svg.attr('height', Math.round(targetWidth / aspect));
             }

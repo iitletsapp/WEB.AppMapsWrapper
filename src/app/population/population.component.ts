@@ -18,6 +18,7 @@ export class PopulationComponent implements OnInit {
   public incometaxperson;
   public populationgrowth;
   // linechart
+  public linecontainer = 'populationlinechart';
   public dataforlinearray;
   public xLabel = 'population';
 

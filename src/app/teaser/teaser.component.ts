@@ -43,6 +43,9 @@ export class TeaserComponent implements OnInit {
     public addressgaugeclassification;
     public addressgaugeminMax = ['', ''];
     public addressgaugeminThreshold = .01;
+    // barchart
+    public layerone = 'onecont';
+    public layertwo = 'twocont';
 
     constructor(
         public progressbar: ProgressBarService,

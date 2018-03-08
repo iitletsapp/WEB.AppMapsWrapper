@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, AfterContentInit } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import * as d3 from 'd3';
 
 @Component({
@@ -7,39 +7,46 @@ import * as d3 from 'd3';
     styleUrls: ['./barchart.component.scss']
 })
 
-export class BarChartComponent implements OnInit, OnChanges, AfterContentInit {
+export class BarChartComponent implements OnInit, AfterViewInit {
     // data are all the values that are visible on the map view
      @Input() public data;
-    // layer it the refers to the layerID that the histogram should read data from
-    // @Input() public layer;
-    // public data = [{ name: 'single 70k', value: 9934 }, { name: 'single 100k', value: 15045 }, { name: 'couple 150k', value: 21342 }, { name: 'family 70k', value: 840 }, { name: 'family 100k', value: 7340 }, { name: 'elderly 70k', value: 7345 }];
-    // @Input() public val;
+    // containerId it the refers to the layerID that the histogram should read data from
+    @Input() public containerId;
+    private isready = false;
+    // example of the data structure:
+    /* public data = [
+        { name: 'single 70k', value: 9934 },
+        { name: 'single 100k', value: 15045 },
+        { name: 'couple 150k', value: 21342 },
+        { name: 'family 70k', value: 840 },
+        { name: 'family 100k', value: 7340 },
+        { name: 'elderly 70k', value: 7345 }];*/
 
     public layer = 'barchart';
 
     constructor() {
     }
 
-    public ngOnChanges(): void {
-
-    }
 
     public ngOnInit() {
-        
+
     }
 
-     public ngAfterContentInit() {
-        this.initChart();
+    public ngAfterViewInit() {
+        this.isready = true;
+        if (this.containerId) {
+            this.initChart();
+        }
     }
 
     public initChart() {
 
-        // this is needed in case the this.val gets updated 
-         d3.select('.barchart').remove();
+        // this is needed in case the this.val gets updated
+         d3.select(`.${this.containerId}`).remove();
 
-        let margin = { top: 30, right: 25, bottom: 20, left: 25 };
-        let width = 460 - margin.left - margin.right;
-        let height = 350 - margin.top - margin.bottom;
+        const margin = { top: 30, right: 25, bottom: 20, left: 25 };
+        const width = 460 - margin.left - margin.right;
+        const height = 350 - margin.top - margin.bottom;
 
         // set the ranges
         let x = d3.scaleBand()
@@ -54,7 +61,7 @@ export class BarChartComponent implements OnInit, OnChanges, AfterContentInit {
         let colorScale = d3.scaleOrdinal()
             .range(['#AAFFC7', '#5FCC9C', '#42c4d6', '#8e8d29', '#2b2789', '#79258c']);
 
-        let svg = d3.select(`#barchart`)
+        let svg = d3.select(`#${this.containerId}`)
             .append('svg')
             .attr('class', 'barchart')
             .attr('width', width + margin.right + margin.left)
@@ -105,9 +112,9 @@ export class BarChartComponent implements OnInit, OnChanges, AfterContentInit {
         function responsivefy(svg) {
             // get container + svg aspect ratio
             let container = d3.select(svg.node().parentNode);
-            let width = parseInt(svg.style('width'), 10);
-            let height = parseInt(svg.style('height'), 10);
-            let aspect = width / height;
+            const width = parseInt(svg.style('width'), 10);
+            const height = parseInt(svg.style('height'), 10);
+            const aspect = width / height;
 
             // add viewBox and preserveAspectRatio properties,
             // and call resize so that svg resizes on inital page load
@@ -123,7 +130,7 @@ export class BarChartComponent implements OnInit, OnChanges, AfterContentInit {
 
             // get width of container and resize svg to fit it
             function resize() {
-                let targetWidth = parseInt(container.style('width'));
+                const targetWidth = parseInt(container.style('width'));
                 svg.attr('width', targetWidth);
                 svg.attr('height', Math.round(targetWidth / aspect));
             }

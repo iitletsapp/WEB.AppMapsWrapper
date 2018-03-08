@@ -101,15 +101,15 @@ export class SearchComponent implements OnInit {
                     this.apiobj.emitChange(res.housingAreaMarketConstructionActivity, 'housingMarketConstructionActivity');
                     this.apiobj.emitChange(res.housingAreaMarketVacancyRate[4].municipalityValue, 'housingMarketVacancy');
                 });
-                this.macro.getStreetNoise(this.lat, this.lng).subscribe((res) => {
-                    this.apiobj.emitChange(res.results.data, 'streetnoise');
-                });
-                this.macro.getRailNoise(this.lat, this.lng).subscribe((res) => {
-                    this.apiobj.emitChange(res.results.data, 'railnoise');
-                });
-                this.macro.getPlaneNoise(this.lat, this.lng).subscribe((res) => {
-                    this.apiobj.emitChange(res.results.data, 'planenoise');
-                });
+                // this.macro.getStreetNoise(this.lat, this.lng).subscribe((res) => {
+                //     this.apiobj.emitChange(res.results.data, 'streetnoise');
+                // });
+                // this.macro.getRailNoise(this.lat, this.lng).subscribe((res) => {
+                //     this.apiobj.emitChange(res.results.data, 'railnoise');
+                // });
+                // this.macro.getPlaneNoise(this.lat, this.lng).subscribe((res) => {
+                //     this.apiobj.emitChange(res.results.data, 'planenoise');
+                // });
             });
 
         });

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, AfterViewInit } from '@angular/core';
 import * as d3 from 'd3';
 
 @Component({
@@ -7,14 +7,19 @@ import * as d3 from 'd3';
     styleUrls: ['horizontalbarchart.component.scss']
 })
 
-export class HorizontalbarChartComponent implements OnInit {
-    layer = 'horizontalbar';
+export class HorizontalbarChartComponent implements OnInit, AfterViewInit {
+    @Input() public containerId;
     data = [{ name: '0-30', value: 29 }, { name: '31-50', value: 49 }, { name: '51-70', value: 12 }, { name: '71+', value: 10 }];
-
+    private isready: boolean = false;
     constructor() { }
 
     public ngOnInit() {
-        this.initChart();
+    }
+    public ngAfterViewInit() {
+        this.isready = true;
+        if (this.containerId) {
+            this.initChart();
+        }
     }
     public initChart() {
         // predefine the dimensions for the responsive function
@@ -24,9 +29,9 @@ export class HorizontalbarChartComponent implements OnInit {
 
         // create the chart by adding a svg with the dimensions defined above.
         // Resposivefy will make this chart responsive at any screen size
-        let svg = d3.select(`#horizontalbar`)
+        let svg = d3.select(`#${this.containerId}`)
             .append('svg')
-            .attr('class', this.layer)
+            .attr('class', this.containerId)
             .attr('width', width + margin.left + margin.right)
             .attr('height', height + margin.top + margin.bottom)
             .call(responsivefy);

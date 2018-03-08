@@ -17,6 +17,7 @@ export class HousingMarketComponent implements OnInit {
     public newHousing;
     public housingMarketVacancy;
     public xLabel = 'cost';
+    public linecontainer = 'housingmarketchartcontainer';
 
     constructor(private municipality: GetMunicipalityService) 
     {
