@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Config} from '../app/appconfig/config'
+import { Config} from '../app/appconfig/config';
 
 @Injectable()
 export class Globals {
-  language: string = 'de';
+  language = 'de';
   microQuality: number ;
   apiKey = '';
-  lageCheckAssetPath = Config.LAGECHECKASSETPATH
+  lageCheckAssetPath = Config.LAGECHECKASSETPATH;
+  addressSearch = false;
 }

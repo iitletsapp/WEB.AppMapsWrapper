@@ -4,10 +4,10 @@ import { MapsAPILoader } from '@agm/core';
 import { GetMarkerService } from '../../services/getmarker.service';
 import { GetAddressService } from '../../services/getaddress.service';
 import { ProgressBarService } from '../../services/progressbar.service';
-import {  } from '@types/googlemaps';
+import { } from '@types/googlemaps';
 import { MacroService } from '../../services/macro.service';
 import { GetMunicipalityService } from '../../services/getmunicipality.service';
-import { Globals} from '../globals'
+import { Globals } from '../globals';
 
 @Component({
     selector: 'app-search',
@@ -34,7 +34,7 @@ export class SearchComponent implements OnInit {
         private progressbar: ProgressBarService,
         private getAddress: GetAddressService,
         private apiobj: GetMunicipalityService,
-        public global:Globals
+        public global: Globals
     ) {
         this.getAddress.changeEmitted$.subscribe((newAddress) => {
             this.address = newAddress;
@@ -73,9 +73,11 @@ export class SearchComponent implements OnInit {
 
     public goto() {
         if (!this.address) {
+            this.global.addressSearch = false;
             return;
         }
         this.progressbar.startProgressBar();
+        this.global.addressSearch = true;
         setTimeout(() => {
             this.getMarker.emitChange([this.lat, this.lng]);
             this.getAddress.setFormatedAddress(this.address);
@@ -110,5 +112,11 @@ export class SearchComponent implements OnInit {
             });
 
         });
+    }
+
+    public onChange(event) {
+        if (event.target.value === '' && this.global.addressSearch === true) {
+            this.global.addressSearch = false;
+        }
     }
 }
