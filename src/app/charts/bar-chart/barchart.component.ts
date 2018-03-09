@@ -97,7 +97,7 @@ export class BarChartComponent implements OnInit, AfterViewInit {
         // add the x Axis
         g.append('g')
             .attr('transform', 'translate(0,' + height + ')')
-            .call(d3.axisBottom(x).tickValues([''])); // labels are outside the chart
+            .call(d3.axisBottom(x).tickValues([]).tickSizeOuter([0])); // labels are outside the chart
 
         // add the y Axis
         g.append('g')

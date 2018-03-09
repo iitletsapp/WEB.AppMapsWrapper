@@ -35,7 +35,7 @@ export class LineChartComponent implements OnInit, AfterViewInit {
 
     public ngAfterViewInit() {
         this.isready = true;
-        if (this.containerId) {
+        if (this.containerId && this.data) {
             this.initChart();
         }
     }

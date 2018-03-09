@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, AfterViewInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as d3 from 'd3';
@@ -9,7 +9,7 @@ import * as _ from 'lodash';
   templateUrl: './gauge-chart.component.html',
   styleUrls: ['./gauge-chart.component.scss']
 })
-export class GaugeChartComponent implements OnInit, OnChanges {
+export class GaugeChartComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() public data;
   @Input() public extent;
   @Input() public containerId: string;
@@ -17,16 +17,19 @@ export class GaugeChartComponent implements OnInit, OnChanges {
   @Input() public minMax: string[];
   @Input() public minThreshold: number;
   @Input() public imgURL;
-
+  private isready = false;
 
   constructor() {}
 
   public ngOnInit() {}
 
   public ngOnChanges() {
-    if (this.data) {
+    if (this.containerId && this.isready) {
       this.initChart();
     }
+  }
+  public ngAfterViewInit() {
+    this.isready = true;
   }
 
   public initChart() {

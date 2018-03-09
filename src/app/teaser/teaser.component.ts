@@ -16,6 +16,7 @@ import { GetMunicipalityService } from '../../services/getmunicipality.service';
     styleUrls: ['./teaser.component.scss']
 })
 export class TeaserComponent implements OnInit {
+    public muncipalityId;
     // municipality rating
     public macrofactor;
     public macrofactortext;
@@ -84,8 +85,6 @@ export class TeaserComponent implements OnInit {
             this.macrofactor = res.results.macroRatingClass1To5;
             this.macrofactortext = res.results.macroRatingClass1To5Text;
             this.municipalitygaugeclassification = [this.macrofactor.toString()];
-            const generaldata = this.municipality.requestData('general');
-            this.municipalityname = generaldata[0].municipalityName;
             if (this.macrofactor <= 3) {
                 this.municipalitytext = 'ranks higher on average.';
             } else {
@@ -95,6 +94,9 @@ export class TeaserComponent implements OnInit {
         }, (error) => {
             console.log(error);
         }, () => {
+            this.muncipalityId = this.macro.macroObj.municipalityID;
+            const generaldata = this.municipality.requestData('general');
+            this.municipalityname = generaldata[0].municipalityName;
             this.macro.getAddressRatings(this.markerLastLocation[0], this.markerLastLocation[1]).subscribe((res) => {
                 this.addressfactor = res.results.microRatingClass1To5;
                 this.addressfactortext = res.results.microRatingClass1To5Text;

@@ -49,19 +49,18 @@ export class PoiComponent implements OnInit, OnDestroy {
   };
   public wholelist = [];
   public transitLayer;
-  
+
   constructor(
     private progressbar: ProgressBarService,
     private mapService: MapService,
     private getMarker: GetMarkerService,
     private ngZone: NgZone,
     private mapsAPILoader: MapsAPILoader,
-    public global:Globals) {
+    public global: Globals) {
     getMarker.changeEmitted$.subscribe(
       (data) => {
         this.markerLastLocation = data;
       });
-    
   }
 
   public ngOnInit() {
@@ -233,7 +232,7 @@ export class PoiComponent implements OnInit, OnDestroy {
 
   public requestpoi(poirequested, nomarker) {
     let service;
-    let position = this.getMarker.requestLastPosition();
+    const position = this.getMarker.requestLastPosition();
 
     this.mapsAPILoader.load().then(() => {
 
@@ -268,7 +267,7 @@ export class PoiComponent implements OnInit, OnDestroy {
         default:
           geticonUrl = this.global.lageCheckAssetPath + '/assets/img/icons/svgtopng/markergeneral.png';
       }
-      let infowindow = new google.maps.InfoWindow();
+      const infowindow = new google.maps.InfoWindow();
       service = new google.maps.places.PlacesService(this.mapService.map);
       service.nearbySearch({
         location: { lat: position[0], lng: position[1] },
@@ -278,10 +277,10 @@ export class PoiComponent implements OnInit, OnDestroy {
 
         this.ngZone.run(() => {
 
-          let markerbin = [];
-          let createMarker = (place) => {
+          const markerbin = [];
+          const createMarker = (place) => {
             if (!nomarker) {
-              let marker = new google.maps.Marker({
+              const marker = new google.maps.Marker({
                 map: this.mapService.map,
                 icon: {
                   url: geticonUrl
