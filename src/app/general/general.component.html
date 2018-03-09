@@ -1,65 +1,40 @@
-<div class="row no-gutters">
-    <div class="col-sm-12 col-md-12 col-lg-12">
-        <div class="generalImageContainer">
-            <img src="{{global.lageCheckAssetPath}}/assets/img/kantons/{{cantonCode}}.jpg" alt="basel" class="cityImage">
-            <div class="kantonContainer">
-                <img src="{{global.lageCheckAssetPath}}/assets/img/muncipality/CH_{{muncipalityId}}.gif" class="kantonImage"> 
-                <span class="muncipalityText">{{generaldata[0].districtName}}</span>                         
-            </div>
-        </div>
+<div class="container-fluid no-padding">
+    <div class="generalImageContainer" [style.background-image]="backgroundImg">
+        <!-- <img src="{{global.lageCheckAssetPath}}/assets/img/kantons/{{cantonCode}}.jpg" [alt]="muncipalityId" class="cityImage"> -->
+        <img src="{{global.lageCheckAssetPath}}/assets/img/muncipality/CH_{{muncipalityId}}.gif" class="kantonImage">
+        <span class="muncipalityText">{{generaldata[0].districtName}}</span>
     </div>
 </div>
-
-<!--Muncipality & Canton -->
-<div class="row no-gutters row-header">
-    <div class="col-md-6" >
-        <span class="col-text-small">{{ 'GENERAL.MUNICIPALITY' | translate }}</span>
+<div class="row">
+    <div class="col col-lg-6">
+        <p class="text-muted">{{ 'GENERAL.MUNICIPALITY' | translate }}</p>
+        <span class="g-number">{{generaldata[0].municipalityName}}</span>
     </div>
-    <div class="col-md-6">
-        <span class="col-text-small">{{ 'GENERAL.CANTON' | translate }}</span>
-    </div>
-</div>
-<div class="row no-gutters row-header">
-    <div class="col-md-6 col-header">
-        <span class="col-text-large">{{generaldata[0].municipalityName}}</span>
-    </div>
-    <div class="col-md-6 col-header">
-        <span class="col-text-large">{{generaldata[0].cantonName}}</span>
+    <div class="col col-lg-6">
+        <p class="text-muted">{{ 'GENERAL.CANTON' | translate }}</p>
+        <span class="g-number">{{generaldata[0].cantonName}}</span>
     </div>
 </div>
-
-<!--District & CommunityType -->
-<div class="row no-gutters row-header">
-        <div class="col-md-6" >
-            <span class="col-text-small">{{ 'GENERAL.DISTRICT' | translate }}</span>
-        </div>
-        <div class="col-md-6">
-            <span class="col-text-small">{{ 'GENERAL.COMMUNITYTYPE' | translate }}</span>
-        </div>
-</div>
-<div class="row no-gutters row-header">
-    <div class="col-md-6 col-header">
-        <span class="col-text-large">{{generaldata[0].districtName}}</span>
+<hr>
+<div class="row">
+    <div class="col col-lg-6">
+        <p class="text-muted">{{ 'GENERAL.DISTRICT' | translate }}</p>
+        <span class="g-number">{{generaldata[0].districtName}}</span>
     </div>
-    <div class="col-md-6 col-header">
-        <span class="col-text-large">{{generaldata[0].municipalityTypeName}}</span>
+    <div class="col col-lg-6">
+        <p class="text-muted">{{ 'GENERAL.COMMUNITYTYPE' | translate }}</p>
+        <span class="g-number">{{generaldata[0].municipalityTypeName}}</span>
     </div>
 </div>
-
-<!--Area & PopulationDensity -->
-<div class="row no-gutters row-header">
-        <div class="col-md-6" >
-            <span class="col-text-small">{{ 'GENERAL.AREA' | translate }}</span>
-        </div>
-        <div class="col-md-6">
-            <span class="col-text-small">{{ 'GENERAL.POPULATIONDENSITY' | translate }}</span>
-        </div>
-</div>
-<div class="row no-gutters row-header">
-    <div class="col-md-6 col-header">
-        <span class="col-text-large">{{generaldata[0].gemeindeArea}} Km<sup>2</sup></span>
+<hr>
+<div class="row">
+    <div class="col col-lg-6">
+        <p class="text-muted">{{ 'GENERAL.AREA' | translate }}</p>
+        <span class="g-number">{{generaldata[0].gemeindeArea}} Km<sup>2</sup></span>
     </div>
-    <div class="col-md-6 col-header">
-        <span class="col-text-large">{{generaldata[0].populationDensity}} per/Km<sup>2</sup></span>
+    <div class="col col-lg-6">
+        <p class="text-muted">{{ 'GENERAL.POPULATIONDENSITY' | translate }}</p>
+        <span class="g-number">{{generaldata[0].populationDensity}} per/Km<sup>2</sup></span>
     </div>
 </div>
+<hr>

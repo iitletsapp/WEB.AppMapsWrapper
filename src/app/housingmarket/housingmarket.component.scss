@@ -4,18 +4,18 @@ p {
     margin-bottom: 0;
     font-family: Helvetica;
     font-size: 1rem;
-    color: #8C8F93!important;
+    color: $quarternary-color;
 }
 .p-number{
     font-family: Helvetica;
     font-size: 1.44rem;
-    color: #383838!important;
+    color: $quarternary-color;
 }
 
 .p-label{
     font-family: Helvetica;
     font-size: 1rem;
-    color: #000000;
+    color: $primary-color;
     font-weight: bold;
 }
 
