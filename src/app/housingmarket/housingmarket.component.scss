@@ -1,8 +1,24 @@
-ul{
-    color: #404040;
+@import '~sass/variables';
+
+p {
+    margin-bottom: 0;
+    font-family: Helvetica;
+    font-size: 1rem;
+    color: #8C8F93!important;
 }
 .p-number{
-    font-weight: 100;
-    font-size: 1.1rem;
-    color: black;
+    font-family: Helvetica;
+    font-size: 1.44rem;
+    color: #383838!important;
+}
+
+.p-label{
+    font-family: Helvetica;
+    font-size: 1rem;
+    color: #000000;
+    font-weight: bold;
+}
+
+.hr-black{
+    margin-top: 0!important;
 }

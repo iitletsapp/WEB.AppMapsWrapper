@@ -18,10 +18,15 @@ export class MacroService {
     }
 
     public getLocationInfo(lat: number, lng: number) {
+        this.apiKey = this.global.apiKey;
+        if (this.apiKey === null || this.apiKey === '') {
+            this.apiKey = Config.MAPSAPIKEY;
+        }
+
         const header = new Headers();
         header.append('Accept', 'application/json');
         // tslint:disable-next-line:max-line-length
-        header.append('x', Config.MAPSAPIKEY);
+        header.append('x', this.apiKey);
 
         return this.http
             .get(Config.APPMAPSAPI + `v1/locationinfo?countryCode=CH&lat=${lat}&lon=${lng}`, { headers: header })
