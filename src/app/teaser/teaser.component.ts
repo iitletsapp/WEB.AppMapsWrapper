@@ -36,7 +36,7 @@ export class TeaserComponent implements OnInit {
     public municipalitygaugeclassification;
     public municipalitygaugeminMax = ['', ''];
     public municipalitygaugeminThreshold = .01;
-    public municipalitygaugeimgURL = 'assets/img/icons/generalinfo.svg';
+    public municipalitygaugeimgURL = 'assets/img/icons/generalinfo-grey.svg';
     // gauge address
     public addressgaugedata = this.addressfactor;
     public addressgaugeextent = [5, 1];
@@ -44,7 +44,7 @@ export class TeaserComponent implements OnInit {
     public addressgaugeclassification;
     public addressgaugeminMax = ['', ''];
     public addressgaugeminThreshold = .01;
-    public addressgaugeimgURL = 'assets/img/icons/map-marker.svg';
+    public addressgaugeimgURL = 'assets/img/icons/map-marker-grey.svg';
     // barchart
     public layerone = 'onecont';
     public layertwo = 'twocont';

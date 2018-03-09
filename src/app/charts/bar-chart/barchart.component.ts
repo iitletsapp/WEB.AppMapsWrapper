@@ -59,7 +59,7 @@ export class BarChartComponent implements OnInit, AfterViewInit {
             .range([height, 0]);
 
         let colorScale = d3.scaleOrdinal()
-            .range(['#AAFFC7', '#5FCC9C', '#42c4d6', '#8e8d29', '#2b2789', '#79258c']);
+            .range(['#f19b2c', '#f0c330', '#3a99d8', '#239f85', '#e54d42', '#095682']);
 
         let svg = d3.select(`#${this.containerId}`)
             .append('svg')
