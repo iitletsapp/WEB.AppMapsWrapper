@@ -14,10 +14,12 @@
     "TITLE": "search for location"
   },
   "GENERAL": {
+    "MUNICIPALITY": "Municipality",
+    "CANTON": "Canton",
     "DISTRICT": "District",
+    "COMMUNITYTYPE": "Community Type",
     "AREA": "Area",
-    "POPULATIONDENSITY": "Population density",
-    "MUNICIPALITYTYPE": "Type of municipality"
+    "POPULATIONDENSITY": "Population density" 
   },
   "POPULATION": {
     "POPULATION": "Population",
@@ -38,10 +40,10 @@
 
   },
   "HOUSINGMARKERT": {
-    "INDEX": "Home Index",
-    "VACANCY": "Vacancy Rate",
-    "HOUSINGSTOCK": "Housing Stock",
-    "NEWHOUSING": "New Housing last 5 ears"
+    "INDEX": "home index",
+    "VACANCY": "vacancy rate",
+    "HOUSINGSTOCK": "housing stock",
+    "NEWHOUSING": "new housing last 5 years"
 
   },
   "NAVIGATION": {
@@ -65,7 +67,7 @@
   },
   "NOISE": {
     "TITLE": "Noise",
-    "SUBTITLE": "Noise level at your selected address.",
+    "SUBTITLE": "Show noise by activating a noise type of your choice and clicking an address point on the map.",
     "STREET": "Street noise",
     "RAIL": "Rail noise",
     "PLANE": "Plane noise",
