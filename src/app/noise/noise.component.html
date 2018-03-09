@@ -1,67 +1,64 @@
 <div class="jumbotron">
     <div class="row">
         <div class="col">
-            <h1 class="text-capitalize">{{ 'NOISE.TITLE' | translate }} <img [hidden]="!loading" src="{{global.lageCheckAssetPath}}/assets/img/rolling.gif" alt="loading"></h1> 
             <p class="text-muted">{{ 'NOISE.SUBTITLE' | translate }}</p>
+            <img [hidden]="!loading" src="{{global.lageCheckAssetPath}}/assets/img/rolling.gif" alt="loading">
         </div>
     </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col-6">
-                    <h6>{{ 'NOISE.STREET' | translate }}</h6>
-                    <small [hidden]="!streetnoiseval">{{ 'NOISE.INDB' | translate }}
-                        <b class="h4">{{streetnoiseval}}</b>
-                    </small>
-                </div>
-                <div class="col-3">
-                    <i class="fa fa-car mt-1 fa-2x"></i>
-                </div>
-                <div class="col-3">
-                    <div class="p-2">
-                        <input type="checkbox" name="checkbox1" id="streetnoise" class="ios-toggle" data-visible="off" toggled (change)="getLayer($event)"
-                        />
-                        <label for="streetnoise" class="checkbox-label" data-off="" data-on=""></label>
-                    </div>
-                </div>
-                <div class="row" [hidden]="!streetnoiseval">
-                    <div class="col-6">
-                        <app-colorramp val="{{streetnoiseval}}" layer="streetnoisecontainer"></app-colorramp>
-                    </div>
-                </div>
+    <div class="row">
+        <div class="col-6">
+            <h6>{{ 'NOISE.STREET' | translate }}</h6>
+            <small [hidden]="!streetnoiseval">{{ 'NOISE.INDB' | translate }}
+                <b class="h4">{{streetnoiseval}}</b>
+            </small>
+        </div>
+        <div class="col-3">
+            <i class="fa fa-car mt-1 fa-2x"></i>
+        </div>
+        <div class="col-3">
+            <div class="p-2">
+                <input type="checkbox" name="checkbox1" id="streetnoise" class="ios-toggle" data-visible="off" toggled (change)="getLayer($event)"
+                />
+                <label for="streetnoise" class="checkbox-label" data-off="" data-on=""></label>
             </div>
-        </li>
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col-6">
-                    <h6>{{ 'NOISE.RAIL' | translate }}</h6>
-                </div>
-                <div class="col-3">
-                    <i class="fa fa-train mt-1 fa-2x"></i>
-                </div>
-                <div class="col-3">
-                    <div class="p-2">
-                        <input type="checkbox" name="checkbox1" id="railnoise" class="ios-toggle" data-visible="off" toggled (change)="getLayer($event)"/>
-                        <label for="railnoise" class="checkbox-label" data-off="" data-on=""></label>
-                    </div>
-                </div>
+        </div>
+        <div class="row" [hidden]="!streetnoiseval">
+            <div class="col-6">
+                <app-colorramp val="{{streetnoiseval}}" layer="streetnoisecontainer"></app-colorramp>
             </div>
-        </li>
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col-6">
-                    <h6>{{ 'NOISE.PLANE' | translate }}</h6>
-                </div>
-                <div class="col-3">
-                    <i class="fa fa-plane mt-1 fa-2x"></i>
-                </div>
-                <div class="col-3">
-                    <div class="p-2">
-                        <input type="checkbox" name="checkbox1" id="planenoise" class="ios-toggle" data-visible="off" toggled (change)="getLayer($event)"/>
-                        <label for="planenoise" class="checkbox-label" data-off="" data-on=""></label>
-                    </div>
-                </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <h6>{{ 'NOISE.RAIL' | translate }}</h6>
+        </div>
+        <div class="col-3">
+            <i class="fa fa-train mt-1 fa-2x"></i>
+        </div>
+        <div class="col-3">
+            <div class="p-2">
+                <input type="checkbox" name="checkbox1" id="railnoise" class="ios-toggle" data-visible="off" toggled (change)="getLayer($event)"
+                />
+                <label for="railnoise" class="checkbox-label" data-off="" data-on=""></label>
             </div>
-        </li>
-    </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <h6>{{ 'NOISE.PLANE' | translate }}</h6>
+        </div>
+        <div class="col-3">
+            <i class="fa fa-plane mt-1 fa-2x"></i>
+        </div>
+        <div class="col-3">
+            <div class="p-2">
+                <input type="checkbox" name="checkbox1" id="planenoise" class="ios-toggle" data-visible="off" toggled (change)="getLayer($event)"
+                />
+                <label for="planenoise" class="checkbox-label" data-off="" data-on=""></label>
+            </div>
+        </div>
+    </div>
+    <h6>Noise level reference</h6>
+    <hr class="hr-black">
+    <img src="{{global.lageCheckAssetPath}}/assets/img/noise-reference-en.svg" alt="noise level reference">
 </div>
