@@ -10,7 +10,7 @@ import { GetMunicipalityService } from '../../services/getmunicipality.service';
 
 export class TaxesComponent implements OnInit {
  public tax;
- public dataforbarchart,
+ public dataforbarchart;
  public barchartcontainer = 'taxesbarchart';
 
   public barchart: string = 'barchart';

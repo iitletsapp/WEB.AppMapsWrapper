@@ -38,10 +38,10 @@
 
   },
   "HOUSINGMARKERT": {
-    "INDEX": "home index",
-    "VACANCY": "vacancy rate",
-    "HOUSINGSTOCK": "housing stock",
-    "NEWHOUSING": "new housing last 5 years"
+    "INDEX": "Home Index",
+    "VACANCY": "Vacancy Rate",
+    "HOUSINGSTOCK": "Housing Stock",
+    "NEWHOUSING": "New Housing last 5 ears"
 
   },
   "NAVIGATION": {

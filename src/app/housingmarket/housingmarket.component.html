@@ -1,33 +1,25 @@
-<ul class="d-flex justify-content-between list-unstyled">
-        <li>
-            <h6><u>{{ 'HOUSINGMARKERT.INDEX' | translate }}</u></h6>
-        </li>
-    </ul>
+
+<h6 class="p-label d-inline-block">{{ 'HOUSINGMARKERT.INDEX' | translate }}</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
+<hr class="hr-black">    
     <app-linechart [containerId]="linecontainer" [data]="dataforlinearrayMarket" [xText]="xLabel"></app-linechart>
-    <hr>
-    <ul class="d-flex justify-content-between list-unstyled">
-        <li>
-            <h6>{{ 'HOUSINGMARKERT.VACANCY' | translate }}</h6>
-        </li>
-        <li>
-            <span class="p-number">{{housingMarketVacancy}}%</span>
-        </li>
-    </ul>
-    <ul class="d-flex justify-content-between list-unstyled">
-        <li>
-            <h6>{{ 'HOUSINGMARKERT.HOUSINGSTOCK' | translate }}</h6>
-        </li>
-        <li>
-            <span class="p-number">{{housingStock | number }}</span>
-        </li>
-    </ul>
-    <ul class="d-flex justify-content-between list-unstyled">
-        <li>
-            <h6>{{ 'HOUSINGMARKERT.NEWHOUSING' | translate }}</h6>
-        </li>
-        <li>
-            <span class="p-number">{{newHousing | number}}</span>
-        </li>
-    </ul>
-    <hr>
+    
+<h6 class="p-label">Key figures</h6>
+<hr class="hr-black">
+<div class="row">
+    <div class="col col-lg-6">
+        <p class="text-muted">{{ 'HOUSINGMARKERT.VACANCY' | translate }}</p>
+        <span class="p-number">{{housingMarketVacancy*100}} %</span>
+    </div>
+    <div class="col col-lg-6">
+        <p class="text-muted">{{ 'HOUSINGMARKERT.HOUSINGSTOCK' | translate }}</p>
+        <span class="p-number">{{housingStock | number}}</span>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col col-lg-6">
+        <p class="text-muted">{{ 'HOUSINGMARKERT.NEWHOUSING' | translate }}</p>
+        <span class="p-number">{{newHousing | number}}</span>
+    </div>    
+</div>
     
