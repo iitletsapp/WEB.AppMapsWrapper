@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="col col-lg-6 text-center">
-            <div [hidden]="!macrofactor" class="fancy-box">
+            <div [hidden]="!macrofactor">
                     <app-gauge-chart 
                     [data]="macrofactor"
                     [extent]="municipalitygaugeextent"
@@ -19,12 +19,12 @@
                     [classification]="municipalitygaugeclassification"
                     [minMax]="municipalitygaugeminMax"
                     [minThreshold]="municipalitygaugeminThreshold"
+                    [imgURL]="municipalitygaugeimgURL"
                     ></app-gauge-chart>
-                    <h4>{{macrofactortext}} <i class="fa fa-check-circle fa-1x text-success" aria-hidden="true"></i></h4>
+                    <h4 class="title-rating">{{macrofactortext}} <i class="fa fa-check-circle fa-1x text-success" aria-hidden="true"></i></h4>
             </div>
         </div>
     </div>
-    <hr>
     <div class="row">
         <div class="col col-lg-6">
             <div class="card">
@@ -78,7 +78,7 @@
             </div>
         </div>
     </div>
-    <hr>
+    <hr class="hr-black">
     <div class="mb-4"></div>
     <div class="row">
         <div class="col col-lg-6">
@@ -90,7 +90,7 @@
                 </div>
         </div>
         <div class="col col-lg-6 text-center">
-            <div [hidden]="!addressfactor" class="fancy-box">
+            <div [hidden]="!addressfactor">
                     <app-gauge-chart 
                     [data]="addressfactor"
                     [extent]="addressgaugeextent"
@@ -98,12 +98,12 @@
                     [classification]="addressgaugeclassification"
                     [minMax]="addressgaugeminMax"
                     [minThreshold]="addressgaugeminThreshold"
+                    [imgURL]="addressgaugeimgURL"
                     ></app-gauge-chart>
-                    <h4 class="d-inline">{{addressfactortext}} <i class="fa fa-check-circle fa-1x text-success" aria-hidden="true"></i></h4>
+                    <h4 class="d-inline title-rating">{{addressfactortext}} <i class="fa fa-check-circle fa-1x text-success" aria-hidden="true"></i></h4>
             </div>
         </div>
     </div>
-    <hr>
     <div class="row">
         <div class="col col-lg-6">
             <div class="card">
