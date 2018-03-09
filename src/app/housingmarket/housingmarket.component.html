@@ -8,7 +8,7 @@
 <div class="row">
     <div class="col col-lg-6">
         <p class="text-muted">{{ 'HOUSINGMARKERT.VACANCY' | translate }}</p>
-        <span class="p-number">{{housingMarketVacancy*100}} %</span>
+        <span class="p-number">{{housingMarketVacancy | percent:'.1-1'}}</span>
     </div>
     <div class="col col-lg-6">
         <p class="text-muted">{{ 'HOUSINGMARKERT.HOUSINGSTOCK' | translate }}</p>
