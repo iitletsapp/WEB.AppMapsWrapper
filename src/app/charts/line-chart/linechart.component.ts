@@ -185,11 +185,11 @@ export class LineChartComponent implements OnInit, AfterViewInit {
 
             // indicator content
             focus.append('rect')
+                .attr('width', 50)
+                .attr('height', 20)
                 .attr('x', -25)
                 .attr('y', -30)
                 .attr('rx', 0.9)
-                .style('width', 50)
-                .style('height', 20)
                 .style('fill', '#485465')
                 .style('opacity', 0.7);
 
@@ -202,7 +202,7 @@ export class LineChartComponent implements OnInit, AfterViewInit {
             focus.append('text')
                 .attr('dx', '-0.81em')
                 .attr('dy', '-1.45em')
-                .style('font-size', '11')
+                .style('font-size', '11px')
                 .style('fill', '#FFFFFF');
 
             focus.append('polygon')
