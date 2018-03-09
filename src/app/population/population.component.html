@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col">
         <p class="text-muted">{{ 'POPULATION.POPULATION' | translate }}</p>
-        <span class="p-number">{{populationrate}}</span>
+        <span class="p-number">{{populationrate | number}}</span>
     </div>
 </div>
 <hr class="hr-black">
@@ -21,17 +21,17 @@
     </div>
     <div class="col col-lg-6">
         <p class="text-muted">{{ 'POPULATION.UNEMPLOYMENTRATE' | translate }}</p>
-        <span class="p-number">{{unemploymentrate}} %</span>
+        <span class="p-number">{{unemploymentrate | percent:'.1-1'}} </span>
     </div>
 </div>
 <hr>
 <div class="row">
     <div class="col col-lg-6">
         <p class="text-muted">{{ 'POPULATION.INCOMETAX' | translate }}</p>
-        <span class="p-number"><small>CHF</small> {{incometaxperson}}</span>
+        <span class="p-number">{{incometaxperson | currency:'CHF'}}</span>
     </div>
     <div class="col col-lg-6">
         <p class="text-muted">{{ 'POPULATION.POPULATIONGROWTH' | translate }}</p>
-        <span class="p-number">{{populationgrowth}} %</span>
+        <span class="p-number">{{populationgrowth | percent:'.1-1'}}</span>
     </div>
 </div>
