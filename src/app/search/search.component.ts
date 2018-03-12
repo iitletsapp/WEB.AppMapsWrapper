@@ -89,29 +89,35 @@ export class SearchComponent implements OnInit {
             }, (error) => {
                 console.log(error);
             }, () => {
-                this.macro.getPopulation(this.lat, this.lng).subscribe((res) => {
-                    this.apiobj.emitChange(res.municipalityPopulationEvolutionIndex, 'population');
-                    this.apiobj.emitChange(res.municipalityRatios, 'populationratio');
-                });
-                this.macro.getTax(this.lat, this.lng).subscribe((res) => {
-                    this.apiobj.emitChange(res.municipalityTaxCharge, 'tax');
-                });
-                this.macro.getHousingMarket(this.lat, this.lng).subscribe((res) => {
-                    this.apiobj.emitChange(res.municipalityPrivateRealEstatePriceIndex, 'housingMarket');
-                    this.apiobj.emitChange(res.housingAreaMarketConstructionActivity, 'housingMarketConstructionActivity');
-                    this.apiobj.emitChange(res.housingAreaMarketVacancyRate[3].municipalityValue, 'housingMarketVacancy');
-                });
-                // this.macro.getStreetNoise(this.lat, this.lng).subscribe((res) => {
-                //     this.apiobj.emitChange(res.results.data, 'streetnoise');
-                // });
-                // this.macro.getRailNoise(this.lat, this.lng).subscribe((res) => {
-                //     this.apiobj.emitChange(res.results.data, 'railnoise');
-                // });
-                // this.macro.getPlaneNoise(this.lat, this.lng).subscribe((res) => {
-                //     this.apiobj.emitChange(res.results.data, 'planenoise');
-                // });
+                console.log('\nmunicipality info loaded!');
             });
 
+        }, (error) => {
+            console.log('ortId issue', error);
+        }, () => {
+            console.log('ortId done');
+
+            this.macro.getPopulation(this.lat, this.lng).subscribe((res) => {
+                this.apiobj.emitChange(res.municipalityPopulationEvolutionIndex, 'population');
+                this.apiobj.emitChange(res.municipalityRatios, 'populationratio');
+            }, () => {}, () => console.log('population done'));
+            this.macro.getTax(this.lat, this.lng).subscribe((res) => {
+                this.apiobj.emitChange(res.municipalityTaxCharge, 'tax');
+            }, () => {}, () => console.log('tax done'));
+            this.macro.getHousingMarket(this.lat, this.lng).subscribe((res) => {
+                this.apiobj.emitChange(res.municipalityPrivateRealEstatePriceIndex, 'housingMarket');
+                this.apiobj.emitChange(res.housingAreaMarketConstructionActivity, 'housingMarketConstructionActivity');
+                this.apiobj.emitChange(res.housingAreaMarketVacancyRate[3].municipalityValue, 'housingMarketVacancy');
+            }, () => {}, () => console.log('housing market done'));
+            // this.macro.getStreetNoise(this.lat, this.lng).subscribe((res) => {
+            //     this.apiobj.emitChange(res.results.data, 'streetnoise');
+            // });
+            // this.macro.getRailNoise(this.lat, this.lng).subscribe((res) => {
+            //     this.apiobj.emitChange(res.results.data, 'railnoise');
+            // });
+            // this.macro.getPlaneNoise(this.lat, this.lng).subscribe((res) => {
+            //     this.apiobj.emitChange(res.results.data, 'planenoise');
+            // });
         });
     }
 

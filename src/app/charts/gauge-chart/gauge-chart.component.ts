@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, AfterViewInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as d3 from 'd3';
@@ -9,23 +9,27 @@ import * as _ from 'lodash';
   templateUrl: './gauge-chart.component.html',
   styleUrls: ['./gauge-chart.component.scss']
 })
-export class GaugeChartComponent implements OnInit, OnChanges {
+export class GaugeChartComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() public data;
   @Input() public extent;
   @Input() public containerId: string;
   @Input() public classification: any[];
   @Input() public minMax: string[];
   @Input() public minThreshold: number;
-
+  @Input() public imgURL;
+  private isready = false;
 
   constructor() {}
 
   public ngOnInit() {}
 
   public ngOnChanges() {
-    if (this.data) {
+    if (this.containerId && this.isready) {
       this.initChart();
     }
+  }
+  public ngAfterViewInit() {
+    this.isready = true;
   }
 
   public initChart() {
@@ -74,7 +78,7 @@ export class GaugeChartComponent implements OnInit, OnChanges {
     let current = quantizeForUser(quantizeForArc(this.data));
 
     // Arc Defaults
-    let arc = d3.arc().innerRadius(iR).outerRadius(oR).startAngle(-120 * (pi / 180));
+    let arc = d3.arc().innerRadius(iR).outerRadius(oR).cornerRadius(20).startAngle(-120 * (pi / 180));
 
     // Place svg element
     let svg = d3.select(`#${this.containerId}`)
@@ -85,6 +89,13 @@ export class GaugeChartComponent implements OnInit, OnChanges {
       .call(responsivefy)
       .append('g')
         .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
+
+      svg.append('svg:image')
+        .attr('x', -40)
+        .attr('y', 70)
+        .attr('width', '90px')
+        .attr('height', '90px')
+        .attr('xlink:href', `${this.imgURL}`);
 
 
     let background = svg.append('path')
@@ -123,14 +134,13 @@ export class GaugeChartComponent implements OnInit, OnChanges {
     let currentText = svg.append('text')
       .attr('transform', 'translate(0,' + -(iR / 4) + ')') // Push up from center 1/4 of innerRadius
       .attr('text-anchor', 'middle')
-      .style('font-size', '66')
-      .style('font-weight', '100')
-      .style('font-family', 'Helvetica', 'serif')
+      .style('font-size', '66px')
+      .style('font-weight', '600')
       .text(current)
       .transition()
-      .duration(1000)
-      .ease(d3.easeBounceOut)
-      .style('transform', 'scale(1.1)');
+        .duration(1000)
+        .ease(d3.easeBounceOut)
+        .style('transform', 'scale(1.1)');
 
     function responsivefy(svg) {
       // get container + svg aspect ratio

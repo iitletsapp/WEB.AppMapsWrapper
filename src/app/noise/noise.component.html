@@ -1,19 +1,20 @@
 <div class="jumbotron">
     <div class="row">
         <div class="col">
-            <p class="text-muted">{{ 'NOISE.SUBTITLE' | translate }}</p>
             <img [hidden]="!loading" src="{{global.lageCheckAssetPath}}/assets/img/rolling.gif" alt="loading">
+            <h6>{{ 'NOISE.SUBTITLE' | translate }}</h6>
+            <hr class="hr-black">
         </div>
     </div>
     <div class="row">
         <div class="col-6">
-            <h6>{{ 'NOISE.STREET' | translate }}</h6>
+            <h6 class="noise-title">{{ 'NOISE.STREET' | translate }}</h6>
             <small [hidden]="!streetnoiseval">{{ 'NOISE.INDB' | translate }}
                 <b class="h4">{{streetnoiseval}}</b>
             </small>
         </div>
         <div class="col-3">
-            <i class="fa fa-car mt-1 fa-2x"></i>
+            <img class="noise-icons" src="{{global.lageCheckAssetPath}}/assets/img/icons/car.svg" alt="street noise">
         </div>
         <div class="col-3">
             <div class="p-2">
@@ -30,10 +31,10 @@
     </div>
     <div class="row">
         <div class="col-6">
-            <h6>{{ 'NOISE.RAIL' | translate }}</h6>
+            <h6 class="noise-title">{{ 'NOISE.RAIL' | translate }}</h6>
         </div>
         <div class="col-3">
-            <i class="fa fa-train mt-1 fa-2x"></i>
+            <img class="noise-icons" src="{{global.lageCheckAssetPath}}/assets/img/icons/train.svg" alt="rail noise">
         </div>
         <div class="col-3">
             <div class="p-2">
@@ -45,10 +46,10 @@
     </div>
     <div class="row">
         <div class="col-6">
-            <h6>{{ 'NOISE.PLANE' | translate }}</h6>
+            <h6 class="noise-title">{{ 'NOISE.PLANE' | translate }}</h6>
         </div>
         <div class="col-3">
-            <i class="fa fa-plane mt-1 fa-2x"></i>
+            <img class="noise-icons" src="{{global.lageCheckAssetPath}}/assets/img/icons/plane.svg" alt="plane noise">
         </div>
         <div class="col-3">
             <div class="p-2">
@@ -58,7 +59,7 @@
             </div>
         </div>
     </div>
-    <h6>Noise level reference</h6>
+    <h6 class="mt-4">Noise level reference</h6>
     <hr class="hr-black">
     <img src="{{global.lageCheckAssetPath}}/assets/img/noise-reference-en.svg" alt="noise level reference">
 </div>

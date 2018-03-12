@@ -1,34 +1,40 @@
-<div class="generalImageContainer">
-    <img src="{{global.lageCheckAssetPath}}/assets/img/kantons/cityimage.png" alt="basel" class="cityImage">
-    <div class="kantonContainer">
-        <img src="{{global.lageCheckAssetPath}}/assets/img/kantons/basel.png" alt="basel" class="kantonImage">
+<div class="container-fluid no-padding">
+    <div class="generalImageContainer" [style.background-image]="backgroundImg">
+        <!-- <img src="{{global.lageCheckAssetPath}}/assets/img/kantons/{{cantonCode}}.jpg" [alt]="muncipalityId" class="cityImage"> -->
+        <img src="{{global.lageCheckAssetPath}}/assets/img/muncipality/CH_{{muncipalityId}}.gif" class="kantonImage">
+        <span class="muncipalityText">{{generaldata[0].districtName}}</span>
     </div>
 </div>
-
-<ul class="list-group list-group-flush">
-    <li class="list-group-item">
-        <span class="font-weight-bold">{{ 'GENERIC.MUNICIPALITY' | translate }}</span>
-        <span [hidden]="!generaldata[0].municipalityName" class="pull-right g-number">{{generaldata[0].municipalityName}}</span>
-        <!-- <img src="{{global.lageCheckAssetPath}}/assets/img/kantons/basel.png" alt="basel"> -->
-    </li>
-    <li class="list-group-item">
-        <span class="font-weight-bold">{{ 'GENERAL.DISTRICT' | translate }}</span>
-        <span [hidden]="!generaldata[0].districtName" class="pull-right g-number">{{generaldata[0].districtName}}</span>
-    </li>
-    <li class="list-group-item">
-        <span class="font-weight-bold">{{ 'GENERAL.AREA' | translate }}</span>
-        <span class="pull-right g-number">todo km
-            <sup>2</sup>
-        </span>
-    </li>
-    <li class="list-group-item">
-        <span class="font-weight-bold">{{ 'GENERAL.POPULATIONDENSITY' | translate }}</span>
-        <span class="pull-right g-number">todo pers./km
-            <sup>2</sup>
-        </span>
-    </li>
-    <li class="list-group-item">
-        <span class="font-weight-bold">{{ 'GENERAL.MUNICIPALITYTYPE' | translate }}</span>
-        <span [hidden]="!generaldata[0].municipalityTypeName" class="pull-right g-number">{{generaldata[0].municipalityTypeName}}</span>
-    </li>
-</ul>
+<div class="row">
+    <div class="col col-lg-6">
+        <p class="text-muted">{{ 'GENERAL.MUNICIPALITY' | translate }}</p>
+        <span class="g-number">{{generaldata[0].municipalityName}}</span>
+    </div>
+    <div class="col col-lg-6">
+        <p class="text-muted">{{ 'GENERAL.CANTON' | translate }}</p>
+        <span class="g-number">{{generaldata[0].cantonName}}</span>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col col-lg-6">
+        <p class="text-muted">{{ 'GENERAL.DISTRICT' | translate }}</p>
+        <span class="g-number">{{generaldata[0].districtName}}</span>
+    </div>
+    <div class="col col-lg-6">
+        <p class="text-muted">{{ 'GENERAL.COMMUNITYTYPE' | translate }}</p>
+        <span class="g-number">{{generaldata[0].municipalityTypeName}}</span>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col col-lg-6">
+        <p class="text-muted">{{ 'GENERAL.AREA' | translate }}</p>
+        <span class="g-number">{{generaldata[0].gemeindeArea}} Km<sup>2</sup></span>
+    </div>
+    <div class="col col-lg-6">
+        <p class="text-muted">{{ 'GENERAL.POPULATIONDENSITY' | translate }}</p>
+        <span class="g-number">{{generaldata[0].populationDensity}} per/Km<sup>2</sup></span>
+    </div>
+</div>
+<hr>

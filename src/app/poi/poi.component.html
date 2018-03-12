@@ -17,9 +17,8 @@
                                 <label for="restaurant" class="checkbox-label" data-off="" data-on=""></label>
                             </div>
                         </div>
-                        <div class="col-3">
-                            <small>{{ 'POI.MINDISTANCE' | translate }}</small>
-                            <b class="d-block">{{distances.restaurant}}<small>m</small></b>
+                        <div class="col-3" [hidden]="!distances.restaurant">
+                            <b class="d-block">{{distances.restaurant}}<small>meters</small></b>
                         </div>
                     </div>
                 </li>
@@ -37,9 +36,8 @@
                                 <label for="shop" class="checkbox-label" data-off="" data-on=""></label>
                             </div>
                         </div>
-                        <div class="col-3">
-                            <small>{{ 'POI.MINDISTANCE' | translate }}</small>
-                            <b  class="d-block">{{distances.shop}}<small>m</small></b>
+                        <div class="col-3" [hidden]="!distances.shop">
+                            <b  class="d-block">{{distances.shop}}<small>meters</small></b>
                         </div>
                     </div>
                 </li>
@@ -57,9 +55,8 @@
                                 <label for="learn" class="checkbox-label" data-off="" data-on=""></label>
                             </div>
                         </div>
-                        <div class="col-3">
-                            <small>{{ 'POI.MINDISTANCE' | translate }}</small>
-                            <b class="d-block">{{distances.learn}}<small>m</small></b>
+                        <div class="col-3" [hidden]="!distances.learn">
+                            <b class="d-block">{{distances.learn}}<small>meters</small></b>
                         </div>
                     </div>
                 </li>
@@ -77,9 +74,8 @@
                                 <label for="leisure" class="checkbox-label" data-off="" data-on=""></label>
                             </div>
                         </div>
-                        <div class="col-3">
-                            <small>{{ 'POI.MINDISTANCE' | translate }}</small>
-                            <b class="d-block">{{distances.leisure}}<small>m</small></b>
+                        <div class="col-3" [hidden]="!distances.leisure">
+                            <b class="d-block">{{distances.leisure}}<small>meters</small></b>
                         </div>
                     </div>
                 </li>
@@ -97,9 +93,8 @@
                                 <label for=emergency class="checkbox-label" data-off="" data-on=""></label>
                             </div>
                         </div>
-                        <div class="col-3">
-                            <small>{{ 'POI.MINDISTANCE' | translate }}</small>
-                            <b class="d-block">{{distances.emergency}}<small>m</small></b>
+                        <div class="col-3" [hidden]="!distances.emergency">
+                            <b class="d-block">{{distances.emergency}}<small>meters</small></b>
                         </div>
                     </div>
                 </li>
@@ -117,15 +112,14 @@
                                 <label for=connectivity class="checkbox-label" data-off="" data-on=""></label>
                             </div>
                         </div>
-                        <div class="col-3">
-                            <small>{{ 'POI.MINDISTANCE' | translate }}</small>
-                            <b class="d-block">{{distances.connectivity}}<small>m</small></b>
+                        <div class="col-3" [hidden]="!distances.connectivity">
+                            <b class="d-block">{{distances.connectivity}}<small>meters</small></b>
                         </div>
                     </div>
                 </li>
             </ul>
-            <p>List of places</p>
-            <hr>
+            <h6 class="mt-4">List of places</h6>
+            <hr class="hr-black">
             <div *ngIf="listResult">
                 <ul class="list-unstyled">
                 <li *ngFor="let list of wholelist" class="clearfix" [ngClass]="[list.class]"><h6 class="text-muted">{{list.place}}</h6> <span class="pull-right text-muted"><i class="fa fa-location-arrow text-warning" title="distance"></i> {{list.distance}}<i>m</i></span> </li>

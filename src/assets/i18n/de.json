@@ -14,10 +14,12 @@
     "TITLE": "search for location-de"
   },
   "GENERAL": {
+    "MUNICIPALITY": "Municipality-de",
+    "CANTON": "Canton-de",
     "DISTRICT": "District-de",
+    "COMMUNITYTYPE": "Community Type-de",
     "AREA": "Area-de",
-    "POPULATIONDENSITY": "Population density-de",
-    "MUNICIPALITYTYPE": "Type of municipality-de"
+    "POPULATIONDENSITY": "Population density-de" 
   },
   "POPULATION": {
     "POPULATION": "Population-de",
@@ -38,10 +40,10 @@
 
   },
   "HOUSINGMARKERT": {
-    "INDEX": "Home Index-de",
-    "VACANCY": "Vacancy Rate-de",
-    "HOUSINGSTOCK": "Housing Stock-de",
-    "NEWHOUSING": "New Housing last 5 years-de"
+    "INDEX": "home index-de",
+    "VACANCY": "vacancy rate-de",
+    "HOUSINGSTOCK": "housing stock-de",
+    "NEWHOUSING": "new housing last 5 years-de"
 
   },
   "NAVIGATION": {

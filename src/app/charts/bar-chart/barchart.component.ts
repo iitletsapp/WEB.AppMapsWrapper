@@ -59,7 +59,7 @@ export class BarChartComponent implements OnInit, AfterViewInit {
             .range([height, 0]);
 
         let colorScale = d3.scaleOrdinal()
-            .range(['#AAFFC7', '#5FCC9C', '#42c4d6', '#8e8d29', '#2b2789', '#79258c']);
+            .range(['#f19b2c', '#f0c330', '#3a99d8', '#239f85', '#e54d42', '#095682']);
 
         let svg = d3.select(`#${this.containerId}`)
             .append('svg')
@@ -97,7 +97,7 @@ export class BarChartComponent implements OnInit, AfterViewInit {
         // add the x Axis
         g.append('g')
             .attr('transform', 'translate(0,' + height + ')')
-            .call(d3.axisBottom(x).tickValues([''])); // labels are outside the chart
+            .call(d3.axisBottom(x).tickValues([]).tickSizeOuter([0])); // labels are outside the chart
 
         // add the y Axis
         g.append('g')
