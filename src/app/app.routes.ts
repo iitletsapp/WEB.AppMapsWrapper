@@ -5,6 +5,7 @@ import { NoiseComponent } from './noise/noise.component';
 import { MunicipalityComponent } from './municipality/municipality.component';
 import { AddressComponent } from './address/address.component';
 import { FurtherContentComponent } from './furthercontent/furthercontent.component';
+import {NavigationComponent} from './navigation/navigation.component';
 
 export const appRoutes: Routes = [
     {path: '', component: TeaserComponent},
@@ -13,4 +14,5 @@ export const appRoutes: Routes = [
     {path: 'furthercontent/municipality', component: MunicipalityComponent},
     {path: 'furthercontent/address', component: AddressComponent},
     {path: 'furthercontent/address/noise', component: NoiseComponent},
+    {path: 'furthercontent/navigation', component: NavigationComponent}
   ];

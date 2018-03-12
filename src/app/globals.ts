@@ -8,4 +8,6 @@ export class Globals {
   apiKey = '';
   lageCheckAssetPath = Config.LAGECHECKASSETPATH;
   addressSearch = false;
+  macroData: any;
+  addressData: any;
 }

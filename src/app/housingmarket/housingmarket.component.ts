@@ -19,8 +19,7 @@ export class HousingMarketComponent implements OnInit {
     public xLabel = 'cost';
     public linecontainer = 'housingmarketchartcontainer';
 
-    constructor(private municipality: GetMunicipalityService) 
-    {
+    constructor(private municipality: GetMunicipalityService) {
         this.housingMarket = this.municipality.requestData('housingMarket');
         this.housingMarketConstruction = this.municipality.requestData('housingMarketConstructionActivity');
         this.housingMarketVacancy = this.municipality.requestData('housingMarketVacancy');
