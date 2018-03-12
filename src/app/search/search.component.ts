@@ -8,6 +8,7 @@ import { } from '@types/googlemaps';
 import { MacroService } from '../../services/macro.service';
 import { GetMunicipalityService } from '../../services/getmunicipality.service';
 import { Globals } from '../globals';
+import { MapService } from '../../services/map.service';
 
 @Component({
     selector: 'app-search',
@@ -34,7 +35,8 @@ export class SearchComponent implements OnInit {
         private progressbar: ProgressBarService,
         private getAddress: GetAddressService,
         private apiobj: GetMunicipalityService,
-        public global: Globals
+        public global: Globals,
+        private mapService: MapService
     ) {
         this.getAddress.changeEmitted$.subscribe((newAddress) => {
             this.address = newAddress;
@@ -75,7 +77,7 @@ export class SearchComponent implements OnInit {
         if (!this.address) {
             this.global.addressSearch = false;
             return;
-        }
+        }        
         this.progressbar.startProgressBar();
         this.global.addressSearch = true;
         setTimeout(() => {
@@ -117,7 +119,11 @@ export class SearchComponent implements OnInit {
             // });
             // this.macro.getPlaneNoise(this.lat, this.lng).subscribe((res) => {
             //     this.apiobj.emitChange(res.results.data, 'planenoise');
-            // });
+            // });          
+
+            this.macro.getPolygons(this.lat, this.lng).subscribe((res) => { 
+                 this.apiobj.emitChange(res, 'polygons');           
+         }, () => {}, () => console.log('Map polygons done'));
         });
     }
 

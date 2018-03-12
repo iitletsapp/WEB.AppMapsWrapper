@@ -1,4 +1,4 @@
-<nav class="d-flex flex-row justify-content-between">
+<!-- <nav class="d-flex flex-row justify-content-between">
   <a 
     routerLinkActive="active" 
     routerLink="/furthercontent/municipality"
@@ -11,7 +11,27 @@
     class="nav-link text-uppercase">
     <span>Address</span>
   </a>
-  <!-- <select #langSelect (change)="translate.use(langSelect.value)">
+ <select #langSelect (change)="translate.use(langSelect.value)">
     <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
-  </select> -->
-</nav>
+  </select> 
+</nav> -->
+
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:#383838;height:50px;color:white;position:relative">
+    <div style="position:absolute;top:50%;width: 100%;margin-top: -12px;">
+      <!-- <button type="button" style="float:left;background:transparent;border:0px;color:white;">Back</button> -->
+      <a routerLink=""  [queryParams]="{id:'navigation'}"><img src="{{global.lageCheckAssetPath}}/assets/img/back.png" style="width:20px;height:20px" /></a>
+      <span style="margin-left:20px">{{header}}</span>
+    </div>
+  </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">   
+      <app-general *ngIf="generalFlag"></app-general>
+      <app-population *ngIf="populationFlag"></app-population>
+      <app-taxes *ngIf="taxesFlag"></app-taxes>
+      <app-housingmarket *ngIf="housingMarketFlag"></app-housingmarket>
+      <app-poi *ngIf="poiFlag"></app-poi>
+      <app-noise *ngIf="noiseFlag"></app-noise>
+    </div>
+</div>

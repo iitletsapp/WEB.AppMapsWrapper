@@ -58,7 +58,6 @@ export class TeaserComponent implements OnInit {
         private municipality: GetMunicipalityService,
         // private translate: TranslateService,
         public global: Globals
-
     ) {
         // let defaultLang = 'de';
         // translate.addLangs(['en','de']);
@@ -73,18 +72,50 @@ export class TeaserComponent implements OnInit {
                 this.markerLastLocation = data;
                 this.getmacro();
             });
+
+
     }
 
     public ngOnInit() {
-        //
+        // if (this.global.macroData !== undefined) {
+            //     console.log('Macro Data : ' + this.global.macroData );
+            //     this.macrofactor = this.global.macroData.macroRatingClass1To5;
+            //     this.macrofactortext = this.global.macroData.macroRatingClass1To5Text;
+            //     this.municipalitygaugeclassification = [this.macrofactor.toString()];
+            //     console.log('GaugeData OnInit: ' + this.municipalitygaugeclassification);
+            //     if (this.macrofactor <= 3) {
+            //         this.municipalitytext = 'ranks higher on average.';
+            //     } else {
+            //         this.municipalitytext = 'ranks lower on average.';
+            //     }
+            // }
+
+            // if (this.global.addressData !== null || this.global.addressData !== 'undefined') {
+                // console.log('Address Data');
+                // this.muncipalityId = this.macro.macroObj.municipalityID;
+                // const generaldata = this.municipality.requestData('general');
+                // this.municipalityname = generaldata[0].municipalityName;
+                // this.addressfactor = this.global.addressData.results.microRatingClass1To5;
+                // this.addressfactortext = this.global.addressData.results.microRatingClass1To5Text;
+                // this.addressname = this.address.requestAddress();
+                // this.addressgaugeclassification = [this.addressfactor.toString()];
+                // console.log('AddressData OnInit: ' + this.addressgaugeclassification);
+                // if (this.addressfactor <= 3) {
+                //     this.addresstext = 'this address ranks higher among the average.';
+                // } else {
+                //     this.addresstext = 'this address ranks lower among the average.';
+                // }
+            // }
     }
 
     public getmacro() {
         this.macro.getMacroRatings(this.markerLastLocation[0], this.markerLastLocation[1]).subscribe((res) => {
+            this.global.macroData = res.results;
             this.loading = !this.loading;
             this.macrofactor = res.results.macroRatingClass1To5;
             this.macrofactortext = res.results.macroRatingClass1To5Text;
             this.municipalitygaugeclassification = [this.macrofactor.toString()];
+            console.log('GaugeData OnLoad: ' + this.municipalitygaugeclassification);
             if (this.macrofactor <= 3) {
                 this.municipalitytext = 'ranks higher on average.';
             } else {
@@ -98,10 +129,12 @@ export class TeaserComponent implements OnInit {
             const generaldata = this.municipality.requestData('general');
             this.municipalityname = generaldata[0].municipalityName;
             this.macro.getAddressRatings(this.markerLastLocation[0], this.markerLastLocation[1]).subscribe((res) => {
+                this.global.addressData = res;
                 this.addressfactor = res.results.microRatingClass1To5;
                 this.addressfactortext = res.results.microRatingClass1To5Text;
                 this.addressname = this.address.requestAddress();
                 this.addressgaugeclassification = [this.addressfactor.toString()];
+                console.log('AddressData OnLoad: ' + this.addressgaugeclassification);
                 if (this.addressfactor <= 3) {
                     this.addresstext = 'this address ranks higher among the average.';
                 } else {

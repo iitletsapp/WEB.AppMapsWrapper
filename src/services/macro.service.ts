@@ -80,6 +80,9 @@ export class MacroService {
         // tslint:disable-next-line:max-line-length
         return this.get(`v1/microfactors?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}&factorId=16`);
     }
+    public getPolygons(lat: number, lng: number) { 
+        return this.get(`v1/NeighbourPolygons?countryCode=CH&municipalityId=${this.macroObj.municipalityID}&date=20180226`);
+    }
 
     private get(url) {
         this.apiKey = this.global.apiKey;

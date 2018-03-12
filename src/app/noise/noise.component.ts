@@ -6,7 +6,7 @@ import { GetMunicipalityService } from '../../services/getmunicipality.service';
 import { ProgressBarService } from '../../services/progressbar.service';
 import * as _ from 'lodash';
 import * as d3 from 'd3';
-import { Globals} from '../globals'
+import { Globals} from '../globals';
 
 @Component({
   selector: 'app-noise',
