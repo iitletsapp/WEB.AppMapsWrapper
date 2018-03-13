@@ -1,8 +1,8 @@
 <div class="jumbotron component-margin">
     <div class="row">
         <div class="col">
-            <img [hidden]="!loading" src="{{global.lageCheckAssetPath}}/assets/img/rolling.gif" alt="loading">
-            <h6>{{ 'NOISE.SUBTITLE' | translate }}</h6>
+            <h6 class="d-inline-block">{{ 'NOISE.SUBTITLE' | translate }}</h6>
+            <img class="loading-flag" [hidden]="!loading" src="{{global.lageCheckAssetPath}}/assets/img/rolling.gif" alt="loading">
             <hr class="hr-black">
         </div>
     </div>

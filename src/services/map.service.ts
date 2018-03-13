@@ -9,8 +9,10 @@ export class MapService {
     }
     public startMapsAPI(settings: Function) {
         this.mapsAPILoader.load().then(() => { this.map = settings(); });
-    };
+    }
     public getMap() {
-        return this.map;
+        if (this.map) {
+            return this.map;
+        }
     }
 }
