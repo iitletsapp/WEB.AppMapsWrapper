@@ -33,7 +33,7 @@ export class NavigationComponent implements OnInit {
     console.log(param);
     if (param === 'general') {
         this.generalFlag = true;
-        this.header = 'General';
+        this.header = 'General Information';
     } else if (param === 'population') {
         this.populationFlag = true;
         this.header = 'Population';
