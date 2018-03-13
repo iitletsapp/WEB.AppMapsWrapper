@@ -46,7 +46,7 @@ export class GeneralComponent implements OnInit {
          this.geoJson = this.municipality.requestData('polygons');
          this.geoJson = gjfilter(this.geoJson,this.filter);
          this.mapService.map.data.addGeoJson(this.geoJson);        
-         this.mapService.map.setZoom(this.mapService.map.getZoom() - 6);   
+         //this.mapService.map.setZoom(this.mapService.map.getZoom() - 6);   
          this.mapService.map.data.setStyle({
           fillColor: '#FA974B',         
           //strokeWeight: '2px',
