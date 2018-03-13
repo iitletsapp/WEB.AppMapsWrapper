@@ -66,7 +66,6 @@ export class TeaserComponent implements OnInit {
 
         getMarker.changeEmitted$.subscribe(
             (data) => {
-                this.progressbar.startProgressBar();
                 this.markerLastLocation = data;
                 this.getmacro();
             });
@@ -107,14 +106,14 @@ export class TeaserComponent implements OnInit {
     }
 
     public getmacro() {
+        this.loading = !this.loading;
         this.macro.getMacroRatings(this.markerLastLocation[0], this.markerLastLocation[1]).subscribe((res) => {
             this.global.macroData = res.results;
-            this.loading = !this.loading;
             this.macrofactor = res.results.macroRatingClass1To5;
             this.macrofactortext = res.results.macroRatingClass1To5Text;
             this.municipalitygaugeclassification = [this.macrofactor.toString()];
             console.log('GaugeData OnLoad: ' + this.municipalitygaugeclassification);
-            this.progressbar.endProgressBar();
+
         }, (error) => {
             console.log(error);
         }, () => {

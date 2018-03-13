@@ -1,23 +1,13 @@
+@import '~sass/variables';
+
 .jumbotron {
     padding-top: 1rem;
-    .border-right{
-        border-right: 1px solid rgba(0,0,0,.1);
-    }
-    .fa-star {
-        color: #e2df84;
-    }
-    .small-poor {
-        color: #41e0f2; 
-    }
-    .small-exceptional {
-        color: #e0190b;
-    }
     a {
-        color: #2d2d2d;
+        color: $ternary-color;
         text-decoration: none;
         &:hover {
-            box-shadow: -1px 2px 10px 0px rgba(241, 146, 51, 0.4);
-            text-shadow: 1px 1px rgba(241, 146, 51, 0.8);
+            box-shadow: -1px 2px 10px 0px rgba($secondary-color, 0.4);
+            text-shadow: 1px 1px rgba($secondary-color, 0.8);
         }
     }
     img{
@@ -30,7 +20,7 @@
         width: 1.5rem;
     }
     .fancy-box{
-        box-shadow: -1px 2px 10px 0px rgba(0,0,0,0.1);
+        box-shadow: -1px 2px 10px 0px rgba($primary-color, 0.1);
         border-radius: 2%;
         padding: 0.8rem 0;
     }
@@ -40,6 +30,7 @@
     }  
     .flags{
         width: 2.2rem;
+        border: 1px solid $quarternary-color;
     }
 }
 
