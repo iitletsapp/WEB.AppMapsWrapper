@@ -77,7 +77,7 @@ export class SearchComponent implements OnInit {
         if (!this.address) {
             this.global.addressSearch = false;
             return;
-        }        
+        }
         this.progressbar.startProgressBar();
         this.global.addressSearch = true;
         setTimeout(() => {
