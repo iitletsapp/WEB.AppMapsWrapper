@@ -32,10 +32,35 @@
         width: 2.2rem;
         border: 1px solid $quarternary-color;
     }
+
+    .teaser-header-row{
+        border-bottom:2px solid #8C8F93;
+        margin-bottom:2em;
+    }
+
+    .teaser-header-text{
+        color: #383838;
+        font-size:large;
+    }
+
+    .card {
+        border:2px solid black;
+        margin-bottom: 2em;
+    }
+
+    .card-subtitle{
+        margin-top: 0;
+    }
+
+    .card-text{
+        color:black;
+        font-weight: bold
+    }
 }
 
 a.disabled {
     pointer-events: none;
     cursor: default;
  }
+
 
