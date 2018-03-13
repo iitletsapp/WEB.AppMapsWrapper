@@ -5,36 +5,38 @@
         <span class="muncipalityText">{{generaldata[0].municipalityName}}</span>
     </div>
 </div>
-<div class="row">
-    <div class="col col-lg-6">
-        <p class="text-muted">{{ 'GENERAL.MUNICIPALITY' | translate }}</p>
-        <span class="g-number">{{generaldata[0].municipalityName}}</span>
+<div class="component-margin">
+    <div class="row">
+        <div class="col col-lg-6">
+            <p class="text-muted">{{ 'GENERAL.MUNICIPALITY' | translate }}</p>
+            <span class="g-number">{{generaldata[0].municipalityName}}</span>
+        </div>
+        <div class="col col-lg-6">
+            <p class="text-muted">{{ 'GENERAL.CANTON' | translate }}</p>
+            <span class="g-number">{{generaldata[0].cantonName}}</span>
+        </div>
     </div>
-    <div class="col col-lg-6">
-        <p class="text-muted">{{ 'GENERAL.CANTON' | translate }}</p>
-        <span class="g-number">{{generaldata[0].cantonName}}</span>
+    <hr>
+    <div class="row">
+        <div class="col col-lg-6">
+            <p class="text-muted">{{ 'GENERAL.DISTRICT' | translate }}</p>
+            <span class="g-number">{{generaldata[0].districtName}}</span>
+        </div>
+        <div class="col col-lg-6">
+            <p class="text-muted">{{ 'GENERAL.COMMUNITYTYPE' | translate }}</p>
+            <span class="g-number">{{generaldata[0].municipalityTypeName}}</span>
+        </div>
     </div>
+    <hr>
+    <div class="row">
+        <div class="col col-lg-6">
+            <p class="text-muted">{{ 'GENERAL.AREA' | translate }}</p>
+            <span class="g-number">{{generaldata[0].gemeindeArea}} Km<sup>2</sup></span>
+        </div>
+        <div class="col col-lg-6">
+            <p class="text-muted">{{ 'GENERAL.POPULATIONDENSITY' | translate }}</p>
+            <span class="g-number">{{generaldata[0].populationDensity}} per/Km<sup>2</sup></span>
+        </div>
+    </div>
+    <hr>
 </div>
-<hr>
-<div class="row">
-    <div class="col col-lg-6">
-        <p class="text-muted">{{ 'GENERAL.DISTRICT' | translate }}</p>
-        <span class="g-number">{{generaldata[0].districtName}}</span>
-    </div>
-    <div class="col col-lg-6">
-        <p class="text-muted">{{ 'GENERAL.COMMUNITYTYPE' | translate }}</p>
-        <span class="g-number">{{generaldata[0].municipalityTypeName}}</span>
-    </div>
-</div>
-<hr>
-<div class="row">
-    <div class="col col-lg-6">
-        <p class="text-muted">{{ 'GENERAL.AREA' | translate }}</p>
-        <span class="g-number">{{generaldata[0].gemeindeArea}} Km<sup>2</sup></span>
-    </div>
-    <div class="col col-lg-6">
-        <p class="text-muted">{{ 'GENERAL.POPULATIONDENSITY' | translate }}</p>
-        <span class="g-number">{{generaldata[0].populationDensity}} per/Km<sup>2</sup></span>
-    </div>
-</div>
-<hr>

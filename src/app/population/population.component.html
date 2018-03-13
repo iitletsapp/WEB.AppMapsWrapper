@@ -1,37 +1,39 @@
 
-<div class="row">
-    <div class="col">
-        <p class="text-muted">{{ 'POPULATION.POPULATION' | translate }}</p>
-        <span class="p-number">{{populationrate | number}}</span>
+<div class="component-margin">
+    <div class="row">
+        <div class="col">
+            <p class="text-muted">{{ 'POPULATION.POPULATION' | translate }}</p>
+            <span class="p-number">{{populationrate | number}}</span>
+        </div>
     </div>
-</div>
-<hr class="hr-black">
-<h6 class="d-inline-block">Population growth</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
-<hr class="hr-black">
-<app-linechart [containerId]="linecontainer" [data]="dataforlinearray" [xText]="xLabel"></app-linechart>
-<!-- <h6>{{ 'POPULATION.AGECATEGORY' | translate }}</h6> -->
-<!-- <app-horizontalbarchart></app-horizontalbarchart> -->
-<!-- <hr> -->
-<h6>Key figures</h6>
-<hr class="hr-black">
-<div class="row">
-    <div class="col col-lg-6">
-        <p class="text-muted">{{ 'POPULATION.FOREIGNERQUOTA' | translate }}</p>
-        <span class="p-number">{{foreignerquota | percent:'.1-1'}}</span>
+    <hr class="hr-black">
+    <h6 class="d-inline-block">Population growth</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
+    <hr class="hr-black">
+    <app-linechart [containerId]="linecontainer" [data]="dataforlinearray" [xText]="xLabel"></app-linechart>
+    <!-- <h6>{{ 'POPULATION.AGECATEGORY' | translate }}</h6> -->
+    <!-- <app-horizontalbarchart></app-horizontalbarchart> -->
+    <!-- <hr> -->
+    <h6>Key figures</h6>
+    <hr class="hr-black">
+    <div class="row">
+        <div class="col col-lg-6">
+            <p class="text-muted">{{ 'POPULATION.FOREIGNERQUOTA' | translate }}</p>
+            <span class="p-number">{{foreignerquota | percent:'.1-1'}}</span>
+        </div>
+        <div class="col col-lg-6">
+            <p class="text-muted">{{ 'POPULATION.UNEMPLOYMENTRATE' | translate }}</p>
+            <span class="p-number">{{unemploymentrate | percent:'.1-1'}} </span>
+        </div>
     </div>
-    <div class="col col-lg-6">
-        <p class="text-muted">{{ 'POPULATION.UNEMPLOYMENTRATE' | translate }}</p>
-        <span class="p-number">{{unemploymentrate | percent:'.1-1'}} </span>
-    </div>
-</div>
-<hr>
-<div class="row">
-    <div class="col col-lg-6">
-        <p class="text-muted">{{ 'POPULATION.INCOMETAX' | translate }}</p>
-        <span class="p-number">{{incometaxperson | currency:'CHF'}}</span>
-    </div>
-    <div class="col col-lg-6">
-        <p class="text-muted">{{ 'POPULATION.POPULATIONGROWTH' | translate }}</p>
-        <span class="p-number">{{populationgrowth | percent:'.1-1'}}</span>
+    <hr>
+    <div class="row">
+        <div class="col col-lg-6">
+            <p class="text-muted">{{ 'POPULATION.INCOMETAX' | translate }}</p>
+            <span class="p-number">{{incometaxperson | currency:'CHF'}}</span>
+        </div>
+        <div class="col col-lg-6">
+            <p class="text-muted">{{ 'POPULATION.POPULATIONGROWTH' | translate }}</p>
+            <span class="p-number">{{populationgrowth | percent:'.1-1'}}</span>
+        </div>
     </div>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from 'ng2-translate';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Globals} from '../globals';
+import { GetMarkerService } from '../../services/getmarker.service';
 
 @Component({
   selector: 'app-navigation',
@@ -59,5 +60,6 @@ export class NavigationComponent implements OnInit {
       this.toggleNav();
     }
   }
+
 
 }
