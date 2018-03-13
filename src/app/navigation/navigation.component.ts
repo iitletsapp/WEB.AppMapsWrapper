@@ -3,6 +3,7 @@ import { TranslateService } from 'ng2-translate';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Globals} from '../globals';
 import { GetMarkerService } from '../../services/getmarker.service';
+import { MapService } from '../../services/map.service';
 
 @Component({
   selector: 'app-navigation',
@@ -22,7 +23,8 @@ export class NavigationComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
     public translate: TranslateService,
-    public global: Globals
+    public global: Globals,
+    private mapService: MapService
   ) {
     translate.addLangs(['de', 'en']);
     translate.setDefaultLang('en');
@@ -59,6 +61,15 @@ export class NavigationComponent implements OnInit {
     if (this.collapsedNav) {
       this.toggleNav();
     }
+  }
+
+  public clearPolygons(){
+    //this.mapService.map.setMap(null);
+     this.mapService.map.data.setStyle({             
+          strokeWeight: 0,
+          "fillOpacity": 0,
+          "strokeOpacity":0
+        });
   }
 
 

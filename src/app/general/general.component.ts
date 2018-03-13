@@ -6,6 +6,9 @@ import { MacroService } from '../../services/macro.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MapService } from '../../services/map.service';
 
+declare var require:any;
+const gjfilter = require ('geojson-filter');
+
 @Component({
     selector: 'app-general',
     templateUrl: 'general.component.html',
@@ -19,6 +22,9 @@ export class GeneralComponent implements OnInit {
     public cantonCode;
     public backgroundImg;
     public geoJson ='';
+    public filter;
+
+  
 
     constructor(
         private municipality: GetMunicipalityService,
@@ -36,19 +42,22 @@ export class GeneralComponent implements OnInit {
             `url(${this.global.lageCheckAssetPath}/assets/img/kantons/${this.cantonCode}.jpg)`
         );
 
+        this.filter = ["in", "municipalityId", `${this.muncipalityId}`];
          this.geoJson = this.municipality.requestData('polygons');
-         this.mapService.map.data.addGeoJson(this.geoJson);
+         this.geoJson = gjfilter(this.geoJson,this.filter);
+         this.mapService.map.data.addGeoJson(this.geoJson);        
+         this.mapService.map.setZoom(this.mapService.map.getZoom() - 6);   
          this.mapService.map.data.setStyle({
           fillColor: '#FA974B',         
           //strokeWeight: '2px',
           strokeColor: '#FA974B'
          // fillOpacity:1.2
         });
-    }     
+    }       
 
     public ngOnInit() {
-    }
+    }   
 
-    
+
 
 }
