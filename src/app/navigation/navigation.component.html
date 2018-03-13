@@ -20,7 +20,7 @@
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:#383838;height:50px;color:white;position:relative">
     <div style="position:absolute;width: 100%;vertical-align:middle;margin-left:20px;margin-top:10px;">
       <!-- <button type="button" style="float:left;background:transparent;border:0px;color:white;">Back</button> -->
-      <a style="background:none;" routerLink=""  [queryParams]="{id:'navigation'}"><img src="{{global.lageCheckAssetPath}}/assets/img/back.png"/></a>
+      <a style="background:none;" routerLink=""  [queryParams]="{id:'navigation'}"(click)="clearPolygons()"><img src="{{global.lageCheckAssetPath}}/assets/img/back.png"/></a>
       <span style="margin-left:10px;font-size:large;vertical-align:middle;">{{header}}</span>
     </div>
   </div>
