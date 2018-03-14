@@ -16,7 +16,8 @@ export class GetMunicipalityService {
         poi: null,
         streetnoise: null,
         railnoise: null,
-        planenoise: null
+        planenoise: null,
+        polygons: null
     };
     // Observable string streams
 
@@ -29,5 +30,4 @@ export class GetMunicipalityService {
     public requestData(type: string) {
         return this.apiObj[type];
     }
-
 }
