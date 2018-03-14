@@ -45,7 +45,7 @@ export class MacroService {
     }
 
     public getMacroRatings(lat: number, lng: number) {
-        return this.get(`v1/macroratings?countryCode=CH&lat=${lat}&lon=${lng}`);
+        return this.get(`v1/macroratings?countryCode=CH&lat=${lat}&lon=${lng}&municipalityId=${this.macroObj.municipalityID}`);
     }
 
     public getMunicipalityInfo(lat: number, lng: number) {
