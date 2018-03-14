@@ -82,11 +82,16 @@ export class SearchComponent implements OnInit {
         this.progressbar.startProgressBar();
         this.global.addressSearch = true;
         setTimeout(() => {
-            this.getMarker.emitChange([this.lat, this.lng]);
             this.getAddress.setFormatedAddress(this.address);
             this.progressbar.endProgressBar();
-        }, 200);
+        }, 100);
+        this.getMarker.emitChange([this.lat, this.lng]);
         this.macro.getLocationInfo(this.lat, this.lng).subscribe(() => {
+
+        }, (error) => {
+            console.log('ortId issue', error);
+        }, () => {
+            console.log('ortId done');
             this.macro.getMunicipalityInfo(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res.townInfo, 'general');
             }, (error) => {
@@ -94,11 +99,6 @@ export class SearchComponent implements OnInit {
             }, () => {
                 console.log('\nmunicipality info loaded!');
             });
-
-        }, (error) => {
-            console.log('ortId issue', error);
-        }, () => {
-            console.log('ortId done');
             this.macro.getPopulation(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res.municipalityPopulationEvolutionIndex, 'population');
                 this.apiobj.emitChange(res.municipalityRatios, 'populationratio');
@@ -120,7 +120,6 @@ export class SearchComponent implements OnInit {
             this.macro.getPlaneNoise(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res.results.data, 'planenoise');
             });
-
             this.macro.getPolygons(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res, 'polygons');
             }, () => { }, () => console.log('Map polygons done'));

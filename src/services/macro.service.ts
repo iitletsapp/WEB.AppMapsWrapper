@@ -5,12 +5,15 @@ import 'rxjs/add/operator/map';
 import { Config } from '../app/appconfig/config';
 import { Globals } from '../app/globals';
 import { global } from '@angular/core/src/util';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class MacroService {
     public macroObj;
     private http: Http;
     public apiKey;
+    public sourceready = new Subject<any>();
+    public changeEmitted$ = this.sourceready.asObservable();
 
     // tslint:disable-next-line:no-shadowed-variable
     constructor(http: Http, public global: Globals) {
@@ -33,19 +36,21 @@ export class MacroService {
             .map((request) =>
                 request.json())
             .map((result) => {
+                console.log('in macro', result);
                 const macrocontainer = new MacroInfo();
                 macrocontainer.ortID = result.results.ortId;
                 macrocontainer.municipalityID = result.results.municipalityId;
                 this.macroObj = macrocontainer;
+                this.sourceready.next(this.macroObj);
                 return macrocontainer;
             });
     }
-    public getAddressRatings(lat: number, lng: number) {
-        return this.get(`v1/microratings?cat=1&countryCode=CH&ortId=${this.macroObj.ortID}&lat=${lat}&lon=${lng}`);
+    public getAddressRatings(lat: number, lng: number, ortID) {
+        return this.get(`v1/microratings?cat=1&countryCode=CH&ortId=${ortID}&lat=${lat}&lon=${lng}`);
     }
 
-    public getMacroRatings(lat: number, lng: number) {
-        return this.get(`v1/macroratings?countryCode=CH&lat=${lat}&lon=${lng}&municipalityId=${this.macroObj.municipalityID}`);
+    public getMacroRatings(lat: number, lng: number, municipalityID: number) {
+        return this.get(`v1/macroratings?countryCode=CH&lat=${lat}&lon=${lng}&municipalityId=${municipalityID}`);
     }
 
     public getMunicipalityInfo(lat: number, lng: number) {

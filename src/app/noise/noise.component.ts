@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, OnDestroy } from '@angular/core';
 import { MapService } from '../../services/map.service';
 import { GetMarkerService } from '../../services/getmarker.service';
 import { MicroService } from '../../services/micro.service';
@@ -13,7 +13,7 @@ import { Globals} from '../globals';
   templateUrl: './noise.component.html',
   styleUrls: ['./noise.component.scss']
 })
-export class NoiseComponent implements OnInit {
+export class NoiseComponent implements OnInit, OnDestroy {
 
   public streetnoiseval: number;
   public generalNoise = {
@@ -45,6 +45,14 @@ export class NoiseComponent implements OnInit {
           this.zoomPropertyFunction(this[el]);
         }
       });
+  }
+  public ngOnDestroy() {
+    const markers = ['streetnoisemarker', 'railnoisemarker', 'planenoisemarker'];
+    markers.forEach((el) => {
+      for (const circle of this[el]) {
+        circle.setMap(null);
+      }
+    });
   }
 
   public getLayer(e) {

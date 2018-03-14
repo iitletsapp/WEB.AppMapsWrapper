@@ -64,32 +64,33 @@ export class TeaserComponent implements OnInit {
         // translate.use(defaultLang );
         // console.log("language=",defaultLang);
 
-        getMarker.changeEmitted$.subscribe(
-            (data) => {
+        this.getMarker.changeEmitted$.subscribe((data) => {
                 this.markerLastLocation = data;
-                setTimeout(() => {
-                    this.getmacro();
-                }, 1000);
             });
+        this.macro.changeEmitted$.subscribe((data) => {
+            this.getmacro(data.municipalityID, data.ortID);
+        });
     }
 
     public ngOnInit() {
 
     }
 
-    public getmacro() {
-        this.loading = !this.loading;
-        this.macro.getMacroRatings(this.markerLastLocation[0], this.markerLastLocation[1]).subscribe((res) => {
+    public getmacro(municalityId, ortID) {
+
+        console.log('in getmacro ortid', ortID);
+        this.loading = true;
+        this.macro.getMacroRatings(this.markerLastLocation[0], this.markerLastLocation[1], municalityId).subscribe((res) => {
             this.global.macroData = res.results;
             this.macrofactor = res.results.macroRatingClass1To5.toFixed(1);
             this.macrofactortext = res.results.macroRatingClass1To5Text;
             this.municipalitygaugeclassification = [this.macrofactor.toString()];
             console.log('GaugeData OnLoad: ' + this.municipalitygaugeclassification);
-
         }, (error) => {
             console.log(error);
+            this.loading = false;
         }, () => {
-            this.macro.getAddressRatings(this.markerLastLocation[0], this.markerLastLocation[1]).subscribe((res) => {
+            this.macro.getAddressRatings(this.markerLastLocation[0], this.markerLastLocation[1], ortID).subscribe((res) => {
                 this.global.addressData = res;
                 this.addressfactor = res.results.microRatingClass1To5;
                 this.addressfactortext = res.results.microRatingClass1To5Text;
@@ -97,11 +98,12 @@ export class TeaserComponent implements OnInit {
                 console.log('AddressData OnLoad: ' + this.addressgaugeclassification);
             }, (error) => {
                 console.log(error);
+                this.loading = false;
             }, () => {
-                this.muncipalityId = this.macro.macroObj.municipalityID;
+                this.muncipalityId = municalityId;
                 this.municipalityname = this.municipality.apiObj.general[0].municipalityName;
                 this.addressname = this.address.requestAddress();
-                this.loading = !this.loading;
+                this.loading = false;
             });
         });
     }
