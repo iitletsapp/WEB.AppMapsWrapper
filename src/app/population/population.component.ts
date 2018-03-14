@@ -26,7 +26,7 @@ export class PopulationComponent implements OnInit {
     private municipality: GetMunicipalityService
   ) {
     this.population = this.municipality.requestData('population');
-    this.populationratio = this.municipality.requestData('populationratio');
+    this.populationratio = this.municipality.requestData('populationratio');     
   }
 
   public ngOnInit() {
@@ -36,8 +36,8 @@ export class PopulationComponent implements OnInit {
 
     this.populationrate = this.populationratio[0].municipalityValue;
     this.foreignerquota = this.populationratio[2].municipalityValue;
-    this.unemploymentrate = this.populationratio[5].municipalityValue;
-    this.incometaxperson = Math.floor(this.populationratio[4].municipalityValue);
+    this.unemploymentrate = this.populationratio[4].municipalityValue;
+    this.incometaxperson = Math.floor(this.populationratio[3].municipalityValue);
     this.populationgrowth = this.populationratio[1].municipalityValue;
   }
 

@@ -4,10 +4,11 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
 @import './variables';
 @import './mixins';
+
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: $font-family-primary;
     margin: 0;
-    padding: 0; // color: $primary-color;
+    padding: 0;
 }
 
 // helper classes
@@ -22,7 +23,7 @@ body {
     border-radius: 0;
     background-color: rgb(255, 255, 255);
     h1 {
-        color: #2d2d2d; //we need config settup here
+        color: $ternary-color; //we need config settup here
         font-size: 1.6rem;
     }
 }

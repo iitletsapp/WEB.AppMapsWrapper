@@ -16,7 +16,7 @@
         color: #7b7b7b;
     }
     img {
-        width: 20px;
+        //width: 20px;
         margin-right: 0.5rem;
     }
     @media (max-width: 767px) {
@@ -77,6 +77,17 @@ li {
 
 .pulse:hover {
     animation: none;
+}
+
+.icon{
+    font-size: 30px;
+    color: black;
+}
+
+.search-button{
+    background-color:white;
+    border-color:white;
+    color:white;
 }
 
 @keyframes pulse {

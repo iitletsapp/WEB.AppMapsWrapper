@@ -6,9 +6,7 @@
             <div [hidden]="!macrofactor" class="mt-3">
                 <img *ngIf="muncipalityId" class="flags" src="{{global.lageCheckAssetPath}}/assets/img/muncipality/CH_{{muncipalityId}}.gif" alt="">&nbsp;
                 <h1 class="font-weight-light d-inline">{{municipalityname}}</h1>
-                <hr>
-                <!-- make the comparation to average function -->
-                <p class="text-muted">{{municipalityname}} {{municipalitytext}}</p>
+
             </div>
         </div>
         <div class="col col-lg-6 text-center">
@@ -26,6 +24,7 @@
             </div>
         </div>
     </div>
+    <div class="teaser-header-row"></div>
     <div class="row">
         <div class="col col-lg-6">
             <div class="card">
@@ -79,15 +78,13 @@
             </div>
         </div>
     </div>
-    <hr class="hr-black">
+    
     <div class="mb-4"></div>
     <div class="row">
         <div class="col col-lg-6">
             <h1>{{ 'GENERIC.ADDRESS' | translate }}</h1>
             <div [hidden]="!macrofactor" class="mt-3">
                     <img class="nomaxheight" src="{{global.lageCheckAssetPath}}/assets/img/map-marker.png" alt="location">&nbsp;<p class="font-weight-light d-inline">{{addressname}}</p>
-                    <hr>
-                    <p class="text-muted">{{addresstext}}</p>
                 </div>
         </div>
         <div class="col col-lg-6 text-center">
@@ -101,10 +98,11 @@
                     [minThreshold]="addressgaugeminThreshold"
                     [imgURL]="addressgaugeimgURL"
                     ></app-gauge-chart>
-                    <h4 class="d-inline title-rating">{{addressfactortext}} <i class="fa fa-check-circle fa-1x text-success" aria-hidden="true"></i></h4>
+                    <h4 class="title-rating">{{addressfactortext}}&nbsp;<i class="fa fa-check-circle fa-1x text-success" aria-hidden="true"></i></h4>
             </div>
         </div>
     </div>
+    <div class="teaser-header-row"></div>
     <div class="row">
         <div class="col col-lg-6">
             <div class="card">

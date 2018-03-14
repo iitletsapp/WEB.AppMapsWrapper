@@ -7,7 +7,7 @@ import { MicroService } from '../services/micro.service';
 import { } from '@types/googlemaps';
 import * as _ from 'lodash';
 import * as d3 from 'd3';
-import{ Globals} from '../app/globals';
+import { Globals} from '../app/globals';
 import { Config } from './appconfig/config';
 import { global } from '@angular/core/src/util';
 import { TranslateService } from 'ng2-translate';

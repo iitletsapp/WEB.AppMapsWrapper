@@ -1,8 +1,8 @@
 <div class="jumbotron component-margin">
     <div class="row">
         <div class="col">
-            <img [hidden]="!loading" src="{{global.lageCheckAssetPath}}/assets/img/rolling.gif" alt="loading">
-            <h6>{{ 'NOISE.SUBTITLE' | translate }}</h6>
+            <h6 class="d-inline-block">{{ 'NOISE.SUBTITLE' | translate }}</h6>
+            <img class="loading-flag" [hidden]="!loading" src="{{global.lageCheckAssetPath}}/assets/img/rolling.gif" alt="loading">
             <hr class="hr-black">
         </div>
     </div>
@@ -61,5 +61,5 @@
     </div>
     <h6 class="mt-4">Noise level reference</h6>
     <hr class="hr-black">
-    <img src="{{global.lageCheckAssetPath}}/assets/img/noise-reference-en.svg" alt="noise level reference">
+    <img class="img-fluid" style="width: 100% \9;" src="{{global.lageCheckAssetPath}}/assets/img/noise-reference-en.svg" alt="noise level reference">
 </div>

@@ -111,18 +111,18 @@ export class SearchComponent implements OnInit {
                 this.apiobj.emitChange(res.housingAreaMarketConstructionActivity, 'housingMarketConstructionActivity');
                 this.apiobj.emitChange(res.housingAreaMarketVacancyRate[3].municipalityValue, 'housingMarketVacancy');
             }, () => {}, () => console.log('housing market done'));
-            // this.macro.getStreetNoise(this.lat, this.lng).subscribe((res) => {
-            //     this.apiobj.emitChange(res.results.data, 'streetnoise');
-            // });
-            // this.macro.getRailNoise(this.lat, this.lng).subscribe((res) => {
-            //     this.apiobj.emitChange(res.results.data, 'railnoise');
-            // });
-            // this.macro.getPlaneNoise(this.lat, this.lng).subscribe((res) => {
-            //     this.apiobj.emitChange(res.results.data, 'planenoise');
-            // });          
+            this.macro.getStreetNoise(this.lat, this.lng).subscribe((res) => {
+                this.apiobj.emitChange(res.results.data, 'streetnoise');
+            }, () => {}, () => console.log('streetnoise done'));
+            this.macro.getRailNoise(this.lat, this.lng).subscribe((res) => {
+                this.apiobj.emitChange(res.results.data, 'railnoise');
+            });
+            this.macro.getPlaneNoise(this.lat, this.lng).subscribe((res) => {
+                this.apiobj.emitChange(res.results.data, 'planenoise');
+            });
 
-            this.macro.getPolygons(this.lat, this.lng).subscribe((res) => { 
-                 this.apiobj.emitChange(res, 'polygons');           
+            this.macro.getPolygons(this.lat, this.lng).subscribe((res) => {
+                 this.apiobj.emitChange(res, 'polygons');
          }, () => {}, () => console.log('Map polygons done'));
         });
     }

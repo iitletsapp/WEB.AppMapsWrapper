@@ -4,7 +4,7 @@ import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class ProgressBarService {
-    public progressbarValue: number = 0;
+    public progressbarValue = 0;
     public emitChangeSource = new Subject<any>();
     public changeEmitted$ = this.emitChangeSource.asObservable();
 
@@ -22,6 +22,6 @@ export class ProgressBarService {
         setTimeout(() => {
             this.progressbarValue = 0;
             this.emitChange();
-        }, 900);
+        }, 500);
     }
 }

@@ -241,11 +241,11 @@ export class PoiComponent implements OnInit, OnDestroy {
 
       switch (poirequested) {
         case 'restaurant':
-          alltypes = ['restaurant'];
+          alltypes = ['restaurant', 'bar'];
           geticonUrl = this.global.lageCheckAssetPath + '/assets/img/icons/svgtopng/restaurant.png';
           break;
         case 'shop':
-          alltypes = ['supermarket'];
+          alltypes = ['supermarket', 'store'];
           geticonUrl = this.global.lageCheckAssetPath + '/assets/img/icons/svgtopng/shops.png';
           break;
         case 'learn':
@@ -271,9 +271,12 @@ export class PoiComponent implements OnInit, OnDestroy {
       service = new google.maps.places.PlacesService(this.mapService.map);
       service.nearbySearch({
         location: { lat: position[0], lng: position[1] },
-        radius: 2000,
-        type: <any> alltypes
-      }, (results, status) => {
+        type: <any> alltypes,
+        keyword: alltypes,
+        radius: 1000,
+        // rankBy: google.maps.places.RankBy.DISTANCE
+      }, (results, status, pagination) => {
+        console.log(results);
 
         this.ngZone.run(() => {
 
@@ -306,15 +309,15 @@ export class PoiComponent implements OnInit, OnDestroy {
             }
           };
 
-          let from = new google.maps.LatLng(position[0], position[1]);
-          let distance = [];
-          let list = [];
-          let calcDistance = (place) => {
+          const from = new google.maps.LatLng(position[0], position[1]);
+          const distance = [];
+          const list = [];
+          const calcDistance = (place) => {
             distance.push(
               Math.floor(google.maps.geometry.spherical.computeDistanceBetween(from, place.geometry.location))
             );
           };
-          let getListresult = (place) => {
+          const getListresult = (place) => {
             list.push({
               class: `${poirequested}-list`,
               type: poirequested,
@@ -331,7 +334,7 @@ export class PoiComponent implements OnInit, OnDestroy {
               calcDistance(results[i]);
               getListresult(results[i]);
             }
-            let cb = () => {
+            const cb = () => {
               this.distances[poirequested] = d3.min(distance);
               this.markerbin[poirequested] = markerbin;
               this.listResult[poirequested] = list;
