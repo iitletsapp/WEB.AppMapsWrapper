@@ -98,8 +98,6 @@ export class PopulationComponent implements OnInit {
         .nice();
       return quant(val);
     }
-
-
   }
 
 }
