@@ -30,7 +30,7 @@ export class PopulationComponent implements OnInit {
   public xLabel = 'population';
   public geoJson = '';
   public extentData = [];
-  public minMax = [];
+  public extent = [];
 
   constructor(
     private municipality: GetMunicipalityService,
@@ -38,7 +38,7 @@ export class PopulationComponent implements OnInit {
   ) {
     this.population = this.municipality.requestData('population');
     this.populationratio = this.municipality.requestData('populationratio');
-    //this.populationage = this.municipality.requestData('populationage');
+    // this.populationage = this.municipality.requestData('populationage');
   }
 
   public ngOnInit() {
@@ -66,38 +66,55 @@ export class PopulationComponent implements OnInit {
     this.geoJson = this.municipality.requestData('polygons');
     this.mapService.map.data.addGeoJson(this.geoJson);
     this.mapService.map.data.setMap(this.mapService.map);
-    this.mapService.map.setZoom(11);
+
+    this.zoom(this.mapService.map);
 
     this.mapService.map.data.forEach((feature) => {
       this.extentData.push(feature.f.populationDensity);
     });
 
+    this.extent.push(Math.min.apply(null, this.extentData));
+    this.extent.push(Math.max.apply(null, this.extentData));
 
-    this.minMax.push(Math.min.apply(null, this.extentData));
-    this.minMax.push(Math.max.apply(null, this.extentData));
-
-    const extent = this.minMax;
-
-    this.mapService.map.data.setStyle(function (feature) {
+    this.mapService.map.data.setStyle((feature) => {
       const populationDesity = feature.f.populationDensity;
       return {
-        fillColor: calcColor(populationDesity),
+        fillColor: this.calcColor(populationDesity),
         strokeWeight: '2px',
-        strokeColor: calcColor(populationDesity)
+        strokeColor: this.calcColor(populationDesity)
       };
     });
+  }
 
-    function calcColor(val) {
-      const quant = d3.scaleQuantize()
-        .domain(extent)
-        .range([
-          '#FFFF6B',
-          '#FAC04B',
-          '#FA974B',
-          '#FA5A4B'])
-        .nice();
-      return quant(val);
+  public zoom(map) {
+    const bounds = new google.maps.LatLngBounds();
+    map.data.forEach((feature) => {
+      this.processPoints(feature.getGeometry(), bounds.extend, bounds);
+    });
+    map.fitBounds(bounds);
+  }
+
+  public processPoints(geometry, callback, thisArg) {
+    if (geometry instanceof google.maps.LatLng) {
+      callback.call(thisArg, geometry);
+    } else if (geometry instanceof google.maps.Data.Point) {
+      callback.call(thisArg, geometry.get());
+    } else {
+      geometry.getArray().forEach((g) => {
+        this.processPoints(g, callback, thisArg);
+      });
     }
   }
 
+  public calcColor(val) {
+    const quant = d3.scaleQuantize()
+      .domain(this.extent)
+      .range([
+        '#FFFF6B',
+        '#FAC04B',
+        '#FA974B',
+        '#FA5A4B'])
+      .nice();
+    return quant(val);
+  }
 }

@@ -52,12 +52,35 @@ export class GeneralComponent implements OnInit {
         this.geoJson = gjfilter(this.geoJson, this.filter);
         this.mapService.map.data.addGeoJson(this.geoJson);
         this.mapService.map.data.setMap(this.mapService.map);
-        this.mapService.map.setZoom(13);
+
+        this.zoom(this.mapService.map);
+
+
         this.mapService.map.data.setStyle({
             fillColor: '#FA974B',
             // strokeWeight: '2px',
             strokeColor: '#FA974B'
         });
+    }
+
+    public zoom(map) {
+        const bounds = new google.maps.LatLngBounds();
+        map.data.forEach((feature) => {
+            this.processPoints(feature.getGeometry(), bounds.extend, bounds);
+        });
+        map.fitBounds(bounds);
+    }
+
+    public processPoints(geometry, callback, thisArg) {
+        if (geometry instanceof google.maps.LatLng) {
+            callback.call(thisArg, geometry);
+        } else if (geometry instanceof google.maps.Data.Point) {
+            callback.call(thisArg, geometry.get());
+        } else {
+            geometry.getArray().forEach((g) => {
+                this.processPoints(g, callback, thisArg);
+            });
+        }
     }
 
 
