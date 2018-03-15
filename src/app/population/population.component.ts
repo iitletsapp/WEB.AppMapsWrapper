@@ -17,6 +17,7 @@ export class PopulationComponent implements OnInit {
   public population;
   public populationrate;
   public populationratio;
+  public populationage;
   public foreignerquota;
   public unemploymentrate;
   public incometaxperson;
@@ -24,6 +25,7 @@ export class PopulationComponent implements OnInit {
   // linechart
   public linecontainer = 'populationlinechart';
   public dataforlinearray;
+  public dataforbararray;
   public xLabel = 'population';
   public geoJson = '';
 
@@ -33,12 +35,17 @@ export class PopulationComponent implements OnInit {
   ) {
     this.population = this.municipality.requestData('population');
     this.populationratio = this.municipality.requestData('populationratio');
+    //this.populationage = this.municipality.requestData('populationage');
   }
 
   public ngOnInit() {
     this.dataforlinearray = this.population.map((el) => {
       return { year: el.publishDate.toString().substring(0, 4), value: Math.floor(el.municipalityValue) };
     });
+
+    // this.dataforbararray = this.populationage.map((el) => {
+    //   return { value: el.value, ageGroup: el.ageGroupText.toString().substring(0, 4) };
+    // });
 
     this.populationrate = this.populationratio[0].municipalityValue;
     this.foreignerquota = this.populationratio[2].municipalityValue;

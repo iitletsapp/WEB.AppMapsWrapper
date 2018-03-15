@@ -22,7 +22,7 @@
     "POPULATIONDENSITY": "Population density-de" 
   },
   "POPULATION": {
-    "POPULATION": "Population-de",
+    "POPULATION": "Total Population-de",
     "AGECATEGORY": "Age category-de",
     "FOREIGNERQUOTA": "foreigner quota-de",
     "UNEMPLOYMENTRATE": "unemployment rate-de",
@@ -95,5 +95,11 @@
     "CLASSIFICATION3": "Good-de",
     "CLASSIFICATION4": "Fair-de",
     "CLASSIFICATION5": "Poor-de"
+  },
+
+  "STARTUP": { 
+    "HEADER1":"The new way to invest in real estate.", 
+    "HEADER2":"Get exclusive in depth analysis of properties in your city." 
   }
+  
 }

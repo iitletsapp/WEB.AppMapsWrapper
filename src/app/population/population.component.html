@@ -7,12 +7,13 @@
         </div>
     </div>
     <hr class="hr-black">
-    <h6 class="d-inline-block">Population growth</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
+    <h6 class="d-inline-block">Population Growth</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
     <hr class="hr-black">
     <app-linechart [containerId]="linecontainer" [data]="dataforlinearray" [xText]="xLabel"></app-linechart>
     <!-- <h6>{{ 'POPULATION.AGECATEGORY' | translate }}</h6> -->
-    <!-- <app-horizontalbarchart></app-horizontalbarchart> -->
+    <!-- <app-horizontalbarchart [containerId]="linecontainer" [data]="dataforlinearray" [xText]="xLabel"></app-horizontalbarchart> -->
     <!-- <hr> -->
+    <br><br>
     <h6>Key figures</h6>
     <hr class="hr-black">
     <div class="row">

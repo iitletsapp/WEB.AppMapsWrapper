@@ -101,7 +101,7 @@ export class LineChartComponent implements OnInit, AfterViewInit {
             .style('fill', 'none')
             .style('opacity', 0.8)
             .style('stroke', 'lightgrey')
-            .style('stroke-opacity', 0.3)
+            .style('stroke-opacity', 0.1)
             .style('height', `${height}`)
             .call(make_y_gridlines(data.length)
                 .tickSize(-width, 0, 0)
@@ -113,19 +113,23 @@ export class LineChartComponent implements OnInit, AfterViewInit {
         g.append('g')
             .attr('class', 'axis axis--x')
             .attr('transform', 'translate(0,' + height + ')')
+            .style('font-size', '8')
             .call(d3.axisBottom(x))
             .append('text')
                 .attr('class', 'axis-title')
-                .attr('dx', `${width}`)
-                .attr('dy', '35')
+                .attr('dx', '200')
+                .attr('dy', '36')
                 .attr('transform', `translate(0, -10)`)
-                .style('text-anchor', 'end')
+                .style('text-anchor', 'middle')
                 .attr('fill', '#5D6971')
-                .text('year');
+                .text('(year)');
+        d3.selectAll('.axis').select('path').style('display', 'none');
+        d3.selectAll('.axis').selectAll('.tick').select('line').style('display', 'none');
 
         // add a y axis and append a label to it
         g.append('g')
             .attr('class', 'axis axis--y')
+            .style('font-size', '8')
             .call(d3.axisLeft(y)
                 .ticks(data.length)
                 .tickSizeOuter(0)
@@ -134,10 +138,14 @@ export class LineChartComponent implements OnInit, AfterViewInit {
                 }))
             .append('text')
             .attr('class', 'axis-title')
-            .attr('dx', 10)
-            .attr('dy', '-0.29em')
+            .attr('dx', -120)
+            .attr('dy', '-4.2em')
+            .style('text-anchor', 'middle')
+            .style('transform', 'rotate(-90deg)')
             .attr('fill', '#5D6971')
-            .text(this.xText);
+            .text('(' + this.xText + ')');
+        d3.selectAll('.axis').select('path').style('display', 'none');
+        d3.selectAll('.axis').selectAll('.tick').select('line').style('display', 'none');
 
         // append the lines based on the data provided
         g.append('path')
