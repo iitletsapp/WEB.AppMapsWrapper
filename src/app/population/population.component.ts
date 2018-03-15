@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { GetMarkerService } from '../../services/getmarker.service';
 import { MacroService } from '../../services/macro.service';
 import { GetMunicipalityService } from '../../services/getmunicipality.service';
+import { MapService } from '../../services/map.service';
+
+declare var require: any;
+const gjfilter = require('geojson-filter');
 
 @Component({
   selector: 'app-population',
@@ -21,12 +25,14 @@ export class PopulationComponent implements OnInit {
   public linecontainer = 'populationlinechart';
   public dataforlinearray;
   public xLabel = 'population';
+  public geoJson = '';
 
   constructor(
-    private municipality: GetMunicipalityService
+    private municipality: GetMunicipalityService,
+    private mapService: MapService
   ) {
     this.population = this.municipality.requestData('population');
-    this.populationratio = this.municipality.requestData('populationratio');     
+    this.populationratio = this.municipality.requestData('populationratio');
   }
 
   public ngOnInit() {
@@ -39,6 +45,24 @@ export class PopulationComponent implements OnInit {
     this.unemploymentrate = this.populationratio[4].municipalityValue;
     this.incometaxperson = Math.floor(this.populationratio[3].municipalityValue);
     this.populationgrowth = this.populationratio[1].municipalityValue;
+
+    this.displayPolygons();
+  }
+
+  public displayPolygons() {
+    this.mapService.map.data.forEach((feature) => {
+      this.mapService.map.data.remove(feature);
+    });
+    this.geoJson = this.municipality.requestData('polygons');
+    this.geoJson = gjfilter(this.geoJson);
+    this.mapService.map.data.addGeoJson(this.geoJson);
+    this.mapService.map.data.setMap(this.mapService.map);
+    this.mapService.map.setZoom(11);
+    this.mapService.map.data.setStyle({
+      fillColor: '#FA974B',
+      // strokeWeight: '2px',
+      strokeColor: '#FA974B'
+    });
   }
 
 }

@@ -74,6 +74,7 @@ export class SearchComponent implements OnInit {
     }
 
     public goto() {
+        this.mapService.map.data.setMap(null);
         if (!this.address) {
             this.global.addressSearch = false;
             return;
@@ -81,11 +82,16 @@ export class SearchComponent implements OnInit {
         this.progressbar.startProgressBar();
         this.global.addressSearch = true;
         setTimeout(() => {
-            this.getMarker.emitChange([this.lat, this.lng]);
             this.getAddress.setFormatedAddress(this.address);
             this.progressbar.endProgressBar();
-        }, 200);
+        }, 100);
+        this.getMarker.emitChange([this.lat, this.lng]);
         this.macro.getLocationInfo(this.lat, this.lng).subscribe(() => {
+
+        }, (error) => {
+            console.log('ortId issue', error);
+        }, () => {
+            console.log('ortId done');
             this.macro.getMunicipalityInfo(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res.townInfo, 'general');
             }, (error) => {
@@ -93,37 +99,30 @@ export class SearchComponent implements OnInit {
             }, () => {
                 console.log('\nmunicipality info loaded!');
             });
-
-        }, (error) => {
-            console.log('ortId issue', error);
-        }, () => {
-            console.log('ortId done');
-
             this.macro.getPopulation(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res.municipalityPopulationEvolutionIndex, 'population');
                 this.apiobj.emitChange(res.municipalityRatios, 'populationratio');
-            }, () => {}, () => console.log('population done'));
+            }, () => { }, () => console.log('population done'));
             this.macro.getTax(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res.municipalityTaxCharge, 'tax');
-            }, () => {}, () => console.log('tax done'));
+            }, () => { }, () => console.log('tax done'));
             this.macro.getHousingMarket(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res.municipalityPrivateRealEstatePriceIndex, 'housingMarket');
                 this.apiobj.emitChange(res.housingAreaMarketConstructionActivity, 'housingMarketConstructionActivity');
-                this.apiobj.emitChange(res.housingAreaMarketVacancyRate[3].municipalityValue, 'housingMarketVacancy');
-            }, () => {}, () => console.log('housing market done'));
+                // this.apiobj.emitChange(res.housingAreaMarketVacancyRate[3].municipalityValue, 'housingMarketVacancy');
+            }, () => { }, () => console.log('housing market done'));
             this.macro.getStreetNoise(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res.results.data, 'streetnoise');
-            }, () => {}, () => console.log('streetnoise done'));
+            }, () => { }, () => console.log('streetnoise done'));
             this.macro.getRailNoise(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res.results.data, 'railnoise');
             });
             this.macro.getPlaneNoise(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res.results.data, 'planenoise');
             });
-
             this.macro.getPolygons(this.lat, this.lng).subscribe((res) => {
-                 this.apiobj.emitChange(res, 'polygons');
-         }, () => {}, () => console.log('Map polygons done'));
+                this.apiobj.emitChange(res, 'polygons');
+            }, () => { }, () => console.log('Map polygons done'));
         });
     }
 

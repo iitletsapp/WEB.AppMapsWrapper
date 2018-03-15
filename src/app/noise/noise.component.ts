@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, AfterViewInit } from '@angular/core';
+import { Component, OnInit, NgZone, OnDestroy } from '@angular/core';
 import { MapService } from '../../services/map.service';
 import { GetMarkerService } from '../../services/getmarker.service';
 import { MicroService } from '../../services/micro.service';
@@ -13,7 +13,7 @@ import { Globals} from '../globals';
   templateUrl: './noise.component.html',
   styleUrls: ['./noise.component.scss']
 })
-export class NoiseComponent implements OnInit, AfterViewInit {
+export class NoiseComponent implements OnInit, OnDestroy {
 
   public streetnoiseval: number;
   public generalNoise = {
@@ -39,20 +39,20 @@ export class NoiseComponent implements OnInit, AfterViewInit {
     public global: Globals) { }
 
   public ngOnInit() {
-
-  }
-  public ngAfterViewInit() {
-    console.log("here");
-    
-    this.isloaded = true;
-    if (this.isloaded) {
-      console.log("here2");
-      
       const markers = ['streetnoisemarker', 'railnoisemarker', 'planenoisemarker'];
       markers.forEach((el) => {
-        this.zoomPropertyFunction(this[el]);
+        if (this[el]) {
+          this.zoomPropertyFunction(this[el]);
+        }
       });
-    }
+  }
+  public ngOnDestroy() {
+    const markers = ['streetnoisemarker', 'railnoisemarker', 'planenoisemarker'];
+    markers.forEach((el) => {
+      for (const circle of this[el]) {
+        circle.setMap(null);
+      }
+    });
   }
 
   public getLayer(e) {
@@ -66,20 +66,15 @@ export class NoiseComponent implements OnInit, AfterViewInit {
 
   }
   public addLayer(target) {
-    
     this.mapService.map.setZoom(15);
     this.loading = !this.loading;
 
-    let extent = d3.extent(this.coordvalues.map((el) => el.factorValue));
-    let number1 = d3.quantile(extent, 0.2);
-    let number2 = d3.quantile(extent, 0.4);
-    let number3 = d3.quantile(extent, 0.6);
-    let number4 = d3.quantile(extent, 0.8);
+    const extent = d3.extent(this.coordvalues.map((el) => el.factorValue));
 
     for (let i = 0; i < this.coordvalues.length; i++) {
-      let value = this.coordvalues[i].factorValue;
-      let place = { lat: this.coordvalues[i].latitude, lng: this.coordvalues[i].longitude };
-      let circle = new google.maps.Circle({
+      const value = this.coordvalues[i].factorValue;
+      const place = { lat: this.coordvalues[i].latitude, lng: this.coordvalues[i].longitude };
+      const circle = new google.maps.Circle({
         strokeWeight: 0,
         fillOpacity: 0.8,
         fillColor: calcColor(value),
@@ -97,34 +92,16 @@ export class NoiseComponent implements OnInit, AfterViewInit {
     }
 
     function calcColor(val) {
-      // color of proposed design awaiting clarification
-
-      // const color = [
-      //   '#2D5D9D', '#646E8B',
-      //   '#897A7F', '#B28671',
-      //   '#E8955F'];
-      const color = [
-        'rgb(65, 224, 242)', 'rgb(46, 232, 25)',
-        'rgb(239, 236, 71)', 'rgb(255, 188, 102)',
-        'rgb(224, 25, 11)'];
-
-      function colorEvaluation(val) {
-        switch (true) {
-          case (val <= number1):
-            return color[0];
-          case (val > number1 && val < number2):
-            return color[1];
-          case (val >= number2 && val < number3):
-            return color[2];
-          case (val >= number3 && val < number4):
-            return color[3];
-          case (val >= number4):
-            return color[4];
-          default:
-            break;
-        }
-      }
-      return colorEvaluation(val);
+      const quant = d3.scaleQuantize()
+        .domain(extent)
+        .range([
+          'rgb(65, 224, 242)',
+          'rgb(46, 232, 25)',
+          'rgb(239, 236, 71)',
+          'rgb(255, 188, 102)',
+          'rgb(224, 25, 11)'])
+        .nice();
+      return quant(val);
     }
     setTimeout(() => {
       this.loading = !this.loading;
@@ -151,7 +128,6 @@ export class NoiseComponent implements OnInit, AfterViewInit {
     const quant = d3.scaleQuantize()
       .domain(extent)
       .range([1.1, 1.2, 1.3, 1.4, 1.5]);
-
     return quant(val);
   }
   public zoomPropertyFunction(noiseCat) {
@@ -160,9 +136,9 @@ export class NoiseComponent implements OnInit, AfterViewInit {
         for (let i = 0; i < noiseCat.length; i++) {
           const p = 21 - this.mapService.map.getZoom();
           const value = this.coordvalues[i].factorValue;
-          noiseCat[i].setRadius( <any>  (this.normalizeValues(value) * 3) + p);
+          noiseCat[i].setRadius( <any>  (this.normalizeValues(value) * 4) + p);
         }
       });
-    }, 1000);
+    }, 300);
   }
 }

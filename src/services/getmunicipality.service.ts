@@ -1,11 +1,12 @@
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import { AsyncSubject } from 'rxjs/AsyncSubject';
 
 @Injectable()
 export class GetMunicipalityService {
     // Observable string sources
-    public emitChangeSource = new Subject<any>();
+    public emitChangeSource = new AsyncSubject<any>();
     public changeEmitted$ = this.emitChangeSource.asObservable();
     public apiObj = {
         general: null,
@@ -16,9 +17,9 @@ export class GetMunicipalityService {
         poi: null,
         streetnoise: null,
         railnoise: null,
-        planenoise: null
+        planenoise: null,
+        polygons: null
     };
-    // Observable string streams
 
     // Service message commands
     public emitChange(data: any, type: string) {
@@ -27,7 +28,8 @@ export class GetMunicipalityService {
     }
 
     public requestData(type: string) {
-        return this.apiObj[type];
+        if (this.apiObj[type] !== null) {
+            return this.apiObj[type];
+        }
     }
-
 }

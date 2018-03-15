@@ -5,8 +5,11 @@
     <desc>Created with Sketch.</desc>
     <defs>
         <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
-            <stop stop-color="#3168A8" offset="0%"></stop>
-            <stop stop-color="#ECA16A" offset="100%"></stop>
+            <stop stop-color="#41E0F2" offset="0%"></stop>
+            <stop stop-color="#2EE819" offset="25.1833546%"></stop>
+            <stop stop-color="#EFEC47" offset="50.9267379%"></stop>
+            <stop stop-color="#FFBC66" offset="76.2236926%"></stop>
+            <stop stop-color="#E0190B" offset="100%"></stop>
         </linearGradient>
     </defs>
     <g id="Noise" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-30.000000, -459.000000)">

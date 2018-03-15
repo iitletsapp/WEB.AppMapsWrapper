@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from 'ng2-translate';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Globals} from '../globals';
+import { Globals } from '../globals';
 import { GetMarkerService } from '../../services/getmarker.service';
 import { MapService } from '../../services/map.service';
 
@@ -34,11 +34,11 @@ export class NavigationComponent implements OnInit {
     const param = this.activatedRoute.snapshot.queryParams['id'];
     console.log(param);
     if (param === 'general') {
-        this.generalFlag = true;
-        this.header = 'General Information';
+      this.generalFlag = true;
+      this.header = 'General Information';
     } else if (param === 'population') {
-        this.populationFlag = true;
-        this.header = 'Population';
+      this.populationFlag = true;
+      this.header = 'Population';
     } else if (param === 'taxes') {
       this.taxesFlag = true;
       this.header = 'Tax';
@@ -63,14 +63,8 @@ export class NavigationComponent implements OnInit {
     }
   }
 
-  public clearPolygons(){
-    //this.mapService.map.setMap(null);
-     this.mapService.map.data.setStyle({             
-          strokeWeight: 0,
-          "fillOpacity": 0,
-          "strokeOpacity":0
-        });
+  public clearPolygons() {
+    this.mapService.map.data.setMap(null);
   }
-
 
 }
