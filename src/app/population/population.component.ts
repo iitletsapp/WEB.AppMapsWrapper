@@ -3,7 +3,7 @@ import { GetMarkerService } from '../../services/getmarker.service';
 import { MacroService } from '../../services/macro.service';
 import { GetMunicipalityService } from '../../services/getmunicipality.service';
 import { MapService } from '../../services/map.service';
-import * as d3 from 'd3';
+import { PolygonsService } from '../../services/polygons.service';
 
 declare var require: any;
 const gjfilter = require('geojson-filter');
@@ -34,7 +34,8 @@ export class PopulationComponent implements OnInit {
 
   constructor(
     private municipality: GetMunicipalityService,
-    private mapService: MapService
+    private mapService: MapService,
+    private polygonsService: PolygonsService
   ) {
     this.population = this.municipality.requestData('population');
     this.populationratio = this.municipality.requestData('populationratio');
@@ -67,7 +68,7 @@ export class PopulationComponent implements OnInit {
     this.mapService.map.data.addGeoJson(this.geoJson);
     this.mapService.map.data.setMap(this.mapService.map);
 
-    this.zoom(this.mapService.map);
+    this.polygonsService.zoom(this.mapService.map);
 
     this.mapService.map.data.forEach((feature) => {
       this.extentData.push(feature.f.populationDensity);
@@ -79,42 +80,10 @@ export class PopulationComponent implements OnInit {
     this.mapService.map.data.setStyle((feature) => {
       const populationDesity = feature.f.populationDensity;
       return {
-        fillColor: this.calcColor(populationDesity),
+        fillColor: this.polygonsService.calcColor(populationDesity, this.extent),
         strokeWeight: '2px',
-        strokeColor: this.calcColor(populationDesity)
+        strokeColor: this.polygonsService.calcColor(populationDesity, this.extent)
       };
     });
-  }
-
-  public zoom(map) {
-    const bounds = new google.maps.LatLngBounds();
-    map.data.forEach((feature) => {
-      this.processPoints(feature.getGeometry(), bounds.extend, bounds);
-    });
-    map.fitBounds(bounds);
-  }
-
-  public processPoints(geometry, callback, thisArg) {
-    if (geometry instanceof google.maps.LatLng) {
-      callback.call(thisArg, geometry);
-    } else if (geometry instanceof google.maps.Data.Point) {
-      callback.call(thisArg, geometry.get());
-    } else {
-      geometry.getArray().forEach((g) => {
-        this.processPoints(g, callback, thisArg);
-      });
-    }
-  }
-
-  public calcColor(val) {
-    const quant = d3.scaleQuantize()
-      .domain(this.extent)
-      .range([
-        '#FFFF6B',
-        '#FAC04B',
-        '#FA974B',
-        '#FA5A4B'])
-      .nice();
-    return quant(val);
   }
 }
