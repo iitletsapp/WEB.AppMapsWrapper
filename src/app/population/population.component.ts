@@ -32,6 +32,9 @@ export class PopulationComponent implements OnInit {
   public xLabel1 = 'population1';
   public xAgeData  = 'ageGroup';
   public yAgeData = 'value';
+  public xAxisAgeText = 'ageGroup';
+  public yAxisAgeText = 'value in %';
+
   public xAgeDataFormat = '%';
   public yAgeDataFormat = '%';
   //public displayXAgeData = true;

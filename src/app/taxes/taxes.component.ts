@@ -19,6 +19,8 @@ export class TaxesComponent implements OnInit {
  public yTaxData = 'value';
  public xTaxDataFormat = '%';
  public yTaxDataFormat = '%';
+ public xAxisTaxText = '';
+ public yAxisTaxText = 'yearly tax';
  // public displayXAgeData = false;
  public geoJson = '';
  public extentData = [];

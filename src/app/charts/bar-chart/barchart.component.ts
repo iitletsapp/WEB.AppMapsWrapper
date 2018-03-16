@@ -16,6 +16,8 @@ export class BarChartComponent implements OnInit, AfterViewInit {
     @Input() public data;
     @Input() public xText;
     @Input() public yText;
+    @Input() public xAxisText;
+    @Input() public yAxisText;
     // containerId it the refers to the layerID that the histogram should read data from
     @Input() public containerId;
     //@Input() public displayXAxisText;
@@ -78,6 +80,7 @@ export class BarChartComponent implements OnInit, AfterViewInit {
             .attr('class', 'barchart' + this.containerId)
             .attr('width', width + margin.right + margin.left)
             .attr('height', height + margin.top + margin.bottom)
+            .style('padding-top', '20px')
             .call(responsivefy);
 
         let g = svg.append('g')
@@ -91,7 +94,7 @@ export class BarChartComponent implements OnInit, AfterViewInit {
 
         rect.append('rect')
             .attr('class', 'bar')
-            .attr('x', (d) => { return x(d[this.xText]); })
+            .attr('x', (d) => { return x(d[this.xText]) ; })
             .attr('y', (d) => { return y(d[this.yText]); })
             .attr('width', x.bandwidth())
             .attr('height', function (d) { return height - y(d['value']); })
@@ -142,11 +145,12 @@ export class BarChartComponent implements OnInit, AfterViewInit {
                 .attr('transform', `translate(0, -10)`)
                 .style('text-anchor', 'middle')
                 .attr('fill', '#5D6971')
-                .text('(' + this.xText + ')');
+                .text('(' + this.xAxisText + ')');
             // labels are outside the chart
             d3.selectAll('.axis').select('path').style('display', 'none');
             d3.selectAll('.axis').selectAll('.tick').select('line').style('display', 'none');
             d3.select('.barcharttaxesbarchart').selectAll('.axis').selectAll('.tick').select('text').style('display', 'none');
+            d3.select('.barcharttaxesbarchart').selectAll('.axis').select('.axis-title').style('display', 'none');
 
         // add the y Axis
         g.append('g')
@@ -165,7 +169,7 @@ export class BarChartComponent implements OnInit, AfterViewInit {
                 .style('text-anchor', 'middle')
                 .style('transform', 'rotate(-90deg)')
                 .attr('fill', '#5D6971')
-                .text('(' + this.yText + ')');
+                .text('(' + this.yAxisText + ')');
         d3.selectAll('.axis').select('path').style('display', 'none');
         d3.selectAll('.axis').selectAll('.tick').select('line').style('display', 'none');
 

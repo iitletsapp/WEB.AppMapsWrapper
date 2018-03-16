@@ -24,10 +24,10 @@
   "POPULATION": {
     "POPULATION": "Total Population",
     "AGECATEGORY": "Age category",
-    "FOREIGNERQUOTA": "foreigner quota",
-    "UNEMPLOYMENTRATE": "unemployment rate",
-    "INCOMETAX": "income tax per person",
-    "POPULATIONGROWTH": "population growth over 5 years"
+    "FOREIGNERQUOTA": "Foreigner quota",
+    "UNEMPLOYMENTRATE": "Unemployment rate",
+    "INCOMETAX": "Income tax per person",
+    "POPULATIONGROWTH": "Population growth over 5 years"
   },
   "TAXES": {
     "OVERVIEW": "Taxes overview",
