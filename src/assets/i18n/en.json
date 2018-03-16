@@ -30,7 +30,7 @@
     "POPULATIONGROWTH": "population growth over 5 years"
   },
   "TAXES": {
-    "OVERVIEW": "Taxes overview",
+    "OVERVIEW": "Tax Index",
     "LEGEND1": "Single person, childless, gross income 70'000 CHF",
     "LEGEND2": "Single person, childless, gross income 100'000 CHF",
     "LEGEND3": "married couple, childless, gross income 150'000 CHF",
@@ -40,10 +40,10 @@
 
   },
   "HOUSINGMARKERT": {
-    "INDEX": "home index",
-    "VACANCY": "vacancy rate",
-    "HOUSINGSTOCK": "housing stock",
-    "NEWHOUSING": "new housing last 5 years"
+    "INDEX": "Home Index",
+    "VACANCY": "Vacancy Rate",
+    "HOUSINGSTOCK": "Housing Stock",
+    "NEWHOUSING": "New Housing last 5 years"
 
   },
   "NAVIGATION": {

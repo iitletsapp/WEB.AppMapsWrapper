@@ -90,7 +90,7 @@ export class PopulationComponent implements OnInit {
       const populationDesity = feature.f.populationDensity;
       return {
         fillColor: this.polygonsService.calcColor(populationDesity, this.extent),
-        strokeWeight: '2px',
+        strokeWeight: 1,
         strokeColor: this.polygonsService.calcColor(populationDesity, this.extent)
       };
     });
