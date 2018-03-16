@@ -1,3 +1,5 @@
+@import '~sass/variables';
+
 ul{
     color: #404040;
 }
@@ -23,4 +25,14 @@ ul{
 }
 .six{
     color: #095682;
+}
+.p-label{
+    font-family: Helvetica;
+    font-size: 1rem;
+    color: $primary-color;
+    font-weight: bold;
+}
+
+.hr-black{
+    margin-top: 0!important;
 }

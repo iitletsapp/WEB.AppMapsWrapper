@@ -46,6 +46,8 @@ import { Globals} from './globals';
 import {Config} from './appconfig/config';
 import { registerLocaleData } from '@angular/common';
 import localeDECH from '@angular/common/locales/de-CH';
+import { MaplegendComponent } from './maplegend/maplegend.component';
+import { MaplegendService } from '../services/maplegend.service';
 
 registerLocaleData(localeDECH);
 
@@ -73,7 +75,8 @@ registerLocaleData(localeDECH);
     TaxesComponent,
     HousingMarketComponent,
     PoiComponent,
-    NavigationComponent
+    NavigationComponent,
+    MaplegendComponent
   ],
   imports: [
     BrowserModule,
@@ -103,6 +106,7 @@ registerLocaleData(localeDECH);
     GetMunicipalityService,
     PolygonsService,
     GoogleMapsAPIWrapper,
+    MaplegendService,
     Globals,
     { provide: LOCALE_ID, useValue: 'de-CH' }
   ],

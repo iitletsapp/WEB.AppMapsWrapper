@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { BarChartComponent } from '../charts/bar-chart/barchart.component';
 import { GetMunicipalityService } from '../../services/getmunicipality.service';
 import { MapService } from '../../services/map.service';
 import { PolygonsService } from '../../services/polygons.service';
+import { MaplegendService } from '../../services/maplegend.service';
 
 @Component({
   selector: 'app-taxes',
@@ -10,7 +11,7 @@ import { PolygonsService } from '../../services/polygons.service';
   styleUrls: ['./taxes.component.scss']
 })
 
-export class TaxesComponent implements OnInit {
+export class TaxesComponent implements OnInit, OnDestroy {
 
  public tax;
  public dataforbarchart;
@@ -25,16 +26,28 @@ export class TaxesComponent implements OnInit {
  public geoJson = '';
  public extentData = [];
  public extent = [];
-
+  // for legend
+  public maplegend = {
+    title: 'Tax per capita',
+    backgrounds: [
+      'rgb(255, 255, 96)',
+      'rgb(249, 184, 66)',
+      'rgb(249, 140, 66)',
+      'rgb(249, 79, 66)'],
+    labels: ['low', 'high']
+  };
 
   public barchart = 'barchart';
   @ViewChild('BarChartComponent') bar: BarChartComponent;
 
-  constructor(private municipality: GetMunicipalityService
-    , private mapService: MapService
-    , private polygonsService: PolygonsService
+  constructor(
+    private municipality: GetMunicipalityService,
+    private mapService: MapService,
+    private polygonsService: PolygonsService,
+    private mapLegendService: MaplegendService
   ) {
     this.tax = this.municipality.requestData('tax');
+    this.mapLegendService.setLegendInfo(this.maplegend);
   }
 
 
@@ -44,6 +57,9 @@ export class TaxesComponent implements OnInit {
     });
 
     this.displayPolygons();
+  }
+  public ngOnDestroy() {
+    this.mapLegendService.removeLegend();
   }
 
   public displayPolygons() {
@@ -67,7 +83,7 @@ export class TaxesComponent implements OnInit {
       const taxCollections = feature.f.taxableIncomePerCapita;
       return {
         fillColor: this.polygonsService.calcColor(taxCollections, this.extent),
-        strokeWeight: '2px',
+        strokeWeight: 1,
         strokeColor: this.polygonsService.calcColor(taxCollections, this.extent)
       };
     });

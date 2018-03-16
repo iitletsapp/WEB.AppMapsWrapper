@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GetMarkerService } from '../../services/getmarker.service';
 import { MacroService } from '../../services/macro.service';
 import { GetMunicipalityService } from '../../services/getmunicipality.service';
 import { MapService } from '../../services/map.service';
 import { PolygonsService } from '../../services/polygons.service';
+import { MaplegendService } from '../../services/maplegend.service';
 
 declare var require: any;
 const gjfilter = require('geojson-filter');
@@ -14,7 +15,7 @@ const gjfilter = require('geojson-filter');
   styleUrls: ['./population.component.scss']
 })
 
-export class PopulationComponent implements OnInit {
+export class PopulationComponent implements OnInit, OnDestroy {
   public population;
   public populationrate;
   public populationratio;
@@ -42,14 +43,27 @@ export class PopulationComponent implements OnInit {
   public extentData = [];
   public extent = [];
 
+  // for legend
+  public maplegend = {
+    title: 'Population density',
+    backgrounds: [
+      'rgb(255, 255, 96)',
+      'rgb(249, 184, 66)',
+      'rgb(249, 140, 66)',
+      'rgb(249, 79, 66)'],
+    labels: ['low', 'high']
+  };
+
   constructor(
     private municipality: GetMunicipalityService,
     private mapService: MapService,
-    private polygonsService: PolygonsService
+    private polygonsService: PolygonsService,
+    private mapLegendService: MaplegendService
   ) {
     this.population = this.municipality.requestData('population');
     this.populationratio = this.municipality.requestData('populationratio');
     this.populationage = this.municipality.requestData('populationage');
+    this.mapLegendService.setLegendInfo(this.maplegend);
   }
 
   public ngOnInit() {
@@ -70,6 +84,9 @@ export class PopulationComponent implements OnInit {
     this.populationgrowth = this.populationratio[1].municipalityValue;
 
     this.displayPolygons();
+  }
+  public ngOnDestroy() {
+    this.mapLegendService.removeLegend();
   }
 
   public displayPolygons() {
@@ -93,7 +110,7 @@ export class PopulationComponent implements OnInit {
       const populationDesity = feature.f.populationDensity;
       return {
         fillColor: this.polygonsService.calcColor(populationDesity, this.extent),
-        strokeWeight: '2px',
+        strokeWeight: 1,
         strokeColor: this.polygonsService.calcColor(populationDesity, this.extent)
       };
     });

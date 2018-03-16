@@ -6,7 +6,9 @@ import { GetMunicipalityService } from '../../services/getmunicipality.service';
 import { ProgressBarService } from '../../services/progressbar.service';
 import * as _ from 'lodash';
 import * as d3 from 'd3';
-import { Globals} from '../globals';
+import { Globals } from '../globals';
+import { MaplegendService } from '../../services/maplegend.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-noise',
@@ -27,7 +29,19 @@ export class NoiseComponent implements OnInit, OnDestroy {
   public railnoisemarker = [];
   public planenoisemarker = [];
   public loading = false;
+  // for legend
+  public legend = {
+    title: 'Noise level',
+    backgrounds: [
+      'rgb(65, 224, 242)',
+      'rgb(46, 232, 25)',
+      'rgb(239, 236, 71)',
+      'rgb(255, 188, 102)',
+      'rgb(224, 25, 11)'],
+    labels: ['low', 'high']
+  };
   private isloaded = false;
+
 
   constructor(
     private progressbar: ProgressBarService,
@@ -36,15 +50,18 @@ export class NoiseComponent implements OnInit, OnDestroy {
     private getmarker: GetMarkerService,
     private micro: MicroService,
     private ngZone: NgZone,
-    public global: Globals) { }
+    private mapLegendService: MaplegendService,
+    public global: Globals) {
+    this.mapLegendService.setLegendInfo(this.legend);
+  }
 
   public ngOnInit() {
-      const markers = ['streetnoisemarker', 'railnoisemarker', 'planenoisemarker'];
-      markers.forEach((el) => {
-        if (this[el]) {
-          this.zoomPropertyFunction(this[el]);
-        }
-      });
+    const markers = ['streetnoisemarker', 'railnoisemarker', 'planenoisemarker'];
+    markers.forEach((el) => {
+      if (this[el]) {
+        this.zoomPropertyFunction(this[el]);
+      }
+    });
   }
   public ngOnDestroy() {
     const markers = ['streetnoisemarker', 'railnoisemarker', 'planenoisemarker'];
@@ -53,13 +70,14 @@ export class NoiseComponent implements OnInit, OnDestroy {
         circle.setMap(null);
       }
     });
+    this.mapLegendService.removeLegend();
   }
 
   public getLayer(e) {
     if (e.target.checked) {
-    this.generalNoise[e.target.id] = this.apiobj.requestData(e.target.id);
-    this.coordvalues = this.generalNoise[e.target.id][0].values;
-    this.addLayer(e.target.id);
+      this.generalNoise[e.target.id] = this.apiobj.requestData(e.target.id);
+      this.coordvalues = this.generalNoise[e.target.id][0].values;
+      this.addLayer(e.target.id);
     } else {
       this.removeCircles(e);
     }
@@ -80,7 +98,7 @@ export class NoiseComponent implements OnInit, OnDestroy {
         fillColor: calcColor(value),
         map: this.mapService.map,
         center: place,
-        radius: <any> this.normalizeValues(value) * 5.5
+        radius: <any>this.normalizeValues(value) * 5.5
       });
       if (target === 'streetnoise') {
         this.streetnoisemarker.push(circle);
@@ -151,7 +169,7 @@ export class NoiseComponent implements OnInit, OnDestroy {
         for (let i = 0; i < noiseCat.length; i++) {
           const p = 21 - this.mapService.map.getZoom();
           const value = this.coordvalues[i].factorValue;
-          noiseCat[i].setRadius( <any>  (this.normalizeValues(value) * 4) + p);
+          noiseCat[i].setRadius(<any>(this.normalizeValues(value) * 4) + p);
         }
       });
     }, 300);
