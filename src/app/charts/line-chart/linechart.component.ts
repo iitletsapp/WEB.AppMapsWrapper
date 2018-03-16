@@ -45,7 +45,6 @@ export class LineChartComponent implements OnInit, AfterViewInit {
 
     public initChart() {
         d3.select(`.${this.containerId}`).remove();
-
         const margin = { top: 20, right: 40, bottom: 28, left: 40 };
         const width = 460 - margin.left - margin.right;
         const height = 365 - margin.top - margin.bottom;

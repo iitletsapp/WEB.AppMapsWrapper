@@ -8,11 +8,16 @@ import * as d3 from 'd3';
 })
 
 export class HorizontalbarChartComponent implements OnInit, AfterViewInit {
-    @Input() public containerId;
-    data = [{ name: '0-30', value: 29 }, { name: '31-50', value: 49 }, { name: '51-70', value: 12 }, { name: '71+', value: 10 }];
-    private isready: boolean = false;
+    // @Input() public containerId;
+    // data = [{ name: '0-30', value: 29 }, { name: '31-50', value: 49 }, { name: '51-70', value: 12 }, { name: '71+', value: 10 }];
+    // private isready: boolean = false;
 
-    
+    @Input() public data;
+    @Input() public xText;
+    // containerId it the refers to the layerID that the histogram should read data from
+    @Input() public containerId;
+    private isready = false;
+
     constructor() { }
 
     public ngOnInit() {

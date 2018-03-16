@@ -1,7 +1,8 @@
 
 <div class="component-margin">
     <p>{{ 'TAXES.OVERVIEW' | translate }}</p>
-    <app-barchart [containerId]="barchartcontainer" [data]="dataforbarchart"></app-barchart>
+    <app-barchart [containerId]="barchartcontainer" [data]="dataforbarchart" [xText]="xTaxData" [yText]="yTaxData"
+                  [xDataFormat]="xTaxDataFormat" [yDataFormat]="yTaxDataFormat"></app-barchart>
     <ul class="list-group">
         <li class="list-group-item">
             <i class="fa fa-square one"></i>

@@ -10,8 +10,10 @@
     <h6 class="d-inline-block">Population Growth</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
     <hr class="hr-black">
     <app-linechart [containerId]="linecontainer" [data]="dataforlinearray" [xText]="xLabel"></app-linechart>
-    <!-- <h6>{{ 'POPULATION.AGECATEGORY' | translate }}</h6> -->
-    <!-- <app-horizontalbarchart [containerId]="linecontainer" [data]="dataforlinearray" [xText]="xLabel"></app-horizontalbarchart> -->
+    <h6 class="d-inline-block">Age Category</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
+    <hr class="hr-black">
+    <app-barchart [containerId]="barcontainer" [data]="dataforbararray" [xText]="xAgeData" [yText]="yAgeData" 
+                  [xDataFormat]="xAgeDataFormat" [yDataFormat]="yAgeDataFormat"></app-barchart>
     <!-- <hr> -->
     <br><br>
     <h6>Key figures</h6>

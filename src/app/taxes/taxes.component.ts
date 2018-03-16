@@ -12,18 +12,24 @@ export class TaxesComponent implements OnInit {
  public tax;
  public dataforbarchart;
  public barchartcontainer = 'taxesbarchart';
+ public xTaxData = 'name';
+ public yTaxData = 'value';
+ public xTaxDataFormat = '%';
+ public yTaxDataFormat = '%';
+ //public displayXAgeData = false;
 
-  public barchart: string = 'barchart';
+  public barchart = 'barchart';
   @ViewChild('BarChartComponent') bar: BarChartComponent;
-  constructor(  private municipality: GetMunicipalityService ) 
-      {
+  constructor(  private municipality: GetMunicipalityService ) {
         this.tax = this.municipality.requestData('tax');
       }
 
   public ngOnInit() {
-    this.dataforbarchart = this.tax.map((el) => { 
+    this.dataforbarchart = this.tax.map((el) => {
       return { name: el.what, value: Math.floor(el.municipalityValue) };
     });
+
+    console.log(this.dataforbarchart);
    }
 
 }

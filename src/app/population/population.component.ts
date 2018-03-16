@@ -25,9 +25,16 @@ export class PopulationComponent implements OnInit {
   public populationgrowth;
   // linechart
   public linecontainer = 'populationlinechart';
+  public barcontainer = 'populationbarchart';
   public dataforlinearray;
   public dataforbararray;
   public xLabel = 'population';
+  public xLabel1 = 'population1';
+  public xAgeData  = 'ageGroup';
+  public yAgeData = 'value';
+  public xAgeDataFormat = '%';
+  public yAgeDataFormat = '%';
+  //public displayXAgeData = true;
   public geoJson = '';
   public extentData = [];
   public minMax = [];
@@ -38,7 +45,7 @@ export class PopulationComponent implements OnInit {
   ) {
     this.population = this.municipality.requestData('population');
     this.populationratio = this.municipality.requestData('populationratio');
-    //this.populationage = this.municipality.requestData('populationage');
+    this.populationage = this.municipality.requestData('populationage');
   }
 
   public ngOnInit() {
@@ -46,9 +53,11 @@ export class PopulationComponent implements OnInit {
       return { year: el.publishDate.toString().substring(0, 4), value: Math.floor(el.municipalityValue) };
     });
 
-    // this.dataforbararray = this.populationage.map((el) => {
-    //   return { value: el.value, ageGroup: el.ageGroupText.toString().substring(0, 4) };
-    // });
+    this.dataforbararray = this.populationage.map((el) => {
+      return {ageGroup: el.ageGroupText.toString().substring(0, 4),  value: el.value };
+    });
+
+    console.log(this.dataforbararray);
 
     this.populationrate = this.populationratio[0].municipalityValue;
     this.foreignerquota = this.populationratio[2].municipalityValue;
