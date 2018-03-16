@@ -55,7 +55,7 @@ export class PopulationComponent implements OnInit {
     });
 
     this.dataforbararray = this.populationage.map((el) => {
-      return {ageGroup: el.ageGroupText.toString().substring(0, 4),  value: el.value };
+      return {ageGroup: el.ageGroupText.toString(),  value: el.value };
     });
 
     console.log(this.dataforbararray);

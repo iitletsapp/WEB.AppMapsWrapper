@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "copy-config": "ncp src/app/appconfig/config.dev.ts src/app/appconfig/config.ts",
+    "copy-config": "ncp src/app/appconfig/config.local.ts src/app/appconfig/config.ts",
     "copy-config-local": "ncp src/app/appconfig/config.local.ts src/app/appconfig/config.ts"
   },
   "private": true,
