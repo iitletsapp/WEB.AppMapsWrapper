@@ -33,7 +33,7 @@ export class PopulationComponent implements OnInit, OnDestroy {
   public xLabel1 = 'population1';
   public xAgeData  = 'ageGroup';
   public yAgeData = 'value';
-  public xAxisAgeText = 'ageGroup';
+  public xAxisAgeText = 'age group';
   public yAxisAgeText = 'value in %';
 
   public xAgeDataFormat = '%';
