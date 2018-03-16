@@ -110,8 +110,8 @@ export class PopulationComponent implements OnInit, OnDestroy {
       const populationDesity = feature.f.populationDensity;
       return {
         fillColor: this.polygonsService.calcColor(populationDesity, this.extent),
-        strokeWeight: 1,
-        strokeColor: this.polygonsService.calcColor(populationDesity, this.extent)
+        strokeWeight: '0.5',
+        strokeColor: 'rgb(249, 79, 66)'
       };
     });
   }

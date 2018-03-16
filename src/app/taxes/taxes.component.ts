@@ -83,8 +83,8 @@ export class TaxesComponent implements OnInit, OnDestroy {
       const taxCollections = feature.f.taxableIncomePerCapita;
       return {
         fillColor: this.polygonsService.calcColor(taxCollections, this.extent),
-        strokeWeight: 1,
-        strokeColor: this.polygonsService.calcColor(taxCollections, this.extent)
+        strokeWeight: 0.5,
+        strokeColor: 'rgb(249, 79, 66)'
       };
     });
   }
