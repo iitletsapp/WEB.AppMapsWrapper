@@ -36,7 +36,6 @@ export class MacroService {
             .map((request) =>
                 request.json())
             .map((result) => {
-                console.log('in macro', result);
                 const macrocontainer = new MacroInfo();
                 macrocontainer.ortID = result.results.ortId;
                 macrocontainer.municipalityID = result.results.municipalityId;

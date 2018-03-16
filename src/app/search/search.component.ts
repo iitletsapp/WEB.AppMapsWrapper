@@ -97,7 +97,7 @@ export class SearchComponent implements OnInit {
             }, (error) => {
                 console.log(error);
             }, () => {
-                console.log('\nmunicipality info loaded!');
+                console.log('\general done');
             });
             this.macro.getPopulation(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res.municipalityPopulationEvolutionIndex, 'population');
@@ -117,7 +117,7 @@ export class SearchComponent implements OnInit {
             }, () => { }, () => console.log('streetnoise done'));
             this.macro.getRailNoise(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res.results.data, 'railnoise');
-            });
+            }, () => { }, () => console.log('railnoise done'));
             this.macro.getPlaneNoise(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res.results.data, 'planenoise');
             });
