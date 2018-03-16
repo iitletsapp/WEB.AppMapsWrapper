@@ -1,0 +1,10 @@
+<div class="maplegend-container" *ngIf="title">
+  <p>{{ title }}</p>
+  <div>
+    <small *ngIf="labels">{{ labels[0] }}</small>
+    <div class="d-inline-block" *ngIf="backgrounds">
+      <div *ngFor="let bg of backgrounds" class="legends" [ngStyle]="{'background': bg }"></div>
+    </div>
+    <small *ngIf="labels">{{ labels[1] }}</small>
+  </div>
+</div>
