@@ -103,10 +103,25 @@ export class NoiseComponent implements OnInit, OnDestroy {
         .nice();
       return quant(val);
     }
-    setTimeout(() => {
-      this.loading = !this.loading;
-    }, 1200);
+
+    const suffix = `${target}marker`;
+    this.fitZoomLevel(this[suffix], () => {
+      setTimeout(() => {
+        this.loading = !this.loading;
+      }, 400);
+    });
+
   }
+
+  public fitZoomLevel(markers, cb) {
+    const bounds = new google.maps.LatLngBounds();
+    for (let i = 0; i < markers.length; i++) {
+      bounds.extend(markers[i].getCenter());
+    }
+    this.mapService.map.fitBounds(bounds);
+    cb();
+  }
+
   public removeCircles(e) {
     if (e.target.id === 'streetnoise') {
       for (let i = 0; i < this.streetnoisemarker.length; i++) {

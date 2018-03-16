@@ -210,13 +210,22 @@ export class PoiComponent implements OnInit, OnDestroy {
       this.requestpoi(e.target.id, false);
       this.active[e.target.id] = !this.active[e.target.id];
       this.progressbar.endProgressBar();
-      this.mapService.map.setZoom(15);
     } else {
       this.wholelist = this.wholelist.filter((el) => el.type !== e.target.id);
       this.clearMarkers(e.target.id);
       this.clearMeters(e.target.id);
       this.active[e.target.id] = !this.active[e.target.id];
     }
+  }
+  public fitZoomLevel(name) {
+    const markerCategory = this.markerbin[name];
+    const bounds = new google.maps.LatLngBounds();
+    for (let i = 0; i < markerCategory.length; i++) {
+      bounds.extend(markerCategory[i].getPosition());
+    }
+    this.mapService.map.fitBounds(bounds);
+    this.mapService.map.setCenter({lat: this.markerLastLocation[0], lng: this.markerLastLocation[1]});
+    this.mapService.map.setZoom(this.mapService.map.getZoom() - 1);
   }
 
   public clearMarkers(type) {
@@ -340,6 +349,7 @@ export class PoiComponent implements OnInit, OnDestroy {
               this.listResult[poirequested] = list;
               _.map(this.listResult[poirequested], (el) => this.wholelist.unshift(el));
               this.wholelist = _.dropRight(_.orderBy(this.wholelist, ['distance'], ['asc']), this.wholelist.length - 10);
+              this.fitZoomLevel(poirequested);
             };
             return cb();
           } else if (status === 'ZERO_RESULTS') {
