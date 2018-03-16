@@ -57,10 +57,9 @@ export class BarChartComponent implements OnInit, AfterViewInit {
 
         // this is needed in case the this.val gets updated
          d3.select(`.${this.containerId}`).remove();
-        
         const margin = { top: 20, right: 40, bottom: 28, left: 40 };
         const width = 460 - margin.left - margin.right;
-        const height = 350 - margin.top - margin.bottom;
+        const height = 265 - margin.top - margin.bottom;
 
         // set the ranges
         let x = d3.scaleBand()
