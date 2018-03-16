@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { GetMarkerService } from '../../services/getmarker.service';
 import { GetMunicipalityService } from '../../services/getmunicipality.service';
+import { PolygonsService } from '../../services/polygons.service';
 import { Globals } from '../globals';
 import { MacroService } from '../../services/macro.service';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -29,7 +30,8 @@ export class GeneralComponent implements OnInit {
         public global: Globals,
         public macro: MacroService,
         private sanitizer: DomSanitizer,
-        private mapService: MapService
+        private mapService: MapService,
+        private polygonsService: PolygonsService
     ) {
         this.generaldata = this.municipality.requestData('general');
         this.muncipalityId = this.macro.macroObj.municipalityID;
@@ -52,13 +54,17 @@ export class GeneralComponent implements OnInit {
         this.geoJson = gjfilter(this.geoJson, this.filter);
         this.mapService.map.data.addGeoJson(this.geoJson);
         this.mapService.map.data.setMap(this.mapService.map);
-        this.mapService.map.setZoom(13);
+
+        this.polygonsService.zoom(this.mapService.map);
+
+
         this.mapService.map.data.setStyle({
             fillColor: '#FA974B',
             // strokeWeight: '2px',
             strokeColor: '#FA974B'
         });
     }
+
 
 
 }

@@ -13,6 +13,7 @@ import { NNService } from '../services/nearestneighbour.service';
 import { MacroService } from '../services/macro.service';
 import { MicroService } from '../services/micro.service';
 import { GetMunicipalityService } from '../services/getmunicipality.service';
+import { PolygonsService } from '../services/polygons.service';
 import {
   Routes,
   RouterModule,
@@ -100,6 +101,7 @@ registerLocaleData(localeDECH);
     MacroService,
     MicroService,
     GetMunicipalityService,
+    PolygonsService,
     GoogleMapsAPIWrapper,
     Globals,
     { provide: LOCALE_ID, useValue: 'de-CH' }

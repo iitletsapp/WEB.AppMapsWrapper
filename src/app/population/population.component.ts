@@ -3,7 +3,7 @@ import { GetMarkerService } from '../../services/getmarker.service';
 import { MacroService } from '../../services/macro.service';
 import { GetMunicipalityService } from '../../services/getmunicipality.service';
 import { MapService } from '../../services/map.service';
-import * as d3 from 'd3';
+import { PolygonsService } from '../../services/polygons.service';
 
 declare var require: any;
 const gjfilter = require('geojson-filter');
@@ -37,11 +37,12 @@ export class PopulationComponent implements OnInit {
   //public displayXAgeData = true;
   public geoJson = '';
   public extentData = [];
-  public minMax = [];
+  public extent = [];
 
   constructor(
     private municipality: GetMunicipalityService,
-    private mapService: MapService
+    private mapService: MapService,
+    private polygonsService: PolygonsService
   ) {
     this.population = this.municipality.requestData('population');
     this.populationratio = this.municipality.requestData('populationratio');
@@ -75,38 +76,23 @@ export class PopulationComponent implements OnInit {
     this.geoJson = this.municipality.requestData('polygons');
     this.mapService.map.data.addGeoJson(this.geoJson);
     this.mapService.map.data.setMap(this.mapService.map);
-    this.mapService.map.setZoom(11);
+
+    this.polygonsService.zoom(this.mapService.map);
 
     this.mapService.map.data.forEach((feature) => {
       this.extentData.push(feature.f.populationDensity);
     });
 
+    this.extent.push(Math.min.apply(null, this.extentData));
+    this.extent.push(Math.max.apply(null, this.extentData));
 
-    this.minMax.push(Math.min.apply(null, this.extentData));
-    this.minMax.push(Math.max.apply(null, this.extentData));
-
-    const extent = this.minMax;
-
-    this.mapService.map.data.setStyle(function (feature) {
+    this.mapService.map.data.setStyle((feature) => {
       const populationDesity = feature.f.populationDensity;
       return {
-        fillColor: calcColor(populationDesity),
+        fillColor: this.polygonsService.calcColor(populationDesity, this.extent),
         strokeWeight: '2px',
-        strokeColor: calcColor(populationDesity)
+        strokeColor: this.polygonsService.calcColor(populationDesity, this.extent)
       };
     });
-
-    function calcColor(val) {
-      const quant = d3.scaleQuantize()
-        .domain(extent)
-        .range([
-          '#FFFF6B',
-          '#FAC04B',
-          '#FA974B',
-          '#FA5A4B'])
-        .nice();
-      return quant(val);
-    }
   }
-
 }
