@@ -79,8 +79,8 @@ export class HousingMarketComponent implements OnInit, OnDestroy {
             const priceMarket = feature.f.privateRealEstatePriceIndexValue;
             return {
                 fillColor: this.polygonsService.calcColor(priceMarket, this.extent),
-                strokeWeight: 1,
-                strokeColor: this.polygonsService.calcColor(priceMarket, this.extent)
+                strokeWeight: 0.5,
+                strokeColor: 'rgb(249, 79, 66)'
             };
         });
     }
