@@ -1,6 +1,6 @@
 
 <div class="component-margin">
-    <h6 class="p-label d-inline-block">{{ 'TAXES.OVERVIEW' | translate }}</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
+    <h6 class="d-inline-block chart-header">{{ 'TAXES.OVERVIEW' | translate }}</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
     <hr class="hr-black">
     <app-barchart [containerId]="barchartcontainer" [data]="dataforbarchart" [xText]="xTaxData" [yText]="yTaxData"
                   [xDataFormat]="xTaxDataFormat" [yDataFormat]="yTaxDataFormat" [xAxisText]="xAxisTaxText" [yAxisText]="yAxisTaxText"></app-barchart>

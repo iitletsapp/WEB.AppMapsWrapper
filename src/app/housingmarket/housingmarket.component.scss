@@ -6,20 +6,15 @@ p {
     font-size: 1rem;
     color: $quarternary-color;
 }
-.p-number{
-    font-family: Helvetica;
-    font-size: 1.44rem;
-    color: $ternary-color;
-    font-weight: bold;
+hr{
+    margin-top:2px;
 }
-
-.p-label{
-    font-family: Helvetica;
-    font-size: 1rem;
+h6{
     color: $primary-color;
-    font-weight: bold;
+    font-size:large;
+    margin-bottom: 0rem;
+}
+.fa-2x{
+    font-size:1.5em
 }
 
-.hr-black{
-    margin-top: 0!important;
-}
