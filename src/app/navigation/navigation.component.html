@@ -1,37 +1,20 @@
-<!-- <nav class="d-flex flex-row justify-content-between">
-  <a 
-    routerLinkActive="active" 
-    routerLink="/furthercontent/municipality"
-    class="nav-link text-uppercase">
-    <span>Municipality</span>
-  </a>
-  <a 
-    routerLinkActive="active" 
-    routerLink="/furthercontent/address" 
-    class="nav-link text-uppercase">
-    <span>Address</span>
-  </a>
- <select #langSelect (change)="translate.use(langSelect.value)">
-    <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
-  </select> 
-</nav> -->
-
-<div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:#383838;height:50px;color:white;position:relative">
-    <div style="position:absolute;width: 100%;vertical-align:middle;margin-left:20px;margin-top:10px;">
-      <!-- <button type="button" style="float:left;background:transparent;border:0px;color:white;">Back</button> -->
-      <a style="background:none;" routerLink=""  [queryParams]="{id:'navigation'}"(click)="clearPolygons()"><img src="{{global.lageCheckAssetPath}}/assets/img/back.png"/></a>
-      <span style="margin-left:10px;font-size:larger;vertical-align:middle;">{{header}}</span>
+<div class="navigation">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 navigation-header-outer-div">
+      <div class="navigation-header-inner-div">
+        <a class="back-button" routerLink=""  [queryParams]="{id:'navigation'}"(click)="clearPolygons()"><img src="{{global.lageCheckAssetPath}}/assets/img/back.png"/></a>
+        <span class="navigation-header-text">{{header}}</span>
+      </div>
     </div>
   </div>
-</div>
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">   
-      <app-general *ngIf="generalFlag"></app-general>
-      <app-population *ngIf="populationFlag"></app-population>
-      <app-taxes *ngIf="taxesFlag"></app-taxes>
-      <app-housingmarket *ngIf="housingMarketFlag"></app-housingmarket>
-      <app-poi *ngIf="poiFlag"></app-poi>
-      <app-noise *ngIf="noiseFlag"></app-noise>
-    </div>
+  <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">   
+        <app-general *ngIf="generalFlag"></app-general>
+        <app-population *ngIf="populationFlag"></app-population>
+        <app-taxes *ngIf="taxesFlag"></app-taxes>
+        <app-housingmarket *ngIf="housingMarketFlag"></app-housingmarket>
+        <app-poi *ngIf="poiFlag"></app-poi>
+        <app-noise *ngIf="noiseFlag"></app-noise>
+      </div>
+  </div>
 </div>

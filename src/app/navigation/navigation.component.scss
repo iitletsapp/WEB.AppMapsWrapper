@@ -1,21 +1,31 @@
+@import '~sass/variables';
 
-li {
-    padding: 0 1rem;
-}
-a{
-    color: #2d2d2d;
-    background: white;
-    // background: #2d2d2d;
-    // color: white;
-    width: 50%;
-}
-.active {
-    background: #2d2d2d;
-    color: white;
-    // color: #2d2d2d;
-    // background: white;
-}
-nav {
-    background: #2d2d2d;
-}
+.navigation {
 
+    .navigation-header-outer-div{
+        background-color:$ternary-color;
+        height:50px;
+        color:$hexa-color;
+        position:relative
+    }
+
+    .navigation-header-inner-div{
+        position:absolute;
+        width: 100%;
+        vertical-align:middle;
+        margin-left:20px;
+        margin-top:10px;
+    }
+
+    .navigation-header-text{
+        margin-left:10px;
+        font-size:larger;
+        vertical-align:middle;
+        font-family: $font-family-secondary;
+    }
+
+    .back-button {
+        background:none;
+    }
+
+}

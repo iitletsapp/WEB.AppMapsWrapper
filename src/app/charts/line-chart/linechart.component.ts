@@ -45,7 +45,7 @@ export class LineChartComponent implements OnInit, AfterViewInit {
 
     public initChart() {
         d3.select(`.${this.containerId}`).remove();
-        const margin = { top: 20, right: 40, bottom: 28, left: 40 };
+        const margin = { top: 15, right: 40, bottom: 28, left: 40 };
         const width = 460 - margin.left - margin.right;
         const height = 265 - margin.top - margin.bottom;
 
@@ -81,7 +81,7 @@ export class LineChartComponent implements OnInit, AfterViewInit {
 
         x.domain(d3.extent(data, (d) => d.year));
         y.domain([d3.min(data, (d) => { return d.value; }) / 1.005, d3.max(data, (d) => { return d.value; }) * 1.005]);
-
+        
         // add the X gridlines bottomaxis NOT showing now!
         g.append('g')
             .attr('class', 'grid')
@@ -130,7 +130,7 @@ export class LineChartComponent implements OnInit, AfterViewInit {
             .attr('class', 'axis axis--y')
             .style('font-size', '8')
             .call(d3.axisLeft(y)
-                .ticks(data.length)
+                .ticks( data.length / 2)
                 .tickSizeOuter(0)
                 .tickFormat(function (d) {
                     return Math.floor(d) + 'k';

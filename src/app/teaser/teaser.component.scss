@@ -39,7 +39,7 @@
     }
 
     .card {
-        border:2px solid black;
+        border:2px solid $primary-color;
         margin-bottom: 2em;
     }
 
@@ -48,7 +48,7 @@
     }
 
     .card-text{
-        color:black;
+        color: $primary-color;
         font-weight: bold
     }
 }

@@ -40,6 +40,7 @@ import { HousingMarketComponent } from './housingmarket/housingmarket.component'
 import {HistogramChartComponent} from './charts/histogram-chart/histogram-chart.component'
 import { PoiComponent } from './poi/poi.component';
 import { SearchComponent } from './search/search.component';
+import { StartupComponent } from './startup/startup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavigationComponent } from './navigation/navigation.component';
 import { Globals} from './globals';
@@ -63,6 +64,7 @@ registerLocaleData(localeDECH);
     HistogramChartComponent,
     //
     SearchComponent,
+    StartupComponent,
     TeaserComponent,
     PopulationComponent,
     NoiseComponent,

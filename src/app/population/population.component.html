@@ -3,40 +3,40 @@
     <div class="row">
         <div class="col">
             <p class="text-muted">{{ 'POPULATION.POPULATION' | translate }}</p>
-            <span class="p-number">{{populationrate | number}}</span>
+            <span class="g-number">{{populationrate | number}}</span>
         </div>
     </div>
     <hr class="hr-black">
-    <h6 class="d-inline-block">Population Growth</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
+    <h6 class="d-inline-block chart-header">Population Growth</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
     <hr class="hr-black">
     <app-linechart [containerId]="linecontainer" [data]="dataforlinearray" [xText]="xLabel"></app-linechart>
-    <h6 class="d-inline-block">Age Category</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
+    <h6 class="d-inline-block  chart-header">Age Category</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
     <hr class="hr-black">
     <app-barchart [containerId]="barcontainer" [data]="dataforbararray" [xText]="xAgeData" [yText]="yAgeData" 
                   [xAxisText]="xAxisAgeText" [yAxisText]="yAxisAgeText"   [xDataFormat]="xAgeDataFormat" [yDataFormat]="yAgeDataFormat"></app-barchart>
     <!-- <hr> -->
     <br><br>
-    <h6 class="d-inline-block">Key figures</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
+    <h6 class="d-inline-block  chart-header">Key figures</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
     <hr class="hr-black">
     <div class="row">
         <div class="col col-lg-6">
             <p class="text-muted">{{ 'POPULATION.FOREIGNERQUOTA' | translate }}</p>
-            <span class="p-number">{{foreignerquota | percent:'.1-1'}}</span>
+            <span class="g-number">{{foreignerquota | percent:'.1-1'}}</span>
         </div>
         <div class="col col-lg-6">
             <p class="text-muted">{{ 'POPULATION.UNEMPLOYMENTRATE' | translate }}</p>
-            <span class="p-number">{{unemploymentrate | percent:'.1-1'}} </span>
+            <span class="g-number">{{unemploymentrate | percent:'.1-1'}} </span>
         </div>
     </div>
     <hr>
     <div class="row">
         <div class="col col-lg-6">
             <p class="text-muted">{{ 'POPULATION.INCOMETAX' | translate }}</p>
-            <span class="p-number">{{incometaxperson | currency:'CHF'}}</span>
+            <span class="g-number">{{incometaxperson | currency:'CHF'}}</span>
         </div>
         <div class="col col-lg-6">
             <p class="text-muted">{{ 'POPULATION.POPULATIONGROWTH' | translate }}</p>
-            <span class="p-number">{{populationgrowth | percent:'.1-1'}}</span>
+            <span class="g-number">{{populationgrowth | percent:'.1-1'}}</span>
         </div>
     </div>
 </div>

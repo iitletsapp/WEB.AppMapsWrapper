@@ -110,3 +110,21 @@ body {
     margin-right:20px;
     margin-top:20px;
 }
+
+.g-number{
+    font-weight: 100;
+    font-size: 1.6rem;
+    color: $ternary-color;
+    font-family: $font-family-secondary;
+}
+
+.chart-header {
+    font-family: $font-family-secondary;
+    color:$primary-color !important;
+    font-size: 1rem !important;
+    font-weight: bold;
+}
+
+.chart{
+    margin-bottom:15px;
+}
