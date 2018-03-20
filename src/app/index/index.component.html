@@ -1,0 +1,28 @@
+<!-- <app-iaziheader></app-iaziheader> -->
+<div class="row no-gutters">
+        <div class="col-sm-12 col-md-5 main-info">
+          <div class="scrollable-section">
+            <div class="row no-gutters">
+              <div class="col">
+                <ngb-progressbar height="2px" [value]="progressbarValue"></ngb-progressbar>
+                <!-- ################EXAMPLES################ -->
+                <!-- <app-linechart></app-linechart> -->
+                <!-- <button (click)="addLayer()" class="btn btn-warning">load factorbased Layer</button> -->
+                <!-- <app-nn></app-nn> -->
+              </div>
+            </div>
+            <div class="row no-gutters">
+              <div class="col">
+                <router-outlet name="index"></router-outlet>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-7 full-height">
+          <app-search></app-search>
+          <app-geolocation></app-geolocation>
+          <app-maplegend></app-maplegend>
+          <div id="googlemap">
+          </div>
+        </div>
+      </div>
