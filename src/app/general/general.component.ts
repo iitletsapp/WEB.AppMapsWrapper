@@ -49,7 +49,7 @@ export class GeneralComponent implements OnInit {
         this.mapService.map.data.forEach((feature) => {
             this.mapService.map.data.remove(feature);
         });
-        this.filter = ['in', 'municipalityId', `${this.muncipalityId}`];
+        this.filter = ['in', 'MunicipalityId', `${this.muncipalityId}`];
         this.geoJson = this.municipality.requestData('polygons');
         this.geoJson = gjfilter(this.geoJson, this.filter);
         this.mapService.map.data.addGeoJson(this.geoJson);

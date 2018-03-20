@@ -3,11 +3,6 @@
 ul{
     color: #404040;
 }
-.p-number{
-    font-weight: 100;
-    font-size: 1.1rem;
-    color: black;
-}
 .one{
     color: #f19b2c;
 }
@@ -26,14 +21,16 @@ ul{
 .six{
     color: #095682;
 }
-.p-label{
-    font-family: Helvetica;
-    font-size: 1rem;
+.fa-2x{
+    font-size:1.5em
+}
+hr{
+    margin-top:2px;
+}
+h6{
     color: $primary-color;
-    font-weight: bold;
+    font-size:large;
+    margin-bottom: 0rem;
 }
 
-.hr-black{
-    margin-top: 0!important;
-}
 

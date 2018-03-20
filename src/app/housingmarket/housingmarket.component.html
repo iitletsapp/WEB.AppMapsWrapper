@@ -1,25 +1,25 @@
 <div class="component-margin">
-    <h6 class="p-label d-inline-block">{{ 'HOUSINGMARKERT.INDEX' | translate }}</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
+    <h6 class="d-inline-block chart-header">{{ 'HOUSINGMARKERT.INDEX' | translate }}</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
     <hr class="hr-black">    
         <app-linechart [containerId]="linecontainer" [data]="dataforlinearrayMarket" [xText]="xLabel"></app-linechart>
         
-    <h6 class="p-label">Key Figures</h6>
+    <h6 class="d-inline-block chart-header">Key Figures</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
     <hr class="hr-black">
     <div class="row">
         <div class="col col-lg-6">
             <p class="text-muted">{{ 'HOUSINGMARKERT.VACANCY' | translate }}</p>
-            <span class="p-number">{{housingMarketVacancy | percent:'.1-1'}}</span>
+            <span class="g-number">{{housingMarketVacancy | percent:'.1-1'}}</span>
         </div>
         <div class="col col-lg-6">
             <p class="text-muted">{{ 'HOUSINGMARKERT.HOUSINGSTOCK' | translate }}</p>
-            <span class="p-number">{{housingStock | number}}</span>
+            <span class="g-number">{{housingStock | number}}</span>
         </div>
     </div>
     <hr>
     <div class="row">
         <div class="col col-lg-6">
             <p class="text-muted">{{ 'HOUSINGMARKERT.NEWHOUSING' | translate }}</p>
-            <span class="p-number">{{newHousing | number}}</span>
+            <span class="g-number">{{newHousing | number}}</span>
         </div>    
     </div>
 </div>
