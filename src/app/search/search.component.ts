@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, OnInit, NgZone } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit, NgZone, AfterViewInit } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 import { GetMarkerService } from '../../services/getmarker.service';
@@ -9,13 +9,14 @@ import { MacroService } from '../../services/macro.service';
 import { GetMunicipalityService } from '../../services/getmunicipality.service';
 import { Globals } from '../globals';
 import { MapService } from '../../services/map.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
     selector: 'app-search',
     templateUrl: './search.component.html',
     styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, AfterViewInit {
 
     public address = '';
     public storageAddress: string;
@@ -36,7 +37,8 @@ export class SearchComponent implements OnInit {
         private getAddress: GetAddressService,
         private apiobj: GetMunicipalityService,
         public global: Globals,
-        private mapService: MapService
+        private mapService: MapService,
+        private router: Router
     ) {
         this.getAddress.changeEmitted$.subscribe((newAddress) => {
             this.address = newAddress;
@@ -71,6 +73,14 @@ export class SearchComponent implements OnInit {
                 });
             });
         });
+    }
+
+    ngAfterViewInit() {
+        console.log('Address : ' + this.global.address );
+        this.address = this.global.address;
+        this.lat = this.global.lat;
+        this.lng = this.global.lon;
+        this.goto();
     }
 
     public goto() {

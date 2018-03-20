@@ -49,6 +49,7 @@ import { registerLocaleData } from '@angular/common';
 import localeDECH from '@angular/common/locales/de-CH';
 import { MaplegendComponent } from './maplegend/maplegend.component';
 import { MaplegendService } from '../services/maplegend.service';
+import { IndexComponent } from './index/index.component';
 
 registerLocaleData(localeDECH);
 
@@ -78,7 +79,8 @@ registerLocaleData(localeDECH);
     HousingMarketComponent,
     PoiComponent,
     NavigationComponent,
-    MaplegendComponent
+    MaplegendComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,

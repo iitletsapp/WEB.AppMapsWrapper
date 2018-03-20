@@ -6,13 +6,13 @@ import { MunicipalityComponent } from './municipality/municipality.component';
 import { AddressComponent } from './address/address.component';
 import { FurtherContentComponent } from './furthercontent/furthercontent.component';
 import {NavigationComponent} from './navigation/navigation.component';
+import { IndexComponent } from './index/index.component';
+import { StartupComponent } from './startup/startup.component';
 
 export const appRoutes: Routes = [
-    {path: '', component: TeaserComponent},
-    {path: 'poi', component: PoiComponent},
-    {path: 'furthercontent', component: FurtherContentComponent},
-    {path: 'furthercontent/municipality', component: MunicipalityComponent},
-    {path: 'furthercontent/address', component: AddressComponent},
-    {path: 'furthercontent/address/noise', component: NoiseComponent},
-    {path: 'furthercontent/navigation', component: NavigationComponent}
+    {path: '', component: StartupComponent},
+    {path: 'index', component: IndexComponent, children: [
+      {path: 'teaser', component: TeaserComponent, outlet: 'index'},
+      {path: 'teaser/navigation', component: NavigationComponent, outlet: 'index'}
+    ]}
   ];

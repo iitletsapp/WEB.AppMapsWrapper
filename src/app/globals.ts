@@ -10,4 +10,7 @@ export class Globals {
   addressSearch = false;
   macroData: any;
   addressData: any;
+  address: any;
+  lat: any;
+  lon: any;
 }

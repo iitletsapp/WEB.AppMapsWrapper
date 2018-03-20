@@ -3,16 +3,38 @@
 
   <div>
 
-    <div class="row header1" >
+    <!-- <div class="row header1" >
       <h1>{{ 'STARTUP.HEADER1' | translate }}</h1>
     </div>
     <div class="row header2">
       <h2>{{ 'STARTUP.HEADER2' | translate }}</h2>
     </div>
     <div class="row">
-      <app-search></app-search>
+      <div class="search-wrapper text-center" [ngClass]="!address ? 'pulse' : 'unpulse'">
+          <img src="{{global.lageCheckAssetPath}}/assets/img/map-marker.png" alt="location">
+          <input #focusable id="place-input" class="search-input text-truncate" type="text" placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
+          [(ngModel)]="address" [formControl]="searchControl">
+          <button title="{{ 'SEARCH.TITLE' | translate }}" type="button" class="btn search-button" [routerLink]="['/index', {outlets: {'index': ['teaser']}}]"><i class="fa fa-search icon" aria-hidden="true"></i></button>
+      </div>
+    </div> -->
+    <!-- <div style="width:100%;background-color:white;height:50px;margin-left:-15px;margin-right:-15px;">
+
+    </div> -->
+   
+    <div class="row header1" >
+      <h1>{{ 'STARTUP.HEADER1' | translate }}</h1>
     </div>
-    <img src="{{global.lageCheckAssetPath}}/assets/img/kantons/cityimage.png"  alt="basel">
+    <div class="row header2">
+      <h1>{{ 'STARTUP.HEADER2' | translate }}</h1>
+    </div>
+    <div id="addresssearch">
+      <img style="height:2em; margin-top:0.1em; margin-left:1em;" src="{{global.lageCheckAssetPath}}/assets/img/map-marker.png" alt="location">
+      <input #focusable id="place-input" style="margin-top:0.5em;height:2em;" class="search-input text-truncate" type="text" placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
+      [(ngModel)]="address" [formControl]="searchControl">
+      <button title="{{ 'SEARCH.TITLE' | translate }}" type="button" style="margin-top:0.1em;background-color:white" class="btn search-button" [routerLink]="['/index', {outlets: {'index': ['teaser']}}]">
+        <i class="fa fa-search icon" aria-hidden="true" style="font-size:1.5em"></i></button>
+    </div>
+    <img style="width:100%;height: 100vh;" src="{{global.lageCheckAssetPath}}/assets/img/kantons/cityimage.png"  alt="basel">
   </div>
 
 </div>

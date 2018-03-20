@@ -1,13 +1,46 @@
 .header1 {
   position: absolute;
-  top: 10%;
-  left: 25%;
+  top: 30%;
+  left: 50%;
   color: white;
+  margin-left:-15em;
+  font-size:large
 }
 
 .header2 {
   position: absolute;
-  top: 16%;
-  left: 19%;
+  top: 37%;
+  left: 40%;
   color: white;
+  margin-left:-15em;
+}
+
+.search-input {
+  width: 48em;
+  background: white;
+  -webkit-appearance: none!important;
+  //min-height: 3rem;
+  border: none;
+  color: black;
+  font-weight: 700;
+  font-size: 1.1rem;
+  vertical-align: middle;
+  margin-top:0.1em;
+  text-align:center;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+#addresssearch{
+    position:fixed;
+    top: 55%;
+    left: 54%;
+    width:60em;
+    height:3em;
+    margin-top: -1.5em; /*set to a negative number 1/2 of your height*/
+    margin-left: -30em; /*set to a negative number 1/2 of your width*/
+    border: 1px solid #ccc;
+    background-color: #ffffff;
 }
