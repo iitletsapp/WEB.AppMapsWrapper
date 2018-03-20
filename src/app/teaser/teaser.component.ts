@@ -39,7 +39,7 @@ export class TeaserComponent implements OnInit, OnDestroy {
     public municipalitygaugeclassification;
     public municipalitygaugeminMax = ['', ''];
     public municipalitygaugeminThreshold = .01;
-    public municipalitygaugeimgURL = 'assets/img/icons/generalinfo-grey.svg';
+    public municipalitygaugeimgURL = this.global.lageCheckAssetPath + '/assets/img/icons/generalinfo-grey.svg';
     // gauge address
     public addressgaugedata = this.addressfactor;
     public addressgaugeextent = [5, 1];
@@ -47,7 +47,7 @@ export class TeaserComponent implements OnInit, OnDestroy {
     public addressgaugeclassification;
     public addressgaugeminMax = ['', ''];
     public addressgaugeminThreshold = .01;
-    public addressgaugeimgURL = 'assets/img/icons/map-marker-grey.svg';
+    public addressgaugeimgURL = this.global.lageCheckAssetPath + '/assets/img/icons/map-marker-grey.svg';
 
     private dataSubscription;
 
