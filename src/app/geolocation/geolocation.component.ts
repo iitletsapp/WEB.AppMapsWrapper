@@ -32,11 +32,11 @@ export class GeoLocationComponent implements OnInit {
 
         if (!!navigator.geolocation) {
 
-            this.ngZone.run(() => {
+            this.ngZone.run((cb) => {
 
                 navigator.geolocation.getCurrentPosition((position) => {
 
-                    let geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                    const geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                     this.mapService.map.setCenter(geolocate);
                     this.getMarker.emitChange([position.coords.latitude, position.coords.longitude]);
                     this.loading = !this.loading;
@@ -44,12 +44,13 @@ export class GeoLocationComponent implements OnInit {
                         .subscribe((location) => {
                             this.getAddress.emitChange(location.address);
                             this.getAddress.setFormatedAddress(location.address);
+                            this.loading = false;
                         });
                 });
             });
         } else {
             alert('No Geolocation Support');
-            this.loading = !this.loading;
+            this.loading = false;
         }
 
     }
