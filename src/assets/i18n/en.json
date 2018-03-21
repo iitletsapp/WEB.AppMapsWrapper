@@ -9,28 +9,26 @@
     "NOISE": "noise"
   },
   "SEARCH": {
-    "PLACEHOLDER": "Search your address..",
+    "PLACEHOLDER": "type to search...",
     "MARKERTITLE": "click to activate a marker",
     "TITLE": "search for location"
   },
   "GENERAL": {
-    "MUNICIPALITY": "Municipality",
-    "CANTON": "Canton",
     "DISTRICT": "District",
-    "COMMUNITYTYPE": "Community Type",
     "AREA": "Area",
-    "POPULATIONDENSITY": "Population density" 
+    "POPULATIONDENSITY": "Population density",
+    "MUNICIPALITYTYPE": "Type of municipality"
   },
   "POPULATION": {
-    "POPULATION": "Total Population",
+    "POPULATION": "Population",
     "AGECATEGORY": "Age category",
-    "FOREIGNERQUOTA": "Foreigner quota",
-    "UNEMPLOYMENTRATE": "Unemployment rate",
-    "INCOMETAX": "Income tax per person",
-    "POPULATIONGROWTH": "Population growth over 5 years"
+    "FOREIGNERQUOTA": "foreigner quota",
+    "UNEMPLOYMENTRATE": "unemployment rate",
+    "INCOMETAX": "Taxable income per capita",
+    "POPULATIONGROWTH": "population growth over 5 years"
   },
   "TAXES": {
-    "OVERVIEW": "Tax Index",
+    "OVERVIEW": "Taxes overview",
     "LEGEND1": "Single person, childless, gross income 70'000 CHF",
     "LEGEND2": "Single person, childless, gross income 100'000 CHF",
     "LEGEND3": "married couple, childless, gross income 150'000 CHF",
@@ -40,10 +38,10 @@
 
   },
   "HOUSINGMARKERT": {
-    "INDEX": "Home Index",
+    "INDEX": "Private Real Estate Price Index",
     "VACANCY": "Vacancy Rate",
     "HOUSINGSTOCK": "Housing Stock",
-    "NEWHOUSING": "New Housing last 5 years"
+    "NEWHOUSING": "New Housing Last 5 Years"
 
   },
   "NAVIGATION": {
@@ -57,17 +55,17 @@
   "POI": {
     "MINDISTANCE": "min",
     "TYPE": "type",
-    "EAT": "eat & drink",
-    "SHOPS": "shops",
-    "LEARN": "learn",
-    "LEISURE": "leisure",
-    "EMERGENCY": "emergency",
+    "EAT": "Eat & drink",
+    "SHOPS": "Shopping",
+    "LEARN": "Learn",
+    "LEISURE": "Leisure",
+    "EMERGENCY": "Emergency",
     "DISTANCE": "distance",
-    "CONNECTIVITY": "connectivity"
+    "CONNECTIVITY": "Connections"
   },
   "NOISE": {
     "TITLE": "Noise",
-    "SUBTITLE": "Show noise levels at your address.",
+    "SUBTITLE": "Show noise by activating a noise type of your choice and clicking an address point on the map.",
     "STREET": "Street noise",
     "RAIL": "Rail noise",
     "PLANE": "Plane noise",
@@ -87,7 +85,7 @@
     "POPULATION": "Population",
     "TAXES": "Taxes",
     "MARKET": "Market",
-    "POI": "Poi",
+    "POI": "POI",
     "NOISE": "Noise",
     "NOTAVAILABLE": "not available",
     "CLASSIFICATION1": "Exceptional",
@@ -95,10 +93,5 @@
     "CLASSIFICATION3": "Good",
     "CLASSIFICATION4": "Fair",
     "CLASSIFICATION5": "Poor"
-  },
-
-  "STARTUP": { 
-    "HEADER1": "The new way to invest in real estate.", 
-    "HEADER2": "Get exclusive in depth analysis of properties in your city." 
   }
 }

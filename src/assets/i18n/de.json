@@ -1,105 +1,97 @@
 {
   "TEASER": {
-    "MUNICIPALITY": "Municipality-de",
-    "GENERAL": "General-de",
-    "POPULATION": "Population-de",
-    "TAXES": "Taxes-de",
-    "MARKET": "Market-de",
-    "POI": "Poi-de",
-    "NOISE": "noise-de"
+    "MUNICIPALITY": "Gemeinde",
+    "GENERAL": "Allgemein",
+    "POPULATION": "Bevölkerung",
+    "TAXES": "Steuern",
+    "MARKET": "Markt",
+    "POI": "Poi",
+    "NOISE": "Lärm"
   },
   "SEARCH": {
-    "PLACEHOLDER": "Search your address-de..",
-    "MARKERTITLE": "click to activate a marker-de",
-    "TITLE": "search for location-de"
+    "PLACEHOLDER": "Suchbegriff eingeben",
+    "MARKERTITLE": "Klick zur Aktivierung des Markers",
+    "TITLE": "Addresse eingeben"
   },
   "GENERAL": {
-    "MUNICIPALITY": "Municipality-de",
-    "CANTON": "Canton-de",
-    "DISTRICT": "District-de",
-    "COMMUNITYTYPE": "Community Type-de",
-    "AREA": "Area-de",
-    "POPULATIONDENSITY": "Population density-de" 
+    "DISTRICT": "Bezirk",
+    "AREA": "Fläche",
+    "POPULATIONDENSITY": "Bevölkerungsdichte",
+    "MUNICIPALITYTYPE": "Gemeindetyp"
   },
   "POPULATION": {
-    "POPULATION": "Total Population-de",
-    "AGECATEGORY": "Age category-de",
-    "FOREIGNERQUOTA": "Foreigner quota-de",
-    "UNEMPLOYMENTRATE": "Unemployment rate-de",
-    "INCOMETAX": "Income tax per person-de",
-    "POPULATIONGROWTH": "Population growth over 5 years-de"
+    "POPULATION": "Bevölkerung",
+    "AGECATEGORY": "Altersklassen",
+    "FOREIGNERQUOTA": "Ausländerquote",
+    "UNEMPLOYMENTRATE": "Arbeitslosenquote",
+    "INCOMETAX": "Steuerbares Einkommen pro Person",
+    "POPULATIONGROWTH": "Jährliche Bevölkerungsentwicklung über 5 Jahre"
   },
   "TAXES": {
-    "OVERVIEW": "Taxes overview-de",
-    "LEGEND1": "Single person, childless, gross income 70'000 CHF-de",
-    "LEGEND2": "Single person, childless, gross income 100'000 CHF-de",
-    "LEGEND3": "married couple, childless, gross income 150'000 CHF-de",
-    "LEGEND4": "married couple, 2 children, gross income 70'000 CHF-de",
-    "LEGEND5": "married couple, 2 children, gross income 100'000 CHF-de",
-    "LEGEND6": "Retired couple, gross rent income 70'000 CHF-de"
+    "OVERVIEW": "Steuerbelastung",
+    "LEGEND1": "Ledige Person, kinderlos, Bruttoeinkommen 70'000 CHF",
+    "LEGEND2": "Ledige Person, kinderlos, Bruttoeinkommen 100'000 CHF",
+    "LEGEND3": "Ehepaar, kinderlos, Bruttoeinkommen 150'000 CHF",
+    "LEGEND4": "Ehepaar, 2 Kinder, Bruttoeinkommen 70'000 CHF",
+    "LEGEND5": "Ehepaar, 2 Kinder, Bruttoeinkommen 100'000 CHF",
+    "LEGEND6": "Pensioniertes Ehepaar, über 65, Renteneinkommen 70'000 CHF"
 
   },
   "HOUSINGMARKERT": {
-    "INDEX": "home index-de",
-    "VACANCY": "vacancy rate-de",
-    "HOUSINGSTOCK": "housing stock-de",
-    "NEWHOUSING": "new housing last 5 years-de"
+    "INDEX": "Eigenheimindex",
+    "VACANCY": "Leerstandsziffer",
+    "HOUSINGSTOCK": "Wohnungsbestand",
+    "NEWHOUSING": "Neue Wohnungen in den letzten 5 Jahren"
 
   },
   "NAVIGATION": {
-    "MICRO": "address rating-de",
-    "POI": "POI-de",
-    "NOISE": "noise-de",
+    "MICRO": "Bewertung Adresse",
+    "POI": "POI",
+    "NOISE": "Lärm",
     "VIEW": "view-de",
-    "SUNSHINE": "sunshine-de",
-    "TRANSPORT": "transport-de"
+    "SUNSHINE": "Sonnenstunden",
+    "TRANSPORT": "Transport"
   },
   "POI": {
-    "MINDISTANCE": "min-de",
-    "TYPE": "type-de",
-    "EAT": "eat & drink-de",
-    "SHOPS": "shops-de",
-    "LEARN": "learn-de",
-    "LEISURE": "leisure-de",
-    "EMERGENCY": "emergency-de",
-    "DISTANCE": "distance-de",
-    "CONNECTIVITY": "connectivity-de"
+    "MINDISTANCE": "Nächstgelegen",
+    "TYPE": "Typ",
+    "EAT": "Essen & trinken",
+    "SHOPS": "Einkaufen",
+    "LEARN": "Lernen",
+    "LEISURE": "Vergnügen",
+    "EMERGENCY": "Notfall",
+    "DISTANCE": "Distanz",
+    "CONNECTIVITY": "Verbindungen"
   },
   "NOISE": {
-    "TITLE": "Noise-de",
-    "SUBTITLE": "Show noise by activating a noise type of your choice and clicking an address point on the map.-de",
-    "STREET": "Street noise-de",
-    "RAIL": "Rail noise-de",
-    "PLANE": "Plane noise-de",
-    "INDB": "noise in DB:-de"
+    "TITLE": "Lärm",
+    "SUBTITLE": "Aktivieren Sie eine Lärmquelle, um die räumliche Verteilung des Lärms anzuzeigen.",
+    "STREET": "Strassenlärm",
+    "RAIL": "Bahnlärm",
+    "PLANE": "Fluglärm",
+    "INDB": "Lärm in dB:"
   },
 
   "BACKTOMARKER": {
-    "TITLE": "Back to marker-de"
+    "TITLE": "Zurück zur Adresse"
   },
 
   "GENERIC": {
-    "ADDRESS": "Address-de",
-    "RATING": "Rating-de",
+    "ADDRESS": "Adresse",
+    "RATING": "Rating",
     "NAME": "Name-de",
-    "MUNICIPALITY": "Municipality-de",
-    "GENERAL": "General-de",
-    "POPULATION": "Population-de",
-    "TAXES": "Taxes-de",
-    "MARKET": "Market-de",
-    "POI": "Poi-de",
-    "NOISE": "Noise-de",
-    "NOTAVAILABLE": "not available-de",
-    "CLASSIFICATION1": "Exceptional-de",
-    "CLASSIFICATION2": "Very good-de",
-    "CLASSIFICATION3": "Good-de",
-    "CLASSIFICATION4": "Fair-de",
-    "CLASSIFICATION5": "Poor-de"
-  },
-
-  "STARTUP": { 
-    "HEADER1": "The new way to invest in real estate.-de", 
-    "HEADER2": "Get exclusive in depth analysis of properties in your city.-de" 
+    "MUNICIPALITY": "Gemeinde",
+    "GENERAL": "Allgemein",
+    "POPULATION": "Bevölkerung",
+    "TAXES": "Steuern",
+    "MARKET": "Markt",
+    "POI": "POI",
+    "NOISE": "Lärm",
+    "NOTAVAILABLE": "Momentan nicht verfügbar",
+    "CLASSIFICATION1": "Ausserordentlich",
+    "CLASSIFICATION2": "Sehr gut",
+    "CLASSIFICATION3": "Gut",
+    "CLASSIFICATION4": "Mittel",
+    "CLASSIFICATION5": "Schlecht"
   }
-  
 }
