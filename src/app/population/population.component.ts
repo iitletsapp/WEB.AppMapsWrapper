@@ -72,7 +72,7 @@ export class PopulationComponent implements OnInit, OnDestroy {
     });
 
     this.dataforbararray = this.populationage.map((el) => {
-      return {ageGroup: el.ageGroupText.toString(),  value: el.value };
+      return {ageGroup: el.ageGroupText.toString(),  value: el.value.toFixed(2) };
     });
 
     console.log(this.dataforbararray);
