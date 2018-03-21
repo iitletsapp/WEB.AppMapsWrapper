@@ -1,22 +1,14 @@
 .header1 {
-  position: absolute;
-  top: 30%;
-  left: 50%;
   color: white;
-  margin-left:-15em;
-  font-size:large
 }
 
 .header2 {
-  position: absolute;
-  top: 37%;
-  left: 40%;
   color: white;
-  margin-left:-15em;
+  margin-bottom: 3em;
 }
 
 .search-input {
-  width: 48em;
+  width: 38em;
   background: white;
   -webkit-appearance: none!important;
   //min-height: 3rem;
@@ -34,13 +26,18 @@
 }
 
 #addresssearch{
-    position:fixed;
-    top: 55%;
-    left: 54%;
-    width:60em;
+    width:50em;
     height:3em;
-    margin-top: -1.5em; /*set to a negative number 1/2 of your height*/
-    margin-left: -30em; /*set to a negative number 1/2 of your width*/
     border: 1px solid #ccc;
     background-color: #ffffff;
+}
+.content-center{
+  margin-left: auto;
+  margin-right:auto;
+}
+
+.container-background{
+  height:100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

@@ -144,7 +144,7 @@ export class BarChartComponent implements OnInit, AfterViewInit {
                 .attr('transform', `translate(0, -10)`)
                 .style('text-anchor', 'middle')
                 .attr('fill', '#5D6971')
-                .text('(' + this.xAxisText + ')');
+                .text(this.xAxisText);
             // labels are outside the chart
             d3.selectAll('.axis').select('path').style('display', 'none');
             d3.selectAll('.axis').selectAll('.tick').select('line').style('display', 'none');
@@ -168,7 +168,7 @@ export class BarChartComponent implements OnInit, AfterViewInit {
                 .style('text-anchor', 'middle')
                 .style('transform', 'rotate(-90deg)')
                 .attr('fill', '#5D6971')
-                .text('(' + this.yAxisText + ')');
+                .text(this.yAxisText);
         d3.selectAll('.axis').select('path').style('display', 'none');
         d3.selectAll('.axis').selectAll('.tick').select('line').style('display', 'none');
 
