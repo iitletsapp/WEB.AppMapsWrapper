@@ -121,7 +121,7 @@ export class LineChartComponent implements OnInit, AfterViewInit {
                 .attr('transform', `translate(0, -10)`)
                 .style('text-anchor', 'middle')
                 .attr('fill', '#5D6971')
-                .text('(year)');
+                .text('year');
         d3.selectAll('.axis').select('path').style('display', 'none');
         d3.selectAll('.axis').selectAll('.tick').select('line').style('display', 'none');
 
@@ -142,7 +142,7 @@ export class LineChartComponent implements OnInit, AfterViewInit {
             .style('text-anchor', 'middle')
             .style('transform', 'rotate(-90deg)')
             .attr('fill', '#5D6971')
-            .text('(' + this.xText + ')');
+            .text(this.xText);
         d3.selectAll('.axis').select('path').style('display', 'none');
         d3.selectAll('.axis').selectAll('.tick').select('line').style('display', 'none');
 
