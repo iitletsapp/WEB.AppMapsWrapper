@@ -14,6 +14,8 @@ export class MacroService {
     public apiKey;
     public sourceready = new Subject<any>();
     public changeEmitted$ = this.sourceready.asObservable();
+    public sourcePlaneNoise = new Subject<any>();
+    public planeNoiseChangeEmitted$ = this.sourcePlaneNoise.asObservable();
 
     // tslint:disable-next-line:no-shadowed-variable
     constructor(http: Http, public global: Globals) {
@@ -74,17 +76,17 @@ export class MacroService {
 
     public getStreetNoise(lat: number, lng: number) {
         // tslint:disable-next-line:max-line-length
-        return this.get(`v1/microfactors?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}&factorId=20`);
+        return this.get(`v1/microfactors?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}&factorId=223`);
     }
     public getRailNoise(lat: number, lng: number) {
         // tslint:disable-next-line:max-line-length
-        return this.get(`v1/microfactors?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}&factorId=19`);
+        return this.get(`v1/microfactors?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}&factorId=222`);
     }
     public getPlaneNoise(lat: number, lng: number) {
         // tslint:disable-next-line:max-line-length
-        return this.get(`v1/microfactors?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}&factorId=16`);
+        return this.get(`v1/microfactors?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}&factorId=221`);
     }
-    public getPolygons(lat: number, lng: number) { 
+    public getPolygons(lat: number, lng: number) {
         return this.get(`v1/NeighbourPolygons?countryCode=CH&municipalityId=${this.macroObj.municipalityID}&date=20180226`);
     }
 

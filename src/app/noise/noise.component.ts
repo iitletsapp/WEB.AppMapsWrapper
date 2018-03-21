@@ -8,7 +8,7 @@ import * as _ from 'lodash';
 import * as d3 from 'd3';
 import { Globals } from '../globals';
 import { MaplegendService } from '../../services/maplegend.service';
-import { Subject } from 'rxjs';
+import { MacroService } from '../../services/macro.service';
 
 @Component({
   selector: 'app-noise',
@@ -29,6 +29,7 @@ export class NoiseComponent implements OnInit, OnDestroy {
   public railnoisemarker = [];
   public planenoisemarker = [];
   public loading = false;
+  public hasPlane = false;
   // for legend
   public legend = {
     title: 'Noise level',
@@ -41,6 +42,7 @@ export class NoiseComponent implements OnInit, OnDestroy {
     labels: ['low', 'high']
   };
   private isloaded = false;
+  private mapEventListener;
 
 
   constructor(
@@ -49,19 +51,18 @@ export class NoiseComponent implements OnInit, OnDestroy {
     private mapService: MapService,
     private getmarker: GetMarkerService,
     private micro: MicroService,
+    private macroService: MacroService,
     private ngZone: NgZone,
     private mapLegendService: MaplegendService,
     public global: Globals) {
     this.mapLegendService.setLegendInfo(this.legend);
+    this.macroService.planeNoiseChangeEmitted$.subscribe((state) => {
+      this.hasPlane = state;
+    });
   }
 
   public ngOnInit() {
-    const markers = ['streetnoisemarker', 'railnoisemarker', 'planenoisemarker'];
-    markers.forEach((el) => {
-      if (this[el]) {
-        this.zoomPropertyFunction(this[el]);
-      }
-    });
+
   }
   public ngOnDestroy() {
     const markers = ['streetnoisemarker', 'railnoisemarker', 'planenoisemarker'];
@@ -74,6 +75,7 @@ export class NoiseComponent implements OnInit, OnDestroy {
   }
 
   public getLayer(e) {
+    e.stopPropagation();
     if (e.target.checked) {
       this.generalNoise[e.target.id] = this.apiobj.requestData(e.target.id);
       this.coordvalues = this.generalNoise[e.target.id][0].values;
@@ -84,7 +86,6 @@ export class NoiseComponent implements OnInit, OnDestroy {
 
   }
   public addLayer(target) {
-    this.mapService.map.setZoom(15);
     this.loading = !this.loading;
 
     const extent = d3.extent(this.coordvalues.map((el) => el.factorValue));
@@ -98,7 +99,7 @@ export class NoiseComponent implements OnInit, OnDestroy {
         fillColor: calcColor(value),
         map: this.mapService.map,
         center: place,
-        radius: <any>this.normalizeValues(value) * 5.5
+        radius: <any>this.normalizeValues(value) * 7.5 // 5.5 original
       });
       if (target === 'streetnoise') {
         this.streetnoisemarker.push(circle);
@@ -111,7 +112,7 @@ export class NoiseComponent implements OnInit, OnDestroy {
 
     function calcColor(val) {
       const quant = d3.scaleQuantize()
-        .domain(extent)
+        .domain([0, 120])
         .range([
           'rgb(65, 224, 242)',
           'rgb(46, 232, 25)',
@@ -156,22 +157,11 @@ export class NoiseComponent implements OnInit, OnDestroy {
     }
   }
   public normalizeValues(val) {
-    // this function normatizes the values otherwise the size for the points are too wide to present
+    // this function normatizes the values otherwise the size for the points are too big to be presented
     const extent = d3.extent(this.coordvalues.map((el) => el.factorValue));
     const quant = d3.scaleQuantize()
       .domain(extent)
       .range([1.1, 1.2, 1.3, 1.4, 1.5]);
     return quant(val);
-  }
-  public zoomPropertyFunction(noiseCat) {
-    setTimeout(() => {
-      this.mapService.map.addListener('zoom_changed', () => {
-        for (let i = 0; i < noiseCat.length; i++) {
-          const p = 21 - this.mapService.map.getZoom();
-          const value = this.coordvalues[i].factorValue;
-          noiseCat[i].setRadius(<any>(this.normalizeValues(value) * 4) + p);
-        }
-      });
-    }, 300);
   }
 }

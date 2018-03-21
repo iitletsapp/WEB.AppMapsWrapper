@@ -7,14 +7,17 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-5">
             <h6 class="noise-title">{{ 'NOISE.STREET' | translate }}</h6>
             <small [hidden]="!streetnoiseval">{{ 'NOISE.INDB' | translate }}
                 <b class="h4">{{streetnoiseval}}</b>
             </small>
         </div>
-        <div class="col-3">
+        <div class="col-2">
             <img class="noise-icons" src="{{global.lageCheckAssetPath}}/assets/img/icons/car.svg" alt="street noise">
+        </div>
+        <div class="col-2">
+            
         </div>
         <div class="col-3">
             <div class="p-2">
@@ -30,11 +33,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-5">
             <h6 class="noise-title">{{ 'NOISE.RAIL' | translate }}</h6>
         </div>
-        <div class="col-3">
+        <div class="col-2">
             <img class="noise-icons" src="{{global.lageCheckAssetPath}}/assets/img/icons/train.svg" alt="rail noise">
+        </div>
+        <div class="col-2">
+
         </div>
         <div class="col-3">
             <div class="p-2">
@@ -45,13 +51,16 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-5">
             <h6 class="noise-title">{{ 'NOISE.PLANE' | translate }}</h6>
         </div>
-        <div class="col-3">
+        <div class="col-2">
             <img class="noise-icons" src="{{global.lageCheckAssetPath}}/assets/img/icons/plane.svg" alt="plane noise">
         </div>
-        <div class="col-3">
+        <div class="col-2">
+            <small [hidden]="hasPlane">no data</small>
+        </div>
+        <div class="col-3" [hidden]="!hasPlane">
             <div class="p-2">
                 <input type="checkbox" name="checkbox1" id="planenoise" class="ios-toggle" data-visible="off" toggled (change)="getLayer($event)"
                 />

@@ -129,8 +129,15 @@ export class SearchComponent implements OnInit, AfterViewInit {
                 this.apiobj.emitChange(res.results.data, 'railnoise');
             }, () => { }, () => console.log('railnoise done'));
             this.macro.getPlaneNoise(this.lat, this.lng).subscribe((res) => {
-                this.apiobj.emitChange(res.results.data, 'planenoise');
-            });
+                console.log('in search planenoise', res);
+                if (res.results === null) {
+                    this.macro.sourcePlaneNoise.next(false);
+                } else {
+                    this.macro.sourcePlaneNoise.next(true);
+                    this.apiobj.emitChange(res.results.data, 'planenoise');
+                }
+            }, (error) => { console.log('in planenoise', error.results);
+            }, () => console.log('planenoise done'));
             this.macro.getPolygons(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res, 'polygons');
             }, () => { }, () => console.log('Map polygons done'));
