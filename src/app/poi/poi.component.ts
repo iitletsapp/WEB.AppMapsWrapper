@@ -14,7 +14,7 @@ import { global } from '@angular/core/src/util';
   styleUrls: ['./poi.component.scss']
 })
 export class PoiComponent implements OnInit, OnDestroy {
-  public markerLastLocation;
+  public markerLastLocation: any[];
   public markerbin = {
     restaurant: [],
     shop: [],
@@ -57,7 +57,7 @@ export class PoiComponent implements OnInit, OnDestroy {
     private ngZone: NgZone,
     private mapsAPILoader: MapsAPILoader,
     public global: Globals) {
-    getMarker.changeEmitted$.subscribe(
+    this.getMarker.changeEmitted$.subscribe(
       (data) => {
         this.markerLastLocation = data;
       });
@@ -224,8 +224,6 @@ export class PoiComponent implements OnInit, OnDestroy {
       bounds.extend(markerCategory[i].getPosition());
     }
     this.mapService.map.fitBounds(bounds);
-    this.mapService.map.setCenter({lat: this.markerLastLocation[0], lng: this.markerLastLocation[1]});
-    this.mapService.map.setZoom(this.mapService.map.getZoom() - 1);
   }
 
   public clearMarkers(type) {
@@ -285,8 +283,7 @@ export class PoiComponent implements OnInit, OnDestroy {
         radius: 1000,
         // rankBy: google.maps.places.RankBy.DISTANCE
       }, (results, status, pagination) => {
-        console.log(results);
-
+        // console.log(results);
         this.ngZone.run(() => {
 
           const markerbin = [];
@@ -349,7 +346,6 @@ export class PoiComponent implements OnInit, OnDestroy {
               this.listResult[poirequested] = list;
               _.map(this.listResult[poirequested], (el) => this.wholelist.unshift(el));
               this.wholelist = _.dropRight(_.orderBy(this.wholelist, ['distance'], ['asc']), this.wholelist.length - 10);
-              this.fitZoomLevel(poirequested);
             };
             return cb();
           } else if (status === 'ZERO_RESULTS') {
@@ -358,6 +354,7 @@ export class PoiComponent implements OnInit, OnDestroy {
             console.log('not good reason: ', status);
           }
         });
+        this.fitZoomLevel(poirequested);
       });
     });
   }
