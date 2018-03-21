@@ -43,6 +43,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
         this.getAddress.changeEmitted$.subscribe((newAddress) => {
             this.address = newAddress;
         });
+        this.mapService.sourceMapsChangeEmitted$.subscribe((ready) => this.mapService.map.data.setMap(null));
     }
 
     public ngOnInit() {
@@ -84,22 +85,23 @@ export class SearchComponent implements OnInit, AfterViewInit {
     }
 
     public goto() {
-        this.mapService.map.data.setMap(null);
         if (!this.address) {
             this.global.addressSearch = false;
             return;
         }
+        // tslint:disable-next-line:quotemark
+        this.router.navigate(['/index', {outlets: {'index': ['teaser']}}]);
         this.progressbar.startProgressBar();
         this.global.addressSearch = true;
         setTimeout(() => {
             this.getAddress.setFormatedAddress(this.address);
+            this.getMarker.emitChange([this.lat, this.lng]);
             this.progressbar.endProgressBar();
-        }, 100);
-        this.getMarker.emitChange([this.lat, this.lng]);
+        }, 150);
         this.macro.getLocationInfo(this.lat, this.lng).subscribe(() => {
 
         }, (error) => {
-            console.log('ortId issue', error);
+            console.log(error);
         }, () => {
             console.log('ortId done');
             this.macro.getMunicipalityInfo(this.lat, this.lng).subscribe((res) => {
@@ -107,7 +109,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
             }, (error) => {
                 console.log(error);
             }, () => {
-                console.log('\general done');
+                console.log('general done');
             });
             this.macro.getPopulation(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res.municipalityPopulationEvolutionIndex, 'population');
