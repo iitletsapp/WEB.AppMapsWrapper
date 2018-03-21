@@ -1,5 +1,5 @@
 <div class="col-md-12 col-sm-12 col-lg-12 container-background"  [style.background-image]="backgroundImg">
-    <div class="row content-center" style="height:39%;">
+    <div class="row content-center" style="height:35%;">
         
       </div>
     <div class="row header1 content-center">
@@ -11,7 +11,7 @@
     <div id="addresssearch" class="content-center">
       <img style="height:2em; margin-top:0.1em; margin-left:1em;" src="{{global.lageCheckAssetPath}}/assets/img/map-marker.png"
         alt="location">
-      <input #focusable id="place-input" style="margin-top:0.5em;height:2em;" class="search-input text-truncate " type="text" placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
+      <input #focusable id="place-input" style="height:2em;" class="search-input text-truncate " type="text" placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
         [(ngModel)]="address" [formControl]="searchControl">
       <button title="{{ 'SEARCH.TITLE' | translate }}" type="button" style="margin-top:0.1em;background-color:white" class="btn search-button"
         [routerLink]="['/index', {outlets: {'index': ['teaser']}}]">
