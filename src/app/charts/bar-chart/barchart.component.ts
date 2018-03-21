@@ -69,7 +69,8 @@ export class BarChartComponent implements OnInit, AfterViewInit {
 
         let y = d3.scaleLinear()
             .domain([0, d3.max(this.data, (d) => d[this.yText])])
-            .range([height, 0]);
+            .range([height, 0])
+            .nice();
 
         let colorScale = d3.scaleOrdinal()
             .range(['#f19b2c', '#f0c330', '#3a99d8', '#239f85', '#e54d42', '#095682']);
