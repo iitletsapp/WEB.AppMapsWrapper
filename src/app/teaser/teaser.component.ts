@@ -68,17 +68,33 @@ export class TeaserComponent implements OnInit, OnDestroy {
                 }
             }
         );
+
+        if ( this.global.macroData !== undefined ) {
+            console.log('macrodata');
+            this.macrofactor = this.global.macroData.macroRatingClass1To5.toFixed(1);
+            this.macrofactortext = this.global.macroData.macroRatingClass1To5Text;
+            this.municipalitygaugeclassification = [this.macrofactor.toString()];
+            this.muncipalityId = this.global.muncipalityId;
+            this.municipalityname = this.municipalityService.apiObj.general[0].municipalityName;
+        }
+
+        if ( this.global.addressData !== undefined ) {
+            console.log('addressdata');
+            this.addressfactor = this.global.addressData.microRatingClass1To5;
+            this.addressfactortext = this.global.addressData.microRatingClass1To5Text;
+            this.addressgaugeclassification = [this.addressfactor.toString()];
+            this.addressname = this.address.requestAddress();
+        }
     }
 
     public ngOnInit() {
-
     }
+
     public ngOnDestroy() {
-        this.dataSubscription.unsubscribe();
+       this.dataSubscription.unsubscribe();
     }
 
     public getmacro(municalityId, ortID) {
-
         this.loading = true;
         this.macro.getMacroRatings(this.markerLastLocation[0], this.markerLastLocation[1], municalityId).subscribe((res) => {
             this.global.macroData = res.results;
@@ -90,7 +106,7 @@ export class TeaserComponent implements OnInit, OnDestroy {
             this.loading = false;
         }, () => {
             this.macro.getAddressRatings(this.markerLastLocation[0], this.markerLastLocation[1], ortID).subscribe((res) => {
-                this.global.addressData = res;
+                this.global.addressData = res.results;
                 this.addressfactor = res.results.microRatingClass1To5;
                 this.addressfactortext = res.results.microRatingClass1To5Text;
                 this.addressgaugeclassification = [this.addressfactor.toString()];
@@ -102,6 +118,8 @@ export class TeaserComponent implements OnInit, OnDestroy {
                 this.municipalityname = this.municipalityService.apiObj.general[0].municipalityName;
                 this.addressname = this.address.requestAddress();
                 this.loading = false;
+
+                this.global.muncipalityId = this.muncipalityId;
             });
         });
     }

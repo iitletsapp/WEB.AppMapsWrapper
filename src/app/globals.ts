@@ -13,4 +13,6 @@ export class Globals {
   address: any;
   lat: any;
   lon: any;
+  muncipalityId: number;
+  muncipalityName: any;
 }

@@ -30,6 +30,10 @@ export class GaugeChartComponent implements OnInit, OnChanges, AfterViewInit {
   }
   public ngAfterViewInit() {
     this.isready = true;
+    this.initChart();
+    // if (this.containerId && this.isready) {
+    //   this.initChart();
+    // }
   }
 
   public initChart() {
