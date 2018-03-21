@@ -13,10 +13,31 @@
     .scrollable-section {
         height: calc(100vh);
         overflow-y: auto;
+        overflow-x: hidden;
         @media screen and (max-width: 768px) {
             height: 49vh;
         }
     }
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #DBDCDD; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #888; 
 }
 
 .no-gutters {
