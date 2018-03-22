@@ -18,6 +18,8 @@ export class GetMunicipalityService {
         streetnoise: null,
         railnoise: null,
         planenoise: null,
+        hasplanenoise: null,
+        decibel: null,
         polygons: null
     };
 

@@ -93,5 +93,10 @@
     "CLASSIFICATION3": "Good",
     "CLASSIFICATION4": "Fair",
     "CLASSIFICATION5": "Poor"
+  },
+
+  "STARTUP": { 
+    "HEADER1": "The new way to invest in real estate.", 
+    "HEADER2": "Get exclusive in depth analysis of properties in your city." 
   }
 }

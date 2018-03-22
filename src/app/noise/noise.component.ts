@@ -18,6 +18,11 @@ import { MacroService } from '../../services/macro.service';
 export class NoiseComponent implements OnInit, OnDestroy {
 
   public streetnoiseval: number;
+  public decibel = {
+    streetNoise: null,
+    railNoise: null,
+    planeNoise: null
+  };
   public generalNoise = {
     streetnoise: null,
     railnoise: null,
@@ -30,6 +35,7 @@ export class NoiseComponent implements OnInit, OnDestroy {
   public planenoisemarker = [];
   public loading = false;
   public hasPlane = false;
+
   // for legend
   public legend = {
     title: 'Noise level',
@@ -55,14 +61,17 @@ export class NoiseComponent implements OnInit, OnDestroy {
     private ngZone: NgZone,
     private mapLegendService: MaplegendService,
     public global: Globals) {
+
     this.mapLegendService.setLegendInfo(this.legend);
-    this.macroService.planeNoiseChangeEmitted$.subscribe((state) => {
-      this.hasPlane = state;
-    });
+
+    const hasPlaneCheck = this.apiobj.requestData('hasplanenoise');
+    hasPlaneCheck !== undefined ? this.hasPlane = hasPlaneCheck : this.hasPlane = this.hasPlane;
+
+    const decibelValues = this.apiobj.requestData('decibel');
+    decibelValues !== undefined ? this.decibel = this.apiobj.requestData('decibel') : this.decibel = this.decibel;
   }
 
   public ngOnInit() {
-
   }
   public ngOnDestroy() {
     const markers = ['streetnoisemarker', 'railnoisemarker', 'planenoisemarker'];

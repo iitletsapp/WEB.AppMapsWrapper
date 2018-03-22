@@ -77,7 +77,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        console.log('Address : ' + this.global.address );
+        console.log('Address : ' + this.global.address);
         this.address = this.global.address;
         this.lat = this.global.lat;
         this.lng = this.global.lon;
@@ -90,7 +90,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
             return;
         }
         // tslint:disable-next-line:quotemark
-        this.router.navigate(['/index', {outlets: {'index': ['teaser']}}]);
+        this.router.navigate(['/index', { outlets: { 'index': ['teaser'] } }]);
         this.progressbar.startProgressBar();
         this.global.addressSearch = true;
         setTimeout(() => {
@@ -124,6 +124,9 @@ export class SearchComponent implements OnInit, AfterViewInit {
                 this.apiobj.emitChange(res.housingAreaMarketConstructionActivity, 'housingMarketConstructionActivity');
                 this.apiobj.emitChange(res.housingAreaMarketVacancyRate[0].municipalityValue, 'housingMarketVacancy');
             }, () => { }, () => console.log('housing market done'));
+            this.macro.getNoiseDecibel(this.lat, this.lng).subscribe((res) => {
+                this.apiobj.emitChange(res.results, 'decibel');
+            }, () => { }, () => console.log('noise decibel done'));
             this.macro.getStreetNoise(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res.results.data, 'streetnoise');
             }, () => { }, () => console.log('streetnoise done'));
@@ -132,12 +135,12 @@ export class SearchComponent implements OnInit, AfterViewInit {
             }, () => { }, () => console.log('railnoise done'));
             this.macro.getPlaneNoise(this.lat, this.lng).subscribe((res) => {
                 if (res.results === null) {
-                    this.macro.sourcePlaneNoise.next(false);
+                    this.apiobj.emitChange(false, 'hasplanenoise');
                 } else {
-                    this.macro.sourcePlaneNoise.next(true);
+                    this.apiobj.emitChange(true, 'hasplanenoise');
                     this.apiobj.emitChange(res.results.data, 'planenoise');
                 }
-            }, () => {}, () => console.log('planenoise done'));
+            }, () => { }, () => console.log('planenoise done'));
             this.macro.getPolygons(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res, 'polygons');
             }, () => { }, () => console.log('Map polygons done'));

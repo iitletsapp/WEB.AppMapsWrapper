@@ -17,7 +17,8 @@
             <img class="noise-icons" src="{{global.lageCheckAssetPath}}/assets/img/icons/car.svg" alt="street noise">
         </div>
         <div class="col-2">
-            
+            <small *ngIf="decibel.streetNoise">
+                <b>{{decibel.streetNoise | number:'.1'}}</b> db</small>
         </div>
         <div class="col-3">
             <div class="p-2">
@@ -40,7 +41,8 @@
             <img class="noise-icons" src="{{global.lageCheckAssetPath}}/assets/img/icons/train.svg" alt="rail noise">
         </div>
         <div class="col-2">
-
+            <small *ngIf="decibel.railNoise">
+                <b>{{decibel.railNoise | number:'.1'}}</b> db</small>
         </div>
         <div class="col-3">
             <div class="p-2">
@@ -58,10 +60,12 @@
             <img class="noise-icons" src="{{global.lageCheckAssetPath}}/assets/img/icons/plane.svg" alt="plane noise">
         </div>
         <div class="col-2">
-            <small [hidden]="hasPlane">no data</small>
+            <small *ngIf="decibel.planeNoise">
+                <b>{{decibel.planeNoise | number:'.1'}}</b> db</small>
         </div>
-        <div class="col-3" [hidden]="!hasPlane">
-            <div class="p-2">
+        <div class="col-3 text-center">
+            <small [hidden]="hasPlane">no data</small>
+            <div class="p-2" [hidden]="!hasPlane">
                 <input type="checkbox" name="checkbox1" id="planenoise" class="ios-toggle" data-visible="off" toggled (change)="getLayer($event)"
                 />
                 <label for="planenoise" class="checkbox-label" data-off="" data-on=""></label>

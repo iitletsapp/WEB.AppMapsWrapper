@@ -14,9 +14,6 @@ export class MacroService {
     public apiKey;
     public sourceready = new Subject<any>();
     public changeEmitted$ = this.sourceready.asObservable();
-    public sourcePlaneNoise = new Subject<any>();
-    public planeNoiseChangeEmitted$ = this.sourcePlaneNoise.asObservable();
-
     // tslint:disable-next-line:no-shadowed-variable
     constructor(http: Http, public global: Globals) {
         this.http = http;
@@ -74,6 +71,10 @@ export class MacroService {
         return this.get(`v1/housingmarket?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}`);
     }
 
+    public getNoiseDecibel(lat: number, lng: number) {
+        // tslint:disable-next-line:max-line-length
+        return this.get(`v1/noisemicrofactors?countryCode=CH&lat=${lat}&lon=${lng}&municipalityId=${this.macroObj.municipalityID}&date=20150630`);
+    }
     public getStreetNoise(lat: number, lng: number) {
         // tslint:disable-next-line:max-line-length
         return this.get(`v1/microfactors?countryCode=CH&lat=${lat}&lon=${lng}&ortId=${this.macroObj.ortID}&municipalityId=${this.macroObj.municipalityID}&factorId=223`);

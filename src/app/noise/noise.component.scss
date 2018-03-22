@@ -6,25 +6,28 @@
     .badge-warning {
         font-size: 8px;
     }
-    .border-right{
-        border-right: 1px solid rgba(0,0,0,.1);
+    .border-right {
+        border-right: 1px solid rgba(0, 0, 0, .1);
     }
     .fa-star {
         color: #e2df84;
     }
     .small-poor {
-        color: #41e0f2; 
+        color: #41e0f2;
     }
     .small-exceptional {
-        color: #e0190b; 
+        color: #e0190b;
     }
-    .noise-icons{
+    .noise-icons {
         width: 36px;
     }
-    .noise-title{
+    .noise-title {
         font-size: 1.75rem;
     }
-    .loading-flag{
+    .loading-flag {
         width: 1rem;
+    }
+    p {
+        margin-bottom: 0;
     }
 }
