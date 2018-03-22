@@ -62,9 +62,4 @@ export class NavigationComponent implements OnInit {
       this.toggleNav();
     }
   }
-
-  public clearPolygons() {
-    this.mapService.map.data.setMap(null);
-  }
-
 }

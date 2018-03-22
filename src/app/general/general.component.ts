@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnDestroy } from '@angular/core';
 import { GetMarkerService } from '../../services/getmarker.service';
 import { GetMunicipalityService } from '../../services/getmunicipality.service';
 import { PolygonsService } from '../../services/polygons.service';
@@ -16,7 +16,7 @@ const gjfilter = require('geojson-filter');
     styleUrls: ['general.component.scss']
 })
 
-export class GeneralComponent implements OnInit {
+export class GeneralComponent implements OnInit, OnDestroy {
     // public response: any;
     public generaldata;
     public muncipalityId;
@@ -44,6 +44,10 @@ export class GeneralComponent implements OnInit {
     public ngOnInit() {
         this.displayPolygons();
     }
+
+    public ngOnDestroy() {
+        this.mapService.map.data.setMap(null);
+      }
 
     public displayPolygons() {
         this.mapService.map.data.forEach((feature) => {

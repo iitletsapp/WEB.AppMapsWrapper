@@ -60,6 +60,7 @@ export class TaxesComponent implements OnInit, OnDestroy {
   }
   public ngOnDestroy() {
     this.mapLegendService.removeLegend();
+    this.mapService.map.data.setMap(null);
   }
 
   public displayPolygons() {

@@ -18,7 +18,7 @@ export class HousingMarketComponent implements OnInit, OnDestroy {
     public housingStock;
     public newHousing;
     public housingMarketVacancy;
-    public xLabel = 'cost';
+    public xLabel = '';
     public linecontainer = 'housingmarketchartcontainer';
     public geoJson = '';
     public extentData = [];
@@ -56,6 +56,7 @@ export class HousingMarketComponent implements OnInit, OnDestroy {
     }
     ngOnDestroy() {
         this.mapLegendService.removeLegend();
+        this.mapService.map.data.setMap(null);
     }
 
     public displayPolygons() {
