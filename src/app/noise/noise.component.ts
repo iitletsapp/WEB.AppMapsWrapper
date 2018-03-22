@@ -108,7 +108,7 @@ export class NoiseComponent implements OnInit, OnDestroy {
         fillColor: calcColor(value),
         map: this.mapService.map,
         center: place,
-        radius: <any>this.normalizeValues(value) * 7.5 // 5.5 original
+        radius: <any>this.normalizeValues(value) * 6.7 // 5.5 original
       });
       if (target === 'streetnoise') {
         this.streetnoisemarker.push(circle);
