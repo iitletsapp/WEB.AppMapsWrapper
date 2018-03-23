@@ -88,7 +88,8 @@ registerLocaleData(localeDECH);
     ReactiveFormsModule,
     TranslateModule.forRoot({
       provide: TranslateLoader,
-      useFactory: (http: Http) => new TranslateStaticLoader(http, Config.LAGECHECKASSETPATH +'/assets/i18n', '.json'),
+      // tslint:disable-next-line:max-line-length
+      useFactory: (http: Http) => new TranslateStaticLoader(http, (sessionStorage.getItem('iazimappath') === null ? Config.LAGECHECKASSETPATH : sessionStorage.getItem('iazimappath')) + '/assets/i18n', '.json'),
       deps: [Http]
     }),
     RouterModule.forRoot(appRoutes),
@@ -116,4 +117,6 @@ registerLocaleData(localeDECH);
   ],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }
