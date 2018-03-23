@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, OnDestroy } from '@angular/core';
+import { Component, OnInit, NgZone, OnDestroy, AfterViewInit } from '@angular/core';
 import { MapService } from '../../services/map.service';
 import { GetMarkerService } from '../../services/getmarker.service';
 import { MicroService } from '../../services/micro.service';
@@ -15,7 +15,7 @@ import { MacroService } from '../../services/macro.service';
   templateUrl: './noise.component.html',
   styleUrls: ['./noise.component.scss']
 })
-export class NoiseComponent implements OnInit, OnDestroy {
+export class NoiseComponent implements OnInit, OnDestroy, AfterViewInit {
 
   public streetnoiseval: number;
   public decibel = {
@@ -72,6 +72,17 @@ export class NoiseComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
+
+  }
+  public ngAfterViewInit() {
+    const layersId = ['streetnoise', 'railnoise', 'planenoise'];
+    layersId.forEach((el) => {
+      if (this.apiobj.requestData(el) !== undefined) {
+        this.generalNoise[el] = this.apiobj.requestData(el);
+        this.coordvalues = this.generalNoise[el][0].values;
+        this.addLayer(el);
+      }
+    });
   }
   public ngOnDestroy() {
     const markers = ['streetnoisemarker', 'railnoisemarker', 'planenoisemarker'];
@@ -85,12 +96,16 @@ export class NoiseComponent implements OnInit, OnDestroy {
 
   public getLayer(e) {
     e.stopPropagation();
+    const suffix = `${e.target.id}marker`;
     if (e.target.checked) {
-      this.generalNoise[e.target.id] = this.apiobj.requestData(e.target.id);
-      this.coordvalues = this.generalNoise[e.target.id][0].values;
-      this.addLayer(e.target.id);
+      this.fitZoomLevel(this[suffix]);
+      this[suffix].forEach(circle => {
+        circle.setOptions({ fillOpacity: .9 });
+      });
     } else {
-      this.removeCircles(e);
+      this[suffix].forEach(circle => {
+        circle.setOptions({ fillOpacity: 0 });
+      });
     }
 
   }
@@ -104,7 +119,7 @@ export class NoiseComponent implements OnInit, OnDestroy {
       const place = { lat: this.coordvalues[i].latitude, lng: this.coordvalues[i].longitude };
       const circle = new google.maps.Circle({
         strokeWeight: 0,
-        fillOpacity: 0.8,
+        fillOpacity: 0,
         fillColor: calcColor(value),
         map: this.mapService.map,
         center: place,
@@ -121,7 +136,7 @@ export class NoiseComponent implements OnInit, OnDestroy {
 
     function calcColor(val) {
       const quant = d3.scaleQuantize()
-        .domain([0, 120])
+        .domain([0, 108])
         .range([
           'rgb(65, 224, 242)',
           'rgb(46, 232, 25)',
@@ -133,21 +148,17 @@ export class NoiseComponent implements OnInit, OnDestroy {
     }
 
     const suffix = `${target}marker`;
-    this.fitZoomLevel(this[suffix], () => {
-      setTimeout(() => {
-        this.loading = !this.loading;
-      }, 400);
-    });
+    this.fitZoomLevel(this[suffix]);
+    this.loading = !this.loading;
 
   }
 
-  public fitZoomLevel(markers, cb) {
+  public fitZoomLevel(markers) {
     const bounds = new google.maps.LatLngBounds();
     for (let i = 0; i < markers.length; i++) {
       bounds.extend(markers[i].getCenter());
     }
     this.mapService.map.fitBounds(bounds);
-    cb();
   }
 
   public removeCircles(e) {
