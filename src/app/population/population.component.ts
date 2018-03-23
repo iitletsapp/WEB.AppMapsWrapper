@@ -36,6 +36,7 @@ export class PopulationComponent implements OnInit, OnDestroy {
   public xAxisAgeText = 'age group';
   public yAxisAgeText = 'value in %';
 
+  public yPopulationDataFormat = 'k';
   public xAgeDataFormat = '%';
   public yAgeDataFormat = '%';
   //public displayXAgeData = true;

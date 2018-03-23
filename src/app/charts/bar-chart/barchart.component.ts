@@ -158,10 +158,8 @@ export class BarChartComponent implements OnInit, AfterViewInit {
             .style('font-size', '8')
             .call(d3.axisLeft(y)
                 .tickSizeOuter(0)
-                .tickFormat(function (d) {
-                    //let num = d / 1000;
-                    return d ;
-                }))
+                .tickFormat(d => d + this.yDataFormat )
+            )
                 .append('text')
                 .attr('class', 'axis-title')
                 .attr('dx', -120)

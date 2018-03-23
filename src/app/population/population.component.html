@@ -9,7 +9,7 @@
     <hr class="hr-black">
     <h6 class="d-inline-block chart-header">Population Growth</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
     <hr class="hr-black">
-    <app-linechart [containerId]="linecontainer" [data]="dataforlinearray" [xText]="xLabel"></app-linechart>
+    <app-linechart [containerId]="linecontainer" [data]="dataforlinearray" [xText]="xLabel" [yDataFormat]="yPopulationDataFormat"></app-linechart>
     <h6 class="d-inline-block  chart-header">Age Category</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
     <hr class="hr-black">
     <app-barchart [containerId]="barcontainer" [data]="dataforbararray" [xText]="xAgeData" [yText]="yAgeData" 

@@ -14,6 +14,8 @@ export class LineChartComponent implements OnInit, AfterViewInit {
     @Input() public xText;
     // containerId it the refers to the layerID that the histogram should read data from
     @Input() public containerId;
+    @Input() public yDataFormat: string;
+
     private isready = false;
 
     // public data = [
@@ -132,9 +134,11 @@ export class LineChartComponent implements OnInit, AfterViewInit {
             .call(d3.axisLeft(y)
                 .ticks( data.length / 2)
                 .tickSizeOuter(0)
-                .tickFormat(function (d) {
-                    return Math.floor(d) + 'k';
-                }))
+                // .tickFormat(function (d) {
+                //     return Math.floor(d) + 'k';
+                // })
+                .tickFormat(d => Math.floor(d) + this.yDataFormat )
+            )
             .append('text')
             .attr('class', 'axis-title')
             .attr('dx', -120)

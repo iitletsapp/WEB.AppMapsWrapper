@@ -23,6 +23,7 @@ export class HousingMarketComponent implements OnInit, OnDestroy {
     public geoJson = '';
     public extentData = [];
     public extent = [];
+    public yMarketDataFormat = '';
     // for legend
     public maplegend = {
         title: 'Price levels',
