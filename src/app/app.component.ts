@@ -22,6 +22,12 @@ export class AppComponent implements OnInit {
     public global: Globals,
     public translate: TranslateService
   ) {
+
+    // console.log(' session storage :' + sessionStorage.getItem('iazimappath'));
+    if (sessionStorage.getItem('iazimappath') !== null ) {
+      this.global.lageCheckAssetPath = sessionStorage.getItem('iazimappath');
+    }
+
     let defaultLang = this.global.language;
     translate.addLangs(['en', 'de']);
     translate.setDefaultLang(this.global.language);
