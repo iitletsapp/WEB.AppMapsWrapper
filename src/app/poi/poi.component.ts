@@ -217,13 +217,20 @@ export class PoiComponent implements OnInit, OnDestroy {
       this.active[e.target.id] = !this.active[e.target.id];
     }
   }
-  public fitZoomLevel(name) {
-    const markerCategory = this.markerbin[name];
-    const bounds = new google.maps.LatLngBounds();
-    for (let i = 0; i < markerCategory.length; i++) {
-      bounds.extend(markerCategory[i].getPosition());
+  public fitZoomLevel(name, position: number[], nomarker: boolean) {
+    if (!nomarker) {
+      const markerCategory = this.markerbin[name];
+      const bounds = new google.maps.LatLngBounds();
+      for (let i = 0; i < markerCategory.length; i++) {
+        bounds.extend(markerCategory[i].getPosition());
+      }
+      const fullbounds = bounds.extend({lat: position[0], lng: position[1]});
+      this.mapService.map.fitBounds(fullbounds);
+      const zoomLevel = this.mapService.map.getZoom();
+      this.mapService.map.setCenter({lat: position[0], lng: position[1]});
+      this.mapService.map.setZoom(zoomLevel - 1);
+      console.log(fullbounds);
     }
-    this.mapService.map.fitBounds(bounds);
   }
 
   public clearMarkers(type) {
@@ -248,11 +255,11 @@ export class PoiComponent implements OnInit, OnDestroy {
 
       switch (poirequested) {
         case 'restaurant':
-          alltypes = ['restaurant', 'bar'];
+          alltypes = ['restaurant'];
           geticonUrl = this.global.lageCheckAssetPath + '/assets/img/icons/svgtopng/restaurant.png';
           break;
         case 'shop':
-          alltypes = ['supermarket', 'store'];
+          alltypes = ['supermarket'];
           geticonUrl = this.global.lageCheckAssetPath + '/assets/img/icons/svgtopng/shops.png';
           break;
         case 'learn':
@@ -279,7 +286,6 @@ export class PoiComponent implements OnInit, OnDestroy {
       service.nearbySearch({
         location: { lat: position[0], lng: position[1] },
         type: <any> alltypes,
-        keyword: alltypes,
         radius: 1000,
         // rankBy: google.maps.places.RankBy.DISTANCE
       }, (results, status, pagination) => {
@@ -346,15 +352,17 @@ export class PoiComponent implements OnInit, OnDestroy {
               this.listResult[poirequested] = list;
               _.map(this.listResult[poirequested], (el) => this.wholelist.unshift(el));
               this.wholelist = _.dropRight(_.orderBy(this.wholelist, ['distance'], ['asc']), this.wholelist.length - 10);
+              this.fitZoomLevel(poirequested, position, nomarker);
             };
             return cb();
           } else if (status === 'ZERO_RESULTS') {
             console.log('not good, need to expand radius because: ', status);
+            return;
           } else {
             console.log('not good reason: ', status);
+            return;
           }
         });
-        this.fitZoomLevel(poirequested);
       });
     });
   }
