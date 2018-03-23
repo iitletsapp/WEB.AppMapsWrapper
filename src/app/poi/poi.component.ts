@@ -64,7 +64,6 @@ export class PoiComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    //
   }
 
   public ngOnDestroy() {
@@ -229,7 +228,6 @@ export class PoiComponent implements OnInit, OnDestroy {
       const zoomLevel = this.mapService.map.getZoom();
       this.mapService.map.setCenter({lat: position[0], lng: position[1]});
       this.mapService.map.setZoom(zoomLevel - 1);
-      console.log(fullbounds);
     }
   }
 
@@ -286,8 +284,8 @@ export class PoiComponent implements OnInit, OnDestroy {
       service.nearbySearch({
         location: { lat: position[0], lng: position[1] },
         type: <any> alltypes,
-        radius: 1000,
-        // rankBy: google.maps.places.RankBy.DISTANCE
+        // radius: 1000,
+        rankBy: google.maps.places.RankBy.DISTANCE
       }, (results, status, pagination) => {
         // console.log(results);
         this.ngZone.run(() => {

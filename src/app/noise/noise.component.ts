@@ -136,13 +136,17 @@ export class NoiseComponent implements OnInit, OnDestroy, AfterViewInit {
 
     function calcColor(val) {
       const quant = d3.scaleQuantize()
-        .domain([0, 108])
+        .domain([0, 110])
         .range([
           'rgb(65, 224, 242)',
+          'rgb(48, 224, 124)',
           'rgb(46, 232, 25)',
+          'rgb(175, 231, 51)',
           'rgb(239, 236, 71)',
+          'rgb(247, 203, 78)',
           'rgb(255, 188, 102)',
-          'rgb(224, 25, 11)'])
+          'rgb(245, 136, 70)',
+          'rgb(223, 38, 22)'])
         .nice();
       return quant(val);
     }

@@ -65,7 +65,7 @@
   },
   "NOISE": {
     "TITLE": "Noise",
-    "SUBTITLE": "Show noise by activating a noise type of your choice and clicking an address point on the map.",
+    "SUBTITLE": "Show noise by activating a noise type of your choice.",
     "STREET": "Street noise",
     "RAIL": "Rail noise",
     "PLANE": "Plane noise",
