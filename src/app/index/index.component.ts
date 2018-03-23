@@ -124,7 +124,8 @@ export class IndexComponent {
                 ],
             });
             const icon = {
-                url: Config.LAGECHECKASSETPATH + '/assets/img/map-marker.png'
+                // tslint:disable-next-line:max-line-length
+                url: (sessionStorage.getItem('iazimappath') === null ? Config.LAGECHECKASSETPATH : sessionStorage.getItem('iazimappath')) + '/assets/img/map-marker.png'
             };
             this.marker = new google.maps.Marker(<any>{
                 icon,
