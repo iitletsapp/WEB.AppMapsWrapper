@@ -19,7 +19,7 @@ export class TaxesComponent implements OnInit, OnDestroy {
  public xTaxData = 'name';
  public yTaxData = 'value';
  public xTaxDataFormat = '%';
- public yTaxDataFormat = '%';
+ public yTaxDataFormat = 'k';
  public xAxisTaxText = '';
  public yAxisTaxText = 'yearly tax';
  // public displayXAgeData = false;
@@ -53,7 +53,7 @@ export class TaxesComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     this.dataforbarchart = this.tax.map((el) => {
-      return { name: el.what, value: Math.floor(el.municipalityValue) };
+      return { name: el.what, value: parseFloat((el.municipalityValue / 1000).toFixed(2)) };
     });
 
     this.displayPolygons();
