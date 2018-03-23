@@ -93,5 +93,11 @@
     "CLASSIFICATION3": "Gut",
     "CLASSIFICATION4": "Mittel",
     "CLASSIFICATION5": "Schlecht"
+  },
+  
+  "STARTUP": { 
+    "HEADER1": "Ganz einfach Immobilienstandorte prüfen.", 
+    "HEADER2": "Geben Sie die Adresse Ihrer Wahl ein und wir zeigen Ihnen die Lagequalität." 
   }
+
 }
