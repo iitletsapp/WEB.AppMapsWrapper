@@ -10,6 +10,7 @@ import { GetMunicipalityService } from '../../services/getmunicipality.service';
 import { Globals } from '../globals';
 import { MapService } from '../../services/map.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { FeaturereadyService } from '../../services/featureready.service';
 
 @Component({
     selector: 'app-search',
@@ -38,6 +39,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
         private apiobj: GetMunicipalityService,
         public global: Globals,
         private mapService: MapService,
+        private featureReadyService: FeaturereadyService,
         private router: Router
     ) {
         this.getAddress.changeEmitted$.subscribe((newAddress) => {
@@ -110,6 +112,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
                 console.log(error);
             }, () => {
                 console.log('general done');
+                this.featureReadyService.emitIsReady(true, 'poi');
             });
             this.macro.getPopulation(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res.municipalityPopulationEvolutionIndex, 'population');
@@ -126,6 +129,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
             }, () => { }, () => console.log('housing market done'));
             this.macro.getNoiseDecibel(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res.results, 'decibel');
+                this.featureReadyService.emitIsReady(true, 'noise');
             }, () => { }, () => console.log('noise decibel done'));
             this.macro.getStreetNoise(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res.results.data, 'streetnoise');
@@ -143,7 +147,10 @@ export class SearchComponent implements OnInit, AfterViewInit {
             }, () => { }, () => console.log('planenoise done'));
             this.macro.getPolygons(this.lat, this.lng).subscribe((res) => {
                 this.apiobj.emitChange(res, 'polygons');
-            }, () => { }, () => console.log('Map polygons done'));
+            }, () => { }, () => {
+                console.log('Map polygons done');
+                this.featureReadyService.emitIsReady(true, 'general');
+            });
         });
     }
 

@@ -50,6 +50,7 @@ import localeDECH from '@angular/common/locales/de-CH';
 import { MaplegendComponent } from './maplegend/maplegend.component';
 import { MaplegendService } from '../services/maplegend.service';
 import { IndexComponent } from './index/index.component';
+import { FeaturereadyService } from '../services/featureready.service';
 
 registerLocaleData(localeDECH);
 
@@ -112,6 +113,7 @@ registerLocaleData(localeDECH);
     PolygonsService,
     GoogleMapsAPIWrapper,
     MaplegendService,
+    FeaturereadyService,
     Globals,
     { provide: LOCALE_ID, useValue: 'de-CH' }
   ],

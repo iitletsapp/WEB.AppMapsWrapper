@@ -28,7 +28,7 @@
     <div class="row">
         <div class="col col-lg-6">
             <div class="card">
-                <a routerLink="navigation" [queryParams]="{id:'general'}" [class.disabled]="!global.addressSearch">
+                <a routerLink="navigation" [queryParams]="{id:'general'}" [class.disabled]="!generaldataReady">
                     <div class="card-body text-center">
                         <h6 class="card-subtitle">
                             <img src="{{global.lageCheckAssetPath}}/assets/img/icons/generalinfo.svg" alt="general info">
@@ -40,7 +40,7 @@
         </div>
         <div class="col col-lg-6">
             <div class="card">
-                <a routerLink="navigation"  [queryParams]="{id:'population'}"  [class.disabled]="!global.addressSearch">
+                <a routerLink="navigation"  [queryParams]="{id:'population'}"  [class.disabled]="!generaldataReady">
                     <div class="card-body text-center">
                         <h6 class="card-subtitle">
                             <img src="{{global.lageCheckAssetPath}}/assets/img/icons/population.svg" alt="population">
@@ -54,7 +54,7 @@
     <div class="row mt-2">
         <div class="col col-lg-6">
             <div class="card">
-                <a routerLink="navigation"  [queryParams]="{id:'taxes'}" [class.disabled]="!global.addressSearch">
+                <a routerLink="navigation"  [queryParams]="{id:'taxes'}" [class.disabled]="!generaldataReady">
                     <div class="card-body text-center">
 
                         <h6 class="card-subtitle">
@@ -67,7 +67,7 @@
         </div>
         <div class="col col-lg-6">
             <div class="card">
-                <a routerLink="navigation"  [queryParams]="{id:'housingmarket'}" [class.disabled]="!global.addressSearch">
+                <a routerLink="navigation"  [queryParams]="{id:'housingmarket'}" [class.disabled]="!generaldataReady">
                     <div class="card-body text-center">
                         <h6 class="card-subtitle">
                             <img src="{{global.lageCheckAssetPath}}/assets/img/icons/housing-market.svg" alt="housing market">
@@ -106,7 +106,7 @@
     <div class="row">
         <div class="col col-lg-6">
             <div class="card">
-                <a routerLink="navigation" [queryParams]="{id:'poi'}" [class.disabled]="!global.addressSearch">
+                <a routerLink="navigation" [queryParams]="{id:'poi'}" [class.disabled]="!poiReady">
                     <div class="card-body text-center">
                         <img src="{{global.lageCheckAssetPath}}/assets/img/icons/poi.svg" alt="poi">
                         <p class="card-text">{{ 'GENERIC.POI' | translate }}</p>
@@ -116,7 +116,7 @@
         </div>
         <div class="col col-lg-6">
             <div class="card">
-                <a routerLink="navigation" [queryParams]="{id:'noise'}" [class.disabled]="!global.addressSearch">
+                <a routerLink="navigation" [queryParams]="{id:'noise'}" [class.disabled]="!noiseReady">
                     <div class="card-body text-center">
                         <img src="{{global.lageCheckAssetPath}}/assets/img/icons/noise.svg" alt="noise">
                         <p class="card-text">{{ 'GENERIC.NOISE' | translate }}</p>

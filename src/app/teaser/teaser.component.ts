@@ -12,6 +12,7 @@ import { GetMunicipalityService } from '../../services/getmunicipality.service';
 import { combineLatest } from 'rxjs/observable/combineLatest';
 import { Observable } from 'rxjs/Observable';
 import { GaugeChartComponent } from '../charts/gauge-chart/gauge-chart.component';
+import { FeaturereadyService } from '../../services/featureready.service';
 
 @Component({
     selector: 'app-teaser',
@@ -19,6 +20,9 @@ import { GaugeChartComponent } from '../charts/gauge-chart/gauge-chart.component
     styleUrls: ['./teaser.component.scss']
 })
 export class TeaserComponent implements OnInit, OnDestroy {
+    public generaldataReady = false;
+    public poiReady = false;
+    public noiseReady = false;
 
     public muncipalityId;
     // municipality rating
@@ -57,6 +61,7 @@ export class TeaserComponent implements OnInit, OnDestroy {
         private address: GetAddressService,
         private getMarker: GetMarkerService,
         private municipalityService: GetMunicipalityService,
+        private featureReadyService: FeaturereadyService,
         public global: Globals
     ) {
         const combined = combineLatest(this.getMarker.changeEmitted$, this.macro.changeEmitted$);
@@ -68,6 +73,11 @@ export class TeaserComponent implements OnInit, OnDestroy {
                 }
             }
         );
+        this.featureReadyService.changeEmitted$.subscribe((state) => {
+            this.generaldataReady = state.general;
+            this.poiReady = state.poi;
+            this.noiseReady = state.noise;
+        });
 
         if ( this.global.macroData !== undefined ) {
             console.log('macrodata');
@@ -88,6 +98,9 @@ export class TeaserComponent implements OnInit, OnDestroy {
     }
 
     public ngOnInit() {
+        this.generaldataReady = this.featureReadyService.requestFeaturesReadyObject().general;
+        this.poiReady = this.featureReadyService.requestFeaturesReadyObject().poi;
+        this.noiseReady = this.featureReadyService.requestFeaturesReadyObject().noise;
     }
 
     public ngOnDestroy() {
