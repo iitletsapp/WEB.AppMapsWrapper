@@ -117,5 +117,14 @@
   "STARTUP": { 
     "HEADER1": "The smart way to investigate the location of your estate.", 
     "HEADER2": "Get exclusive in depth analysis by entering the address below." 
+  },
+  
+  "MAPLEGEND": {
+    "POPULATION": "population density",
+    "TAX": "Tax per capita",
+    "MARKET": "Price levels",
+    "NOISE": "Noise level",
+    "LOW": "low",
+    "HIGH": "high"
   }
 }

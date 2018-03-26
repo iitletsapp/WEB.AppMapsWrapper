@@ -4,6 +4,7 @@ import { MacroService } from '../../services/macro.service';
 import { GetMunicipalityService } from '../../services/getmunicipality.service';
 import { PolygonsService } from '../../services/polygons.service';
 import { MaplegendService } from '../../services/maplegend.service';
+import { TranslateService } from 'ng2-translate';
 
 @Component({
     selector: 'app-housingmarket',
@@ -27,19 +28,20 @@ export class HousingMarketComponent implements OnInit, OnDestroy {
     public yMarketDataFormat = '';
     // for legend
     public maplegend = {
-        title: 'Price levels',
+        title: this.translate.instant('MAPLEGEND.MARKET'),
         backgrounds: [
             'rgb(255, 255, 96)',
             'rgb(249, 184, 66)',
             'rgb(249, 140, 66)',
             'rgb(249, 79, 66)'],
-        labels: ['low', 'high']
+        labels: [this.translate.instant('MAPLEGEND.LOW'), this.translate.instant('MAPLEGEND.HIGH')]
     };
 
     constructor(private municipality: GetMunicipalityService,
         private mapService: MapService,
         private polygonsService: PolygonsService,
-        private mapLegendService: MaplegendService
+        private mapLegendService: MaplegendService,
+        public translate: TranslateService
     ) {
         this.mapService.map.setMapTypeId('roadmap');
         this.housingMarket = this.municipality.requestData('housingMarket');

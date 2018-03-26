@@ -117,6 +117,15 @@
   "STARTUP": { 
     "HEADER1": "Ganz einfach Immobilienstandorte prüfen.", 
     "HEADER2": "Geben Sie die Adresse Ihrer Wahl ein und wir zeigen Ihnen die Lagequalität." 
+  },
+
+   "MAPLEGEND": {
+    "POPULATION": "Bevölkerungsdichte",
+    "TAX": "Tax per capita-DE",
+    "MARKET": "Price levels-DE",
+    "NOISE": "Noise level-DE",
+    "LOW": "tief",
+    "HIGH": "hoch"
   }
 
 }

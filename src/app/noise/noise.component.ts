@@ -9,6 +9,7 @@ import * as d3 from 'd3';
 import { Globals } from '../globals';
 import { MaplegendService } from '../../services/maplegend.service';
 import { MacroService } from '../../services/macro.service';
+import { TranslateService } from 'ng2-translate';
 
 @Component({
   selector: 'app-noise',
@@ -38,14 +39,14 @@ export class NoiseComponent implements OnInit, OnDestroy, AfterViewInit {
 
   // for legend
   public legend = {
-    title: 'Noise level',
+    title: this.translate.instant('MAPLEGEND.NOISE'),
     backgrounds: [
       'rgb(65, 224, 242)',
       'rgb(46, 232, 25)',
       'rgb(239, 236, 71)',
       'rgb(255, 188, 102)',
       'rgb(224, 25, 11)'],
-    labels: ['low', 'high']
+      labels: [this.translate.instant('MAPLEGEND.LOW'), this.translate.instant('MAPLEGEND.HIGH')]
   };
   private isloaded = false;
   private mapEventListener;
@@ -60,7 +61,8 @@ export class NoiseComponent implements OnInit, OnDestroy, AfterViewInit {
     private macroService: MacroService,
     private ngZone: NgZone,
     private mapLegendService: MaplegendService,
-    public global: Globals) {
+    public global: Globals,
+    public translate: TranslateService) {
 
       this.mapService.map.setMapTypeId('roadmap');
       this.mapLegendService.setLegendInfo(this.legend);

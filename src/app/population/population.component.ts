@@ -47,13 +47,13 @@ export class PopulationComponent implements OnInit, OnDestroy {
 
   // for legend
   public maplegend = {
-    title: 'Population density',
+    title: this.translate.instant('MAPLEGEND.POPULATION'),
     backgrounds: [
       'rgb(255, 255, 96)',
       'rgb(249, 184, 66)',
       'rgb(249, 140, 66)',
       'rgb(249, 79, 66)'],
-    labels: ['low', 'high']
+    labels: [this.translate.instant('MAPLEGEND.LOW'), this.translate.instant('MAPLEGEND.HIGH')]
   };
 
   constructor(
