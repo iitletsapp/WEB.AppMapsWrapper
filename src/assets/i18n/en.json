@@ -14,7 +14,10 @@
     "TITLE": "search for location"
   },
   "GENERAL": {
+    "MUNICIPALITY": "Municipality",
+    "CANTON": "Canton",
     "DISTRICT": "District",
+    "COMMUNITYTYPE": "Community Type",
     "AREA": "Area",
     "POPULATIONDENSITY": "Population density",
     "MUNICIPALITYTYPE": "Type of municipality"
@@ -22,18 +25,18 @@
   "POPULATION": {
     "POPULATION": "Population",
     "AGECATEGORY": "Age category",
-    "FOREIGNERQUOTA": "foreigner quota",
-    "UNEMPLOYMENTRATE": "unemployment rate",
-    "INCOMETAX": "Taxable income per capita",
-    "POPULATIONGROWTH": "population growth over 5 years"
+    "FOREIGNERQUOTA": "Foreigner quota",
+    "UNEMPLOYMENTRATE": "Unemployment rate",
+    "INCOMETAX": "Taxable Income per capita",
+    "POPULATIONGROWTH": "Population growth over 5 years"
   },
   "TAXES": {
     "OVERVIEW": "Taxes overview",
     "LEGEND1": "Single person, childless, gross income 70'000 CHF",
     "LEGEND2": "Single person, childless, gross income 100'000 CHF",
-    "LEGEND3": "married couple, childless, gross income 150'000 CHF",
-    "LEGEND4": "married couple, 2 children, gross income 70'000 CHF",
-    "LEGEND5": "married couple, 2 children, gross income 100'000 CHF",
+    "LEGEND3": "Married couple, childless, gross income 150'000 CHF",
+    "LEGEND4": "Married couple, 2 children, gross income 70'000 CHF",
+    "LEGEND5": "Married couple, 2 children, gross income 100'000 CHF",
     "LEGEND6": "Retired couple, gross rent income 70'000 CHF"
 
   },

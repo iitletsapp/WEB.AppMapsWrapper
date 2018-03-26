@@ -14,7 +14,10 @@
     "TITLE": "Addresse eingeben"
   },
   "GENERAL": {
+    "MUNICIPALITY": "Gemeinde",
+    "CANTON": "Kanton",
     "DISTRICT": "Bezirk",
+    "COMMUNITYTYPE": "Gemeindetyp",
     "AREA": "Fläche",
     "POPULATIONDENSITY": "Bevölkerungsdichte",
     "MUNICIPALITYTYPE": "Gemeindetyp"
