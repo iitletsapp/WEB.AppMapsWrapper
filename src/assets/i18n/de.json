@@ -121,9 +121,9 @@
 
    "MAPLEGEND": {
     "POPULATION": "Bevölkerungsdichte",
-    "TAX": "Tax per capita-DE",
-    "MARKET": "Price levels-DE",
-    "NOISE": "Noise level-DE",
+    "TAX": "Steuer pro Kopf",
+    "MARKET": "Preisniveau",
+    "NOISE": "Lärm",
     "LOW": "tief",
     "HIGH": "hoch"
   }
