@@ -30,6 +30,7 @@ export class PopulationComponent implements OnInit, OnDestroy {
   public dataforlinearray;
   public dataforbararray;
   public xLabel = 'population';
+  public yLabel = 'year';
   public xLabel1 = 'population1';
   public xAgeData  = 'ageGroup';
   public yAgeData = 'value';

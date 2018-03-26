@@ -12,6 +12,7 @@ export class LineChartComponent implements OnInit, AfterViewInit {
     // data are all the values that are visible on the map view
     @Input() public data;
     @Input() public xText;
+    @Input() public yText;
     // containerId it the refers to the layerID that the histogram should read data from
     @Input() public containerId;
     @Input() public yDataFormat: string;
@@ -123,7 +124,7 @@ export class LineChartComponent implements OnInit, AfterViewInit {
                 .attr('transform', `translate(0, -10)`)
                 .style('text-anchor', 'middle')
                 .attr('fill', '#5D6971')
-                .text('year');
+                .text(this.yText);
         d3.selectAll('.axis').select('path').style('display', 'none');
         d3.selectAll('.axis').selectAll('.tick').select('line').style('display', 'none');
 

@@ -19,6 +19,7 @@ export class HousingMarketComponent implements OnInit, OnDestroy {
     public newHousing;
     public housingMarketVacancy;
     public xLabel = '';
+    public yLabel = '';
     public linecontainer = 'housingmarketchartcontainer';
     public geoJson = '';
     public extentData = [];
