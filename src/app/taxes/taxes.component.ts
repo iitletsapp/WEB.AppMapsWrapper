@@ -4,6 +4,7 @@ import { GetMunicipalityService } from '../../services/getmunicipality.service';
 import { MapService } from '../../services/map.service';
 import { PolygonsService } from '../../services/polygons.service';
 import { MaplegendService } from '../../services/maplegend.service';
+import { TranslateService } from 'ng2-translate';
 
 @Component({
   selector: 'app-taxes',
@@ -21,7 +22,7 @@ export class TaxesComponent implements OnInit, OnDestroy {
  public xTaxDataFormat = '%';
  public yTaxDataFormat = 'k';
  public xAxisTaxText = '';
- public yAxisTaxText = 'yearly tax';
+ public yAxisTaxText = this.translate.instant('TAXES.TAXCHARTYLABEL');
  // public displayXAgeData = false;
  public geoJson = '';
  public extentData = [];
@@ -44,7 +45,8 @@ export class TaxesComponent implements OnInit, OnDestroy {
     private municipality: GetMunicipalityService,
     private mapService: MapService,
     private polygonsService: PolygonsService,
-    private mapLegendService: MaplegendService
+    private mapLegendService: MaplegendService,
+    public translate: TranslateService
   ) {
     this.mapService.map.setMapTypeId('roadmap');
     this.tax = this.municipality.requestData('tax');

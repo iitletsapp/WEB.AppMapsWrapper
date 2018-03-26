@@ -24,11 +24,17 @@
   },
   "POPULATION": {
     "POPULATION": "Bevölkerung",
+    "POPULATIONGROWTHHEADER": "Population Growth-DE",
     "AGECATEGORY": "Altersklassen",
+    "KEYFIGURES": "Key Figures-DE",
     "FOREIGNERQUOTA": "Ausländerquote",
     "UNEMPLOYMENTRATE": "Arbeitslosenquote",
     "INCOMETAX": "Steuerbares Einkommen pro Person",
-    "POPULATIONGROWTH": "Jährliche Bevölkerungsentwicklung über 5 Jahre"
+    "POPULATIONGROWTH": "Jährliche Bevölkerungsentwicklung über 5 Jahre",
+    "POPULATIONCHARTYLABEL": "population-DE",
+    "POPULATIONCHARTXLABEL": "year-DE",
+    "AGECHARTYLABEL": "age group-DE",
+    "AGECHARTXLABEL": "value in %-DE"
   },
   "TAXES": {
     "OVERVIEW": "Steuerbelastung",
@@ -37,11 +43,13 @@
     "LEGEND3": "Ehepaar, kinderlos, Bruttoeinkommen 150'000 CHF",
     "LEGEND4": "Ehepaar, 2 Kinder, Bruttoeinkommen 70'000 CHF",
     "LEGEND5": "Ehepaar, 2 Kinder, Bruttoeinkommen 100'000 CHF",
-    "LEGEND6": "Pensioniertes Ehepaar, über 65, Renteneinkommen 70'000 CHF"
+    "LEGEND6": "Pensioniertes Ehepaar, über 65, Renteneinkommen 70'000 CHF",
+    "TAXCHARTYLABEL" : "yearly tax-DE"
 
   },
   "HOUSINGMARKERT": {
     "INDEX": "Eigenheimindex",
+    "KEYFIGURES": "Key Figures-DE",
     "VACANCY": "Leerstandsziffer",
     "HOUSINGSTOCK": "Wohnungsbestand",
     "NEWHOUSING": "Neue Wohnungen in den letzten 5 Jahren"
@@ -53,7 +61,13 @@
     "NOISE": "Lärm",
     "VIEW": "Sicht",
     "SUNSHINE": "Sonnenstunden",
-    "TRANSPORT": "Transport"
+    "TRANSPORT": "Transport",
+    "GENERALINFO": "General Information-DE",
+    "POPULATION": "Population-DE",
+    "TAX": "Tax-DE",
+    "HOUSINGMARKET": "Housing Market-DE",
+    "POI": "POI-DE",
+    "NOISE": "NOISE-DE"
   },
   "POI": {
     "MINDISTANCE": "Nächstgelegen",
@@ -64,7 +78,8 @@
     "LEISURE": "Vergnügen",
     "EMERGENCY": "Notfall",
     "DISTANCE": "Distanz",
-    "CONNECTIVITY": "Verbindungen"
+    "CONNECTIVITY": "Verbindungen",
+    "LISTOFPLACES": "List of places-DE"
   },
   "NOISE": {
     "TITLE": "Lärm",
@@ -72,7 +87,8 @@
     "STREET": "Strassenlärm",
     "RAIL": "Bahnlärm",
     "PLANE": "Fluglärm",
-    "INDB": "Lärm in dB:"
+    "INDB": "Lärm in dB:",
+    "NOISELEVELREFERENCE": "Noise level reference-DE"
   },
 
   "BACKTOMARKER": {

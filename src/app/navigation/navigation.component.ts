@@ -35,22 +35,22 @@ export class NavigationComponent implements OnInit {
     console.log(param);
     if (param === 'general') {
       this.generalFlag = true;
-      this.header = 'General Information';
+      this.header = this.translate.instant('NAVIGATION.GENERALINFO');
     } else if (param === 'population') {
       this.populationFlag = true;
-      this.header = 'Population';
+      this.header = this.translate.instant('NAVIGATION.POPULATION');
     } else if (param === 'taxes') {
       this.taxesFlag = true;
-      this.header = 'Tax';
+      this.header = this.translate.instant('NAVIGATION.TAX');
     } else if (param === 'housingmarket') {
       this.housingMarketFlag = true;
-      this.header = 'Housing Market';
+      this.header = this.translate.instant('NAVIGATION.HOUSINGMARKET');
     } else if (param === 'poi') {
       this.poiFlag = true;
-      this.header = 'POI';
+      this.header = this.translate.instant('NAVIGATION.POI');
     } else if (param === 'noise') {
       this.noiseFlag = true;
-      this.header = 'Noise';
+      this.header = this.translate.instant('NAVIGATION.NOISE');
     }
   }
 

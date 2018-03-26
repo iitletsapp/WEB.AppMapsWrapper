@@ -5,6 +5,7 @@ import { GetMunicipalityService } from '../../services/getmunicipality.service';
 import { MapService } from '../../services/map.service';
 import { PolygonsService } from '../../services/polygons.service';
 import { MaplegendService } from '../../services/maplegend.service';
+import { TranslateService } from 'ng2-translate';
 
 declare var require: any;
 const gjfilter = require('geojson-filter');
@@ -29,13 +30,12 @@ export class PopulationComponent implements OnInit, OnDestroy {
   public barcontainer = 'populationbarchart';
   public dataforlinearray;
   public dataforbararray;
-  public xLabel = 'population';
-  public yLabel = 'year';
-  public xLabel1 = 'population1';
+  public xLabel = this.translate.instant('POPULATION.POPULATIONCHARTYLABEL');
+  public yLabel = this.translate.instant('POPULATION.POPULATIONCHARTXLABEL');
   public xAgeData  = 'ageGroup';
   public yAgeData = 'value';
-  public xAxisAgeText = 'age group';
-  public yAxisAgeText = 'value in %';
+  public xAxisAgeText = this.translate.instant('POPULATION.AGECHARTYLABEL');
+  public yAxisAgeText = this.translate.instant('POPULATION.AGECHARTXLABEL');
 
   public yPopulationDataFormat = 'k';
   public xAgeDataFormat = '%';
@@ -60,7 +60,8 @@ export class PopulationComponent implements OnInit, OnDestroy {
     private municipality: GetMunicipalityService,
     private mapService: MapService,
     private polygonsService: PolygonsService,
-    private mapLegendService: MaplegendService
+    private mapLegendService: MaplegendService,
+    public translate: TranslateService
   ) {
     this.mapService.map.setMapTypeId('roadmap');
     this.population = this.municipality.requestData('population');

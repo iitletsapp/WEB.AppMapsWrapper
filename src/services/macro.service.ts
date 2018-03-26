@@ -44,11 +44,12 @@ export class MacroService {
             });
     }
     public getAddressRatings(lat: number, lng: number, ortID) {
-        return this.get(`v1/microratings?cat=1&countryCode=CH&ortId=${ortID}&lat=${lat}&lon=${lng}`);
+        return this.get(`v1/microratings?cat=1&countryCode=CH&ortId=${ortID}&lat=${lat}&lon=${lng}&culture=${this.global.language}`);
     }
 
     public getMacroRatings(lat: number, lng: number, municipalityID: number) {
-        return this.get(`v1/macroratings?countryCode=CH&lat=${lat}&lon=${lng}&municipalityId=${municipalityID}`);
+        // tslint:disable-next-line:max-line-length
+        return this.get(`v1/macroratings?countryCode=CH&lat=${lat}&lon=${lng}&municipalityId=${municipalityID}&culture=${this.global.language}`);
     }
 
     public getMunicipalityInfo(lat: number, lng: number) {

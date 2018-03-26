@@ -126,9 +126,6 @@ export class BarChartComponent implements OnInit, AfterViewInit {
             .style('stroke-opacity', 0.1)
             .style('height', `${height}`);
 
-        console.log('' + this.xDataFormat + '');
-        console.log('' + this.yDataFormat + '');
-
         // add the x Axis
         g.append('g')
             .attr('class', 'axis axis--x')

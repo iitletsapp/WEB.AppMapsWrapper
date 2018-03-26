@@ -24,24 +24,32 @@
   },
   "POPULATION": {
     "POPULATION": "Population",
-    "AGECATEGORY": "Age category",
+    "POPULATIONGROWTHHEADER": "Population Growth",
+    "AGECATEGORY": "Age Category",
+    "KEYFIGURES": "Key Figures",
     "FOREIGNERQUOTA": "Foreigner quota",
     "UNEMPLOYMENTRATE": "Unemployment rate",
     "INCOMETAX": "Taxable Income per capita",
-    "POPULATIONGROWTH": "Population growth over 5 years"
+    "POPULATIONGROWTH": "Population growth over 5 years",
+    "POPULATIONCHARTYLABEL": "population",
+    "POPULATIONCHARTXLABEL": "year",
+    "AGECHARTYLABEL": "age group",
+    "AGECHARTXLABEL": "value in %"
   },
   "TAXES": {
-    "OVERVIEW": "Taxes overview",
+    "OVERVIEW": "Taxes Overview",
     "LEGEND1": "Single person, childless, gross income 70'000 CHF",
     "LEGEND2": "Single person, childless, gross income 100'000 CHF",
     "LEGEND3": "Married couple, childless, gross income 150'000 CHF",
     "LEGEND4": "Married couple, 2 children, gross income 70'000 CHF",
     "LEGEND5": "Married couple, 2 children, gross income 100'000 CHF",
-    "LEGEND6": "Retired couple, gross rent income 70'000 CHF"
+    "LEGEND6": "Retired couple, gross rent income 70'000 CHF",
+    "TAXCHARTYLABEL" : "yearly tax"
 
   },
   "HOUSINGMARKERT": {
     "INDEX": "Private Real Estate Price Index",
+    "KEYFIGURES": "Key Figures",
     "VACANCY": "Vacancy Rate",
     "HOUSINGSTOCK": "Housing Stock",
     "NEWHOUSING": "New Housing Last 5 Years"
@@ -53,7 +61,13 @@
     "NOISE": "noise",
     "VIEW": "view",
     "SUNSHINE": "sunshine",
-    "TRANSPORT": "transport"
+    "TRANSPORT": "transport",
+    "GENERALINFO": "General Information",
+    "POPULATION": "Population",
+    "TAX": "Tax",
+    "HOUSINGMARKET": "Housing Market",
+    "POI": "POI",
+    "NOISE": "NOISE"
   },
   "POI": {
     "MINDISTANCE": "min",
@@ -64,7 +78,8 @@
     "LEISURE": "Leisure",
     "EMERGENCY": "Emergency",
     "DISTANCE": "distance",
-    "CONNECTIVITY": "Connections"
+    "CONNECTIVITY": "Connections",
+    "LISTOFPLACES": "List of places"
   },
   "NOISE": {
     "TITLE": "Noise",
@@ -72,7 +87,8 @@
     "STREET": "Street noise",
     "RAIL": "Rail noise",
     "PLANE": "Plane noise",
-    "INDB": "noise in DB:"
+    "INDB": "noise in DB:",
+    "NOISELEVELREFERENCE": "Noise level reference"
   },
 
   "BACKTOMARKER": {

@@ -7,16 +7,16 @@
         </div>
     </div>
     <hr class="hr-black">
-    <h6 class="d-inline-block chart-header">Population Growth</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
+    <h6 class="d-inline-block chart-header">{{ 'POPULATION.POPULATIONGROWTHHEADER' | translate }}</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
     <hr class="hr-black">
     <app-linechart [containerId]="linecontainer" [data]="dataforlinearray" [xText]="xLabel" [yText]="yLabel" [yDataFormat]="yPopulationDataFormat"></app-linechart>
-    <h6 class="d-inline-block  chart-header">Age Category</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
+    <h6 class="d-inline-block  chart-header">{{ 'POPULATION.AGECATEGORY' | translate }}</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
     <hr class="hr-black">
     <app-barchart [containerId]="barcontainer" [data]="dataforbararray" [xText]="xAgeData" [yText]="yAgeData" 
                   [xAxisText]="xAxisAgeText" [yAxisText]="yAxisAgeText"   [xDataFormat]="xAgeDataFormat" [yDataFormat]="yAgeDataFormat"></app-barchart>
     <!-- <hr> -->
     <br>
-    <h6 class="d-inline-block  chart-header">Key figures</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
+    <h6 class="d-inline-block  chart-header">{{ 'POPULATION.KEYFIGURES' | translate }}</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
     <hr class="hr-black">
     <div class="row">
         <div class="col col-lg-6">
