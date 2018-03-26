@@ -62,7 +62,8 @@ export class NoiseComponent implements OnInit, OnDestroy, AfterViewInit {
     private mapLegendService: MaplegendService,
     public global: Globals) {
 
-    this.mapLegendService.setLegendInfo(this.legend);
+      this.mapService.map.setMapTypeId('roadmap');
+      this.mapLegendService.setLegendInfo(this.legend);
 
     const hasPlaneCheck = this.apiobj.requestData('hasplanenoise');
     hasPlaneCheck !== undefined ? this.hasPlane = hasPlaneCheck : this.hasPlane = this.hasPlane;

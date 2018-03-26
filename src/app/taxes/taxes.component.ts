@@ -46,6 +46,7 @@ export class TaxesComponent implements OnInit, OnDestroy {
     private polygonsService: PolygonsService,
     private mapLegendService: MaplegendService
   ) {
+    this.mapService.map.setMapTypeId('roadmap');
     this.tax = this.municipality.requestData('tax');
     this.mapLegendService.setLegendInfo(this.maplegend);
   }

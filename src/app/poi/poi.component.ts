@@ -57,6 +57,7 @@ export class PoiComponent implements OnInit, OnDestroy {
     private ngZone: NgZone,
     private mapsAPILoader: MapsAPILoader,
     public global: Globals) {
+    this.mapService.map.setMapTypeId('roadmap');
     this.getMarker.changeEmitted$.subscribe(
       (data) => {
         this.markerLastLocation = data;

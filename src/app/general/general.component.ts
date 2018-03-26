@@ -33,6 +33,7 @@ export class GeneralComponent implements OnInit, OnDestroy {
         private mapService: MapService,
         private polygonsService: PolygonsService
     ) {
+        this.mapService.map.setMapTypeId('roadmap');
         this.generaldata = this.municipality.requestData('general');
         this.muncipalityId = this.macro.macroObj.municipalityID;
         this.cantonCode = this.generaldata[0].cantonCode;

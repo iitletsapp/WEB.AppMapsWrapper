@@ -41,6 +41,7 @@ export class HousingMarketComponent implements OnInit, OnDestroy {
         private polygonsService: PolygonsService,
         private mapLegendService: MaplegendService
     ) {
+        this.mapService.map.setMapTypeId('roadmap');
         this.housingMarket = this.municipality.requestData('housingMarket');
         this.housingMarketConstruction = this.municipality.requestData('housingMarketConstructionActivity');
         this.housingMarketVacancy = this.municipality.requestData('housingMarketVacancy');

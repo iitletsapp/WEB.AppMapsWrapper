@@ -62,6 +62,7 @@ export class PopulationComponent implements OnInit, OnDestroy {
     private polygonsService: PolygonsService,
     private mapLegendService: MaplegendService
   ) {
+    this.mapService.map.setMapTypeId('roadmap');
     this.population = this.municipality.requestData('population');
     this.populationratio = this.municipality.requestData('populationratio');
     this.populationage = this.municipality.requestData('populationage');
