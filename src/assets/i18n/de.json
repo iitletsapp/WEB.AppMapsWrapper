@@ -24,17 +24,17 @@
   },
   "POPULATION": {
     "POPULATION": "Bevölkerung",
-    "POPULATIONGROWTHHEADER": "Population Growth-DE",
+    "POPULATIONGROWTHHEADER": "Bevölkerungswachstum",
     "AGECATEGORY": "Altersklassen",
-    "KEYFIGURES": "Key Figures-DE",
+    "KEYFIGURES": "Kennzahlen",
     "FOREIGNERQUOTA": "Ausländerquote",
     "UNEMPLOYMENTRATE": "Arbeitslosenquote",
     "INCOMETAX": "Steuerbares Einkommen pro Person",
     "POPULATIONGROWTH": "Jährliche Bevölkerungsentwicklung über 5 Jahre",
-    "POPULATIONCHARTYLABEL": "population-DE",
-    "POPULATIONCHARTXLABEL": "year-DE",
-    "AGECHARTYLABEL": "age group-DE",
-    "AGECHARTXLABEL": "value in %-DE"
+    "POPULATIONCHARTYLABEL": "Bevölkerung",
+    "POPULATIONCHARTXLABEL": "Jahr",
+    "AGECHARTYLABEL": "Altersklasse",
+    "AGECHARTXLABEL": "Anteil in %"
   },
   "TAXES": {
     "OVERVIEW": "Steuerbelastung",
@@ -44,12 +44,12 @@
     "LEGEND4": "Ehepaar, 2 Kinder, Bruttoeinkommen 70'000 CHF",
     "LEGEND5": "Ehepaar, 2 Kinder, Bruttoeinkommen 100'000 CHF",
     "LEGEND6": "Pensioniertes Ehepaar, über 65, Renteneinkommen 70'000 CHF",
-    "TAXCHARTYLABEL" : "yearly tax-DE"
+    "TAXCHARTYLABEL" : "Jährliche Belastung"
 
   },
   "HOUSINGMARKERT": {
     "INDEX": "Eigenheimindex",
-    "KEYFIGURES": "Key Figures-DE",
+    "KEYFIGURES": "Kennzahlen",
     "VACANCY": "Leerstandsziffer",
     "HOUSINGSTOCK": "Wohnungsbestand",
     "NEWHOUSING": "Neue Wohnungen in den letzten 5 Jahren"
@@ -62,12 +62,12 @@
     "VIEW": "Sicht",
     "SUNSHINE": "Sonnenstunden",
     "TRANSPORT": "Transport",
-    "GENERALINFO": "General Information-DE",
-    "POPULATION": "Population-DE",
-    "TAX": "Tax-DE",
-    "HOUSINGMARKET": "Housing Market-DE",
-    "POI": "POI-DE",
-    "NOISE": "NOISE-DE"
+    "GENERALINFO": "Allgemein",
+    "POPULATION": "Bevölkerung",
+    "TAX": "Steuern",
+    "HOUSINGMARKET": "Markt",
+    "POI": "POI",
+    "NOISE": "Lärm"
   },
   "POI": {
     "MINDISTANCE": "Nächstgelegen",
@@ -79,7 +79,7 @@
     "EMERGENCY": "Notfall",
     "DISTANCE": "Distanz",
     "CONNECTIVITY": "Verbindungen",
-    "LISTOFPLACES": "List of places-DE"
+    "LISTOFPLACES": "Nahegelegenste Orte"
   },
   "NOISE": {
     "TITLE": "Lärm",
@@ -88,7 +88,7 @@
     "RAIL": "Bahnlärm",
     "PLANE": "Fluglärm",
     "INDB": "Lärm in dB:",
-    "NOISELEVELREFERENCE": "Noise level reference-DE"
+    "NOISELEVELREFERENCE": "Vergleichswerte"
   },
 
   "BACKTOMARKER": {
@@ -98,7 +98,7 @@
   "GENERIC": {
     "ADDRESS": "Adresse",
     "RATING": "Rating",
-    "NAME": "Name-de",
+    "NAME": "Name",
     "MUNICIPALITY": "Gemeinde",
     "GENERAL": "Allgemein",
     "POPULATION": "Bevölkerung",

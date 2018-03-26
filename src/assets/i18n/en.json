@@ -34,10 +34,10 @@
     "POPULATIONCHARTYLABEL": "population",
     "POPULATIONCHARTXLABEL": "year",
     "AGECHARTYLABEL": "age group",
-    "AGECHARTXLABEL": "value in %"
+    "AGECHARTXLABEL": "share in %"
   },
   "TAXES": {
-    "OVERVIEW": "Taxes Overview",
+    "OVERVIEW": "Tax Charge",
     "LEGEND1": "Single person, childless, gross income 70'000 CHF",
     "LEGEND2": "Single person, childless, gross income 100'000 CHF",
     "LEGEND3": "Married couple, childless, gross income 150'000 CHF",
@@ -79,7 +79,7 @@
     "EMERGENCY": "Emergency",
     "DISTANCE": "distance",
     "CONNECTIVITY": "Connections",
-    "LISTOFPLACES": "List of places"
+    "LISTOFPLACES": "Nearest Places"
   },
   "NOISE": {
     "TITLE": "Noise",
