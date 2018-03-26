@@ -109,7 +109,8 @@ export class TeaserComponent implements OnInit, OnDestroy {
 
     public getmacro(municalityId, ortID) {
         this.loading = true;
-        this.macro.getMacroRatings(this.markerLastLocation[0], this.markerLastLocation[1], municalityId).subscribe((res) => {
+        // tslint:disable-next-line:max-line-length
+        this.macro.getMacroRatings(this.markerLastLocation[0], this.markerLastLocation[1], municalityId, this.macro.getCulture()).subscribe((res) => {
             this.global.macroData = res.results;
             this.macrofactor = res.results.macroRatingClass1To5.toFixed(1);
             this.macrofactortext = res.results.macroRatingClass1To5Text;
@@ -118,7 +119,8 @@ export class TeaserComponent implements OnInit, OnDestroy {
             console.log(error);
             this.loading = false;
         }, () => {
-            this.macro.getAddressRatings(this.markerLastLocation[0], this.markerLastLocation[1], ortID).subscribe((res) => {
+            // tslint:disable-next-line:max-line-length
+            this.macro.getAddressRatings(this.markerLastLocation[0], this.markerLastLocation[1], ortID, this.macro.getCulture()).subscribe((res) => {
                 this.global.addressData = res.results;
                 this.addressfactor = res.results.microRatingClass1To5;
                 this.addressfactortext = res.results.microRatingClass1To5Text;

@@ -3,7 +3,7 @@ import { Config} from '../app/appconfig/config';
 
 @Injectable()
 export class Globals {
-  language = 'en';
+  language = 'de';
   microQuality: number ;
   apiKey = '';
   lageCheckAssetPath = Config.LAGECHECKASSETPATH;

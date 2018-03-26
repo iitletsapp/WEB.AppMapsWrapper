@@ -43,13 +43,13 @@ export class MacroService {
                 return macrocontainer;
             });
     }
-    public getAddressRatings(lat: number, lng: number, ortID) {
-        return this.get(`v1/microratings?cat=1&countryCode=CH&ortId=${ortID}&lat=${lat}&lon=${lng}&culture=${this.global.language}`);
+    public getAddressRatings(lat: number, lng: number, ortID, culture: string) {
+        return this.get(`v1/microratings?cat=1&countryCode=CH&ortId=${ortID}&lat=${lat}&lon=${lng}&culture=${culture}`);
     }
 
-    public getMacroRatings(lat: number, lng: number, municipalityID: number) {
+    public getMacroRatings(lat: number, lng: number, municipalityID: number, culture: string) {
         // tslint:disable-next-line:max-line-length
-        return this.get(`v1/macroratings?countryCode=CH&lat=${lat}&lon=${lng}&municipalityId=${municipalityID}&culture=${this.global.language}`);
+        return this.get(`v1/macroratings?countryCode=CH&lat=${lat}&lon=${lng}&municipalityId=${municipalityID}&culture=${culture}`);
     }
 
     public getMunicipalityInfo(lat: number, lng: number) {
@@ -90,6 +90,28 @@ export class MacroService {
     }
     public getPolygons(lat: number, lng: number) {
         return this.get(`v1/NeighbourPolygons?countryCode=CH&municipalityId=${this.macroObj.municipalityID}&date=20180226`);
+    }
+
+    /*
+   PURPOSE :: (01) to output the culture,
+   keeping it at one function also helps to modify easy in future
+ */
+    public getCulture(): string {
+        let culture = 'en-US';
+        switch (this.global.language) {
+            case 'de':
+                culture = 'de-CH';
+                break;
+            case 'fr':
+                culture = 'fr-CH';
+                break;
+            case 'it':
+                culture = 'it-CH';
+                break;
+            default:
+                break;
+        }
+        return culture;
     }
 
     private get(url) {

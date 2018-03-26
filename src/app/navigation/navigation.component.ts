@@ -27,7 +27,7 @@ export class NavigationComponent implements OnInit {
     private mapService: MapService
   ) {
     translate.addLangs(['de', 'en']);
-    translate.setDefaultLang('en');
+    translate.setDefaultLang('de');
   }
 
   public ngOnInit() {
