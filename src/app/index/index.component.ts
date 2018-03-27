@@ -20,7 +20,6 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 @Component({
     selector: 'app-index',
     templateUrl: './index.component.html',
-    encapsulation: ViewEncapsulation.None,
     styleUrls: ['./index.component.scss'],
     providers: []
 })

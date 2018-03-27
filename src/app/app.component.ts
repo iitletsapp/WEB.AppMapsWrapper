@@ -11,7 +11,6 @@ import { TranslateService } from 'ng2-translate';
 @Component({
   selector: 'iazi-map-root',
   templateUrl: './app.component.html',
-  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./app.component.scss'],
   providers: []
 })
