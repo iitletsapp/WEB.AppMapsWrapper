@@ -68,6 +68,9 @@ export class PoiComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy() {
+    if (this.active.connectivity) {
+      this.removeTransitlayer();
+    }
     _.keys(this.markerbin).forEach((el) => {
       this.clearMarkers(el);
       this.active[el] = null;
@@ -138,70 +141,73 @@ export class PoiComponent implements OnInit, OnDestroy {
       this.transitLayer.setMap(this.mapService.map);
       this.active[e.target.id] = !this.active[e.target.id];
     } else {
-      // ############### TODO this.transitLayer.setMap(null) is not working!!!
-      this.transitLayer.setMap(null);
-      let styledMapType = new google.maps.StyledMapType([
-        {
-          featureType: 'water',
-          elementType: 'geometry',
-          stylers: [
-            {
-              color: '#46bcec'
-            },
-            {
-              visibility: 'on'
-            }
-          ]
-        },
-        {
-          featureType: 'landscape',
-          elementType: 'geometry',
-          stylers: [
-            {
-              color: '#f5f5f5'
-            },
-            {
-              lightness: 20
-            }
-          ]
-        },
-        {
-          featureType: 'poi',
-          elementType: 'geometry',
-          stylers: [
-            {
-              color: '#f5f5f5'
-            },
-            {
-              lightness: 21
-            }
-          ]
-        },
-        {
-          elementType: 'labels.icon',
-          stylers: [
-            {
-              visibility: 'off'
-            }
-          ]
-        },
-        {
-          featureType: 'transit.station',
-          elementType: 'labels',
-          stylers: [
-            {
-              visibility: 'off'
-            }
-          ]
-        }
-      ]);
-      this.mapService.map.mapTypes.set('nat_map', styledMapType);
-      this.mapService.map.setMapTypeId('nat_map');
+      this.removeTransitlayer();
       this.wholelist = this.wholelist.filter((el) => el.type !== e.target.id);
       this.clearMarkers(e.target.id);
       this.clearMeters(e.target.id);
       this.active[e.target.id] = !this.active[e.target.id];
     }
+  }
+  public removeTransitlayer() {
+    // ############### TODO this.transitLayer.setMap(null) is not working!!!
+    this.transitLayer.setMap(null);
+    const styledMapType = new google.maps.StyledMapType([
+      {
+        featureType: 'water',
+        elementType: 'geometry',
+        stylers: [
+          {
+            color: '#46bcec'
+          },
+          {
+            visibility: 'on'
+          }
+        ]
+      },
+      {
+        featureType: 'landscape',
+        elementType: 'geometry',
+        stylers: [
+          {
+            color: '#f5f5f5'
+          },
+          {
+            lightness: 20
+          }
+        ]
+      },
+      {
+        featureType: 'poi',
+        elementType: 'geometry',
+        stylers: [
+          {
+            color: '#f5f5f5'
+          },
+          {
+            lightness: 21
+          }
+        ]
+      },
+      {
+        elementType: 'labels.icon',
+        stylers: [
+          {
+            visibility: 'off'
+          }
+        ]
+      },
+      {
+        featureType: 'transit.station',
+        elementType: 'labels',
+        stylers: [
+          {
+            visibility: 'off'
+          }
+        ]
+      }
+    ]);
+    this.mapService.map.mapTypes.set('nat_map', styledMapType);
+    this.mapService.map.setMapTypeId('nat_map');
   }
 
   public getCategory(e) {
