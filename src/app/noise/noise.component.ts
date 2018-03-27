@@ -39,14 +39,14 @@ export class NoiseComponent implements OnInit, OnDestroy, AfterViewInit {
 
   // for legend
   public legend = {
-    title: this.translate.instant('MAPLEGEND.NOISE'),
+    title: 'MAPLEGEND.NOISE',
     backgrounds: [
       'rgb(65, 224, 242)',
       'rgb(46, 232, 25)',
       'rgb(239, 236, 71)',
       'rgb(255, 188, 102)',
       'rgb(224, 25, 11)'],
-      labels: [this.translate.instant('MAPLEGEND.LOW'), this.translate.instant('MAPLEGEND.HIGH')]
+      labels: ['MAPLEGEND.LOW', 'MAPLEGEND.HIGH']
   };
   private isloaded = false;
   private mapEventListener;

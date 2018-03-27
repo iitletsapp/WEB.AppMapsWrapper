@@ -1,10 +1,10 @@
 <div class="maplegend-container" *ngIf="title">
-  <p>{{ title }}</p>
+  <p>{{ title | translate }}</p>
   <div>
-    <small *ngIf="labels">{{ labels[0] }}</small>
+    <small *ngIf="labels">{{ labels[0] | translate }}</small>
     <div class="d-inline-block" *ngIf="backgrounds">
       <div *ngFor="let bg of backgrounds" class="legends" [ngStyle]="{'background': bg }"></div>
     </div>
-    <small *ngIf="labels">{{ labels[1] }}</small>
+    <small *ngIf="labels">{{ labels[1] | translate }}</small>
   </div>
 </div>

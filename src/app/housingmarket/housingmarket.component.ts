@@ -28,13 +28,13 @@ export class HousingMarketComponent implements OnInit, OnDestroy {
     public yMarketDataFormat = '';
     // for legend
     public maplegend = {
-        title: this.translate.instant('MAPLEGEND.MARKET'),
+        title: 'MAPLEGEND.MARKET',
         backgrounds: [
             'rgb(255, 255, 96)',
             'rgb(249, 184, 66)',
             'rgb(249, 140, 66)',
             'rgb(249, 79, 66)'],
-        labels: [this.translate.instant('MAPLEGEND.LOW'), this.translate.instant('MAPLEGEND.HIGH')]
+        labels: ['MAPLEGEND.LOW', 'MAPLEGEND.HIGH']
     };
 
     constructor(private municipality: GetMunicipalityService,
