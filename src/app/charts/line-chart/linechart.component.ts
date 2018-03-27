@@ -47,8 +47,9 @@ export class LineChartComponent implements OnInit, AfterViewInit {
     }
 
     public initChart() {
+        const reference = this;
         d3.select(`.${this.containerId}`).remove();
-        const margin = { top: 20, right: 40, bottom: 28, left: 40 };
+        const margin = { top: 30, right: 40, bottom: 28, left: 40 };
         const width = 460 - margin.left - margin.right;
         const height = 265 - margin.top - margin.bottom;
 
@@ -172,9 +173,9 @@ export class LineChartComponent implements OnInit, AfterViewInit {
             .style('stroke', '#F19233');
 
         // call a function while hovering over the chart
-        focus(data);
+        focus(data, reference);
 
-        function focus(data) {
+        function focus(data, reference) {
             let focus = g.append('g')
                 .attr('class', 'focusg')
                 .style('display', 'none');
@@ -241,7 +242,7 @@ export class LineChartComponent implements OnInit, AfterViewInit {
                 let d1 = data[i];
                 let d = x0 - d0.year > d1.year - x0 ? d1 : d0;
                 focus.attr('transform', 'translate(' + x(d.year) + ',' + y(d.value) + ')');
-                focus.select('text').text(() => `${d.value}k`);
+                focus.select('text').text(() => `${d.value}${reference.yDataFormat}`);
                 focus.select('circle')
                     .style('fill', getcolor(d.value))
                     .style('opacity', 0.8)
