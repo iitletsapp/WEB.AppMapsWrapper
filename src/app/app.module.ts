@@ -93,7 +93,7 @@ registerLocaleData(localeDECH);
       useFactory: (http: Http) => new TranslateStaticLoader(http, (sessionStorage.getItem('iazimappath') === null ? Config.LAGECHECKASSETPATH : sessionStorage.getItem('iazimappath')) + '/assets/i18n', '.json'),
       deps: [Http]
     }),
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, { useHash: true }),
     NgbModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBFVmAfeLqztTq_UehyrHBZYxMWliHzRq4',
