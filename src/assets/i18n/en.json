@@ -58,16 +58,16 @@
   "NAVIGATION": {
     "MICRO": "address rating",
     "POI": "POI",
-    "NOISE": "noise",
-    "VIEW": "view",
-    "SUNSHINE": "sunshine",
-    "TRANSPORT": "transport",
+    "NOISE": "Noise",
+    "VIEW": "View",
+    "SUNSHINE": "Sunshine",
+    "TRANSPORT": "Transport",
     "GENERALINFO": "General Information",
     "POPULATION": "Population",
     "TAX": "Tax",
     "HOUSINGMARKET": "Housing Market",
     "POI": "POI",
-    "NOISE": "NOISE"
+    "NOISE": "Noise"
   },
   "POI": {
     "MINDISTANCE": "min",
