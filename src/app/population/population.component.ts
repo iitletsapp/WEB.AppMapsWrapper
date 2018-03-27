@@ -79,8 +79,6 @@ export class PopulationComponent implements OnInit, OnDestroy {
       return {ageGroup: el.ageGroupText.toString(),  value: el.value.toFixed(2) };
     });
 
-    console.log(this.dataforbararray);
-
     this.populationrate = this.populationratio[0].municipalityValue;
     this.foreignerquota = this.populationratio[2].municipalityValue;
     this.unemploymentrate = this.populationratio[4].municipalityValue;
