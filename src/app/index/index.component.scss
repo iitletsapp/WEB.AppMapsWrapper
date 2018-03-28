@@ -1,22 +1,13 @@
 @import '~sass/variables';
 
 .full-height {
-    height: calc(100vh);
-    @media screen and (max-width: 768px) {
-        height: 45vh;
-    }
+    height: 100vh
 }
 
 .main-info {
-    box-shadow: 0.1px -0.3px 9.1px -2.3px black;
+    box-shadow: 0.1px -0.3px 9.1px -2.3px $primary-color;
     z-index: 1;
-    .scrollable-section {
-        height: calc(100vh);
-        overflow-y: auto;
-        @media screen and (max-width: 768px) {
-            height: 49vh;
-        }
-    }
+    overflow-y: auto;
 }
 
 .no-gutters {
