@@ -8,6 +8,7 @@
     box-shadow: 0.1px -0.3px 9.1px -2.3px $primary-color;
     z-index: 1;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .no-gutters {
