@@ -7,10 +7,11 @@
     "start": "npm run copy-config | ng serve",
     "start-local": "npm run copy-config-local | ng serve",
     "build": "ng build --prod",
+    "build-aot": "npm run copy-config | ng build --prod --aot",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "copy-config": "ncp src/app/appconfig/config.local.ts src/app/appconfig/config.ts",
+    "copy-config": "ncp src/app/appconfig/config.dev.ts src/app/appconfig/config.ts",
     "copy-config-local": "ncp src/app/appconfig/config.local.ts src/app/appconfig/config.ts"
   },
   "private": true,

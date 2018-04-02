@@ -1,8 +1,8 @@
 @import '~sass/variables';
 
-.full-height {
+/* .full-height {
     height: 100vh
-}
+} */
 
 .main-info {
     box-shadow: 0.1px -0.3px 9.1px -2.3px $primary-color;
@@ -28,10 +28,31 @@
 }
 
 #googlemap {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
+    //position: absolute;
+    //top: 0;
+    //bottom: 0;
+    //width: 100%;
     height: 100%;
     cursor: pointer;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #DBDCDD; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #888; 
 }
