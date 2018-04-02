@@ -7,14 +7,29 @@
         </div>
     </div>
     <hr class="hr-black">
-    <h6 class="d-inline-block chart-header">{{ 'POPULATION.POPULATIONGROWTHHEADER' | translate }}</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
-    <hr class="hr-black">
-    <app-linechart [containerId]="linecontainer" [data]="dataforlinearray" [xText]="xLabel" [yText]="yLabel" [yDataFormat]="yPopulationDataFormat"></app-linechart>
-    <h6 class="d-inline-block  chart-header">{{ 'POPULATION.AGECATEGORY' | translate }}</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
-    <hr class="hr-black">
-    <app-barchart [containerId]="barcontainer" [data]="dataforbararray" [xText]="xAgeData" [yText]="yAgeData" 
-                  [xAxisText]="xAxisAgeText" [yAxisText]="yAxisAgeText"   [xDataFormat]="xAgeDataFormat" [yDataFormat]="yAgeDataFormat"></app-barchart>
-    <!-- <hr> -->
+    <ngb-accordion #acc="ngbAccordion" [destroyOnHide]="false" activeIds="ngb-panel-0" class="accordion-component" (panelChange)="toggleAccordionTab($event)">
+        <ngb-panel id="panel-0">
+            <ng-template ngbPanelTitle>
+                <i class="fa fa-arrow-right" [ngClass]="accordionActive[0] ? 'fa-rotate-90' : ''" aria-hidden="true"></i>&nbsp;
+                <h6 class="d-inline-block chart-header">{{ 'POPULATION.POPULATIONGROWTHHEADER' | translate }}</h6>
+                <i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
+            </ng-template>
+            <ng-template ngbPanelContent>
+                <app-linechart [containerId]="linecontainer" [data]="dataforlinearray" [xText]="xLabel" [yText]="yLabel" [yDataFormat]="yPopulationDataFormat"></app-linechart>
+            </ng-template>
+        </ngb-panel>
+        <ngb-panel id="panel-1">
+            <ng-template ngbPanelTitle>
+                <i class="fa fa-arrow-right" [ngClass]="accordionActive[1] ? 'fa-rotate-90' : ''" aria-hidden="true"></i>&nbsp;
+                <h6 class="d-inline-block chart-header">{{ 'POPULATION.AGECATEGORY' | translate }}</h6>
+                <i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
+            </ng-template>
+            <ng-template ngbPanelContent>
+                    <app-barchart [containerId]="barcontainer" [data]="dataforbararray" [xText]="xAgeData" [yText]="yAgeData" 
+                    [xAxisText]="xAxisAgeText" [yAxisText]="yAxisAgeText"   [xDataFormat]="xAgeDataFormat" [yDataFormat]="yAgeDataFormat"></app-barchart>  
+            </ng-template>
+        </ngb-panel>
+    </ngb-accordion>
     <br>
     <h6 class="d-inline-block  chart-header">{{ 'POPULATION.KEYFIGURES' | translate }}</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
     <hr class="hr-black">

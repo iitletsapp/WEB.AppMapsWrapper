@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="col col-lg-6 text-center gaugeClass">
-            <div [hidden]="!macrofactor">
+            <div *ngIf="macrofactor">
                     <app-gauge-chart 
                     [data]="macrofactor"
                     [extent]="municipalitygaugeextent"
@@ -88,7 +88,7 @@
                 </div>
         </div>
         <div class="col col-lg-6 text-center">
-            <div [hidden]="!addressfactor">
+            <div  *ngIf="addressfactor">
                     <app-gauge-chart 
                     [data]="addressfactor"
                     [extent]="addressgaugeextent"
