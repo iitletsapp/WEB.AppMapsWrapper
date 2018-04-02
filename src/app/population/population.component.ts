@@ -40,7 +40,7 @@ export class PopulationComponent implements OnInit, OnDestroy {
   public yPopulationDataFormat = 'k';
   public xAgeDataFormat = '%';
   public yAgeDataFormat = '%';
-  //public displayXAgeData = true;
+  // public displayXAgeData = true;
   public geoJson = '';
   public extentData = [];
   public extent = [];
@@ -55,6 +55,7 @@ export class PopulationComponent implements OnInit, OnDestroy {
       'rgb(249, 79, 66)'],
     labels: ['MAPLEGEND.LOW', 'MAPLEGEND.HIGH']
   };
+  public accordionActive = [0, 0];
 
   constructor(
     private municipality: GetMunicipalityService,
@@ -90,6 +91,14 @@ export class PopulationComponent implements OnInit, OnDestroy {
   public ngOnDestroy() {
     this.mapLegendService.removeLegend();
     this.mapService.map.data.setMap(null);
+  }
+  public toggleAccordionTab(event) {
+    if (event.panelId.includes('0')) {
+      this.accordionActive[0] = event.nextState ? 1 : 0;
+    }
+    if (event.panelId.includes('1')) {
+      this.accordionActive[1] = event.nextState ? 1 : 0;
+    }
   }
 
   public displayPolygons() {

@@ -120,4 +120,19 @@
     .chart {
         margin-bottom: 15px;
     }
+    .accordion-component{
+        .card {
+            border: none;
+            margin-bottom: 1rem;
+            .card-header {
+                background-color: transparent;
+                border-bottom: 1px solid $primary-color;
+                padding: 0;
+                a {
+                    text-decoration: none;
+                    @extend .chart-header;
+                }
+            }
+        }
+    }
 }

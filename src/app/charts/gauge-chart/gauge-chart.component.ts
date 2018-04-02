@@ -58,9 +58,6 @@ export class GaugeChartComponent implements OnInit, OnChanges, AfterViewInit {
       .domain([this.extent[0] - this.minThreshold, this.extent[1]]) // make property binding
       .rangeRound([-120, 120]);
 
-    const quantizeForUser = d3.scaleQuantize()
-      .domain([-120, 120])
-      .range(<any>this.classification); // create property binding
 
     const sequentialScale = d3.scaleQuantize()
       .domain(<any>quantizeForArc.domain())
@@ -75,7 +72,19 @@ export class GaugeChartComponent implements OnInit, OnChanges, AfterViewInit {
     const min = this.minMax[0];
     const max = this.minMax[1];
     // create a property binding
-    const current = quantizeForUser(quantizeForArc(this.data));
+    if (this.classification) {
+      const quantizeForUser = d3.scaleQuantize()
+        .domain([-120, 120])
+        .range(<any>this.classification);
+
+      // tslint:disable-next-line:no-var-keyword
+      var current = quantizeForUser(quantizeForArc(this.data));
+
+    } else {
+      // tslint:disable-next-line:prefer-const
+      var current = this.data;
+
+    }
 
     // Arc Defaults
     const arc = d3.arc().innerRadius(iR).outerRadius(oR).cornerRadius(20).startAngle(-120 * (pi / 180));
