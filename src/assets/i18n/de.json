@@ -6,7 +6,9 @@
     "TAXES": "Steuern",
     "MARKET": "Markt",
     "POI": "Poi",
-    "NOISE": "Lärm"
+    "NOISE": "Lärm",
+    "MUNICIPALITYRATING": "Gemeinde bewertung",
+    "ADDRESSRATING": "Adressen bewertung"
   },
   "SEARCH": {
     "PLACEHOLDER": "Suchbegriff eingeben",

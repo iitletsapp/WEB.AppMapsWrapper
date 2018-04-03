@@ -38,18 +38,18 @@ export class TeaserComponent implements OnInit, OnDestroy {
     public loading = false;
     // gauge municipality
     public municipalitygaugedata = this.macrofactor;
-    public municipalitygaugeextent = [5, 1];
+    public municipalitygaugeextent = [1, 5];
     public municipalitygaugecontainerId = 'gaugecontainerone';
     public municipalitygaugeclassification;
-    public municipalitygaugeminMax = ['', ''];
+    public municipalitygaugeminMax = ['1', '5'];
     public municipalitygaugeminThreshold = .01;
     public municipalitygaugeimgURL = this.global.lageCheckAssetPath + '/assets/img/icons/generalinfo-grey.svg';
     // gauge address
     public addressgaugedata = this.addressfactor;
-    public addressgaugeextent = [5, 1];
+    public addressgaugeextent = [1, 5];
     public addressgaugecontainerId = 'gaugecontainertwo';
     public addressgaugeclassification;
-    public addressgaugeminMax = ['', ''];
+    public addressgaugeminMax = ['1', '5'];
     public addressgaugeminThreshold = .01;
     public addressgaugeimgURL = this.global.lageCheckAssetPath + '/assets/img/icons/map-marker-grey.svg';
 

@@ -6,7 +6,9 @@
     "TAXES": "Taxes",
     "MARKET": "Market",
     "POI": "Poi",
-    "NOISE": "noise"
+    "NOISE": "noise",
+    "MUNICIPALITYRATING": "Municipality rating",
+    "ADDRESSRATING": "Address rating"
   },
   "SEARCH": {
     "PLACEHOLDER": "type to search...",

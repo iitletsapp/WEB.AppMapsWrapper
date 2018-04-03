@@ -99,13 +99,14 @@ export class GaugeChartComponent implements OnInit, OnChanges, AfterViewInit {
       .append('g')
       .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
 
-    svg.append('svg:image')
-      .attr('x', -40)
-      .attr('y', 70)
-      .attr('width', '90px')
-      .attr('height', '90px')
-      .attr('xlink:href', `${this.imgURL}`);
-
+    // ######## if we want to add a svg image #########
+    // svg.append('svg:image')
+    //   .attr('x', -40)
+    //   .attr('y', 70)
+    //   .attr('width', '90px')
+    //   .attr('height', '90px')
+    //   .attr('xlink:href', `${this.imgURL}`);
+    // ######## if we want to add a svg image ########
 
     svg.append('path')
       .datum({ endAngle: 120 * (pi / 180) })
@@ -125,17 +126,20 @@ export class GaugeChartComponent implements OnInit, OnChanges, AfterViewInit {
       .style('fill', (d) => sequentialScale(this.data));
 
     svg.append('text')
-      .attr('transform', 'translate(' + (iR + ((oR - iR) / 2)) + ',' + height / 2 + ')') // Display Max value
+      .attr('transform', 'translate(' + 100 + ',' + 60 + ')') // Display Max value
       .attr('text-anchor', 'middle')
-      .style('font-size', '30')
+      .style('font-size', '40px')
+      .style('fill', 'grey')
       .style('font-family', 'Open Sans')
       .text(max); // Set between inner and outer Radius
 
     // Display Min value
     svg.append('text')
-      .attr('transform', 'translate(' + -(iR + ((oR - iR) / 2)) + ',' + height / 2 + ')') // Set between inner and outer Radius
+      // tslint:disable-next-line:max-line-length
+      .attr('transform', 'translate(' + -90 + ',' + 60 + ')') // Set between inner and outer Radius
       .attr('text-anchor', 'middle')
-      .style('font-size', '30')
+      .style('font-size', '40px')
+      .style('fill', 'grey')
       .style('font-family', 'Open Sans')
       .text(min);
 
@@ -143,7 +147,7 @@ export class GaugeChartComponent implements OnInit, OnChanges, AfterViewInit {
     svg.append('text')
       .attr('transform', 'translate(0,' + -(iR / 4) + ')') // Push up from center 1/4 of innerRadius
       .attr('text-anchor', 'middle')
-      .style('font-size', '66px')
+      .style('font-size', '86px')
       .style('font-weight', '600')
       .text(current)
       .transition()
