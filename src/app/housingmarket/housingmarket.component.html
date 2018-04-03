@@ -1,7 +1,17 @@
 <div class="component-margin">
-    <h6 class="d-inline-block chart-header">{{ 'HOUSINGMARKERT.INDEX' | translate }}</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
-    <hr class="hr-black">    
-        <app-linechart [containerId]="linecontainer" [data]="dataforlinearrayMarket" [xText]="xLabel" [yText]="yLabel" [yDataFormat]="yMarketDataFormat"></app-linechart>
+    <ngb-accordion #acc="ngbAccordion" [destroyOnHide]="false" activeIds="ngb-panel-0" class="accordion-component" (panelChange)="toggleAccordionTab($event)">
+            <ngb-panel id="panel-0">
+                <ng-template ngbPanelTitle>
+                    <i class="fa fa-arrow-right" [ngClass]="accordionActive[0] ? 'fa-rotate-90' : ''" aria-hidden="true"></i>&nbsp;
+                    <h6 class="d-inline-block chart-header">{{ 'HOUSINGMARKERT.INDEX' | translate }}</h6>
+                    <i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                        <app-linechart [containerId]="linecontainer" [data]="dataforlinearrayMarket" [xText]="xLabel" [yText]="yLabel" [yDataFormat]="yMarketDataFormat"></app-linechart>
+                </ng-template>
+            </ngb-panel>
+        </ngb-accordion> 
+        
         
     <h6 class="d-inline-block chart-header">{{ 'HOUSINGMARKERT.KEYFIGURES' | translate }}</h6><i class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i>
     <hr class="hr-black">

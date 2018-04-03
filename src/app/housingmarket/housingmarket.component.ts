@@ -36,6 +36,7 @@ export class HousingMarketComponent implements OnInit, OnDestroy {
             'rgb(249, 79, 66)'],
         labels: ['MAPLEGEND.LOW', 'MAPLEGEND.HIGH']
     };
+    public accordionActive = [0];
 
     constructor(private municipality: GetMunicipalityService,
         private mapService: MapService,
@@ -63,6 +64,11 @@ export class HousingMarketComponent implements OnInit, OnDestroy {
         this.mapLegendService.removeLegend();
         this.mapService.map.data.setMap(null);
     }
+    public toggleAccordionTab(event) {
+        if (event.panelId.includes('0')) {
+          this.accordionActive[0] = event.nextState ? 1 : 0;
+        }
+      }
 
     public displayPolygons() {
         this.mapService.map.data.forEach((feature) => {

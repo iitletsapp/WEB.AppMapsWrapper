@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as d3 from 'd3';
 import * as _ from 'lodash';
+import * as d3s from 'd3-scale-chromatic';
 
 @Component({
   selector: 'app-gauge-chart',
@@ -58,16 +59,20 @@ export class GaugeChartComponent implements OnInit, OnChanges, AfterViewInit {
       .domain([this.extent[0] - this.minThreshold, this.extent[1]]) // make property binding
       .rangeRound([-120, 120]);
 
-
-    const sequentialScale = d3.scaleQuantize()
-      .domain(<any>quantizeForArc.domain())
-      .range(<any>['#ffbc66']);
+    // const sequentialScale = d3.scaleQuantize()
+    //   .domain(<any>quantizeForArc.domain())
+    //   .range(<any>['#ffbc66']);
     // .range(<any> [
     //   d3.rgb(d3.color('#41e0f2')),
     //   d3.rgb(d3.color('#2ee819')),
     //   d3.rgb(d3.color('#efec47')),
     //   d3.rgb(d3.color('#ffbc66')),
     //   d3.rgb(d3.color('#e0190b'))]);
+
+    const colorinterpolation = d3.scaleSequential(d3s.interpolateRdYlGn);
+    const valueQuantize = d3.scaleLinear()
+    .domain(this.minMax)
+    .range([0, 1]);
 
     const min = this.minMax[0];
     const max = this.minMax[1];
@@ -123,7 +128,9 @@ export class GaugeChartComponent implements OnInit, OnChanges, AfterViewInit {
       .ease(d3.easeQuadInOut)
       .style('opacity', 1)
       .attr('stroke-width', .4)
-      .style('fill', (d) => sequentialScale(this.data));
+      .style('fill', (d) => {
+        return colorinterpolation(valueQuantize(this.data));
+      });
 
     svg.append('text')
       .attr('transform', 'translate(' + 100 + ',' + 60 + ')') // Display Max value

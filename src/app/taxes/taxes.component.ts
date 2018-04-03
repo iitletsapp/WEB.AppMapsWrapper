@@ -39,6 +39,7 @@ export class TaxesComponent implements OnInit, OnDestroy {
   };
 
   public barchart = 'barchart';
+  public accordionActive = [0];
   @ViewChild('BarChartComponent') bar: BarChartComponent;
 
   constructor(
@@ -64,6 +65,11 @@ export class TaxesComponent implements OnInit, OnDestroy {
   public ngOnDestroy() {
     this.mapLegendService.removeLegend();
     this.mapService.map.data.setMap(null);
+  }
+  public toggleAccordionTab(event) {
+    if (event.panelId.includes('0')) {
+      this.accordionActive[0] = event.nextState ? 1 : 0;
+    }
   }
 
   public displayPolygons() {
